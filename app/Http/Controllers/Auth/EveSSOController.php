@@ -13,25 +13,23 @@ use nullx27\Socialite\EveOnline\Traits\EveAuth;
 
 class EveSSOController extends Controller
 {
-    use EveAuth;
-    protected $scopes = [];
+    //use EveAuth;
 
-
-    public function __construct()
+    public function login(Request $request)
     {
-        $this->scopes = explode(',', config('services.eveonline.scopes'));
-    }
+        $scopes = explode(' ', config('services.eveonline.scopes'));
 
-    public function login()
-    {
         return Socialite::driver('eveonline')
-            ->scopes($this->scopes)
+            ->scopes($scopes)
             ->redirect();
     }
 
-    public function handle_callback()
+    public function handle_callback(Request $request)
     {
-        $this->callback();
+        $this->user = Socialite::driver('eveonline')->user();
+
+        dd($this->user);
+
         $character_data = $this->get_character();
 
         $character = Character::firstOrNew(['id' => $this->user->id]);

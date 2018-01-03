@@ -19,5 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/account/add', 'Auth\\EveSSOController@login')->name('sso.login');
-Route::get('/eve/callback', 'Auth\\EveSSOController@handle_callback')->name('sso.callback');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/account/add', 'Auth\\EveSSOController@login')->name('sso.login');
+    Route::get('/eve/callback', 'Auth\\EveSSOController@handle_callback')->name('sso.callback');
+});
