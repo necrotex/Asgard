@@ -17,6 +17,11 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function landing()
+    {
+
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -24,8 +29,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('dashboard.home');
+    }
+
+    public function characters()
+    {
         $characters = Auth::user()->characters;
 
-        return view('home')->with('characters', $characters);
+        return view('dashboard.characters')->with('characters', $characters);
     }
 }
