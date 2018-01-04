@@ -13,11 +13,11 @@ use nullx27\Socialite\EveOnline\Traits\EveAuth;
 
 class EveSSOController extends Controller
 {
-    //use EveAuth;
+    use EveAuth;
 
     public function login(Request $request)
     {
-        $scopes = explode(' ', config('services.eveonline.scopes'));
+        $scopes = explode(',', config('services.eveonline.scopes'));
 
         return Socialite::driver('eveonline')
             ->scopes($scopes)
@@ -28,10 +28,6 @@ class EveSSOController extends Controller
     {
         $this->user = Socialite::driver('eveonline')->user();
 
-        dd($this->user);
-
-        $character_data = $this->get_character();
-
         $character = Character::firstOrNew(['id' => $this->user->id]);
         $character->refresh_token = $this->user->refreshToken;
         $character->name = $this->user->name;
@@ -39,13 +35,10 @@ class EveSSOController extends Controller
 
         Auth::user()->characters()->save($character);
 
-        if(empty($character->token())) {
-            $character->token()->create([
-                'token' => $this->user->token,
-                'expiry' => $this->user->user['ExpiresOn']
-            ]);
-        }
-
+        $token = Token::firstOrNew(['character_id' => $this->user->id]);
+        $token->token = $this->user->token;
+        $token->expiry = $this->user->user['ExpiresOn'];
+        $character->token()->save($token);
 
         return redirect()->route('home');
     }

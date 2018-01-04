@@ -27,6 +27,5 @@ class HomeController extends Controller
         $characters = Auth::user()->characters;
 
         return view('home')->with('characters', $characters);
-
     }
 }
