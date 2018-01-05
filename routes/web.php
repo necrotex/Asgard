@@ -23,6 +23,4 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/account/add', 'Auth\\EveSSOController@login')->name('sso.login');
     Route::get('/eve/callback', 'Auth\\EveSSOController@handle_callback')->name('sso.callback');
 
-    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-
 });
