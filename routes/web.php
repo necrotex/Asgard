@@ -11,16 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+
     Route::get('/characters', 'HomeController@characters')->name('characters');
 
     Route::get('/account/add', 'Auth\\EveSSOController@login')->name('sso.login');
     Route::get('/eve/callback', 'Auth\\EveSSOController@handle_callback')->name('sso.callback');
+
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
 });

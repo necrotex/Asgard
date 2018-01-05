@@ -18,12 +18,12 @@
 
 <body>
 
-@include('layout.partials.topnav')
+@include('layouts.partials.topnav')
 
 <div class="container-fluid">
     <div class="row">
 
-        @include('layout.partials.sidenav')
+        @include('layouts.partials.sidenav')
 
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
             <h1>@yield('CONTENT_TITLE', 'Page need a title')</h1>

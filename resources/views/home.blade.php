@@ -1,4 +1,4 @@
-@extends('layout.dashboard')
+@extends('layouts.dashboard')
 
 @section('PAGE_TITLE', 'ASGARD :: CHARACTERS')
 @section('CONTENT_TITLE', 'Characters')
