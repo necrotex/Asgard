@@ -4,6 +4,8 @@
 // Bootstrap
 @import "~bootstrap/dist/css/bootstrap";
 
+@import "~font-awesome/scss/font-awesome";
+
 .avatar {
   border-radius: 35px;
   float: left;
@@ -154,4 +156,19 @@ h1 {
 {
   display: block;
   margin-top: 10px;
+}
+
+.character-card {
+  padding: 15px ;
+}
+
+.status-success {
+  font-size: 40px;
+  color: seagreen;
+}
+
+.status-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
