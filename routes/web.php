@@ -24,3 +24,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/eve/callback', 'Auth\\EveSSOController@handle_callback')->name('sso.callback');
 
 });
+
+
+Route::get('/debug', 'HomeController@debug');

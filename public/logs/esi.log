@@ -1,0 +1,4 @@
+[2018-01-07 16:35:40] eseye.INFO: [http 200, ok] post -> https://login.eveonline.com/oauth/token/?grant_type=refresh_token [t/e: 1.49s/]
+[2018-01-07 16:35:40] eseye.INFO: [http 200, ok] get -> https://login.eveonline.com/oauth/verify/ [t/e: 0.82s/]
+[2018-01-07 16:35:40] eseye.WARNING: An unknown URI was called. Allowing characters/{character_id}/corporationhistory/
+[2018-01-07 16:35:41] eseye.ERROR: [http 404, not found] get -> https://esi.tech.ccp.is/latestcharacters/95149868/corporationhistory/?datasource=tranquility [t/e: 0.42s/100]

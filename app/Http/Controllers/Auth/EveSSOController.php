@@ -28,6 +28,11 @@ class EveSSOController extends Controller
     {
         $this->user = Socialite::driver('eveonline')->user();
 
+        $character_data = $this->get_character();
+
+        dd($character_data);
+
+
         $character = Character::firstOrNew(['id' => $this->user->id]);
         $character->refresh_token = $this->user->refreshToken;
         $character->name = $this->user->name;

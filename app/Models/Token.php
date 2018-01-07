@@ -10,10 +10,26 @@ class Token extends Model
 {
     protected $fillable = ['token', 'expiry'];
 
+    protected $dates = ['expiry'];
+
     public function character()
     {
         return $this->belongsTo(Character::class);
     }
+
+    public function getTokenAttribute($value)
+    {
+        // if the token is about to expire, auto renew it
+        if($this->expiry->lt(Carbon::now()->addMinute(2)))
+        {
+            $token = $this->renew();
+
+            return $token->token;
+        }
+
+        return $value;
+    }
+
 
     public function renew()
     {

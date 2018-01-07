@@ -2,8 +2,10 @@
 
 namespace Asgard\Http\Controllers;
 
+use Asgard\Models\Character;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use nullx27\Easi\Easi;
 
 class HomeController extends Controller
 {
@@ -37,5 +39,13 @@ class HomeController extends Controller
         $characters = Auth::user()->characters;
 
         return view('dashboard.characters')->with('characters', $characters);
+    }
+
+    public function debug()
+    {
+        $token = Character::first()->token;
+
+
+        $api = new Easi($token->token);
     }
 }
