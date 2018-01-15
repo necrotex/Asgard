@@ -5,8 +5,9 @@ namespace Asgard\Listeners;
 use Asgard\Events\CharacterUpdateEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 
-class DiscordAccessCheck
+class DiscordAccessCheck implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -26,6 +27,8 @@ class DiscordAccessCheck
      */
     public function handle(CharacterUpdateEvent $event)
     {
-        //
+        Log::info('Event fired ' . self::class);
+
+        dd($event->character);
     }
 }

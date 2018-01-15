@@ -23,6 +23,8 @@ class CreateCharactersTable extends Migration
             $table->text('name');
             $table->text('owner_hash');
 
+            $table->boolean('active')->default(true);
+
             $table->timestamps();
         });
 

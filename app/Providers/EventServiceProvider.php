@@ -16,7 +16,6 @@ class EventServiceProvider extends ServiceProvider
         'Asgard\Events\CharacterUpdateEvent' => [
             'Asgard\Listeners\RedditAccessCheck',
             'Asgard\Listeners\DiscordAccessCheck',
-            'Asgard\Listeners\TeamspeakAccessCheck',
         ],
     ];
 

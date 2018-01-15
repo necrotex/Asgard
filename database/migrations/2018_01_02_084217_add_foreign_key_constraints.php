@@ -16,7 +16,6 @@ class AddForeignKeyConstraints extends Migration
 
         Schema::table('characters', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('corporation_id')->references('id')->on('corporation')->onDelete('cascade');
         });
 
 

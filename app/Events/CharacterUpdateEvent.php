@@ -2,6 +2,7 @@
 
 namespace Asgard\Events;
 
+use Asgard\Models\Character;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -9,28 +10,30 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Support\Facades\Log;
 
 class CharacterUpdateEvent
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable, SerializesModels;
+
+    public $character;
 
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param Character $character
      */
-    public function __construct()
+    public function __construct(Character $character)
     {
-        //
+        $this->character = $character;
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
-    public function broadcastOn()
+    public function hasChanged()
     {
-        return new PrivateChannel('channel-name');
+        if(count($this->character->getDirty()) > 0)
+            return true;
+
+        return false;
     }
+
 }

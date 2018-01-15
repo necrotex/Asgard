@@ -6,7 +6,7 @@ use Asgard\Events\CharacterUpdateEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class RedditAccessCheck
+class RedditAccessCheck implements ShouldQueue
 {
     /**
      * Create the event listener.

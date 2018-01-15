@@ -2,12 +2,21 @@
 
 namespace Asgard\Models;
 
+use Asgard\Events\CharacterUpdateEvent;
 use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
 {
 
     protected $fillable = ['id'];
+    protected $casts = [
+        'active' => 'boolean'
+    ];
+
+    protected $dispatchesEvents = [
+        'updated' => CharacterUpdateEvent::class,
+        'saved' => CharacterUpdateEvent::class,
+    ];
 
     public function user()
     {
