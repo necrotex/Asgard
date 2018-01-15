@@ -12,6 +12,12 @@ use Illuminate\Support\MessageBag;
 class CorporationController extends Controller
 {
 
+    public function index()
+    {
+        $corporations = Corporation::all();
+
+        return view('dashboard.corporation.index', ['corporations' => $corporations]);
+    }
 
     /**
      * Store a newly created resource in storage.

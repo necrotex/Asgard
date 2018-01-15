@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/eve/callback', 'Auth\\EveSSOController@handle_callback')->name('sso.callback');
 
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
-        Route::get('/', 'AdminController@index')->name('admin.index');
+        Route::get('/', 'CorporationController@index')->name('corporation.index');
         Route::post('/corporation/add', 'CorporationController@store')->name('corporation.store');
 
     });

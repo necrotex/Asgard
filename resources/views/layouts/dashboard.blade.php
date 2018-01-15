@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{mix('css/app.css')}}" rel="stylesheet">
+    @stack('css')
 
 </head>
 
@@ -34,6 +35,8 @@
 </div>
 
 <script src="{{mix('js/app.js')}}"></script>
+
+@stack('js')
 
 </body>
 </html>
