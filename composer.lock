@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "208c63dbcff51de43c7b54eea41c88ad",
+    "content-hash": "2d3a73306d5ed27b2f7e93a7c9910bc8",
     "packages": [
         {
             "name": "cache/adapter-common",
@@ -198,69 +198,6 @@
             "time": "2017-03-13T10:43:18+00:00"
         },
         {
-            "name": "cache/simple-cache-bridge",
-            "version": "0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-cache/simple-cache-bridge.git",
-                "reference": "7f4dbf0a95422309b228b6d3568dd899e532f426"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/simple-cache-bridge/zipball/7f4dbf0a95422309b228b6d3568dd899e532f426",
-                "reference": "7f4dbf0a95422309b228b6d3568dd899e532f426",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0",
-                "psr/cache": "^1.0",
-                "psr/simple-cache": "^1.0"
-            },
-            "provide": {
-                "psr/simple-cache-implementation": "^1.0"
-            },
-            "require-dev": {
-                "cache/integration-tests": "^0.16",
-                "mockery/mockery": "^0.9",
-                "phpunit/phpunit": "^4.0 || ^5.1",
-                "symfony/cache": "^3.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cache\\Bridge\\SimpleCache\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Magnus Nordlander",
-                    "email": "magnus@fervo.se",
-                    "homepage": "https://github.com/magnusnordlander"
-                }
-            ],
-            "description": "A PSR-6 bridge to PSR-16. This will make any PSR-6 cache compatible with SimpleCache.",
-            "homepage": "http://www.php-cache.com/en/latest/",
-            "keywords": [
-                "Bridge",
-                "cache",
-                "psr-16",
-                "psr-6"
-            ],
-            "time": "2017-03-13T10:43:18+00:00"
-        },
-        {
             "name": "cache/tag-interop",
             "version": "1.0.0",
             "source": {
@@ -350,20 +287,20 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462"
+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/e11d84c6e018beedd929cff5220969a3c6d1d462",
-                "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": "^7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^6.2"
@@ -371,7 +308,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -413,7 +350,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2017-07-22T12:18:28+00:00"
+            "time": "2018-01-09T20:05:19+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -570,48 +507,6 @@
                 "parser"
             ],
             "time": "2017-11-14T20:44:03+00:00"
-        },
-        {
-            "name": "fetch/array-utils",
-            "version": "0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fetch/php-array-utils.git",
-                "reference": "459d9d7a77f58b7c2101611d464f4ac34fd8dd50"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fetch/php-array-utils/zipball/459d9d7a77f58b7c2101611d464f4ac34fd8dd50",
-                "reference": "459d9d7a77f58b7c2101611d464f4ac34fd8dd50",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/array.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Koen Punt",
-                    "email": "koen@fetch.nl",
-                    "homepage": "https://github.com/koenpunt"
-                }
-            ],
-            "description": "Array utility methods, inspired by Ruby's array methods",
-            "homepage": "https://github.com/fetch/php-array-utils",
-            "keywords": [
-                "array",
-                "utils"
-            ],
-            "time": "2015-11-14T11:40:19+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -939,6 +834,83 @@
             "time": "2015-04-20T18:58:01+00:00"
         },
         {
+            "name": "kevinrob/guzzle-cache-middleware",
+            "version": "v3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kevinrob/guzzle-cache-middleware.git",
+                "reference": "dda34401a68c54f06c9338a2cc30ae0aecd879a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kevinrob/guzzle-cache-middleware/zipball/dda34401a68c54f06c9338a2cc30ae0aecd879a1",
+                "reference": "dda34401a68c54f06c9338a2cc30ae0aecd879a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "cache/array-adapter": "^0.4 || ^0.5 || ^1.0",
+                "cache/simple-cache-bridge": "^0.1 || ^1.0",
+                "doctrine/cache": "^1.0",
+                "guzzlehttp/guzzle": "^6.0",
+                "illuminate/cache": "^5.0",
+                "league/flysystem": "^1.0",
+                "phpunit/phpunit": "^4.0 || ^5.0",
+                "psr/cache": "^1.0"
+            },
+            "suggest": {
+                "doctrine/cache": "This library have a lot of ready-to-use cache storage (to be use with Kevinrob\\GuzzleCache\\Storage\\DoctrineCacheStorage)",
+                "guzzlehttp/guzzle": "For using this library. It was created for Guzzle6. (but you can use it with any PSR-7 HTTP Client)",
+                "laravel/framework": "To be use with Kevinrob\\GuzzleCache\\Storage\\LaravelCacheStorage",
+                "league/flysystem": "To be use with Kevinrob\\GuzzleCache\\Storage\\FlysystemStorage",
+                "psr/cache": "To be use with Kevinrob\\GuzzleCache\\Storage\\Psr6CacheStorage",
+                "psr/simple-cache": "To be use with Kevinrob\\GuzzleCache\\Storage\\Psr16CacheStorage"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kevinrob\\GuzzleCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Robatel",
+                    "email": "kevinrob2@gmail.com",
+                    "homepage": "https://github.com/Kevinrob"
+                }
+            ],
+            "description": "A HTTP/1.1 Cache for Guzzle 6. It's a simple Middleware to be added in the HandlerStack. (RFC 7234)",
+            "homepage": "https://github.com/Kevinrob/guzzle-cache-middleware",
+            "keywords": [
+                "Etag",
+                "Flysystem",
+                "Guzzle",
+                "cache",
+                "cache-control",
+                "doctrine",
+                "expiration",
+                "guzzle6",
+                "handler",
+                "http",
+                "http 1.1",
+                "middleware",
+                "performance",
+                "php",
+                "promise",
+                "psr6",
+                "psr7",
+                "rfc7234",
+                "validation"
+            ],
+            "time": "2018-01-10T13:55:22+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v5.5.28",
             "source": {
@@ -1219,6 +1191,54 @@
             "time": "2017-08-06T17:41:04+00:00"
         },
         {
+            "name": "madewithlove/illuminate-psr-cache-bridge",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/madewithlove/illuminate-psr-cache-bridge.git",
+                "reference": "68927525577666617603820e81b42e625f4685b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/madewithlove/illuminate-psr-cache-bridge/zipball/68927525577666617603820e81b42e625f4685b6",
+                "reference": "68927525577666617603820e81b42e625f4685b6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^5.0",
+                "php": ">=5.6.0",
+                "psr/cache": "^1.0"
+            },
+            "provide": {
+                "psr/cache-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "cache/integration-tests": "^0.16.0",
+                "illuminate/cache": "^5.0",
+                "nesbot/carbon": "^1.3.0",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Madewithlove\\IlluminatePsrCacheBridge\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "keywords": [
+                "Bridge",
+                "adapter",
+                "cache",
+                "implementation",
+                "laravel",
+                "psr-6"
+            ],
+            "time": "2017-06-19T13:31:41+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.23.0",
             "source": {
@@ -1445,38 +1465,36 @@
             "time": "2017-12-26T14:43:21+00:00"
         },
         {
-            "name": "nullx27/easi",
-            "version": "1.2.1",
+            "name": "nullx27/conduit",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nullx27/easi.git",
-                "reference": "84f1a81f968ff257f21903161f407ed1e4973eb4"
+                "url": "https://github.com/nullx27/conduit.git",
+                "reference": "ee62caae4b13ddba2bb7e87555521072c6c5021c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nullx27/easi/zipball/84f1a81f968ff257f21903161f407ed1e4973eb4",
-                "reference": "84f1a81f968ff257f21903161f407ed1e4973eb4",
+                "url": "https://api.github.com/repos/nullx27/conduit/zipball/ee62caae4b13ddba2bb7e87555521072c6c5021c",
+                "reference": "ee62caae4b13ddba2bb7e87555521072c6c5021c",
                 "shasum": ""
             },
             "require": {
                 "cache/array-adapter": "^0.5.0",
-                "cache/simple-cache-bridge": "^0.1.1",
-                "fetch/array-utils": "^0.1.1",
-                "nesbot/carbon": "^1.22",
-                "nullx27/esi-php": "^1.3",
-                "php": "^7.0",
+                "guzzlehttp/guzzle": "^6.3",
+                "kevinrob/guzzle-cache-middleware": "^3.2",
+                "php": "^7.1",
                 "psr/cache": "^1.0",
                 "psr/log": "^1.0",
                 "psr/simple-cache": "^1.0"
             },
             "require-dev": {
-                "apigen/apigen": "4.2.x-dev",
                 "phpunit/phpunit": "^6.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "nullx27\\Easi\\": "src/"
+                    "Conduit\\": "src/",
+                    "Conduit\\Tests\\": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1489,7 +1507,7 @@
                     "email": "necrotex@gmail.com"
                 }
             ],
-            "description": "PHP Interface for EVE Onlines ESI Api",
+            "description": "Simple EVE  Online ESI client",
             "keywords": [
                 "api",
                 "esi",
@@ -1497,58 +1515,7 @@
                 "lib",
                 "php"
             ],
-            "time": "2018-01-07T17:05:49+00:00"
-        },
-        {
-            "name": "nullx27/esi-php",
-            "version": "1.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nullx27/esi-php.git",
-                "reference": "5f398a047989e55acfd44fd1ae7940b9116ce6f3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nullx27/esi-php/zipball/5f398a047989e55acfd44fd1ae7940b9116ce6f3",
-                "reference": "5f398a047989e55acfd44fd1ae7940b9116ce6f3",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "guzzlehttp/guzzle": "^6.2",
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "~1.12",
-                "phpunit/phpunit": "^4.8",
-                "squizlabs/php_codesniffer": "~2.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "nullx27ESI\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Swagger and contributors",
-                    "homepage": "https://github.com/swagger-api/swagger-codegen"
-                }
-            ],
-            "homepage": "http://swagger.io",
-            "keywords": [
-                "api",
-                "php",
-                "sdk",
-                "swagger"
-            ],
-            "time": "2018-01-07T17:06:37+00:00"
+            "time": "2018-01-13T14:28:55+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -2168,25 +2135,25 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v3.4.3",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "e66394bc7610e69279bfdb3ab11b4fe65403f556"
+                "reference": "f97600434e3141ef3cbb9ea42cf500fba88022b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/e66394bc7610e69279bfdb3ab11b4fe65403f556",
-                "reference": "e66394bc7610e69279bfdb3ab11b4fe65403f556",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/f97600434e3141ef3cbb9ea42cf500fba88022b7",
+                "reference": "f97600434e3141ef3cbb9ea42cf500fba88022b7",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8"
+                "php": "^7.1.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -2217,7 +2184,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-03T07:37:34+00:00"
+            "time": "2018-01-03T07:38:00+00:00"
         },
         {
             "name": "symfony/debug",
@@ -2913,29 +2880,29 @@
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
-                "reference": "ab03919dfd85a74ae0372f8baf9f3c7d5c03b04b"
+                "reference": "0ed4a2ea4e0902dac0489e6436ebcd5bbcae9757"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/ab03919dfd85a74ae0372f8baf9f3c7d5c03b04b",
-                "reference": "ab03919dfd85a74ae0372f8baf9f3c7d5c03b04b",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/0ed4a2ea4e0902dac0489e6436ebcd5bbcae9757",
+                "reference": "0ed4a2ea4e0902dac0489e6436ebcd5bbcae9757",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7",
-                "symfony/css-selector": "^2.7|~3.0"
+                "php": "^5.5 || ^7.0",
+                "symfony/css-selector": "^2.7 || ^3.0 || ^4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8|5.1.*"
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -2956,7 +2923,7 @@
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
-            "time": "2016-09-20T12:50:39+00:00"
+            "time": "2017-11-27T11:13:29+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4321,16 +4288,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f"
+                "reference": "11c07feade1d65453e06df3b3b90171d6d982087"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
-                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/11c07feade1d65453e06df3b3b90171d6d982087",
+                "reference": "11c07feade1d65453e06df3b3b90171d6d982087",
                 "shasum": ""
             },
             "require": {
@@ -4381,7 +4348,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-12-22T14:50:35+00:00"
+            "time": "2018-01-12T06:34:42+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -4927,7 +4894,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "nullx27/easi": 20
+        "nullx27/conduit": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

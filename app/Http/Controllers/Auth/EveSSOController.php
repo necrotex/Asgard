@@ -30,20 +30,12 @@ class EveSSOController extends Controller
 
         $character_data = $this->get_character();
 
-        dd($character_data);
-
-
         $character = Character::firstOrNew(['id' => $this->user->id]);
         $character->refresh_token = $this->user->refreshToken;
         $character->name = $this->user->name;
         $character->owner_hash = $this->user->owner_hash;
 
         Auth::user()->characters()->save($character);
-
-        $token = Token::firstOrNew(['character_id' => $this->user->id]);
-        $token->token = $this->user->token;
-        $token->expiry = $this->user->user['ExpiresOn'];
-        $character->token()->save($token);
 
         return redirect()->route('home');
     }

@@ -17,8 +17,6 @@ class CreateCharactersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('corporation_id')->unsigned();
 
-
-
             $table->text('refresh_token');
 
             $table->integer('id')->primary();

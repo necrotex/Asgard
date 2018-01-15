@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlliancesTable extends Migration
+class CreateFatiguesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class CreateAlliancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('alliances', function (Blueprint $table) {
+        Schema::create('fatigues', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('character_id')->unsigned();
+            $table->dateTime('last_jump_date');
+            $table->dateTime('jump_fatigue_expire_date');
+            $table->dateTime('last_update_date');
+
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateAlliancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alliances');
+        Schema::dropIfExists('fatigues');
     }
 }

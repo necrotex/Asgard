@@ -13,11 +13,6 @@ class AddForeignKeyConstraints extends Migration
      */
     public function up()
     {
-        /*
-        Schema::table('tokens', function (Blueprint $table) {
-            $table->foreign('character_id')->references('id')->on('characters')->onDelete('cascade');
-        });
-        */
 
         Schema::table('characters', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

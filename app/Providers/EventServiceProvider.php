@@ -13,8 +13,10 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Asgard\Events\Event' => [
-            'Asgard\Listeners\EventListener',
+        'Asgard\Events\CharacterUpdateEvent' => [
+            'Asgard\Listeners\RedditAccessCheck',
+            'Asgard\Listeners\DiscordAccessCheck',
+            'Asgard\Listeners\TeamspeakAccessCheck',
         ],
     ];
 

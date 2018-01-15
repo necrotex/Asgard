@@ -9,10 +9,10 @@
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
+        "madewithlove/illuminate-psr-cache-bridge": "^1.0",
+        "nullx27/conduit": "dev-master",
         "predis/predis": "^1.1",
-        "watson/active": "^2.0",
-        "nullx27/easi": "^1.2.4"
-
+        "watson/active": "^2.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -21,6 +21,18 @@
         "phpunit/phpunit": "~6.0",
         "nullx27/eveonline-socialite": "*"
     },
+
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/home/necro/code/easi"
+        },
+
+        {
+            "type": "path",
+            "url": "/home/necro/code/esi-php"
+        }
+    ],
 
     "autoload": {
         "classmap": [

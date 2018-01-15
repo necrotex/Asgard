@@ -3,6 +3,7 @@
 namespace Asgard\Http\Controllers;
 
 use Asgard\Models\Character;
+use Conduit\Conduit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use nullx27\Easi\Easi;
@@ -41,11 +42,8 @@ class HomeController extends Controller
         return view('dashboard.characters')->with('characters', $characters);
     }
 
-    public function debug()
+    public function debug(Conduit $api)
     {
-        $token = Character::first()->token;
 
-
-        $api = new Easi($token->token);
     }
 }
