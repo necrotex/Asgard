@@ -27,8 +27,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     // admin
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
-        Route::get('/', 'CorporationController@index')->name('corporation.index');
+        Route::get('/corporation', 'CorporationController@index')->name('corporation.index');
         Route::post('/corporation/add', 'CorporationController@store')->name('corporation.store');
+        Route::get('/corporation/{id}', 'CorporationController@show')->name('corporation.show');
     });
 
     // character

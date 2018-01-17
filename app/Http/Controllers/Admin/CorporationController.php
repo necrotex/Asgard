@@ -3,8 +3,10 @@
 namespace Asgard\Http\Controllers\Admin;
 
 use Asgard\Models\Corporation;
+use Asgard\Models\DiscordRoles;
 use Conduit\Conduit;
 use Conduit\Exceptions\HttpStatusException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Illuminate\Support\MessageBag;
@@ -55,7 +57,12 @@ class CorporationController extends Controller
      */
     public function show($id)
     {
-        //
+        $corporation = Corporation::findOrFail($id); // automatically go 404 if no corp was found
+
+        $discordRoles = DiscordRoles::all();
+
+
+        return view('dashboard.corporation.show', ['corporation' => $corporation, 'discordRoles' => $discordRoles]);
     }
 
     /**
