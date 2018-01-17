@@ -20,7 +20,15 @@
 
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link {{active('characters')}}" href="{{route('characters')}}">Characters</a>
+            <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index')}}">Characters</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link {{active('services.discord.index')}}" href="{{route('services.discord.index')}}">Discord</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link {{active('services.reddit.index')}}" href="{{route('services.reddit.index')}}">Reddit</a>
         </li>
     </ul>
 

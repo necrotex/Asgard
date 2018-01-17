@@ -40,6 +40,18 @@ return [
         'client_secret' => env('EVEONLINE_CLIENT_SECRET', ''),
         'redirect' => env('EVEONLINE_REDIRECT', ''),
         'scopes' => env('EVEONLINE_SCOPES', [])
-    ]
+    ],
+
+    'discord' => [
+        'client_id' => env('DISCORD_KEY'),
+        'client_secret' => env('DISCORD_SECRET'),
+        'redirect' => env('DISCORD_REDIRECT_URI'),
+    ],
+
+    'reddit' => [
+        'client_id' => env('REDDIT_KEY'),
+        'client_secret' => env('REDDIT_SECRET'),
+        'redirect' => env('REDDIT_REDIRECT_URI'),
+    ],
 
 ];

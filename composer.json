@@ -12,6 +12,9 @@
         "madewithlove/illuminate-psr-cache-bridge": "^1.0",
         "nullx27/conduit": "dev-master",
         "predis/predis": "^1.1",
+        "silber/bouncer": "v1.0.0-beta.5",
+        "socialiteproviders/discord": "^2.0",
+        "socialiteproviders/reddit": "^3.0",
         "watson/active": "^2.0"
     },
     "require-dev": {

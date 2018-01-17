@@ -35,12 +35,6 @@ class HomeController extends Controller
         return view('dashboard.home');
     }
 
-    public function characters()
-    {
-        $characters = Auth::user()->characters;
-
-        return view('dashboard.characters')->with('characters', $characters);
-    }
 
     public function debug(Conduit $api)
     {

@@ -31,4 +31,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Character::class);
     }
+
+    public function discordAccount() {
+        return $this->hasOne(DiscordUser::class);
+    }
+
+    public function redditAccount() {
+        return $this->hasOne(RedditUser::class);
+    }
 }
