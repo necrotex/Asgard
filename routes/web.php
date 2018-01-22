@@ -18,6 +18,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
+    Route::post('/search', 'SearchController@search')->name('search');
 
 
     Route::group(['namespace' => 'Auth'], function() {
@@ -36,9 +37,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'user', 'namespace' => 'Character'], function() {
         Route::get('/characters', 'CharacterController@index')->name('characters.index');
 
-        Route::get('/profile', 'ProfileController@index')->name('profile.index');
-        Route::post('/profile/update', 'ProfileController@update')->name('profile.update');
+        Route::get('/profile/{id}', 'ProfileController@show')->name('profile.show');
+        Route::post('/profile/{id}/update', 'ProfileController@update')->name('profile.update');
     });
+
 
     // services
     Route::group(['prefix' => 'services', 'namespace' => 'Service'], function() {

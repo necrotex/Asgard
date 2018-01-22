@@ -32,7 +32,7 @@
                 <h1 class="h2">@yield('CONTENT_TITLE', 'Page need a title')</h1>
             </div>
 
-
+            @include('layouts.partials.notifications')
 
             @yield('content')
         </main>
