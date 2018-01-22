@@ -42,6 +42,6 @@ class User extends Authenticatable
 
     public function mainCharacter()
     {
-        return $this->hasOne(Character::class, 'id', 'character_id');
+        return $this->hasOne(Character::class, 'id', 'main_character');
     }
 }

@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/characters', 'CharacterController@index')->name('characters.index');
 
         Route::get('/profile', 'ProfileController@index')->name('profile.index');
+        Route::post('/profile/update', 'ProfileController@update')->name('profile.update');
     });
 
     // services
