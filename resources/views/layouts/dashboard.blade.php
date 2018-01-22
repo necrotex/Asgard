@@ -26,8 +26,13 @@
 
         @include('layouts.partials.sidenav')
 
-        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-            <h1>@yield('CONTENT_TITLE', 'Page need a title')</h1>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                <h1 class="h2">@yield('CONTENT_TITLE', 'Page need a title')</h1>
+            </div>
+
+
 
             @yield('content')
         </main>

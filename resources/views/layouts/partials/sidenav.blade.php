@@ -1,36 +1,54 @@
-<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+
+        <ul class="nav flex-column">
 
 
-    <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-            <a class="nav-link {{active('home')}}" href="{{route('home')}}">Home</a>
-        </li>
-    </ul>
+            <li class="nav-item">
+                <a class="nav-link {{active('home')}}" href="{{route('home')}}">
+                    <i class="fa fa-home" aria-hidden="true"></i> Home
+                </a>
+            </li>
 
-    <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-            <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">Corporations</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
+                    <i class="fa fa-users" aria-hidden="true"></i> Corporations
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{active('home')}}" href="{{route('home')}}">
+                    <i class="fa fa-list" aria-hidden="true"></i> Access Management
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index')}}">
+                    <i class="fa fa-user" aria-hidden="true"></i> Characters
+                </a>
+            </li>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Services</span>
+            </h6>
+
+            <li class="nav-item">
+                <a class="nav-link {{active('services.discord.index')}}" href="{{route('services.discord.index')}}">
+                    <i class="fa fa-comment" aria-hidden="true"></i> Discord
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{active('services.reddit.index')}}"
+                   href="{{route('services.reddit.index')}}">
+                    <i class="fa fa-reddit" aria-hidden="true"></i> Reddit
+                </a>
+            </li>
 
 
-        <li class="nav-item">
-            <a class="nav-link {{active('home')}}" href="{{route('home')}}">Access Management</a>
-        </li>
-    </ul>
-
-    <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-            <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index')}}">Characters</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link {{active('services.discord.index')}}" href="{{route('services.discord.index')}}">Discord</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link {{active('services.reddit.index')}}" href="{{route('services.reddit.index')}}">Reddit</a>
-        </li>
-    </ul>
+        </ul>
 
 
+    </div>
 </nav>
+

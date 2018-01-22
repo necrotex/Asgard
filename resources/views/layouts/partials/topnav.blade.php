@@ -1,18 +1,22 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-    <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<body>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
 
-    <a class="navbar-brand" href="#">{{config('app.name')}}</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{route('home')}}">{{config('app.name')}}</a>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
 
-        </ul>
 
-        <form class="form-inline mt-2 mt-md-0" method="post" action="{{route('logout')}}">
-            {{csrf_field()}}
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Logout</button>
-        </form>
-    </div>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="{{route('profile.index')}}">NAME</a>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="{{route('logout')}}">Sign out</a>
+        </li>
+    </ul>
+
+
 </nav>

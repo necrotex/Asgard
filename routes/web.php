@@ -33,8 +33,10 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // character
-    Route::group(['prefix' => 'characters', 'namespace' => 'Character'], function() {
-        Route::get('/', 'CharacterController@index')->name('characters.index');
+    Route::group(['prefix' => 'user', 'namespace' => 'Character'], function() {
+        Route::get('/characters', 'CharacterController@index')->name('characters.index');
+
+        Route::get('/profile', 'ProfileController@index')->name('profile.index');
     });
 
     // services

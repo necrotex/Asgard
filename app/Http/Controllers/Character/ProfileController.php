@@ -4,6 +4,7 @@ namespace Asgard\Http\Controllers\Character;
 
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -24,7 +25,11 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        dd(Auth::user()->mainCharacter);
+
+        $user = Auth::user();
+
+        return view('dashboard.profile', ['user' => $user]);
     }
 
     /**

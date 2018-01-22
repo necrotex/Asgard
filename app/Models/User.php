@@ -39,4 +39,9 @@ class User extends Authenticatable
     public function redditAccount() {
         return $this->hasOne(RedditUser::class);
     }
+
+    public function mainCharacter()
+    {
+        return $this->hasOne(Character::class, 'id', 'character_id');
+    }
 }

@@ -19,8 +19,9 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "bootstrap": "4.0.0-alpha.6",
+        "bootstrap": "^4.0.0",
         "font-awesome": "^4.7.0",
+        "popper.js": "^1.12.9",
         "select2": "^4.0.6-rc.1",
         "tether": "^1.4.3"
     }
