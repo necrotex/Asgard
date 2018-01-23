@@ -17,13 +17,13 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{active('home')}}" href="{{route('home')}}">
-                    <i class="fa fa-list" aria-hidden="true"></i> Access Management
+                <a class="nav-link {{active('roles.index')}}" href="{{route('roles.index')}}">
+                    <i class="fa fa-list" aria-hidden="true"></i> Roles
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index')}}">
+                <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index', auth()->user()->id)}}">
                     <i class="fa fa-user" aria-hidden="true"></i> Characters
                 </a>
             </li>

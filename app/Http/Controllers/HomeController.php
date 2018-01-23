@@ -32,6 +32,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        if(!Auth::user()->main_character) {
+            flash('Please setup your account!')->important()->warning();
+
+            return redirect()->route('profile.show', Auth::user()->id);
+        }
+
         return view('dashboard.home');
     }
 

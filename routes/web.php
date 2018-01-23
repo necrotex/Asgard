@@ -17,7 +17,8 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home')->middleware(['finished-account']);
+
     Route::post('/search', 'SearchController@search')->name('search');
 
 
@@ -27,23 +28,30 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // admin
-    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'finished-account'], function() {
         Route::get('/corporation', 'CorporationController@index')->name('corporation.index');
         Route::post('/corporation/add', 'CorporationController@store')->name('corporation.store');
         Route::get('/corporation/{id}', 'CorporationController@show')->name('corporation.show');
+
+
+        //roles
+        Route::get('/roles', 'RoleController@index')->name('roles.index');
+        Route::get('/roles/create', 'RoleController@create')->name('roles.create');
+        Route::post('/roles/store', 'RoleController@store')->name('roles.store');
+        Route::get('/roles/{role}/edit', 'RoleController@edit')->name('roles.edit');
     });
 
     // character
-    Route::group(['prefix' => 'user', 'namespace' => 'Character'], function() {
-        Route::get('/characters', 'CharacterController@index')->name('characters.index');
+    Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
+        Route::get('/{id}/characters', 'CharacterController@show')->name('characters.index');
 
-        Route::get('/profile/{id}', 'ProfileController@show')->name('profile.show');
-        Route::post('/profile/{id}/update', 'ProfileController@update')->name('profile.update');
+        Route::get('{id}/profile', 'ProfileController@show')->name('profile.show');
+        Route::post('{id}/profile/update', 'ProfileController@update')->name('profile.update');
     });
 
 
     // services
-    Route::group(['prefix' => 'services', 'namespace' => 'Service'], function() {
+    Route::group(['prefix' => 'services', 'namespace' => 'Service', 'middleware' => 'finished-account'], function() {
         Route::get('/discord', 'DiscordController@index')->name('services.discord.index');
         Route::get('/discord/redirect', 'DiscordController@create')->name('services.discord.redirect');
         Route::get('/discord/callback', 'DiscordController@store')->name('services.discord.callback');
@@ -52,6 +60,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/reddit/redirect', 'RedditController@create')->name('services.reddit.redirect');
         Route::get('/reddit/callback', 'RedditController@store')->name('services.reddit.callback');
     });
+
+
+
 
 
 

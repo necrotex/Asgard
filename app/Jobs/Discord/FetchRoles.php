@@ -14,7 +14,6 @@ class FetchRoles implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $discord;
 
     /**
      * Create a new job instance.
@@ -23,7 +22,6 @@ class FetchRoles implements ShouldQueue
      */
     public function __construct()
     {
-        $this->discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
     }
 
     /**
@@ -33,9 +31,11 @@ class FetchRoles implements ShouldQueue
      */
     public function handle()
     {
-        $response = $this->discord->guild->getGuildRoles(['guild.id' => (int) config('services.discord.guild_id')]);
+        $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
 
-        //dd($response);
+        $response = $discord->guild->getGuildRoles(['guild.id' => (int) config('services.discord.guild_id')]);
+
+        //clean up
 
         foreach($response as $role) {
             if($role['name'] == "@everyone") continue; // skip @everyone

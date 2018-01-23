@@ -47,7 +47,7 @@ class RedditController extends Controller
 
         Auth::user()->redditAccount()->save($redditUser);
 
-        return redirect()->route('services.reddit.index');
+        return redirect()->route('profile.show', auth()->user()->id);
     }
 
     /**

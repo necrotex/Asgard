@@ -1,14 +1,14 @@
 <?php
 
-namespace Asgard\Http\Controllers\Service;
+namespace Asgard\Http\Controllers\Admin;
 
-use Asgard\Models\DiscordUser;
+use Asgard\Models\DiscordRoles;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
+use Bouncer;
+use Silber\Bouncer\Database\Role;
 
-class DiscordController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class DiscordController extends Controller
      */
     public function index()
     {
-        $discordUser = Auth::user()->discordAccount;
+        $roles = Role::all();
 
-        return view('dashboard.discord', ['account' => $discordUser]);
+        return view('dashboard.roles.index', compact('roles'));
     }
 
     /**
@@ -29,7 +29,7 @@ class DiscordController extends Controller
      */
     public function create()
     {
-        return Socialite::with('discord')->redirect();
+        //
     }
 
     /**
@@ -40,16 +40,14 @@ class DiscordController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Socialite::driver('discord')->user();
+        $request->validate(['role' => 'required']);
 
-        $discordUser = DiscordUser::firstOrNew(['id' => $user->id]);
-        $discordUser->nickname = $user->nickname;
-        $discordUser->avatar_url = $user->avatar;
-        $discordUser->refresh_token = $user->refreshToken;
+        $name = $request->input('role');
+        $slug = str_slug($name);
 
-        Auth::user()->discordAccount()->save($discordUser);
+        Role::create(['name' => $slug, 'title' => $name]);
 
-        return redirect()->route('profile.show', auth()->user()->id);
+        return back();
     }
 
     /**
@@ -69,9 +67,11 @@ class DiscordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+
+        $discordRoles = DiscordRoles::all();
+        return view('dashboard.roles.edit', ['role' => $role, 'discordRoles' => $discordRoles]);
     }
 
     /**

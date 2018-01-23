@@ -1,6 +1,6 @@
 <?php
 
-namespace Asgard\Http\Controllers\Character;
+namespace Asgard\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
@@ -15,9 +15,7 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        $characters = Auth::user()->characters;
 
-        return view('dashboard.characters')->with('characters', $characters);
     }
 
     /**
@@ -49,7 +47,9 @@ class CharacterController extends Controller
      */
     public function show($id)
     {
-        //
+        $characters = Auth::user()->characters;
+
+        return view('dashboard.characters')->with('characters', $characters);
     }
 
     /**

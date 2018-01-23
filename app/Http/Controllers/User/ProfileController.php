@@ -1,6 +1,6 @@
 <?php
 
-namespace Asgard\Http\Controllers\Character;
+namespace Asgard\Http\Controllers\User;
 
 use Asgard\Models\User;
 use Illuminate\Http\Request;
