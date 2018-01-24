@@ -4,6 +4,7 @@
 @section('CONTENT_TITLE', 'Profile')
 
 @section('content')
+    <div class="row">
 
         @include('dashboard.partials.profile.characters')
 
@@ -15,8 +16,14 @@
             @include('dashboard.partials.profile.discord-account')
 
             @include('dashboard.partials.profile.reddit-account')
-        </div>
 
+
+            @include('dashboard.partials.profile.select-user-roles')
+        </div>
+    </div>
+
+    <div class="row">
+        @include('dashboard.partials.profile.info-box')
     </div>
 @endsection
 

@@ -3,9 +3,12 @@
 namespace Asgard\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Silber\Bouncer\Database\Concerns\HasRoles;
 
 class Corporation extends Model
 {
+
+    use HasRoles;
 
     protected $fillable = ['id'];
 
@@ -18,4 +21,5 @@ class Corporation extends Model
     {
 
     }
+
 }

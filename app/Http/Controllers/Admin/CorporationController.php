@@ -3,13 +3,13 @@
 namespace Asgard\Http\Controllers\Admin;
 
 use Asgard\Models\Corporation;
-use Asgard\Models\DiscordRoles;
 use Conduit\Conduit;
 use Conduit\Exceptions\HttpStatusException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
-use Illuminate\Support\MessageBag;
+use Bouncer;
+use Silber\Bouncer\Database\Role;
+
 
 class CorporationController extends Controller
 {
@@ -39,9 +39,6 @@ class CorporationController extends Controller
             return back()->withErrors(['corp_id' => 'No Corporation found.']);
         }
 
-        //98224068
-        //dd($data->data);
-
         $corp = Corporation::firstOrNew(['id' => $request->input('corp_id')]);
 
         $this->dispatchNow(new \Asgard\Jobs\Update\Corporation($corp, $data));
@@ -59,10 +56,15 @@ class CorporationController extends Controller
     {
         $corporation = Corporation::findOrFail($id); // automatically go 404 if no corp was found
 
-        $discordRoles = DiscordRoles::all();
+        $roles = Role::all();
+
+        $defaultRoles = [];
+        foreach($corporation->roles as $dr) {
+            $defaultRoles[] = $dr->id;
+        }
 
 
-        return view('dashboard.corporation.show', ['corporation' => $corporation, 'discordRoles' => $discordRoles]);
+        return view('dashboard.corporation.show', ['corporation' => $corporation, 'roles' => $roles, 'defaultRoles' => $defaultRoles]);
     }
 
     /**
@@ -83,9 +85,16 @@ class CorporationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Corporation $corp)
     {
-        //
+        foreach ($corp->roles as $role)
+        {
+            Bouncer::retract($role)->from($corp);
+        }
+
+        $corp->assign($request->input('defaultRoles'));
+
+        return back();
     }
 
     /**

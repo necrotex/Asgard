@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/corporation', 'CorporationController@index')->name('corporation.index');
         Route::post('/corporation/add', 'CorporationController@store')->name('corporation.store');
         Route::get('/corporation/{id}', 'CorporationController@show')->name('corporation.show');
+        Route::post('/corporation/{corp}/update', 'CorporationController@update')->name('corporation.update');
 
 
         //roles
@@ -39,14 +40,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/roles/create', 'RoleController@create')->name('roles.create');
         Route::post('/roles/store', 'RoleController@store')->name('roles.store');
         Route::get('/roles/{role}/edit', 'RoleController@edit')->name('roles.edit');
+        Route::post('/roles/{role}/update', 'RoleController@update')->name('roles.update');
     });
 
     // character
     Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
         Route::get('/{id}/characters', 'CharacterController@show')->name('characters.index');
 
-        Route::get('{id}/profile', 'ProfileController@show')->name('profile.show');
-        Route::post('{id}/profile/update', 'ProfileController@update')->name('profile.update');
+        Route::get('{user}/profile', 'ProfileController@show')->name('profile.show');
+        Route::post('{user}/profile/update', 'ProfileController@update')->name('profile.update');
     });
 
 

@@ -4,11 +4,12 @@
 @section('CONTENT_TITLE', 'Roles - Edit ' . $role->title)
 
 @section('content')
-    <div class="row">
-
+    <form method="post" action="{{route('roles.update', $role)}}">
+        <div class="row">
+            {{csrf_field()}}
 
             <div class="col-md-10">
-                <form>
+
                 Name
                 <input type="text" value="{{$role->title}}" name="title">
             </div>
@@ -21,21 +22,28 @@
                     </div>
                     <div class="card-body">
 
-                        <select name="discordRole" id="discord-role">
+                        <select name="discordRoles[]" id="discord-role" multiple="multiple">
                             @foreach($discordRoles as $discordRole)
-                                <option value="{{$discordRole->id}}" class="form-control">
+                                <option value="{{$discordRole->id}}" class="form-control"
+                                @if(in_array($discordRole->id, $roleDiscordRoles)) selected @endif>
                                     {{$discordRole->name}}
                                 </option>
                             @endforeach
                         </select>
                     </div>
-                    </form>
+
 
                 </div>
 
             </div>
+        </div>
 
-    </div>
+        <div class="row">
+            <div class="col-3">
+                <button type="submit">Save</button>
+            </div>
+        </div>
+    </form>
 
 @endsection
 

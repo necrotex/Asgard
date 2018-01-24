@@ -1,4 +1,4 @@
-<div class="row">
+
     <div class="col-md-6">
         <h4>Characters</h4>
         <div class="card">

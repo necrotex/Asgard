@@ -3,6 +3,7 @@
 namespace Asgard\Http\Controllers\Admin;
 
 use Asgard\Models\DiscordRoles;
+use Asgard\Models\RoleDiscordRole;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Bouncer;
@@ -71,7 +72,14 @@ class RoleController extends Controller
     {
 
         $discordRoles = DiscordRoles::all();
-        return view('dashboard.roles.edit', ['role' => $role, 'discordRoles' => $discordRoles]);
+        $roleDiscordRoles = RoleDiscordRole::select('discord_role_id')->where('role_id', '=', $role->id)->get();
+
+        $arrayDiscordRoles = [];
+        foreach ($roleDiscordRoles as $rdr) {
+            $arrayDiscordRoles[] = $rdr->discord_role_id;
+        }
+
+        return view('dashboard.roles.edit', ['role' => $role, 'discordRoles' => $discordRoles, 'roleDiscordRoles' => $arrayDiscordRoles]);
     }
 
     /**
@@ -81,19 +89,42 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+
+        $this->validate($request, ['title' => 'required']);
+
+        $title = $request->input('title');
+        $slug  = str_slug($title);
+
+        $role->title = $title;
+        $role->name = $slug;
+        $role->save();
+
+        //clean up
+        RoleDiscordRole::where('role_id', '=', $role->id)->delete();
+
+        if($request->has('discordRoles')) {
+            $discordRoles =  $request->input('discordRoles');
+            foreach($discordRoles as $discordRole) {
+               RoleDiscordRole::create(['role_id' => $role->id, 'discord_role_id' => $discordRole]);
+            }
+        }
+
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+
+        return back();
     }
 }
