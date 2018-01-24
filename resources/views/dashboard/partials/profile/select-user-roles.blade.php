@@ -1,6 +1,5 @@
 <div class="row">
     <div class="col-md-10">
-        <h5>Reddit Account</h5>
 
         <div class="card">
             <div class="card-header">

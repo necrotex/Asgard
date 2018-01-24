@@ -1,8 +1,10 @@
 <div class="row">
     <div class="col-md-10">
-        <h5>Reddit Account</h5>
 
         <div class="card">
+            <div class="card-header">
+                Reddit Account
+            </div>
             <div class="card-body">
 
                 @if(!$user->redditAccount)

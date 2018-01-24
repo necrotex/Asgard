@@ -1,8 +1,11 @@
 <div class="row">
     <div class="col-md-10">
-        <h5>Main Character</h5>
+
 
         <div class="card">
+            <div class="card-header">
+                Main Character
+            </div>
             <div class="card-body">
 
                 @if(is_null($user->main_character))

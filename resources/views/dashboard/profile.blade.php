@@ -9,8 +9,6 @@
         @include('dashboard.partials.profile.characters')
 
         <div class="col-4">
-            <h4>Settings</h4>
-
             @include('dashboard.partials.profile.select-main-chracter')
 
             @include('dashboard.partials.profile.discord-account')

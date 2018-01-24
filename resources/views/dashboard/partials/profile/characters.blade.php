@@ -1,7 +1,9 @@
 
     <div class="col-md-6">
-        <h4>Characters</h4>
         <div class="card">
+            <div class="card-header">
+                Characters
+            </div>
             <div class="card-body">
 
                 @foreach($user->characters as $character)
