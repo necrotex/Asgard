@@ -29,11 +29,11 @@
             </li>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Services</span>
+                <span>External Services</span>
             </h6>
 
             <li class="nav-item">
-                <a class="nav-link {{active('services.discord.index')}}" href="{{route('services.discord.index')}}">
+                <a class="nav-link {{active('services.discord.index')}}" href="">
                     <i class="fa fa-comment" aria-hidden="true"></i> Discord
                 </a>
             </li>
@@ -44,7 +44,6 @@
                     <i class="fa fa-reddit" aria-hidden="true"></i> Reddit
                 </a>
             </li>
-
 
         </ul>
 

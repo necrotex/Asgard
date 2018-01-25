@@ -15,7 +15,7 @@ class CreateDiscordRolesTable extends Migration
     {
         Schema::create('discord_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('discord_id');
+            $table->unsignedBigInteger('discord_id');
             $table->text('name');
             $table->integer('color');
             $table->timestamps();

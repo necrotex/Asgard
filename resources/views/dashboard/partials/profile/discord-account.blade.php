@@ -13,17 +13,15 @@
                 @else
 
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <img class="media-object avatar"
                                  src="{{$user->discordAccount->avatar_url}}"/>
                         </div>
 
-                        <div class="col-md-10">{{$user->discordAccount->nickname}}</div>
+                        <div class="col-md-5">{{$user->discordAccount->nickname}}</div>
 
-                        <div class="col-md-1 status-col">
-                            <div class="status status-success pull-right">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                            </div>
+                        <div class="col-md-1">
+                            <a href="{{route('services.discord.unlink', $user)}}" class="btn btn-sm btn-danger">unlink</a>
                         </div>
 
                     </div>
@@ -31,6 +29,15 @@
                 @endif
 
             </div>
+
+            @if($user->discordAccount)
+                <div class="card-footer">
+                    Discord Roles:
+                    @foreach($user->getAssociatedDiscordRoles() as $role)
+                        <span class="badge badge-secondary" style="background-color: #{{dechex($role->color)}} !important;">{{$role->name}}</span>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </div>

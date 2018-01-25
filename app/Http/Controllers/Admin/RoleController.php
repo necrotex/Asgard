@@ -123,8 +123,10 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        //todo: this needs to cascade correctly
+        RoleDiscordRole::where('role_id', '=', $role->id)->delete();
         $role->delete();
 
-        return back();
+        return redirect()->route('roles.index');
     }
 }

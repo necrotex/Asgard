@@ -40,7 +40,11 @@
 
         <div class="row">
             <div class="col-3">
-                <button type="submit">Save</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+
+            <div class="col-3">
+                <a href="{{route('roles.destroy', $role)}}" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </form>

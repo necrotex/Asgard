@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/roles/store', 'RoleController@store')->name('roles.store');
         Route::get('/roles/{role}/edit', 'RoleController@edit')->name('roles.edit');
         Route::post('/roles/{role}/update', 'RoleController@update')->name('roles.update');
+        Route::get('/roles/{role}/destroy', 'RoleController@destroy')->name('roles.destroy');
     });
 
     // character
@@ -57,6 +58,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/discord', 'DiscordController@index')->name('services.discord.index');
         Route::get('/discord/redirect', 'DiscordController@create')->name('services.discord.redirect');
         Route::get('/discord/callback', 'DiscordController@store')->name('services.discord.callback');
+
+        Route::get('/discord/{user}/unlink', 'DiscordController@destroy')->name('services.discord.unlink');
 
         Route::get('/reddit', 'RedditController@index')->name('services.reddit.index');
         Route::get('/reddit/redirect', 'RedditController@create')->name('services.reddit.redirect');

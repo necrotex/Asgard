@@ -14,11 +14,11 @@ class CreateDiscordUsersTable extends Migration
     public function up()
     {
         Schema::create('discord_users', function (Blueprint $table) {
-            $table->double('id')->unique();
+            $table->unsignedBigInteger('id')->unique();
             $table->integer('user_id')->unisigned();
 
             $table->text('nickname');
-            $table->text('avatar_url');
+            $table->text('avatar_url')->nullable();
             $table->text('refresh_token');
 
             $table->timestamps();

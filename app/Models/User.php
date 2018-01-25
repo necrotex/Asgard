@@ -63,7 +63,7 @@ class User extends Authenticatable
             }
         }
 
-        //remove redudent roles
+        //remove redundant roles
         foreach ($roles as $i => $role) {
             foreach($roles as $k => $role2){
                 if($i == $k) continue;
@@ -86,19 +86,30 @@ class User extends Authenticatable
         $inheritedRoles = $this->getAssociatedRoles();
 
         $roleIds = collect();
+
         foreach ($inheritedRoles as $role) {
             $roleDiscordRole = RoleDiscordRole::where('role_id', '=', $role->id)->get();
             foreach($roleDiscordRole as $rdr) {
-                $roleIds->push($rdr->role_id);
+                $roleIds->push($rdr->discord_role_id);
             }
         }
+
 
         return DiscordRoles::whereIn('id', $roleIds->unique()->values()->all())->get();
     }
 
-    public function getDiscrodRoles()
+    public function getDiscordRolesAsArray()
     {
+        $roles = [];
 
+        $userRoles = $this->getAssociatedDiscordRoles();
+
+        foreach($userRoles as $userRole) {
+            $roles[] = $userRole->discord_id;
+        }
+
+
+        return array_unique($roles);
     }
 }
 

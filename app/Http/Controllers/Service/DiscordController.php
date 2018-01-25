@@ -2,7 +2,10 @@
 
 namespace Asgard\Http\Controllers\Service;
 
+use Asgard\Jobs\Discord\Rename;
+use Asgard\Jobs\Discord\UpdateUserRolesJob;
 use Asgard\Models\DiscordUser;
+use Asgard\Models\User;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +52,9 @@ class DiscordController extends Controller
 
         Auth::user()->discordAccount()->save($discordUser);
 
+        $this->dispatch(new Rename(Auth::user()));
+        $this->dispatch(new UpdateUserRolesJob(Auth::user()));
+
         return redirect()->route('profile.show', auth()->user()->id);
     }
 
@@ -89,11 +95,13 @@ class DiscordController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return Redirect
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->discordAccount()->delete();
+
+        return back();
     }
 }
