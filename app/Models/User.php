@@ -46,6 +46,22 @@ class User extends Authenticatable
         return $this->hasOne(Character::class, 'id', 'main_character');
     }
 
+    public function roleCan($ability) {
+        $roles = $this->getAssociatedRoles();
+        $roles->merge($this->roles);
+
+        //todo: how should we handle forbidden abilities etc
+
+        foreach ($roles as $role) {
+
+            if($role->can($ability)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function getAssociatedRoles()
     {
         $roles = collect();

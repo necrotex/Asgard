@@ -92,7 +92,7 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
 
-        $this->validate($request, ['title' => 'required']);
+        $this->validate($request, ['title' => 'required', 'redditAccess' => 'required']);
 
         $title = $request->input('title');
         $slug  = str_slug($title);
@@ -100,6 +100,12 @@ class RoleController extends Controller
         $role->title = $title;
         $role->name = $slug;
         $role->save();
+
+        if($request->input('redditAccess') == 'true') {
+            $role->allow('access-reddit');
+        } else {
+            $role->disallow('access-reddit');
+        }
 
         //clean up
         RoleDiscordRole::where('role_id', '=', $role->id)->delete();
