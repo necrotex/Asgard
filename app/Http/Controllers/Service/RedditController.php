@@ -2,7 +2,11 @@
 
 namespace Asgard\Http\Controllers\Service;
 
+use Asgard\Jobs\Reddit\AddApprovedSubmitterJob;
 use Asgard\Models\RedditUser;
+use Asgard\Models\Setting;
+use Asgard\Models\User;
+use Asgard\Support\Reddit;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -42,10 +46,21 @@ class RedditController extends Controller
     {
         $user = Socialite::driver('reddit')->user();
 
+        if($request->session()->pull('reddit_mod_account') == true) {
+            Setting::set('reddit.modaccount.name', $user->nickname);
+            Setting::set('reddit.modaccount.id', $user->id);
+            Setting::set('reddit.modaccount.refresh_token', $user->refreshToken);
+
+            return redirect()->route('settings.index');
+        }
+
         $redditUser = RedditUser::firstOrNew(['reddit_id' => $user->id]);
         $redditUser->nickname = $user->nickname;
 
         Auth::user()->redditAccount()->save($redditUser);
+
+        $this->dispatch(new AddApprovedSubmitterJob($redditUser));
+
 
         return redirect()->route('profile.show', auth()->user()->id);
     }
@@ -90,8 +105,30 @@ class RedditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->redditAccount->delete();
+
+        return back();
+    }
+
+    public function runner()
+    {
+        $reddit = new Reddit();
+
+        $user = RedditUser::first();
+        $reddit->removeContributor($user);
+
+        dd($reddit->getSubredditContributors());
+    }
+
+    public function moderatorAccountRedirect(Request $request)
+    {
+        $request->session()->put('reddit_mod_account', true);
+
+        return Socialite::driver('reddit')
+            ->scopes(['read', 'modconfig', 'modcontributors'])
+            ->with(['duration' => 'permanent'])
+            ->redirect();
     }
 }

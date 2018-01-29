@@ -42,6 +42,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/roles/{role}/edit', 'RoleController@edit')->name('roles.edit');
         Route::post('/roles/{role}/update', 'RoleController@update')->name('roles.update');
         Route::get('/roles/{role}/destroy', 'RoleController@destroy')->name('roles.destroy');
+
+
+        //Settings
+        Route::get('/settings', 'SettingsController@index')->name('settings.index');
     });
 
     // character
@@ -62,8 +66,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/discord/{user}/unlink', 'DiscordController@destroy')->name('services.discord.unlink');
 
         Route::get('/reddit', 'RedditController@index')->name('services.reddit.index');
+        Route::get('/reddit/{user}/destroy', 'RedditController@destroy')->name('services.reddit.destroy');
         Route::get('/reddit/redirect', 'RedditController@create')->name('services.reddit.redirect');
         Route::get('/reddit/callback', 'RedditController@store')->name('services.reddit.callback');
+
+        Route::get('/reddit/debug', 'RedditController@runner')->name('services.reddit.runner');
+        Route::get('/reddit/redirect/modaccount', 'RedditController@moderatorAccountRedirect')->name('services.reddit.redirect_modaccount');
     });
 
 

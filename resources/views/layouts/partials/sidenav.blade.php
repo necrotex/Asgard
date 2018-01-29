@@ -23,6 +23,12 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link {{active('settings.index')}}" href="{{route('settings.index')}}">
+                    <i class="fa fa-cog" aria-hidden="true"></i> Settings
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index', auth()->user()->id)}}">
                     <i class="fa fa-user" aria-hidden="true"></i> Characters
                 </a>

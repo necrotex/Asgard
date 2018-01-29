@@ -14,14 +14,11 @@
                     @else
 
                         <div class="row">
-                            <div class="col-md-10">{{$user->redditAccount->nickname}}</div>
+                            <div class="col-md-9">{{$user->redditAccount->nickname}}</div>
 
-                            <div class="col-md-1 status-col">
-                                <div class="status status-success pull-right">
-                                    <i class="fa fa-check" aria-hidden="true"></i>
-                                </div>
+                            <div class="col-md-1">
+                                <a href="{{route('services.reddit.destroy', $user)}}" class="btn btn-sm btn-danger">unlink</a>
                             </div>
-
                         </div>
 
                     @endif

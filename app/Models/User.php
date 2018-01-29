@@ -28,25 +28,44 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function characters()
     {
         return $this->hasMany(Character::class);
     }
 
-    public function discordAccount() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function discordAccount()
+    {
         return $this->hasOne(DiscordUser::class);
     }
 
-    public function redditAccount() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function redditAccount()
+    {
         return $this->hasOne(RedditUser::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function mainCharacter()
     {
         return $this->hasOne(Character::class, 'id', 'main_character');
     }
 
-    public function roleCan($ability) {
+    /**
+     * @param $ability
+     * @return bool
+     */
+    public function roleCan($ability)
+    {
         $roles = $this->getAssociatedRoles();
         $roles->merge($this->roles);
 
@@ -54,7 +73,7 @@ class User extends Authenticatable
 
         foreach ($roles as $role) {
 
-            if($role->can($ability)) {
+            if ($role->can($ability)) {
                 return true;
             }
         }
@@ -62,29 +81,32 @@ class User extends Authenticatable
         return false;
     }
 
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public function getAssociatedRoles()
     {
         $roles = collect();
 
-        foreach($this->characters as $character) {
+        foreach ($this->characters as $character) {
             $corp = $character->corporation;
 
             //not all characters have corps added to the system
-            if(!$corp) continue;
+            if (!$corp) continue;
 
             $inheritedRoles = $corp->roles;
 
-            foreach($inheritedRoles as $ir) {
+            foreach ($inheritedRoles as $ir) {
                 $roles->push($ir);
             }
         }
 
         //remove redundant roles
         foreach ($roles as $i => $role) {
-            foreach($roles as $k => $role2){
-                if($i == $k) continue;
+            foreach ($roles as $k => $role2) {
+                if ($i == $k) continue;
 
-                if($role->id == $role2->id)
+                if ($role->id == $role2->id)
                     $roles->pull($i);
             }
         }
@@ -92,11 +114,17 @@ class User extends Authenticatable
         return $roles;
     }
 
+    /**
+     * @return mixed
+     */
     public function getUserDiscordRoles()
     {
         return UserDiscordRoles::where('user_id', '=', $this->id)->get();
     }
 
+    /**
+     * @return mixed
+     */
     public function getAssociatedDiscordRoles()
     {
         $inheritedRoles = $this->getAssociatedRoles();
@@ -105,25 +133,26 @@ class User extends Authenticatable
 
         foreach ($inheritedRoles as $role) {
             $roleDiscordRole = RoleDiscordRole::where('role_id', '=', $role->id)->get();
-            foreach($roleDiscordRole as $rdr) {
+            foreach ($roleDiscordRole as $rdr) {
                 $roleIds->push($rdr->discord_role_id);
             }
         }
 
-
         return DiscordRoles::whereIn('id', $roleIds->unique()->values()->all())->get();
     }
 
+    /**
+     * @return array
+     */
     public function getDiscordRolesAsArray()
     {
         $roles = [];
 
         $userRoles = $this->getAssociatedDiscordRoles();
 
-        foreach($userRoles as $userRole) {
+        foreach ($userRoles as $userRole) {
             $roles[] = $userRole->discord_id;
         }
-
 
         return array_unique($roles);
     }

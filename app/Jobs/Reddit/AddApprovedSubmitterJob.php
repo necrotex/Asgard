@@ -2,14 +2,15 @@
 
 namespace Asgard\Jobs\Reddit;
 
-use Asgard\Models\User;
+use Asgard\Models\RedditUser;
+use Asgard\Support\Reddit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class UpdateUserAccountJob implements ShouldQueue
+class AddApprovedSubmitterJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -20,7 +21,7 @@ class UpdateUserAccountJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(RedditUser $user)
     {
         $this->user = $user;
     }
@@ -32,6 +33,8 @@ class UpdateUserAccountJob implements ShouldQueue
      */
     public function handle()
     {
+        $reddit = new Reddit();
+        $reddit->addContributor($this->user);
 
     }
 }

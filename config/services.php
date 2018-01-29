@@ -55,6 +55,8 @@ return [
         'client_id' => env('REDDIT_KEY'),
         'client_secret' => env('REDDIT_SECRET'),
         'redirect' => env('REDDIT_REDIRECT_URI'),
+
+        'subreddit_url' => env('REDDIT_SUBREDDIT_URL')
     ],
 
 ];
