@@ -41,7 +41,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/roles/store', 'RoleController@store')->name('roles.store');
         Route::get('/roles/{role}/edit', 'RoleController@edit')->name('roles.edit');
         Route::post('/roles/{role}/update', 'RoleController@update')->name('roles.update');
+
         Route::get('/roles/{role}/destroy', 'RoleController@destroy')->name('roles.destroy');
+
+        Route::get('/abilities/{ability}/destroy', 'AbilityController@destroy')->name('ability.destroy');
+        Route::post('/abilities/assign/{role}', 'RoleController@destroy')->name('ability.assign');
 
 
         //Settings

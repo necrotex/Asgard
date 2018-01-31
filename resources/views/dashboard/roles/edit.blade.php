@@ -9,9 +9,8 @@
             {{csrf_field()}}
 
             <div class="col-md-8">
-
                 Name
-                <input type="text" value="{{$role->title}}" name="title">
+                <input type="text" value="{{$role->title}}" name="title" class="form-control">
             </div>
 
             <div class="col-md-2">
@@ -35,19 +34,6 @@
 
             </div>
 
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-header">
-                        Reddit Access
-                    </div>
-                    <div class="card-body">
-                        <select id="reddit-access" class="form-control" name="redditAccess">
-                            <option value="true" @if($role->can('access-reddit')) selected @endif>Yes</option>
-                            <option value="false" @if(!$role->can('access-reddit')) selected @endif>No</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
         </div>
 
         @include('dashboard.partials.roles.abilities')
@@ -68,8 +54,5 @@
 @push('js')
     <script>
         $('#discord-role').select2();
-        $('#reddit-access').select2({
-            minimumResultsForSearch: Infinity
-        });
     </script>
 @endpush

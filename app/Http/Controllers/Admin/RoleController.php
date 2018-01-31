@@ -7,6 +7,7 @@ use Asgard\Models\RoleDiscordRole;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Bouncer;
+use Silber\Bouncer\Database\Ability;
 use Silber\Bouncer\Database\Role;
 
 class RoleController extends Controller
@@ -79,7 +80,21 @@ class RoleController extends Controller
             $arrayDiscordRoles[] = $rdr->discord_role_id;
         }
 
-        return view('dashboard.roles.edit', ['role' => $role, 'discordRoles' => $discordRoles, 'roleDiscordRoles' => $arrayDiscordRoles]);
+        $owedAbilityIds = [];
+        foreach($role->abilities as $ability) {
+            $owedAbilityIds[] = $ability->id;
+        }
+
+        $abilities = Ability::whereNotIn('id', $owedAbilityIds)->get();
+
+        return view('dashboard.roles.edit',
+            [
+                'role' => $role,
+                'discordRoles' => $discordRoles,
+                'roleDiscordRoles' => $arrayDiscordRoles,
+                'abilities' => $abilities
+            ]
+        );
     }
 
     /**
@@ -92,7 +107,7 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
 
-        $this->validate($request, ['title' => 'required', 'redditAccess' => 'required']);
+        $this->validate($request, ['title' => 'required']);
 
         $title = $request->input('title');
         $slug  = str_slug($title);
@@ -100,12 +115,6 @@ class RoleController extends Controller
         $role->title = $title;
         $role->name = $slug;
         $role->save();
-
-        if($request->input('redditAccess') == 'true') {
-            $role->allow('access-reddit');
-        } else {
-            $role->disallow('access-reddit');
-        }
 
         //clean up
         RoleDiscordRole::where('role_id', '=', $role->id)->delete();
