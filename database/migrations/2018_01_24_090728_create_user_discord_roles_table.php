@@ -17,6 +17,14 @@ class CreateUserDiscordRolesTable extends Migration
 
             $table->integer('user_id')->unsigned();
             $table->integer('discord_role_id')->unsigned();
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('discord_role_id')
+                ->references('id')->on('discord_roles')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

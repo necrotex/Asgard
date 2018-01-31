@@ -16,6 +16,14 @@ class CreateRoleDiscordRolesTable extends Migration
         Schema::create('role_discord_roles', function (Blueprint $table) {
             $table->integer('role_id')->unsigned();
             $table->integer('discord_role_id')->unsigned();
+
+            $table->foreign('role_id')
+                ->references('id')->on('roles')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('discord_role_id')
+                ->references('id')->on('roles')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

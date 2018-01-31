@@ -15,7 +15,7 @@ class CreateCorporationsTable extends Migration
     {
         Schema::create('corporations', function (Blueprint $table) {
 
-            $table->integer('id');
+            $table->integer('id')->unique();
             $table->string('name');
             $table->string('ticker');
             $table->integer('member_count');
@@ -28,6 +28,8 @@ class CreateCorporationsTable extends Migration
             $table->string('url');
 
             $table->timestamps();
+
+
         });
     }
 

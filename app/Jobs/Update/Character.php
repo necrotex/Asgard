@@ -37,14 +37,6 @@ class Character implements ShouldQueue
      */
     public function handle(Conduit $api)
     {
-        /*
-         * Auth not needed here I guess
-         *
-        $api->setAuthentication(new Authentication(
-            config('services.eveonline.client_id'),
-            config('services.eveonline.client_secret'),
-            $this->character->refresh_token));
-        */
 
         Log::info($this->character->id . ' about to update');
 

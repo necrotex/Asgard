@@ -50,6 +50,8 @@
             </div>
         </div>
 
+        @include('dashboard.partials.roles.abilities')
+
         <div class="row">
             <div class="col-3">
                 <button type="submit" class="btn btn-primary">Save</button>

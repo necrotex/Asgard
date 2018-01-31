@@ -21,6 +21,7 @@ class CreateRedditUsersTable extends Migration
             $table->string('nickname');
 
             $table->timestamps();
+
         });
     }
 
