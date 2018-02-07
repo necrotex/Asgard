@@ -10,42 +10,50 @@
         <div class="col-md-8 col-md-offset-2">
 
             @foreach($characters as $character)
-                <div class="card character-card">
+
+                <div class="card character-card mb-2">
                     <div class="card-body">
 
                         <div class="row">
+
                            <div class="col-md-1">
                                <img class="media-object avatar"
                                     src="https://image.eveonline.com/Character/{{$character->id}}_64.jpg"/>
                            </div>
 
                             <div class="col-md-10">
-                                {{$character->name}}
-                                <br />
-                                {{$character->owner_hash}}
+                                <h4>{{$character->name}}</h4>
+                                <span class="small text-muted">Last updated at: {{$character->updated_at}}</span>
 
                             </div>
 
-                            <div class="col-md-1 status-col">
-                                <div class="status status-success pull-right">
-                                    <i class="fa fa-check" aria-hidden="true"></i>
-                                </div>
+                            <div class="col-md-1 align-baseline">
+
+                                <a href="#" class="btn btn-danger">
+                                    <i class="fa fa-remove" aria-hidden="true"></i>
+                                </a>
                             </div>
 
                         </div>
 
                     </div>
-
-                    <div class="clearfix"></div>
                 </div>
             @endforeach
-
 
         </div>
 
         <div class="col-md-4">
 
-            <a href="{{route('sso.login')}}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Add <Charcater></Charcater></a>
+            <div class="card">
+                <div class="card-header">
+                      Add Character
+                </div>
+                <div class="card-body">
+                    <div class="">Please add all Characters on all accounts here.</div>
+
+                    <a href="{{route('sso.login')}}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Add <Charcater></Charcater></a>
+                </div>
+            </div>
 
         </div>
     </div>

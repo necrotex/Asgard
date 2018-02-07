@@ -17,7 +17,7 @@ class SetupAccountMiddleware
     public function handle($request, Closure $next)
     {
         if(count(Auth::user()->characters) == 0) {
-            flash('Please add a character!')->important()->warning();
+            flash('Please add a character!')->warning();
 
             return redirect()->route('characters.index', Auth::user()->id);
         }
