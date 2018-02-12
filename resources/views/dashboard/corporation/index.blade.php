@@ -26,12 +26,15 @@
         <div class="col-md-4">
 
             <div class="card">
+                <div class="card-header">
+                    Add Corporation
+                </div>
                 <div class="card-body">
 
                     <form action="{{route('corporation.store')}}" method="post">
                         {{csrf_field()}}
 
-                        <input type="text" class="add-corporation" name="corp_id" placeholder="Corporation ID">
+                        <input type="text" class="form-control w-100 mb-3" name="corp_id" placeholder="Corporation ID">
 
                         @if($errors)
                             <span class="help-block">
@@ -41,7 +44,6 @@
 
 
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Add</button>
-
 
                     </form>
 

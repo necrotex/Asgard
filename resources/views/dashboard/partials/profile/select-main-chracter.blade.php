@@ -17,7 +17,7 @@
                 <form method="post" action="{{route('profile.update', $user->id)}}">
                     {{csrf_field()}}
 
-                    <select id="main_character" name="mainCharacter" class="form-control">
+                    <select id="main_character" name="mainCharacter" class="w-100">
                         @foreach($user->characters as $character)
                             <option value="{{$character->id}}"
                                     @if($character->id == $user->main_character) selected @endif>

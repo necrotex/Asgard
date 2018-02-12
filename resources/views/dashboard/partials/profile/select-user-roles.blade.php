@@ -11,7 +11,7 @@
 
                     {{csrf_field()}}
 
-                    <select name="discordRoles[]" id="discord-role" multiple="multiple" class="form-control">
+                    <select name="discordRoles[]" id="discord-role" multiple="multiple" class="w-100">
                         @foreach($roles as $role)
                             <option value="{{$role->id}}" class="form-control"
                                     @if(in_array($role->id, $userRoles)) selected @endif>
@@ -20,7 +20,7 @@
                         @endforeach
                     </select>
 
-                    <button type="submit" name="discordRoleSubmit" class="btn btn-primary">Save</button>
+                    <button type="submit" name="discordRoleSubmit" class="btn btn-primary btn-block">Save</button>
                     </div>
                 </form>
             </div>

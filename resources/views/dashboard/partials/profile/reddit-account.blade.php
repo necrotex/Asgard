@@ -1,8 +1,8 @@
-@if($user->roleCan('access-reddit'))
+@if($user->roleCan('access-subreddit'))
     <div class="row">
         <div class="col-md-10">
 
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header">
                     Reddit Account
                 </div>

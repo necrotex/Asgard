@@ -17,7 +17,12 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
 
+    Route::get('/home', function() {
+        return redirect('/');
+    });
+
     Route::get('/', 'HomeController@index')->name('home')->middleware(['finished-account']);
+
 
     Route::post('/search', 'SearchController@search')->name('search');
 

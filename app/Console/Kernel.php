@@ -24,8 +24,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call('asgard:clean:reddit')->hourly();
+
+        $schedule->call('asgard:discord:fetch-roles')->daily();
+
+        $schedule->call('asgard:update:character')->everyThirtyMinutes();
     }
 
     /**

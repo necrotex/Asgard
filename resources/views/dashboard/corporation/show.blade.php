@@ -9,7 +9,7 @@
 
         <div class="row">
             <div class="col-md-9">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
 
                         <dl class="row">
@@ -44,11 +44,13 @@
 
         <div class="row">
             <div class="col-md-4">
-                <div class="card">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Default Member role
+                    </div>
                     <div class="card-body">
-                        <h4>Default Member role</h4>
 
-                        <select multiple="multiple" class="form-control" id="member-role" name="defaultRoles[]">
+                        <select multiple="multiple" class="w-100" id="member-role" name="defaultRoles[]">
                             @foreach($roles as $role)
                                 <option value="{{$role->name}}" @if(in_array($role->id, $defaultRoles)) selected @endif>
                                     {{$role->title}}

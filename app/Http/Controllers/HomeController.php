@@ -20,11 +20,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function landing()
-    {
-
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -32,19 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        if(!Auth::user()->main_character) {
-            flash('Please setup your account!')->important()->warning();
-
-            return redirect()->route('profile.show', Auth::user()->id);
-        }
-
         return view('dashboard.home');
-    }
-
-
-    public function debug(Conduit $api)
-    {
-
     }
 }
