@@ -28,8 +28,6 @@ class CreateCorporationsTable extends Migration
             $table->string('url');
 
             $table->timestamps();
-
-
         });
     }
 

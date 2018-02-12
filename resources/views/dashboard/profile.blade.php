@@ -8,16 +8,17 @@
 
         @include('dashboard.partials.profile.characters')
 
-        <div class="col-4">
+        <div class="col-3">
             @include('dashboard.partials.profile.select-main-chracter')
-
             @include('dashboard.partials.profile.discord-account')
-
             @include('dashboard.partials.profile.reddit-account')
-
-
-            @include('dashboard.partials.profile.select-user-roles')
         </div>
+
+        <div class="col-4">
+            @include('dashboard.partials.profile.select-user-roles')
+
+        </div>
+
     </div>
 
     <div class="row">

@@ -13,11 +13,12 @@
                     <div class="card-body">
 
                         <dl class="row">
-                            <dt class="col-sm-3">ID</dt>
-                            <dd class="col-sm-3">{{$corporation->id}}</dd>
 
                             <dt class="col-sm-3">Name</dt>
                             <dd class="col-sm-3">{{$corporation->name}}</dd>
+
+                            <dt class="col-sm-3">ID</dt>
+                            <dd class="col-sm-3">{{$corporation->id}}</dd>
 
                             <dt class="col-sm-3">Member Count</dt>
                             <dd class="col-sm-3">{{$corporation->member_count}}</dd>

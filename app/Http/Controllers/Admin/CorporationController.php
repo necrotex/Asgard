@@ -16,7 +16,7 @@ class CorporationController extends Controller
 
     public function index()
     {
-        $corporations = Corporation::all();
+        $corporations = Corporation::paginate(15);
 
         return view('dashboard.corporation.index', ['corporations' => $corporations]);
     }
@@ -54,7 +54,7 @@ class CorporationController extends Controller
      */
     public function show($id)
     {
-        $corporation = Corporation::findOrFail($id); // automatically go 404 if no corp was found
+        $corporation = Corporation::with('roles')->findOrFail($id); // automatically go 404 if no corp was found
 
         $roles = Role::all();
 

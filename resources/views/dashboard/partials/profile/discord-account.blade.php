@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
 
         <div class="card mb-3">
             <div class="card-header">
@@ -21,7 +21,8 @@
                         <div class="col-md-5">{{$user->discordAccount->nickname}}</div>
 
                         <div class="col-md-1">
-                            <a href="{{route('services.discord.unlink', $user)}}" class="btn btn-sm btn-danger">unlink</a>
+                            <a href="{{route('services.discord.unlink', $user)}}"
+                               class="btn btn-sm btn-danger">unlink</a>
                         </div>
 
                     </div>
@@ -34,7 +35,8 @@
                 <div class="card-footer">
                     Discord Roles:
                     @foreach($user->getAssociatedDiscordRoles() as $role)
-                        <span class="badge badge-secondary" style="background-color: #{{dechex($role->color)}} !important;">{{$role->name}}</span>
+                        <span class="badge badge-secondary"
+                              style="background-color: #{{dechex($role->color)}} !important;">{{$role->name}}</span>
                     @endforeach
                 </div>
             @endif

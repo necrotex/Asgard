@@ -96,17 +96,18 @@ class ProfileController extends Controller
 
 
         if ($request->has('roleSubmit')) {
-            UserDiscordRoles::where('user_id', '=', $user->id)->delete();
 
+            $roles = $request->input('roles', []);
 
-            if ($request->has('discordRoles')) {
-                $discordRoles = $request->input('discordRoles');
+            $userRoles = $user->roles;
 
-                foreach ($discordRoles as $discordRole) {
-                    UserDiscordRoles::create(['user_id' => $user->id, 'discord_role_id' => $discordRole]);
+            foreach ($userRoles as $userRole) {
+                if (!in_array($userRole->name, $roles)) {
+                    $user->retract($userRole->name);
                 }
             }
 
+            $user->assign($roles);
         }
 
         return back();

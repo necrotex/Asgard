@@ -8,20 +8,20 @@
 
         <div class="col-md-8 col-md-offset-2">
 
-            @foreach($corporations as $corporation)
-                <div class="card">
-                    <div class="card-header" role="tab" id="heading-{{$corporation->id}}">
-                        <h5>
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    @foreach($corporations as $corporation)
+                        <li class="list-group-item">
                             <a href="{{route('corporation.show', $corporation->id)}}">
                                 [{{$corporation->ticker}}] {{$corporation->name}}
                             </a>
-                        </h5>
+                        </li>
+                    @endforeach
+                </ul>
 
-                    </div>
-                </div>
-            @endforeach
+            </div>
+            {{$corporations->links()}}
         </div>
-
 
         <div class="col-md-4">
 

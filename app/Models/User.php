@@ -88,6 +88,10 @@ class User extends Authenticatable
     {
         $roles = collect();
 
+        foreach($this->roles as $role) {
+            $roles->push($role);
+        }
+
         foreach ($this->characters as $character) {
             $corp = $character->corporation;
 

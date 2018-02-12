@@ -1,6 +1,6 @@
 @if($user->roleCan('access-subreddit'))
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
 
             <div class="card mb-3">
                 <div class="card-header">
