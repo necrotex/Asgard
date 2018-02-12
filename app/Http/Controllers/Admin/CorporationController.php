@@ -39,9 +39,11 @@ class CorporationController extends Controller
             return back()->withErrors(['corp_id' => 'No Corporation found.']);
         }
 
-        $corp = Corporation::firstOrNew(['id' => $request->input('corp_id')]);
+        $this->dispatchNow(new \Asgard\Jobs\Update\Corporation($request->input('corp_id'), $data));
 
-        $this->dispatchNow(new \Asgard\Jobs\Update\Corporation($corp, $data));
+        $corp = Corporation::first(['id' => $request->input('corp_id')]);
+        $corp->active = true;
+        $corp->save();
 
         return back();
     }

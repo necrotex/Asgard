@@ -13812,6 +13812,13 @@ body {
   height: 50px;
 }
 
+.avatar-profile {
+  border-radius: 35px;
+  float: left;
+  width: 25px;
+  height: 25px;
+}
+
 .add-corporation {
   width: 100%;
 }

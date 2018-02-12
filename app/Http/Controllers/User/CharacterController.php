@@ -2,6 +2,8 @@
 
 namespace Asgard\Http\Controllers\User;
 
+use Asgard\Models\Character;
+use Asgard\Models\User;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -45,9 +47,9 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $characters = Auth::user()->characters;
+        $characters = $user->characters;
 
         return view('dashboard.characters')->with('characters', $characters);
     }
@@ -81,8 +83,11 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user, Character $character)
     {
-        //
+        $character->active = false;
+        $character->save();
+
+        return redirect()->route('characters.index');
     }
 }

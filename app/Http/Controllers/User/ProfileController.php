@@ -2,10 +2,7 @@
 
 namespace Asgard\Http\Controllers\User;
 
-use Asgard\Models\DiscordRoles;
-use Asgard\Models\RoleDiscordRole;
 use Asgard\Models\User;
-use Asgard\Models\UserDiscordRoles;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Bouncer;

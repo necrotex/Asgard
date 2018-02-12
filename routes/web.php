@@ -59,10 +59,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     // character
     Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
-        Route::get('/{id}/characters', 'CharacterController@show')->name('characters.index');
+        Route::get('/{user}/characters', 'CharacterController@show')->name('characters.index');
+        Route::post('/{user}/characters/{character}/remove', 'CharacterController@destroy')->name('characters.destroy');
 
         Route::get('{user}/profile', 'ProfileController@show')->name('profile.show');
         Route::post('{user}/profile/update', 'ProfileController@update')->name('profile.update');
+
     });
 
 

@@ -3,38 +3,20 @@
         <div class="card-header">
             Characters
         </div>
-        <div class="card-body">
 
+        <ul class="list-group list-group-flush">
             @foreach($user->characters as $character)
-                <div class="card character-card mb-2">
-                    <div class="card-body">
 
-                        <div class="row">
-                            <div class="col-md-1">
-                                <img class="media-object avatar"
-                                     src="https://image.eveonline.com/Character/{{$character->id}}_64.jpg"/>
-                            </div>
+                    <a href="#" class="list-group-item">
 
-                            <div class="col-md-10">
-                                {{$character->name}}
-                                <br/>
-                                {{$character->owner_hash}}
+                        <img class="media-object avatar-profile"
+                             src="https://image.eveonline.com/Character/{{$character->id}}_64.jpg"/>
 
-                            </div>
-
-                            <div class="col-md-1 status-col">
-                                <div class="status status-success pull-right">
-                                    <i class="fa fa-check" aria-hidden="true"></i>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="clearfix"></div>
-                </div>
+                        <h5>{{$character->name}}</h5>
+                    </a>
             @endforeach
-        </div>
+        </ul>
+
+
     </div>
 </div>

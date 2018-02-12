@@ -2,6 +2,7 @@
 
 namespace Asgard\Console\Commands;
 
+use Asgard\Jobs\Eve\CorporationHistory;
 use Asgard\Models\Character;
 use Asgard\Jobs\Update\Character as UpdateCharacterJob;
 use Illuminate\Console\Command;
@@ -43,7 +44,12 @@ class UpdateCharacter extends Command
         $characters = Character::where('active', true)->get();
 
         foreach($characters as $character) {
-            dispatch(new UpdateCharacterJob($character));
+            dispatch(new UpdateCharacterJob($character))
+                ->chain(
+                    [
+                        new CorporationHistory($character)
+                    ]
+            );
         }
     }
 }

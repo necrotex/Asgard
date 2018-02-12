@@ -11,11 +11,9 @@
             <div class="card">
                 <ul class="list-group list-group-flush">
                     @foreach($corporations as $corporation)
-                        <li class="list-group-item">
-                            <a href="{{route('corporation.show', $corporation->id)}}">
-                                [{{$corporation->ticker}}] {{$corporation->name}}
-                            </a>
-                        </li>
+                        <a href="{{route('corporation.show', $corporation->id)}}" class="list-group-item">
+                            [{{$corporation->ticker}}] {{$corporation->name}}
+                        </a>
                     @endforeach
                 </ul>
 

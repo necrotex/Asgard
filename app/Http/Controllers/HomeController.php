@@ -2,11 +2,8 @@
 
 namespace Asgard\Http\Controllers;
 
-use Asgard\Models\Character;
-use Conduit\Conduit;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use nullx27\Easi\Easi;
+use Asgard\Jobs\Eve\CorporationHistory;
+
 
 class HomeController extends Controller
 {
@@ -28,5 +25,15 @@ class HomeController extends Controller
     public function index()
     {
         return view('dashboard.home');
+    }
+
+    public function debug()
+    {
+        $this->dispatch(new CorporationHistory(auth()->user()->mainCharacter));
+
+        foreach(auth()->user()->mainCharacter->corporationHistory as $history)
+        {
+            print $history->corporation_id . PHP_EOL;
+        }
     }
 }

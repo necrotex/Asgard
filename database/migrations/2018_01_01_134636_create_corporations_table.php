@@ -27,6 +27,8 @@ class CreateCorporationsTable extends Migration
             $table->integer('creator_id');
             $table->string('url');
 
+            $table->boolean('active')->default(false);
+
             $table->timestamps();
         });
     }

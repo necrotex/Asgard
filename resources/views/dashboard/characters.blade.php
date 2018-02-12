@@ -28,10 +28,14 @@
                             </div>
 
                             <div class="col-md-1 align-baseline">
+                                <form method="post" action="{{route('characters.destroy', [auth()->user()->id, $character->id])}}">
+                                    {{csrf_field()}}
 
-                                <a href="#" class="btn btn-danger">
+                                <button type="submit" class="btn btn-danger">
                                     <i class="fa fa-remove" aria-hidden="true"></i>
-                                </a>
+                                </button>
+
+                                </form>
                             </div>
 
                         </div>

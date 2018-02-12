@@ -34,6 +34,9 @@ class AddApprovedSubmitterJob implements ShouldQueue
     public function handle()
     {
         $reddit = new Reddit();
+
+
+
         $reddit->addContributor($this->user);
 
     }
