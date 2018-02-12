@@ -6,6 +6,9 @@
 
         <img id="profile-img" class="profile-img-card" src="/img/logo.png"/>
 
+        <h3 class="text-center">Frienldy Probes</h3>
+        <h3 class="text-center">Auth</h3>
+
         <form class="form-signin" method="post" action="{{ route('login') }}">
             {{ csrf_field() }}
 

@@ -7,7 +7,7 @@
             <div class="card-body">
 
                 @foreach($user->characters as $character)
-                    <div class="card character-card">
+                    <div class="card character-card mb-2">
                         <div class="card-body">
 
                             <div class="row">
