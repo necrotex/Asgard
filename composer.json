@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "eyewitness/eye": "dev-beta",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^6.3",
         "laracasts/flash": "^3.0",
@@ -24,11 +25,12 @@
         "watson/active": "^2.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
-        "phpunit/phpunit": "~6.0",
-        "nullx27/eveonline-socialite": "*"
+        "nullx27/eveonline-socialite": "*",
+        "phpunit/phpunit": "~6.0"
     },
 
     "repositories": [
