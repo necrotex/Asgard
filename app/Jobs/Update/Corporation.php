@@ -48,13 +48,13 @@ class Corporation implements ShouldQueue
         $corporation->name = $this->data->name;
         $corporation->ticker = $this->data->ticker;
         $corporation->member_count = $this->data->member_count;
-        $corporation->ceo_id = $this->data->ceo_id;
+        $corporation->ceo_id = (array_key_exists('ceo_id', $this->data->data) ? $this->data->ceo_id : null);
         $corporation->alliance_id = (array_key_exists('alliance_id', $this->data->data) ? $this->data->alliance_id : null);
-        $corporation->description = $this->data->description;
-        $corporation->tax_rate = $this->data->tax_rate;
-        $corporation->date_founded = Carbon::parse($this->data->date_founded);
-        $corporation->creator_id = $this->data->creator_id;
-        $corporation->url = $this->data->url;
+        $corporation->description = (array_key_exists('description', $this->data->data) ? $this->data->description : null);
+        $corporation->tax_rate = (array_key_exists('tax_rate', $this->data->data) ? $this->data->tax_rate : null);
+        $corporation->date_founded = (array_key_exists('date_founded', $this->data->data) ? Carbon::parse($this->data->date_founded) : null);
+        $corporation->creator_id = (array_key_exists('creator_id', $this->data->data) ? $this->data->creator_id : null);
+        $corporation->url = (array_key_exists('url', $this->data->data) ? $this->data->url : null);
         $corporation->active = false;
 
         $corporation->save();

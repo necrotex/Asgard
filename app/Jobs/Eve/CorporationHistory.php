@@ -47,13 +47,11 @@ class CorporationHistory implements ShouldQueue
 
         $response = $api->characters($this->character->id)->corporationhistory()->get();
 
-
-        $corps = [];
         foreach($response->data as $data) {
             $corp = CorporationModel::firstOrNew(['id' => $data->corporation_id]);
 
             if(!$corp->exists) {
-                $corp[] = new UpdateCorporationJob($data->corporation_id); //todo: figure out why this doesn't work
+                dispatch_now(new UpdateCorporationJob($data->corporation_id));
             }
 
             Character\CorporationHistory::firstOrCreate(
@@ -67,7 +65,5 @@ class CorporationHistory implements ShouldQueue
                 ]
             );
         }
-
-        $this->chain($corps);
     }
 }

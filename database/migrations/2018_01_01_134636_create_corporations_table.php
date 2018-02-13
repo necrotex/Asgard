@@ -18,14 +18,14 @@ class CreateCorporationsTable extends Migration
             $table->integer('id')->unique();
             $table->string('name');
             $table->string('ticker');
-            $table->integer('member_count');
-            $table->integer('ceo_id');
+            $table->integer('member_count')->nullable();
+            $table->integer('ceo_id')->nullable();
             $table->integer('alliance_id')->nullable();
-            $table->text('description');
-            $table->float('tax_rate');
-            $table->dateTime('date_founded');
-            $table->integer('creator_id');
-            $table->string('url');
+            $table->text('description')->nullable();
+            $table->float('tax_rate')->nullable();
+            $table->dateTime('date_founded')->nullable();
+            $table->integer('creator_id')->nullable();
+            $table->string('url')->nullable();
 
             $table->boolean('active')->default(false);
 
