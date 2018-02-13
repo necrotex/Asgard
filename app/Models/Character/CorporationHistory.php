@@ -3,6 +3,7 @@
 namespace Asgard\Models\Character;
 
 use Asgard\Models\Character;
+use Asgard\Models\Corporation;
 use Illuminate\Database\Eloquent\Model;
 
 class CorporationHistory extends Model
@@ -19,5 +20,10 @@ class CorporationHistory extends Model
     public function character()
     {
         return $this->belongsTo(Character::class);
+    }
+
+    public function corporation()
+    {
+        return $this->hasOne(Corporation::class, 'id', 'corporation_id');
     }
 }

@@ -28,7 +28,7 @@
                             </div>
 
                             <div class="col-md-1 align-baseline">
-                                <form method="post" action="{{route('characters.destroy', [auth()->user()->id, $character->id])}}">
+                                <form method="post" action="{{route('characters.destroy', $character->id)}}">
                                     {{csrf_field()}}
 
                                 <button type="submit" class="btn btn-danger">

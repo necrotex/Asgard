@@ -29,7 +29,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index', auth()->user()->id)}}">
+                <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index')}}">
                     <i class="fa fa-user" aria-hidden="true"></i> Characters
                 </a>
             </li>

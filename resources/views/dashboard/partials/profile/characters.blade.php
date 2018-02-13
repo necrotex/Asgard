@@ -7,7 +7,7 @@
         <ul class="list-group list-group-flush">
             @foreach($user->characters as $character)
 
-                    <a href="#" class="list-group-item">
+                    <a href="{{route('characters.show', $character->id)}}" class="list-group-item">
 
                         <img class="media-object avatar-profile"
                              src="https://image.eveonline.com/Character/{{$character->id}}_64.jpg"/>

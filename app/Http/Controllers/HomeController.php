@@ -2,8 +2,6 @@
 
 namespace Asgard\Http\Controllers;
 
-use Asgard\Jobs\Eve\CorporationRoles;
-use Asgard\Jobs\Eve\Fatigue;
 use Asgard\Jobs\Eve\Titles;
 use Asgard\Models\Character;
 

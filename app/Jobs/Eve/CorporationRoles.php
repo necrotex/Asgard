@@ -41,14 +41,13 @@ class CorporationRoles implements ShouldQueue
 
         $roles = $this->character->corporationRoles;
 
-        $assingedRoles = [];
         foreach ($roles as $role) {
-            if(!in_array($role->role, $response->roles)) {
+            if (!in_array($role->role, $response->roles)) {
                 $role->delete();
             }
         }
 
-        foreach($response->roles as $role) {
+        foreach ($response->roles as $role) {
             Character\CorporationRole::firstOrCreate(
                 [
                     'character_id' => $this->character->id,

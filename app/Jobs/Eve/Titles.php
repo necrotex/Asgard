@@ -57,8 +57,8 @@ class Titles implements ShouldQueue
             );
         }
 
-        foreach($titles as $title) {
-            if(!in_array($title->title_id, $titleIds)) {
+        foreach ($titles as $title) {
+            if (!in_array($title->title_id, $titleIds)) {
                 $title->delete();
             }
         }

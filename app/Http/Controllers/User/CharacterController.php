@@ -17,7 +17,9 @@ class CharacterController extends Controller
      */
     public function index()
     {
+        $characters = Auth::user()->characters;
 
+        return view('dashboard.characters')->with('characters', $characters);
     }
 
     /**
@@ -27,7 +29,7 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -44,14 +46,14 @@ class CharacterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Character $character
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(User $user)
+    public function show(Character $character)
     {
-        $characters = $user->characters;
+        //dd($character->location->solarSystem->solarSystemName);
 
-        return view('dashboard.characters')->with('characters', $characters);
+        return view('dashboard.character', compact('character'));
     }
 
     /**
@@ -80,10 +82,10 @@ class CharacterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Character $character
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user, Character $character)
+    public function destroy(Character $character)
     {
         $character->active = false;
         $character->save();

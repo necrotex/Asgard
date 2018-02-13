@@ -4,6 +4,7 @@ namespace Asgard\Jobs\Eve;
 
 use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
+use Carbon\Carbon;
 use Conduit\Conduit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -39,14 +40,18 @@ class Fatigue implements ShouldQueue
 
         $response = $api->characters($this->character->id)->fatigue()->get();
 
+        $last_jump_date = ($response->get('last_jump_date', false)) ? Carbon::parse($response->get('last_jump_date')) : null;
+        $jump_fatigue_expire_date = ($response->get('jump_fatigue_expire_date', false)) ? Carbon::parse($response->get('jump_fatigue_expire_date')) : null;
+        $last_update_date = ($response->get('last_update_date', false)) ? Carbon::parse($response->get('last_update_date')) : null;
+
         Character\Fatigue::firstOrCreate(
             [
                 'character_id' => $this->character->id
             ],
             [
-                'last_jump_date' => $response->get('last_jump_date'),
-                'jump_fatigue_expire_date' => $response->get('jump_fatigue_expire_date'),
-                'last_update_date' => $response->get('last_update_date'),
+                'last_jump_date' => $last_jump_date,
+                'jump_fatigue_expire_date' => $jump_fatigue_expire_date,
+                'last_update_date' => $last_update_date,
             ]
         );
 
