@@ -15,6 +15,13 @@ class CreateCharacterStatus extends Migration
     {
         Schema::create('character_status', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('character_id');
+
+            $table->boolean('online');
+            $table->dateTime('last_login');
+            $table->dateTime('last_logout');
+            $table->integer('logins');
+
             $table->timestamps();
         });
     }

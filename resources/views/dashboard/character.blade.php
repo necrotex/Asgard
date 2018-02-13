@@ -27,6 +27,14 @@
                     <h4 class="card-title">{{$character->name}}</h4>
                     <p class="card-text">{{$character->corporation->name}}</p>
 
+                    <p>
+                        @if($character->status->online)
+                            <span class="text-success">Online</span>
+                        @else
+                            <span class="text-danger">Offline</span>
+                        @endif
+                    </p>
+
                     <p class="card-text text-muted">
                         {{$character->location->solarSystem->solarSystemName}}
                         <br>

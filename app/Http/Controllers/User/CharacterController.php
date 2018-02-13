@@ -51,8 +51,6 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        //dd($character->location->solarSystem->solarSystemName);
-
         return view('dashboard.character', compact('character'));
     }
 

@@ -31,6 +31,7 @@ class Kernel extends ConsoleKernel
         $schedule->call('asgard:update:character')->everyThirtyMinutes();
 
         $schedule->call('asgard:update:location')->everyTenMinutes();
+        $schedule->call('asgard:update:status')->everyFiveMinutes();
     }
 
     /**
