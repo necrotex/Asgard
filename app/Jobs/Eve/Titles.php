@@ -2,11 +2,8 @@
 
 namespace Asgard\Jobs\Eve;
 
-use Asgard\Jobs\Update\Corporation as UpdateCorporationJob;
 use Asgard\Models\Character;
-use Asgard\Models\Corporation as CorporationModel;
 use Asgard\Support\ConduitAuthTrait;
-use Carbon\Carbon;
 use Conduit\Conduit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -14,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class CorporationHistory implements ShouldQueue
+class Titles implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ConduitAuthTrait;
 
@@ -23,7 +20,7 @@ class CorporationHistory implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param Character $character
      */
     public function __construct(Character $character)
     {
@@ -33,32 +30,38 @@ class CorporationHistory implements ShouldQueue
     /**
      * Execute the job.
      *
+     * @param Conduit $api
      * @return void
-     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function handle(Conduit $api)
     {
         $api->setAuthentication($this->getAuthentication($this->character));
 
-        $response = $api->characters($this->character->id)->corporationhistory()->get();
+        $response = $api->characters($this->character->id)->titles()->get();
 
-        foreach($response->data as $data) {
-            $corp = CorporationModel::firstOrNew(['id' => $data->corporation_id]);
+        $titles = $this->character->titles;
 
-            if(!$corp->exists) {
-                dispatch_now(new UpdateCorporationJob($data->corporation_id));
-            }
+        $titleIds = [];
 
-            Character\CorporationHistory::firstOrCreate(
+        foreach ($response->data as $remoteTitle) {
+            $titleIds[] = $remoteTitle->title_id;
+
+            Character\Title::firstOrCreate(
                 [
-                    'record_id' => $data->record_id,
-                    'character_id' => $this->character->id
+                    'character_id' => $this->character->id,
+                    'title_id' => $remoteTitle->title_id
                 ],
                 [
-                    'corporation_id' => $data->corporation_id,
-                    'start_date' => Carbon::parse($data->start_date),
+                    'name' => $remoteTitle->name
                 ]
             );
         }
+
+        foreach($titles as $title) {
+            if(!in_array($title->title_id, $titleIds)) {
+                $title->delete();
+            }
+        }
+
     }
 }

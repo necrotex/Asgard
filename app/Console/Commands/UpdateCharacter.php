@@ -3,6 +3,9 @@
 namespace Asgard\Console\Commands;
 
 use Asgard\Jobs\Eve\CorporationHistory;
+use Asgard\Jobs\Eve\CorporationRoles;
+use Asgard\Jobs\Eve\Fatigue;
+use Asgard\Jobs\Eve\Titles;
 use Asgard\Models\Character;
 use Asgard\Jobs\Update\Character as UpdateCharacterJob;
 use Illuminate\Console\Command;
@@ -47,7 +50,10 @@ class UpdateCharacter extends Command
             dispatch(new UpdateCharacterJob($character))
                 ->chain(
                     [
-                        new CorporationHistory($character)
+                        new CorporationHistory($character),
+                        new Fatigue($character),
+                        new CorporationRoles($character),
+                        new Titles($character)
                     ]
             );
         }

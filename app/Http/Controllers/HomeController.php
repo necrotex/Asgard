@@ -2,7 +2,10 @@
 
 namespace Asgard\Http\Controllers;
 
-use Asgard\Jobs\Eve\CorporationHistory;
+use Asgard\Jobs\Eve\CorporationRoles;
+use Asgard\Jobs\Eve\Fatigue;
+use Asgard\Jobs\Eve\Titles;
+use Asgard\Models\Character;
 
 
 class HomeController extends Controller
@@ -29,11 +32,10 @@ class HomeController extends Controller
 
     public function debug()
     {
-        $this->dispatch(new CorporationHistory(auth()->user()->mainCharacter));
+        $char = Character::find(95149868);
+        dispatch_now(new Titles($char));
 
-        foreach(auth()->user()->mainCharacter->corporationHistory as $history)
-        {
-            print $history->corporation_id . PHP_EOL;
-        }
+        dd($char->titles);
+
     }
 }
