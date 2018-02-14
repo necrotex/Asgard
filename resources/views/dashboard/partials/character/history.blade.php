@@ -12,7 +12,7 @@
         @foreach($character->corporationHistory as $entry)
             <tr>
                 <td>
-                    <img src="https://image.eveonline.com/Corporation/1000010_32.png" class="width:25px">
+                    <img src="https://image.eveonline.com/Corporation/{{$entry->corporation->id}}_32.png" class="rounded-circle">
 
                     <a href="https://evewho.com/corp/{{str_replace(' ', '+', $entry->corporation->name)}}">
                         {{$entry->corporation->name}}

@@ -2,6 +2,7 @@
 
 namespace Asgard\Console\Commands;
 
+use Asgard\Jobs\Eve\Contacts;
 use Asgard\Jobs\Eve\CorporationHistory;
 use Asgard\Jobs\Eve\CorporationRoles;
 use Asgard\Jobs\Eve\Fatigue;
@@ -53,7 +54,8 @@ class UpdateCharacter extends Command
                         new CorporationHistory($character),
                         new Fatigue($character),
                         new CorporationRoles($character),
-                        new Titles($character)
+                        new Titles($character),
+                        new Contacts($character)
                     ]
             );
         }

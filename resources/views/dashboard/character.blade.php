@@ -67,8 +67,8 @@
                         Corporation History
                     </a>
 
-                    <a class="nav-item nav-link" id="tab-history" data-toggle="tab" href="#history" role="tab"
-                       aria-controls="profile" aria-selected="false">
+                    <a class="nav-item nav-link" id="tab-contacts" data-toggle="tab" href="#contacts" role="tab"
+                       aria-controls="contacts" aria-selected="false">
                         Contacts
                     </a>
 
@@ -106,6 +106,10 @@
 
                 <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history">
                     @include('dashboard.partials.character.history')
+                </div>
+
+                <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts">
+                    @include('dashboard.partials.character.contacts')
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace Asgard\Models;
 
 use Asgard\Events\CharacterUpdateEvent;
+use Asgard\Models\Character\Contact;
 use Asgard\Models\Character\CorporationHistory;
 use Asgard\Models\Character\CorporationRole;
 use Asgard\Models\Character\Fatigue;
@@ -67,6 +68,11 @@ class Character extends Model
     public function status()
     {
         return $this->hasOne(Status::class);
+    }
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
     }
 
 }
