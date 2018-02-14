@@ -40,10 +40,15 @@
                         <br>
                         {{$character->location->shipType->typeName}} ({{$character->location->ship_name}})
                     </p>
-                    <p>
-
-                    </p>
-
+                </div>
+                <div class="card-footer text-center">
+                    <a href="https://zkillboard.com/character/{{$character->id}}/" title="zKillboard"
+                    >
+                        <i class="asgard-icon asgard-icon-zkill"></i>
+                    </a>
+                    <a href="https://evewho.com/pilot/{{str_replace(' ', '+', $character->name)}}" title="EveWho">
+                        <i class="asgard-icon asgard-icon-evewho"></i>
+                    </a>
                 </div>
             </div>
         </div>

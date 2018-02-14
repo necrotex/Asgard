@@ -1,5 +1,27 @@
 @charset "UTF-8";
 
+.asgard-icon {
+  display: inline-block;
+}
+
+.asgard-icon-dotlan {
+  background: url(/images/dotlan_logo.png?54514290917998ed0d5cf3d9f577d402);
+  width: 20px;
+  height: 20px;
+}
+
+.asgard-icon-zkill {
+  background: url(/images/zkill_20x20.png?fcaa43846a711e250420cb186b6c2a82);
+  width: 20px;
+  height: 20px;
+}
+
+.asgard-icon-evewho {
+  background: url(/images/evewho_20x20.png?25a04358c7350662ad7904315a12249d);
+  width: 20px;
+  height: 20px;
+}
+
 /*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors
