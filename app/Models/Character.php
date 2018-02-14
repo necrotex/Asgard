@@ -8,6 +8,9 @@ use Asgard\Models\Character\CorporationHistory;
 use Asgard\Models\Character\CorporationRole;
 use Asgard\Models\Character\Fatigue;
 use Asgard\Models\Character\Location;
+use Asgard\Models\Character\Skill;
+use Asgard\Models\Character\Skillpoints;
+use Asgard\Models\Character\Skillqueue;
 use Asgard\Models\Character\Status;
 use Asgard\Models\Character\Title;
 use Illuminate\Database\Eloquent\Model;
@@ -73,6 +76,20 @@ class Character extends Model
     public function contacts()
     {
         return $this->hasMany(Contact::class);
+    }
+
+    public function skillqueue()
+    {
+        return $this->hasMany(Skillqueue::class);
+    }
+
+    public function skills() {
+        return $this->hasMany(Skill::class);
+    }
+
+    public function skillpoints()
+    {
+        return $this->hasOne(Skillpoints::class);
     }
 
 }

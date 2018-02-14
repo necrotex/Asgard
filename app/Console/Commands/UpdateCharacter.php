@@ -6,6 +6,7 @@ use Asgard\Jobs\Eve\Contacts;
 use Asgard\Jobs\Eve\CorporationHistory;
 use Asgard\Jobs\Eve\CorporationRoles;
 use Asgard\Jobs\Eve\Fatigue;
+use Asgard\Jobs\Eve\Skills;
 use Asgard\Jobs\Eve\Titles;
 use Asgard\Models\Character;
 use Asgard\Jobs\Update\Character as UpdateCharacterJob;
@@ -51,6 +52,7 @@ class UpdateCharacter extends Command
             dispatch(new UpdateCharacterJob($character))
                 ->chain(
                     [
+                        new Skills($character),
                         new CorporationHistory($character),
                         new Fatigue($character),
                         new CorporationRoles($character),

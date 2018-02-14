@@ -111,6 +111,7 @@
                 <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts">
                     @include('dashboard.partials.character.contacts')
                 </div>
+
             </div>
         </div>
     </div>
