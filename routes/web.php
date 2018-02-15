@@ -67,6 +67,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{user}/profile', 'ProfileController@show')->name('profile.show');
         Route::post('{user}/profile/update', 'ProfileController@update')->name('profile.update');
 
+
+    });
+
+    Route::group(['prefix' => 'user', 'namespace' => 'Character'], function() {
+        Route::any('characters/{character}/mails', 'MailController@mails')->name('character.mails');
+
     });
 
 

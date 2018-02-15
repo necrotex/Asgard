@@ -8,6 +8,7 @@ use Asgard\Models\Character\CorporationHistory;
 use Asgard\Models\Character\CorporationRole;
 use Asgard\Models\Character\Fatigue;
 use Asgard\Models\Character\Location;
+use Asgard\Models\Character\Mail;
 use Asgard\Models\Character\Skill;
 use Asgard\Models\Character\Skillpoints;
 use Asgard\Models\Character\Skillqueue;
@@ -90,6 +91,11 @@ class Character extends Model
     public function skillpoints()
     {
         return $this->hasOne(Skillpoints::class);
+    }
+
+    public function mails()
+    {
+        return $this->hasMany(Mail::class);
     }
 
 }

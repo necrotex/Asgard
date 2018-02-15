@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ffbfb04569f88a19b0cdec2e1eaa76e0",
+    "content-hash": "8a4e95508acf27023f61919786ca198f",
     "packages": [
         {
             "name": "cache/adapter-common",
@@ -845,12 +845,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/eyewitness/eye.git",
-                "reference": "2d7eebbfc96cc22e23978c7e0dfc7eb8c46dcda7"
+                "reference": "6823d769926d1b2a3a379776a3aae1d25ae4725a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eyewitness/eye/zipball/2d7eebbfc96cc22e23978c7e0dfc7eb8c46dcda7",
-                "reference": "2d7eebbfc96cc22e23978c7e0dfc7eb8c46dcda7",
+                "url": "https://api.github.com/repos/eyewitness/eye/zipball/6823d769926d1b2a3a379776a3aae1d25ae4725a",
+                "reference": "6823d769926d1b2a3a379776a3aae1d25ae4725a",
                 "shasum": ""
             },
             "require": {
@@ -897,7 +897,7 @@
                 "monitor",
                 "queue"
             ],
-            "time": "2018-02-11T07:25:08+00:00"
+            "time": "2018-02-14T02:40:37+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -2322,17 +2322,12 @@
         },
         {
             "name": "nullx27/conduit",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nullx27/conduit.git",
-                "reference": "019a3b28e7ce6c8e9ccbebafe1dac2b1833f6c01"
-            },
+            "version": "1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nullx27/conduit/zipball/019a3b28e7ce6c8e9ccbebafe1dac2b1833f6c01",
+                "type": "path",
+                "url": "/home/apeiffer/sdk/conduit",
                 "reference": "019a3b28e7ce6c8e9ccbebafe1dac2b1833f6c01",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "cache/array-adapter": "^0.5.0",
@@ -2353,7 +2348,6 @@
                     "Conduit\\Tests\\": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2370,8 +2364,7 @@
                 "eve-online",
                 "lib",
                 "php"
-            ],
-            "time": "2018-02-13T09:29:40+00:00"
+            ]
         },
         {
             "name": "paragonie/random_compat",
@@ -4340,6 +4333,76 @@
                 "routing"
             ],
             "time": "2017-08-26T01:42:01+00:00"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v8.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "222dae7b74166dd45f46918aea46ac7f4b89c449"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/222dae7b74166dd45f46918aea46ac7f4b89c449",
+                "reference": "222dae7b74166dd45f46918aea46ac7f4b89c449",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.4.*|5.5.*|5.6.*",
+                "illuminate/filesystem": "5.4.*|5.5.*|5.6.*",
+                "illuminate/http": "5.4.*|5.5.*|5.6.*",
+                "illuminate/support": "5.4.*|5.5.*|5.6.*",
+                "illuminate/view": "5.4.*|5.5.*|5.6.*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5"
+            },
+            "suggest": {
+                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTable.",
+                "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
+                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTable."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yajra\\DataTables\\DataTablesServiceProvider"
+                    ],
+                    "aliases": {
+                        "DataTables": "Yajra\\DataTables\\Facades\\DataTables"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yajra\\DataTables\\": "src/"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "jQuery DataTables API for Laravel 4|5",
+            "keywords": [
+                "datatables",
+                "jquery",
+                "laravel"
+            ],
+            "time": "2018-02-11T14:16:35+00:00"
         }
     ],
     "packages-dev": [
@@ -6203,7 +6266,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "eyewitness/eye": 20,
-        "nullx27/conduit": 20,
         "silber/bouncer": 10
     },
     "prefer-stable": false,

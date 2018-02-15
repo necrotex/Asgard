@@ -12,6 +12,7 @@ try {
 
     require('bootstrap');
     require('tether');
+
 } catch (e) {}
 
 

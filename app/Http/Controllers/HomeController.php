@@ -3,6 +3,7 @@
 namespace Asgard\Http\Controllers;
 
 use Asgard\Jobs\Eve\Contacts;
+use Asgard\Jobs\Eve\Mails;
 use Asgard\Jobs\Eve\Skillqueue;
 use Asgard\Jobs\Eve\Skills;
 use Asgard\Jobs\Eve\Status;
@@ -35,8 +36,9 @@ class HomeController extends Controller
     public function debug()
     {
         $char = Character::find(95149868);
-        //dd(Character\Skill::where('character_id', '=', 95149868)->getSkillsOrderByGroup()->get());
-        dd($char->skills()->getSkillsOrderByGroup()->get());
+        dispatch_now(new Mails($char));
+
+        dd($char->mails);
 
 
     }

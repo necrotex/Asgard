@@ -8,6 +8,7 @@ use Asgard\Models\User;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Contracts\DataTable;
 
 class CharacterController extends Controller
 {

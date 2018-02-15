@@ -84,8 +84,8 @@
                         Transactions
                     </a>
 
-                    <a class="nav-item nav-link" id="tab-history" data-toggle="tab" href="#history" role="tab"
-                       aria-controls="profile" aria-selected="false">
+                    <a class="nav-item nav-link" id="tab-mail" data-toggle="tab" href="#mail" role="tab"
+                       aria-controls="mail" aria-selected="false">
                         Mail
                     </a>
 
@@ -123,8 +123,16 @@
                     @include('dashboard.partials.character.skills')
                 </div>
 
+                <div class="tab-pane fade" id="mail" role="tabpanel" aria-labelledby="mail">
+                    @include('dashboard.partials.character.mail')
+                </div>
+
             </div>
         </div>
     </div>
 
 @endsection
+
+@push('js')
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+@endpush
