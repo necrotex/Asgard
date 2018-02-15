@@ -36,8 +36,7 @@ class HomeController extends Controller
     {
         $char = Character::find(95149868);
         dispatch_now(new Skills($char));
-
-        dd($char->skills->first());
+        dispatch_now(new Skillqueue($char));
 
 
     }

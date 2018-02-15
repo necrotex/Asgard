@@ -22,6 +22,11 @@ class Skillqueue extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'finish_date' => 'datetime'
+    ];
+
     public function type()
     {
         return $this->hasOne(Type::class, 'typeID', 'skill_id');
