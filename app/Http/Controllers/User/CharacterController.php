@@ -3,6 +3,7 @@
 namespace Asgard\Http\Controllers\User;
 
 use Asgard\Models\Character;
+use Asgard\Models\Eve\Category;
 use Asgard\Models\User;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
@@ -51,7 +52,29 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        return view('dashboard.character', compact('character'));
+        $character->load(
+            [
+                'corporationHistory',
+                'corporationHistory.corporation',
+                'fatigue',
+                'corporationRoles',
+                'titles',
+                'location',
+                'status',
+                'contacts',
+                'skillqueue',
+                'skillqueue.type',
+                'skillpoints',
+                'skills',
+                'skills.type',
+            ]
+        );
+
+        $category = Category::where('categoryName', '=', 'Skill')
+            ->with(['groups'])
+            ->first();
+
+        return view('dashboard.character', compact('character', 'category'));
     }
 
     /**

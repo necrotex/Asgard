@@ -1,32 +1,44 @@
+<div class="row mt-3">
+    <div class="col-3">
 
-    <div class="row mt-3">
+        <div class="card">
+            <div class="card-header">
+                Skillpoints
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-6">Total</dt>
+                    <dd class="col-sm-6">{{ number_format($character->skillpoints->total_sp,0) }}</dd>
 
-        <div class="col-5">
+                    <dt class="col-sm-6">Unallocated</dt>
+                    <dd class="col-sm-6">{{ number_format($character->skillpoints->unallocated_sp,0) }}</dd>
+                </dl>
+            </div>
+        </div>
 
-            <div class="card">
-                <div class="card-header">
-                    Skillqueue <span class="small text-muted pull-right">Ends {{$character->skillqueue->last()->finish_date}}</span>
-                </div>
+    </div>
 
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
+    <div class="col-5">
+
+        <div class="card">
+            <div class="card-header">
+                Skillqueue <span
+                        class="small text-muted pull-right">Ends {{$character->skillqueue->last()->finish_date}}</span>
+            </div>
+
+            <div class="card-body">
+                <ul class="list-group list-group">
 
                     @foreach($character->skillqueue as $skill)
                         @php
-                            $start = $skill->level_start_sp;
-                            $end = $skill->level_end_sp;
-
-                            if($loop->first) {
-                                $current = $character->skillpoints->total_sp - ($character->skillpoints->total_sp - $skill->level_start_sp);
-                            } else {
-                                $current = $skill->training_start_sp - $skill->level_start_sp;
-                            }
-
+                            $start = 0;
+                            $end = $skill->finish_date->diffInSeconds($skill->start_date);
+                            $current = \Carbon\Carbon::now()->diffInSeconds($skill->start_date);
                             $percent = (100/$end) * $current;
-
                         @endphp
 
-                        <div class="card mb-2">
+                        @if($loop->first)
+                            <div class="card">
                                 <div class="card-body">
                                     {{$skill->type->typeName}} {{ $skill->finished_level }}
 
@@ -38,13 +50,18 @@
                                     </div>
                                     <span class="small text-muted">Ends in {{$skill->finish_date->diffForHumans()}}</span>
                                 </div>
-                        </div>
+                            </div>
+                        @else
+                            <li class="list-group-item">
+                                    {{$skill->type->typeName}} {{ $skill->finished_level }}
+                            </li>
+                        @endif
 
                     @endforeach
-                    </ul>
+                </ul>
 
-                </div>
             </div>
-
         </div>
+
     </div>
+</div>

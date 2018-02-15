@@ -21,18 +21,25 @@
 
         <div class="col-3">
             <div class="card">
-                <img src="https://image.eveonline.com/Character/{{$character->id}}_512.jpg" class="card-img-top">
+                <div class="profile-image">
+                    <img src="https://image.eveonline.com/Character/{{$character->id}}_512.jpg" class="card-img-top">
+                    <div class="profile-overlay text-center">
+                        @if($character->status->online)
+                            <span class="profile-overlay-text text-success">ONLINE</span>
+                        @else
+                            <span class="profile-overlay-text text-danger">OFFLINE</span>
+                        @endif
+                    </div>
+                </div>
+
+
                 <div class="card-body text-center">
 
                     <h4 class="card-title">{{$character->name}}</h4>
                     <p class="card-text">{{$character->corporation->name}}</p>
 
                     <p>
-                        @if($character->status->online)
-                            <span class="text-success">Online</span>
-                        @else
-                            <span class="text-danger">Offline</span>
-                        @endif
+
                     </p>
 
                     <p class="card-text text-muted">
@@ -87,8 +94,8 @@
                         Assets
                     </a>
 
-                    <a class="nav-item nav-link" id="tab-history" data-toggle="tab" href="#history" role="tab"
-                       aria-controls="profile" aria-selected="false">
+                    <a class="nav-item nav-link" id="tab-skills" data-toggle="tab" href="#skills" role="tab"
+                       aria-controls="skills" aria-selected="false">
                         Skills
                     </a>
 
@@ -110,6 +117,10 @@
 
                 <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts">
                     @include('dashboard.partials.character.contacts')
+                </div>
+
+                <div class="tab-pane fade" id="skills" role="tabpanel" aria-labelledby="skills">
+                    @include('dashboard.partials.character.skills')
                 </div>
 
             </div>

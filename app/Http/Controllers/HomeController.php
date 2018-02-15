@@ -35,8 +35,8 @@ class HomeController extends Controller
     public function debug()
     {
         $char = Character::find(95149868);
-        dispatch_now(new Skills($char));
-        dispatch_now(new Skillqueue($char));
+        //dd(Character\Skill::where('character_id', '=', 95149868)->getSkillsOrderByGroup()->get());
+        dd($char->skills()->getSkillsOrderByGroup()->get());
 
 
     }
