@@ -147,3 +147,11 @@ body {
   font-weight: bold;
 
 }
+
+#mail-table tbody tr {
+
+  &:hover {
+    cursor: pointer;
+  }
+
+}

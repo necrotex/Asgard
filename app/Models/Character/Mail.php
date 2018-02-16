@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mail extends Model
 {
     protected $table = 'character_mails';
-    protected $fillable = ['character_id', 'mail_id', 'subject', 'sender_name', 'sender_id', 'date'];
+    protected $fillable = ['character_id', 'mail_id', 'subject', 'content', 'sender_type', 'sender_name', 'sender_id', 'date'];
 
     protected $casts = [
         'date' => 'datetime'

@@ -45,7 +45,6 @@ class Mails implements ShouldQueue
 
         foreach($mailList->data as $item) {
             $mail = $api->characters($this->character->id)->mail($item->mail_id)->get();
-
             $from = $api->universe()->names()->data([$item->from])->post();
 
             $mailModel = Character\Mail::firstOrCreate(
@@ -54,10 +53,11 @@ class Mails implements ShouldQueue
                     'mail_id' => $item->mail_id
                 ],
                 [
-                    'subject' => $mail->subject,
-                    'content' => $mail->body,
+                    'subject' => strip_tags($mail->subject, '<color></color><a></a><b></b>'),
+                    'content' => strip_tags($mail->body, '<color></color><a></a><b></b><br></br>'),
 
                     'sender_name' => $from->data[0]->name,
+                    'sender_type' => $from->data[0]->category,
                     'sender_id' => $item->from,
 
                     'date' => Carbon::parse($item->timestamp),

@@ -22,7 +22,9 @@ class CreateCharacterMails extends Migration
             $table->longText('content')->nullable();
 
             $table->text('sender_name')->nullable();
+            $table->text('sender_type')->nullable();
             $table->integer('sender_id')->nullable();
+
             $table->dateTime('date')->nullable();
         });
     }

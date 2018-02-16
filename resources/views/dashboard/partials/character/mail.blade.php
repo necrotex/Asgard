@@ -12,7 +12,12 @@
 
 </div>
 
-@include('dashboard.partials.mail.modal')
+<div class="modal fade" id="mail-modal" tabindex="-1" role="dialog" aria-labelledby="mail-modal-subject" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
 
 @push('js')
     <script>
@@ -31,27 +36,24 @@
                     { data: 'subject', name: 'subject' },
                     { data: 'date', name: 'date' }
                 ]
+
             });
 
             $('#mail-table').on('click', 'tr', function(event) {
                 var data = table.row(this).data();
 
-                axios.post('{{route('character.mail', $character)}}', {id: data['mail_id']}).then(function(response) {
-                    var data = response.data.data;
+                axios.post('{{route('character.mail', [$character])}}', {id: data['mail_id']}).then(function(response) {
+                    var data = response.data;
 
                     $('#mail-modal').on('show.bs.modal', function (event) {
-
                         var modal = $(this);
-                        modal.find('#mail-modal-subject').text(data.subject);
-                        modal.find('#mail-modal-content').text(data.content);
-                        modal.find('#mail-modal-date').text(data.date);
-                        modal.find('#mail-modal-sender').text(data.sender_name);
+
+                        modal.find('.modal-content').html(data);
                     });
 
                     $('#mail-modal').modal({show: true});
                 });
             });
-
 
         });
     </script>
