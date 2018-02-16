@@ -12,6 +12,8 @@
 
 </div>
 
+@include('dashboard.partials.mail.modal')
+
 @push('js')
     <script>
         $(function() {
@@ -32,8 +34,24 @@
             });
 
             $('#mail-table').on('click', 'tr', function(event) {
-                console.log(table.row(this).data());
+                var data = table.row(this).data();
+
+                axios.post('{{route('character.mail', $character)}}', {id: data['mail_id']}).then(function(response) {
+                    var data = response.data.data;
+
+                    $('#mail-modal').on('show.bs.modal', function (event) {
+
+                        var modal = $(this);
+                        modal.find('#mail-modal-subject').text(data.subject);
+                        modal.find('#mail-modal-content').text(data.content);
+                        modal.find('#mail-modal-date').text(data.date);
+                        modal.find('#mail-modal-sender').text(data.sender_name);
+                    });
+
+                    $('#mail-modal').modal({show: true});
+                });
             });
+
 
         });
     </script>

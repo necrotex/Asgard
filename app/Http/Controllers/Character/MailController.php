@@ -2,6 +2,7 @@
 
 namespace Asgard\Http\Controllers\Character;
 
+use Asgard\Http\Resources\Ajax\MailResource;
 use Asgard\Models\Character;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
@@ -16,8 +17,8 @@ class MailController extends Controller
         return DataTables::of($character->mails())->make(true);
     }
 
-    public function mail($id)
+    public function mail(Request $request, $character)
     {
-        return view('dashboard.partials.mail.modal');
+        return new MailResource(Character\Mail::where('mail_id', '=', $request->input('id'))->first());
     }
 }

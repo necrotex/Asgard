@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'user', 'namespace' => 'Character'], function() {
         Route::any('characters/{character}/mails', 'MailController@mails')->name('character.mails');
+        Route::post('characters/{character}/mails', 'MailController@mail')->name('character.mail');
 
     });
 

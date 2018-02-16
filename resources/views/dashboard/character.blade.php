@@ -99,10 +99,6 @@
                         Skills
                     </a>
 
-                    <a class="nav-item nav-link" id="tab-history" data-toggle="tab" href="#history" role="tab"
-                       aria-controls="profile" aria-selected="false">
-                        Bookmarks
-                    </a>
                 </div>
             </nav>
 
