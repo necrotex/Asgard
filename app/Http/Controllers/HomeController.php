@@ -2,12 +2,8 @@
 
 namespace Asgard\Http\Controllers;
 
-use Asgard\Jobs\Eve\Contacts;
-use Asgard\Jobs\Eve\Mails;
-use Asgard\Jobs\Eve\Skillqueue;
-use Asgard\Jobs\Eve\Skills;
-use Asgard\Jobs\Eve\Status;
-use Asgard\Jobs\Eve\Titles;
+use Asgard\Jobs\Eve\Assets;
+
 use Asgard\Models\Character;
 
 
@@ -36,10 +32,8 @@ class HomeController extends Controller
     public function debug()
     {
         $char = Character::find(95149868);
-        dispatch_now(new Mails($char));
+        dispatch_now(new Assets($char));
 
-        dd($char->mails);
-
-
+        dd($char->assets);
     }
 }

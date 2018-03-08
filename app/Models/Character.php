@@ -3,6 +3,7 @@
 namespace Asgard\Models;
 
 use Asgard\Events\CharacterUpdateEvent;
+use Asgard\Models\Character\Asset;
 use Asgard\Models\Character\Contact;
 use Asgard\Models\Character\CorporationHistory;
 use Asgard\Models\Character\CorporationRole;
@@ -96,6 +97,11 @@ class Character extends Model
     public function mails()
     {
         return $this->hasMany(Mail::class);
+    }
+
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
     }
 
 }
