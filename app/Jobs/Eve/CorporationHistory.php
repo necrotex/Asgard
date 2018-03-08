@@ -45,7 +45,7 @@ class CorporationHistory implements ShouldQueue
         foreach($response->data as $data) {
             $corp = CorporationModel::firstOrNew(['id' => $data->corporation_id]);
 
-            if(!$corp->exists) {
+            if(!$corp->exists) { //todo: don't save them into the corporation table, just get the name etc
                 dispatch_now(new UpdateCorporationJob($data->corporation_id));
             }
 

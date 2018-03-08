@@ -23,6 +23,13 @@ class RoleAndAbilitiesSeeder extends Seeder
         // Corporations
         Ability::create(
             [
+                'name' => 'see-corporation',
+                'title' => 'See Corporations'
+            ]
+        );
+
+        Ability::create(
+            [
                 'name' => 'create-corporation',
                 'title' => 'Add Corporations'
             ]
@@ -160,11 +167,19 @@ class RoleAndAbilitiesSeeder extends Seeder
             ]
         );
 
+        Ability::create(
+            [
+                'name' => 'see-users',
+                'title' => 'Access User Profiles'
+            ]
+        );
+
 
         // assign basic abilities
 
         Bouncer::allow('admin')->to('access-everything');
 
+        Bouncer::allow('director')->to('see-corporation');
         Bouncer::allow('director')->to('create-corporation');
         Bouncer::allow('director')->to('update-corporation');
         Bouncer::allow('director')->to('delete-corporation');
@@ -178,6 +193,7 @@ class RoleAndAbilitiesSeeder extends Seeder
         Bouncer::allow('director')->to('manage-characters');
         Bouncer::allow('director')->to('manage-settings');
         Bouncer::allow('director')->to('see-audit-logs');
+        Bouncer::allow('director')->to('see-users');
 
 
         Bouncer::allow('member')->to('add-characters');

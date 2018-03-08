@@ -66,6 +66,7 @@ class Assets implements ShouldQueue
 
         $location_ids = [];
         foreach ($data as $item) {
+            // if the id is in the rage of stations
             if($item->location_id < 61000000) {
                 if($item->is_singleton === false) {
                     $packaged[] = $item;
@@ -80,6 +81,7 @@ class Assets implements ShouldQueue
         }
 
         foreach($other as $item) {
+            //if it above the range of stations
             if($item->location_id > 61000000) {
                 $ordered[$item->location_id][] = $item;
             }

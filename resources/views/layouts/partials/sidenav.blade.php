@@ -10,11 +10,13 @@
                 </a>
             </li>
 
+            @can('access', \Asgard\Models\Corporation::class)
             <li class="nav-item">
                 <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
                     <i class="fa fa-users" aria-hidden="true"></i> Corporations
                 </a>
             </li>
+            @endcan
 
             <li class="nav-item">
                 <a class="nav-link {{active('roles.index')}}" href="{{route('roles.index')}}">

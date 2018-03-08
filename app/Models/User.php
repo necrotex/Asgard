@@ -81,6 +81,15 @@ class User extends Authenticatable
         return false;
     }
 
+    public function can($ability, $arguments = [])
+    {
+        if($ret = parent::can($ability, $arguments)) {
+            return $ret;
+        }
+
+        return $this->roleCan($ability);
+    }
+
     /**
      * @return \Illuminate\Support\Collection
      */

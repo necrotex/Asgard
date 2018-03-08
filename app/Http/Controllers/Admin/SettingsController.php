@@ -15,6 +15,8 @@ class SettingsController extends Controller
      */
     public function index()
     {
+        $this->authorize('view', Setting::class);
+
         $account = Setting::get('reddit.modaccount.name');
 
         return view('dashboard.settings', compact('account'));
