@@ -10,7 +10,7 @@
                 </a>
             </li>
 
-            @can('access', \Asgard\Models\Corporation::class)
+            @can('index', \Asgard\Models\Corporation::class)
             <li class="nav-item">
                 <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
                     <i class="fa fa-users" aria-hidden="true"></i> Corporations
@@ -18,17 +18,21 @@
             </li>
             @endcan
 
-            <li class="nav-item">
-                <a class="nav-link {{active('roles.index')}}" href="{{route('roles.index')}}">
-                    <i class="fa fa-list" aria-hidden="true"></i> Roles
-                </a>
-            </li>
+            @can('index', \Silber\Bouncer\Database\Role::class)
+                <li class="nav-item">
+                    <a class="nav-link {{active('roles.index')}}" href="{{route('roles.index')}}">
+                        <i class="fa fa-list" aria-hidden="true"></i> Roles
+                    </a>
+                </li>
+            @endcan
 
-            <li class="nav-item">
-                <a class="nav-link {{active('settings.index')}}" href="{{route('settings.index')}}">
-                    <i class="fa fa-cog" aria-hidden="true"></i> Settings
-                </a>
-            </li>
+            @can('index', \Asgard\Models\Setting::class)
+                <li class="nav-item">
+                    <a class="nav-link {{active('settings.index')}}" href="{{route('settings.index')}}">
+                        <i class="fa fa-cog" aria-hidden="true"></i> Settings
+                    </a>
+                </li>
+            @endcan
 
             <li class="nav-item">
                 <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index')}}">
@@ -40,11 +44,13 @@
                 <span>External Services</span>
             </h6>
 
-            <li class="nav-item">
-                <a class="nav-link {{active('services.discord.index')}}" href="">
-                    <i class="fa fa-comment" aria-hidden="true"></i> Discord
-                </a>
-            </li>
+            @can('index', \Asgard\Models\DiscordUser::class)
+                <li class="nav-item">
+                    <a class="nav-link" href="https://discord.gg/rJmM22D">
+                        <i class="fa fa-comment" aria-hidden="true"></i> Discord
+                    </a>
+                </li>
+            @endcan
 
             <li class="nav-item">
                 <a class="nav-link {{active('services.reddit.index')}}"

@@ -12,16 +12,19 @@ use Silber\Bouncer\Database\Role;
 
 class RoleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Role::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index()
     {
-        $this->authorize('see-roles', Role::class);
-
         $roles = Role::all();
 
         return view('dashboard.roles.index', compact('roles'));
@@ -40,8 +43,9 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(Request $request)
     {

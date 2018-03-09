@@ -11,7 +11,7 @@ class CorporationPolicy
 {
     use HandlesAuthorization, SuperAdminPolicyTrait;
 
-    public function access(User $user) {
+    public function index(User $user) {
         return $user->can('see-corporation');
     }
 

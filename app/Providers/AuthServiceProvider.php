@@ -2,10 +2,14 @@
 
 namespace Asgard\Providers;
 
+use Asgard\Models\Character\Mail;
 use Asgard\Models\Corporation;
+use Asgard\Models\DiscordUser;
 use Asgard\Models\Setting;
 use Asgard\Models\User;
+use Asgard\Policies\CharacterMailPolicy;
 use Asgard\Policies\CorporationPolicy;
+use Asgard\Policies\DiscordPolicy;
 use Asgard\Policies\RolePolicy;
 use Asgard\Policies\SettingPolicy;
 use Asgard\Policies\UserPolicy;
@@ -23,8 +27,10 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         Corporation::class => CorporationPolicy::class,
-        Role::class, RolePolicy::class,
-        Setting::class, SettingPolicy::class,
+        Role::class =>  RolePolicy::class,
+        Setting::class => SettingPolicy::class,
+        Mail::class => CharacterMailPolicy::class,
+        DiscordUser::class => DiscordPolicy::class,
     ];
 
     /**

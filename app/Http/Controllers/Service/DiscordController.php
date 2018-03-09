@@ -4,6 +4,7 @@ namespace Asgard\Http\Controllers\Service;
 
 use Asgard\Jobs\Discord\Rename;
 use Asgard\Jobs\Discord\UpdateUserRolesJob;
+use Asgard\Models\DiscordRoles;
 use Asgard\Models\DiscordUser;
 use Asgard\Models\User;
 use Illuminate\Http\Request;
@@ -13,6 +14,11 @@ use Laravel\Socialite\Facades\Socialite;
 
 class DiscordController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(DiscordRoles::class);
+    }
+
     /**
      * Display a listing of the resource.
      *

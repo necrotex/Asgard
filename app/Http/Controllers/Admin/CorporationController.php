@@ -14,10 +14,13 @@ use Silber\Bouncer\Database\Role;
 class CorporationController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->authorizeResource(Corporation::class);
+    }
+
     public function index()
     {
-        $this->authorize('access', Corporation::class);
-
         $corporations = Corporation::paginate(15);
 
         return view('dashboard.corporation.index', ['corporations' => $corporations]);
@@ -32,7 +35,6 @@ class CorporationController extends Controller
      */
     public function store(Request $request, Conduit $api)
     {
-        $this->authorize('create', Corporation::class);
 
         $this->validate($request, [
             'corp_id' => 'digits:8|required'
@@ -58,13 +60,10 @@ class CorporationController extends Controller
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show($id)
     {
         $corporation = Corporation::with('roles')->findOrFail($id); // automatically go 404 if no corp was found
-
-        $this->authorize('view',$corporation);
 
         $roles = Role::all();
 
@@ -92,14 +91,11 @@ class CorporationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param Corporation $corp
      * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Request $request, Corporation $corp)
     {
-        $this->authorize('update', $corp);
-
         foreach ($corp->roles as $role)
         {
             Bouncer::retract($role)->from($corp);
