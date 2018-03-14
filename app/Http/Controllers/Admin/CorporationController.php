@@ -16,7 +16,8 @@ class CorporationController extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource(Corporation::class);
+        //$this->authorizeResource(Corporation::class);
+        //todo: fix this
     }
 
     public function index()
@@ -31,7 +32,6 @@ class CorporationController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(Request $request, Conduit $api)
     {

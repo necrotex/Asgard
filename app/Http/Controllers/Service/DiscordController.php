@@ -16,7 +16,7 @@ class DiscordController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(DiscordRoles::class);
+        $this->authorizeResource(DiscordUser::class);
     }
 
     /**

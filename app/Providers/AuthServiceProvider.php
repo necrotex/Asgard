@@ -13,7 +13,6 @@ use Asgard\Policies\DiscordPolicy;
 use Asgard\Policies\RolePolicy;
 use Asgard\Policies\SettingPolicy;
 use Asgard\Policies\UserPolicy;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Silber\Bouncer\Database\Role;
 
@@ -26,11 +25,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         User::class => UserPolicy::class,
-        Corporation::class => CorporationPolicy::class,
         Role::class =>  RolePolicy::class,
         Setting::class => SettingPolicy::class,
         Mail::class => CharacterMailPolicy::class,
         DiscordUser::class => DiscordPolicy::class,
+        Corporation::class => CorporationPolicy::class,
     ];
 
     /**
