@@ -12,10 +12,10 @@
         @foreach($character->corporationHistory as $entry)
             <tr>
                 <td>
-                    <img src="https://image.eveonline.com/Corporation/{{$entry->corporation->id}}_32.png" class="rounded-circle">
+                    <img src="https://image.eveonline.com/Corporation/{{$entry->corporation_id}}_32.png" class="rounded-circle">
 
-                    <a href="https://evewho.com/corp/{{str_replace(' ', '+', $entry->corporation->name)}}">
-                        {{$entry->corporation->name}}
+                    <a href="https://evewho.com/corp/{{str_replace(' ', '+', $entry->corporation_name)}}">
+                        {{$entry->corporation_name}}
                     </a>
                 </td>
                 <td>{{$entry->start_date->toDateTimeString()}}</td>

@@ -27,6 +27,11 @@ class CorporationPolicy
         return $user->can('see-corporation');
     }
 
+    public function show(User $user, Corporation $corporation)
+    {
+        return $user->can('see-corporation');
+    }
+
     /**
      * Determine whether the user can create corporations.
      *

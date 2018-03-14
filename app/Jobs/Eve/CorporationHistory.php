@@ -23,7 +23,7 @@ class CorporationHistory implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param Character $character
      */
     public function __construct(Character $character)
     {
@@ -33,8 +33,8 @@ class CorporationHistory implements ShouldQueue
     /**
      * Execute the job.
      *
+     * @param Conduit $api
      * @return void
-     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function handle(Conduit $api)
     {
@@ -43,11 +43,8 @@ class CorporationHistory implements ShouldQueue
         $response = $api->characters($this->character->id)->corporationhistory()->get();
 
         foreach($response->data as $data) {
-            $corp = CorporationModel::firstOrNew(['id' => $data->corporation_id]);
 
-            if(!$corp->exists) { //todo: don't save them into the corporation table, just get the name etc
-                dispatch_now(new UpdateCorporationJob($data->corporation_id));
-            }
+            $corp = $api->corporations($data->corporation_id)->get();
 
             Character\CorporationHistory::firstOrCreate(
                 [
@@ -56,6 +53,7 @@ class CorporationHistory implements ShouldQueue
                 ],
                 [
                     'corporation_id' => $data->corporation_id,
+                    'corporation_name' => $corp->name,
                     'start_date' => Carbon::parse($data->start_date),
                 ]
             );

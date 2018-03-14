@@ -6,6 +6,8 @@ use Asgard\Jobs\Eve\Contacts;
 use Asgard\Jobs\Eve\CorporationHistory;
 use Asgard\Jobs\Eve\CorporationRoles;
 use Asgard\Jobs\Eve\Fatigue;
+use Asgard\Jobs\Eve\Mails;
+use Asgard\Jobs\Eve\Skillqueue;
 use Asgard\Jobs\Eve\Skills;
 use Asgard\Jobs\Eve\Titles;
 use Asgard\Models\Character;
@@ -53,11 +55,13 @@ class UpdateCharacter extends Command
                 ->chain(
                     [
                         new Skills($character),
+                        new Skillqueue($character),
                         new CorporationHistory($character),
                         new Fatigue($character),
                         new CorporationRoles($character),
                         new Titles($character),
-                        new Contacts($character)
+                        new Contacts($character),
+                        new Mails($character)
                     ]
             );
         }

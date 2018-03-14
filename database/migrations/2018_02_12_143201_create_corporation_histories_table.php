@@ -16,6 +16,7 @@ class CreateCorporationHistoriesTable extends Migration
         Schema::create('character_corporation_histories', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('corporation_id');
+            $table->string('corporation_name');
             $table->unsignedInteger('character_id');
             $table->dateTime('start_date');
             $table->integer('record_id');

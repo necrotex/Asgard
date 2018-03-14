@@ -48,7 +48,7 @@ class CorporationController extends Controller
 
         $this->dispatchNow(new \Asgard\Jobs\Update\Corporation($request->input('corp_id'), $data));
 
-        $corp = Corporation::first(['id' => $request->input('corp_id')]);
+        $corp = Corporation::find($request->input('corp_id'));
         $corp->active = true;
         $corp->save();
 

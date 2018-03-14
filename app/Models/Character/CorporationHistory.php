@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class CorporationHistory extends Model
 {
     protected $table = 'character_corporation_histories';
-    protected $fillable = ['corporation_id', 'record_id', 'start_date', 'character_id'];
+    protected $fillable = ['corporation_id', 'record_id', 'start_date', 'character_id', 'corporation_name'];
 
     public $timestamps = false;
 
@@ -20,10 +20,5 @@ class CorporationHistory extends Model
     public function character()
     {
         return $this->belongsTo(Character::class);
-    }
-
-    public function corporation()
-    {
-        return $this->hasOne(Corporation::class, 'id', 'corporation_id');
     }
 }
