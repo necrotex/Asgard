@@ -169,5 +169,10 @@ class User extends Authenticatable
 
         return array_unique($roles);
     }
+
+    public function application()
+    {
+        return $this->hasMany(Application::class, 'user_id', 'id');
+    }
 }
 

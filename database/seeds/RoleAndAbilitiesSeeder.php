@@ -19,6 +19,9 @@ class RoleAndAbilitiesSeeder extends Seeder
         Role::create(['name' => 'ally', 'title' => 'Ally']);
         Role::create(['name' => 'friends', 'title' => 'Friend']);
 
+        Role::create(['name' => 'recruiter', 'title' => 'Recruiter']);
+        Role::create(['name' => 'recruitment-officer', 'title' => 'Recruitment Officer']);
+
 
         // Corporations
         Ability::create(
