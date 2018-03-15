@@ -1,12 +1,16 @@
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
 
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{route('home')}}">{{config('app.name')}}</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0 brand-text" href="{{route('home')}}">{{config('app.name')}}</span></a>
 
-    <form method="POST" action="{{route('search')}}" class="w-100" id="search-form">
-        {{csrf_field()}}
-        <input class="form-control form-control-dark w-100" type="text" name="term" id="search" placeholder="Search" aria-label="Search">
-    </form>
+    @if(auth()->user()->can('manage-characters'))
+        <form method="POST" action="{{route('search')}}" class="w-100" id="search-form">
+            {{csrf_field()}}
+            <input class="form-control form-control-dark w-100" type="text" name="term" id="search" placeholder="Character Search" aria-label="Search">
+        </form>
+    @else
+    <div class="w-100"></div>
+    @endif
 
 
     @if(!is_null(auth()->user()->main_character))

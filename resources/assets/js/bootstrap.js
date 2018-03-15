@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -12,6 +11,7 @@ try {
 
     require('bootstrap');
     require('tether');
+
 
 } catch (e) {}
 

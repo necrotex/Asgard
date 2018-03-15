@@ -4,10 +4,7 @@
 
 // Bootstrap
 @import "~bootstrap/dist/css/bootstrap";
-//@import "../css/charming/css/bootstrap4-charming.css";
-@import "~font-awesome/scss/font-awesome";
 @import "~select2/src/scss/core";
-//@import "~datatables.net-bs4/css/dataTables.bootstrap4";
 @import "~datatables/media/css/jquery.dataTables";
 
 body {
@@ -154,4 +151,9 @@ body {
     cursor: pointer;
   }
 
+}
+
+.brand-text {
+  letter-spacing: 10px;
+  text-align: center;
 }

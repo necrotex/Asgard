@@ -83,11 +83,20 @@ class User extends Authenticatable
 
     public function can($ability, $arguments = [])
     {
+        if($this->isSuperAdmin()) {
+            return true;
+        }
+
         if($ret = parent::can($ability, $arguments)) {
             return $ret;
         }
 
         return $this->roleCan($ability);
+    }
+
+    public function isSuperAdmin()
+    {
+        return parent::can('access-everything') || $this->roleCan('access-everything');
     }
 
     /**

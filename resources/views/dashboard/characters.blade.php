@@ -22,7 +22,7 @@
                            </div>
 
                             <div class="col-md-10">
-                                <h4>{{$character->name}}</h4>
+                                <h4><a href="{{route('characters.show', $character->id)}}">{{$character->name}}</a></h4>
                                 <span class="small text-muted">Last updated at: {{$character->updated_at}}</span>
 
                             </div>
@@ -32,7 +32,7 @@
                                     {{csrf_field()}}
 
                                 <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-remove" aria-hidden="true"></i>
+                                    <i class="fas fa-times" aria-hidden="true"></i>
                                 </button>
 
                                 </form>
