@@ -11,7 +11,7 @@ try {
 
     require('bootstrap');
     require('tether');
-
+    require('jquery-ui');
 
 } catch (e) {}
 
