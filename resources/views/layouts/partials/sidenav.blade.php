@@ -51,6 +51,12 @@
                 </li>
             @endcan
 
+            <li class="nav-item">
+                <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
+                    <i class="fab fa-wpforms" aria-hidden="true"></i> Application Forms
+                </a>
+            </li>
+
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>External Services</span>

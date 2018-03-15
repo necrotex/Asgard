@@ -55,6 +55,9 @@ Route::group(['middleware' => ['auth']], function () {
 
         //Settings
         Route::get('/settings', 'SettingsController@index')->name('settings.index');
+
+        //Settings
+        Route::get('/settings', 'SettingsController@index')->name('settings.index');
     });
 
     // character
@@ -73,6 +76,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'user', 'namespace' => 'Character'], function() {
         Route::any('characters/{character}/mails', 'MailController@mails')->name('character.mails');
         Route::post('characters/{character}/mails', 'MailController@mail')->name('character.mail');
+
+    });
+
+    Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function() {
+        //Forms
+        Route::get('/forms', 'FormController@index')->name('forms.index');
+        Route::get('/forms/{form}', 'FormController@show')->name('forms.show');
+        Route::get('/forms/create', 'FormController@create')->name('forms.create');
+        Route::post('/forms/store', 'FormController@store')->name('forms.store');
+
 
     });
 

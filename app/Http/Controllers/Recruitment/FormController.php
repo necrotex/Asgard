@@ -2,6 +2,9 @@
 
 namespace Asgard\Http\Controllers\Recruitment;
 
+use Asgard\Http\Requests\NewApplicationFormRequest;
+use Asgard\Models\ApplicationForm;
+use Asgard\Models\Corporation;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 
@@ -14,7 +17,9 @@ class FormController extends Controller
      */
     public function index()
     {
-        //
+        $forms = ApplicationForm::all();
+
+        return view('dashboard.forms.index', compact('forms'));
     }
 
     /**
@@ -24,29 +29,33 @@ class FormController extends Controller
      */
     public function create()
     {
-        //
+        $corporations = Corporation::all();
+
+        return view('dashboard.forms.create', compact('corporations'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param NewApplicationFormRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(NewApplicationFormRequest $request)
     {
-        //
+        $form = ApplicationForm::create($request->all());
+
+        return redirect()->route('forms.show', $form);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ApplicationForm $form
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(ApplicationForm $form)
     {
-        //
+        return view('dashboard.forms.show', compact('form'));
     }
 
     /**

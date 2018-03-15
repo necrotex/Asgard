@@ -16,6 +16,9 @@ class CreateApplicationFormsTable extends Migration
         Schema::create('application_forms', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('corporation_id');
+            $table->text('name');
+            $table->longText('description');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
