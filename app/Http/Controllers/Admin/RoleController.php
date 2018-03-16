@@ -114,10 +114,10 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @param Role $role
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Request $request, Role $role)
     {
-
         $this->authorize('update', $role);
 
         $this->validate($request, ['title' => 'required']);

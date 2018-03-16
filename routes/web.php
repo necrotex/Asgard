@@ -82,10 +82,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function() {
         //Forms
         Route::get('/forms', 'FormController@index')->name('forms.index');
-        Route::get('/forms/{form}', 'FormController@show')->name('forms.show');
         Route::get('/forms/create', 'FormController@create')->name('forms.create');
-        Route::post('/forms/store', 'FormController@store')->name('forms.store');
+        Route::get('/forms/{form}', 'FormController@show')->name('forms.show');
+        Route::get('/forms/{form}/edit', 'FormController@edit')->name('forms.edit');
 
+        Route::post('/forms/store', 'FormController@store')->name('forms.store');
+        Route::post('/forms/{form}/update', 'FormController@update')->name('forms.update');
+        Route::post('/forms/{form}/question/store', 'QuestionController@store')->name('question.store');
+        Route::get('/forms/question/{question}', 'QuestionController@edit')->name('question.edit');
+        Route::post('/forms/question/{question}/update', 'QuestionController@update')->name('question.update');
 
     });
 

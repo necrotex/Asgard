@@ -12,4 +12,9 @@ class ApplicationForm extends Model
     {
         return $this->belongsTo(Corporation::class);
     }
+
+    public function questions()
+    {
+        return $this->hasMany(ApplicationFormQuestion::class, 'application_form_id', 'id');
+    }
 }

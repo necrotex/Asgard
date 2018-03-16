@@ -37,5 +37,8 @@ $input-color-placeholder: lighten($text-color, 30%);
 // Panels
 $panel-default-heading-bg: #fff;
 
+$btn-padding-x-xs:  .20rem !default;
+$btn-padding-y-xs:  .12rem !default;
+$input-btn-line-height-xs: 1.1 !default;
 
 $fa-font-path:   "../../../public/fonts/vendor/font-awesome/";

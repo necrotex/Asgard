@@ -4,6 +4,7 @@ namespace Asgard\Http\Controllers\Recruitment;
 
 use Asgard\Http\Requests\NewApplicationFormRequest;
 use Asgard\Models\ApplicationForm;
+use Asgard\Models\ApplicationFormQuestion;
 use Asgard\Models\Corporation;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
@@ -61,24 +62,36 @@ class FormController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ApplicationForm $form
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(ApplicationForm $form)
     {
-        //
+        return view('dashboard.forms.edit', compact('form'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param ApplicationForm $form
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ApplicationForm $form)
     {
-        //
+        $form->name = $request->input('name');
+        $form->description = $request->input('description');
+        $form->save();
+
+        if($request->has('sort_order')) {
+            $order = explode(',', $request->input('sort_order'));
+
+            foreach($order as $key => $id) {
+                ApplicationFormQuestion::where('id', '=', $id)->update(['order' => $key]);
+            }
+        }
+
+        return redirect()->route('forms.show', $form);
     }
 
     /**

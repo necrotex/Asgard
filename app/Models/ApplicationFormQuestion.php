@@ -8,8 +8,8 @@ class ApplicationFormQuestion extends Model
 {
     protected $fillable = ['application_form_id', 'question','required','description','order'];
 
-    public function application()
+    public function form()
     {
-        $this->belongsTo(ApplicationForm::class, 'application_form_id', 'id');
+        return $this->belongsTo(ApplicationForm::class, 'application_form_id', 'id');
     }
 }
