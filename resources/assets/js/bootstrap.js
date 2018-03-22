@@ -18,6 +18,9 @@ try {
 
 require('select2');
 
+window.Vue = require('vue');
+require('vue-resource');
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -56,3 +59,16 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+// timerboard dependencies
+window.moment = require("moment");
+import flatpickr from "flatpickr";
+window.clipboard = require("clipboard");
+
+Vue.filter('two_digits', function (value) {
+    if(value.toString().length <= 1)
+    {
+        return "0"+value.toString();
+    }
+    return value.toString();
+});

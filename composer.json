@@ -15,7 +15,7 @@
         "laravel/tinker": "~1.0",
         "league/oauth2-client": "^2.3",
         "madewithlove/illuminate-psr-cache-bridge": "^1.0",
-        "nullx27/conduit": "*",
+        "nullx27/conduit": "*@dev",
         "predis/predis": "^1.1",
         "restcord/restcord": "^0.1.4",
         "rtheunissen/oauth2-reddit": "^2.0",
@@ -24,7 +24,8 @@
         "socialiteproviders/reddit": "^3.0",
         "softonic/guzzle-oauth2-middleware": "^1.1",
         "watson/active": "^2.0",
-        "yajra/laravel-datatables-oracle": "~8.0"
+        "yajra/laravel-datatables-oracle": "~8.0",
+        "vinkla/hashids": "3.3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",

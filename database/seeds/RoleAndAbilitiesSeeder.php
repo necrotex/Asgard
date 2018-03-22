@@ -177,6 +177,20 @@ class RoleAndAbilitiesSeeder extends Seeder
             ]
         );
 
+        // Timerboard
+        Ability::create(
+            [
+                'name' => 'timer-view',
+                'title' => 'View Timerboard'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'timer-override',
+                'title' => 'Access all timers, even private'
+            ]
+        );
 
         // assign basic abilities
 
@@ -197,6 +211,7 @@ class RoleAndAbilitiesSeeder extends Seeder
         Bouncer::allow('director')->to('manage-settings');
         Bouncer::allow('director')->to('see-audit-logs');
         Bouncer::allow('director')->to('see-users');
+        Bouncer::allow('director')->to('timer-override');
 
 
         Bouncer::allow('member')->to('add-characters');
@@ -204,6 +219,7 @@ class RoleAndAbilitiesSeeder extends Seeder
         Bouncer::allow('member')->to('delete-characters');
         Bouncer::allow('member')->to('access-subreddit');
         Bouncer::allow('member')->to('access-discord');
+        Bouncer::allow('member')->to('timer-view');
 
         Bouncer::allow('ally')->to('access-discord');
         Bouncer::allow('ally')->to('add-characters');

@@ -8,6 +8,9 @@
 @import "~datatables/media/css/jquery.dataTables";
 @import "~jquery-ui-dist/jquery-ui";
 
+//flatpickr
+@import "~flatpickr/dist/flatpickr.css";
+
 body {
   font-size: .875rem;
 }
@@ -168,4 +171,151 @@ body {
   font-size  : .875rem;
   line-height  : .5;
   border-radius : .2rem;
+}
+
+// Time picker
+.timepicker {
+  width: 60px !important;
+}
+
+.flatpickr-calendar {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flatpickr-input {
+  text-align: center;
+}
+
+.timepicker-group {
+  height: 80px;
+  width: 60px;
+  float: left;
+  margin-left: 15px;
+}
+
+.center-timepicker-group {
+  display: inline-block;
+}
+
+#countdowntime {
+  padding: 20px;
+}
+
+.submit {
+  margin-top: 10px;
+}
+
+.tab-pane > form {
+  background: #fff;
+}
+
+#date {
+  min-height: 350px;
+  padding: 30px;
+}
+
+.timepicker-form {
+  text-align: center;
+}
+
+.countdown {
+  width: 50%;
+  margin: 0 auto;
+  display: inline;
+}
+
+.block {
+  display: block;
+  margin-right: 5px;
+  float: left;
+  text-align: center;
+}
+
+.digit {
+  color:$brand-primary;
+  font-size: 23px;
+  width: 43px;
+  margin-bottom: 0;
+}
+
+.text {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.icon-vertical-align {
+  padding-right: 0.75rem;
+  padding-bottom: 0;
+  padding-top: 0;
+  padding-left: 0;
+}
+
+.created {
+  width:100%;
+  display:block;
+  padding:10px;
+}
+
+// Checkbox ios style
+.custom-control{
+
+  &.ios-switch{
+    --color: #4cd964;
+    padding-left: 0;
+    text-align: center;
+
+    .ios-switch-control-input{
+      display: none;
+
+      &:active~.ios-switch-control-indicator{
+        &::after{
+          width: 20px;
+        }
+      }
+
+      &:checked{
+        ~.ios-switch-control-indicator{
+          border: 10px solid var(--color);
+
+          &::after{
+            top: -8px;
+            left: 12px;
+          }
+        }
+
+        &:active~.ios-switch-control-indicator{
+          &::after{
+            left: 0px;
+          }
+        }
+      }
+    }
+    .ios-switch-control-indicator{
+      display: inline-block;
+      position: relative;
+      margin: 0 10px;
+      top: 4px;
+      width: 40px;
+      height: 20px;
+      background: #fff;
+      border-radius: 16px;
+      transition: .3s;
+      border: 2px solid #ddd;
+
+      &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 16px;
+        transition: .3s;
+        top: 0px;
+        left: 0px;
+        background: #fff;
+        box-shadow: 0 0 2px #aaa, 0 2px 5px #999;
+      }
+    }
+  }
 }

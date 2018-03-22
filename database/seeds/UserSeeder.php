@@ -16,5 +16,11 @@ class UserSeeder extends Seeder
         $user->email = "necrotex@gmail.com";
         $user->password = bcrypt('test');
         $user->save();
+
+        $user = new \Asgard\Models\User();
+        $user->name = "Admin";
+        $user->email = "crowdedhd@gmail.com";
+        $user->password = bcrypt('test');
+        $user->save();
     }
 }
