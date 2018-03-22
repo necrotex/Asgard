@@ -45,13 +45,13 @@
                 </li>
             @endcan
 
-            @can('index', \Asgard\Models\Corporation::class)
+
                 <li class="nav-item">
                     <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
                         <i class="fas fa-users" aria-hidden="true"></i> Corporations
                     </a>
                 </li>
-            @endcan
+
 
             <li class="nav-item">
                 <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
