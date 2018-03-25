@@ -100,7 +100,7 @@ class TimerboardController extends Controller
         $roles = $user->getAssociatedRoles();
 
         $realId = Hashids::decode($id)[0];
-        $timer = Timer::findOrFail($realId);
+        $timer = Timer::withTrashed()->findOrFail($realId);
 
         return view('timerboard.single')->with('timer', $timer);
     }

@@ -3,7 +3,9 @@
 @section('PAGE_TITLE', 'ASGARD :: ' . 'Timerboard')
 @section('CONTENT_TITLE', 'Timerboard')
 @section('content')
-
+    @php
+        $user = Auth::user();
+    @endphp
     <div class="row">
 
         <div class="col-md-10">
@@ -19,23 +21,31 @@
                             <th>Limited to</th>
                             <th>Target</th>
                             <th>Countdown</th>
-                            <th></th>
-                            <th></th>
+                            @if ($timer->trashed() == false)
+                                <th></th>
+                                <th></th>
+                            @endif
                         </tr>
                         </thead>
                         <tbody id="TimerStaticTable">
+                        @php
+                            $forGroup = $timer->forGroup();
+                        @endphp
                             <tr>
                                 <td class="align-middle">
                                     <span>{{$timer->title}}</span>
                                     <i class="btn fas fa-link icon-vertical-align copyhash pull-right" data-id="{{$timer->id}}"></i>
                                 </td>
                                 <td class="align-middle">{{$timer->owner()->mainCharacter()->first()->name}}</td>
-                                <td class="align-middle">{{$timer->forGroup() == null ? "" : $timer->forGroup()->name}}</td>
+                                <td class="align-middle">{{$forGroup == null ? "" : $forGroup->name}}</td>
                                 <td class="align-middle">{{$timer->target}}</td>
                                 <td class="align-middle"><countdown date="{{$timer->target}}"></countdown></td>
-                                {{--todo if owner or admin/director, then edit is allowed/shown --}}
-                                <td class="align-middle"><a href="{{route('timerboard.edit', $timer->id)}}" class="btn btn-sm btn-warning">edit</a></td>
-                                <td class="align-middle"><a href="{{route('timerboard.delete', $timer->id)}}" class="btn btn-sm btn-danger">delete</a></td>
+
+                                @if (($user->can('timer-override') or $timer->owner()->id == $user->id) and $timer->trashed() == false)
+                                    <td class="align-middle"><a href="{{route('timerboard.edit', $timer->id)}}" class="btn btn-sm btn-warning">edit</a></td>
+                                    <td class="align-middle"><a href="{{route('timerboard.delete', $timer->id)}}" class="btn btn-sm btn-danger">delete</a></td>
+                                @endif
+
                             </tr>
                         </tbody>
                     </table>

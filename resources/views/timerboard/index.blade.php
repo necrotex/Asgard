@@ -41,7 +41,7 @@
                                 <td class="align-middle">{{$forGroup == null ? "" : ucfirst($forGroup->name)}} {{$timer->private == true ? "Private" : ""}}</td>
                                 <td class="align-middle">{{$timer->target}}</td>
                                 <td class="align-middle"><countdown date="{{$timer->target}}"></countdown></td>
-                                {{--todo if owner or admin/director, then edit is allowed/shown --}}
+
                                 @if ($user->can('timer-override') || $timer->owner()->id == $user->id)
                                     <td class="align-middle"><button type="button" class="btn btn-sm btn-warning" data-timer="{{$timer}}" data-toggle="modal" data-target="#editTimerModal">Edit</button></td>
                                     <td class="align-middle"><button type="button" class="btn btn-sm btn-danger" data-timer="{{$timer}}" data-owner="{{$ownerName}}" data-toggle="modal" data-target="#deleteTimerModal">Delete</button></td>
