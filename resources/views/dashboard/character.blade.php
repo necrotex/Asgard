@@ -38,10 +38,6 @@
                     <h4 class="card-title">{{$character->name}}</h4>
                     <p class="card-text">{{$character->corporation->name}}</p>
 
-                    <p>
-
-                    </p>
-
                     <p class="card-text text-muted">
                         {{$character->location->solarSystem->solarSystemName}}
                         <br>
@@ -77,6 +73,11 @@
                     <a class="nav-item nav-link" id="tab-contacts" data-toggle="tab" href="#contacts" role="tab"
                        aria-controls="contacts" aria-selected="false">
                         Contacts
+                    </a>
+
+                    <a class="nav-item nav-link" id="tab-history" data-toggle="tab" href="#journal" role="tab"
+                       aria-controls="journal" aria-selected="false">
+                        Journal
                     </a>
 
                     <a class="nav-item nav-link" id="tab-history" data-toggle="tab" href="#history" role="tab"
@@ -121,6 +122,10 @@
 
                 <div class="tab-pane fade" id="mail" role="tabpanel" aria-labelledby="mail">
                     @include('dashboard.partials.character.mail')
+                </div>
+
+                <div class="tab-pane fade" id="journal" role="tabpanel" aria-labelledby="journal">
+                    @include('dashboard.partials.character.journal')
                 </div>
 
             </div>
