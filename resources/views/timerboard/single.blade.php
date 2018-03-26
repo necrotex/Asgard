@@ -8,7 +8,7 @@
     @endphp
     <div class="row">
 
-        <div class="col-md-10">
+        <div class="col-md-12">
 
             <div class="card">
                 <div class="card-body">
@@ -16,7 +16,8 @@
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
-                            <th>Title</th>
+                            <th class="w-25">Title</th>
+                            <th></th>
                             <th>Created by</th>
                             <th>Limited to</th>
                             <th>Target</th>
@@ -34,7 +35,9 @@
                             <tr>
                                 <td class="align-middle">
                                     <span>{{$timer->title}}</span>
-                                    <i class="btn fas fa-link icon-vertical-align copyhash pull-right" data-id="{{$timer->id}}"></i>
+                                </td>
+                                <td class="align-middle">
+                                    <i class="btn fas fa-link icon-vertical-align copyhash pull-right" data-content="Link Copied" data-clipboard-text="{{url("/") . "/timerboard/timer/" . Hashids::encode($timer->id)}}"></i>
                                 </td>
                                 <td class="align-middle">{{$timer->owner()->mainCharacter()->first()->name}}</td>
                                 <td class="align-middle">{{$forGroup == null ? "" : $forGroup->name}}</td>

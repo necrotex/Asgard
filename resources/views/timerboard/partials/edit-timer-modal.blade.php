@@ -16,7 +16,7 @@
 
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane show fade" id="editcountdowntime">
-                            <form class="form-horizontal timepicker-form" method="post" action="{{route('timerboard.edit', $timer->id)}}">
+                            <form class="form-horizontal timepicker-form" method="post" action="{{route('timerboard.edit', 0000)}}">
                                 {{ csrf_field() }}
                                 <div class="center-timepicker-group">
                                     <div class="form-group timepicker-group">
@@ -69,7 +69,7 @@
                             </form>
                         </div>
                         <div role="tabpanel" class="tab-pane active show fade" id="editdate">
-                            <form method="post" action="{{route('timerboard.edit', $timer->id)}}" novalidate>
+                            <form method="post" action="{{route('timerboard.edit', 0000)}}" novalidate>
                                 {{ csrf_field() }}
 
                                 <input class="flatpickr form-control editTime" name="datetime" type="text" required="required">

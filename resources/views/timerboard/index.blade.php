@@ -16,7 +16,8 @@
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
-                            <th>Title</th>
+                            <th class="w-25">Title</th>
+                            <th></th>
                             <th>Created by</th>
                             <th>Limited to</th>
                             <th>Target</th>
@@ -35,6 +36,8 @@
                             <tr>
                                 <td class="align-middle">
                                     <span>{{$timer->title}}</span>
+                                </td>
+                                <td class="align-middle">
                                     <i class="btn fas fa-link icon-vertical-align copyhash pull-right" data-content="Link Copied" data-clipboard-text="{{url("/") . "/timerboard/timer/" . Hashids::encode($timer->id)}}"></i>
                                 </td>
                                 <td class="align-middle">{{$ownerName}}</td>
