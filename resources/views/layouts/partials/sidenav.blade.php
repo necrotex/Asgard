@@ -3,7 +3,6 @@
 
         <ul class="nav flex-column">
 
-
             <li class="nav-item">
                 <a class="nav-link {{active('home')}}" href="{{route('home')}}">
                     <i class="fas fa-home" aria-hidden="true"></i> Home
@@ -15,15 +14,6 @@
                     <i class="fas fa-user" aria-hidden="true"></i> Characters
                 </a>
             </li>
-
-            @if (auth()->user()->can('timer-view'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('timerboard.index')}}">
-                    <i class="fas fa-clock" aria-hidden="true"></i> Timerboard
-                </a>
-            </li>
-            @endif
-
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Admin</span>
@@ -46,12 +36,24 @@
             @endcan
 
 
+            <li class="nav-item">
+                <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
+                    <i class="fas fa-users" aria-hidden="true"></i> Corporations
+                </a>
+            </li>
+
+
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Tools</span>
+            </h6>
+            @if (auth()->user()->can('timer-view'))
                 <li class="nav-item">
-                    <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
-                        <i class="fas fa-users" aria-hidden="true"></i> Corporations
+                    <a class="nav-link" href="{{route('timerboard.index')}}">
+                        <i class="fas fa-clock" aria-hidden="true"></i> Timerboard
                     </a>
                 </li>
-
+            @endif
 
             <li class="nav-item">
                 <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
