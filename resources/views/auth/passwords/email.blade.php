@@ -2,10 +2,18 @@
 
 @section('content')
 
-    <div class="card card-container">
 
+    <div class="logo-container">
         <img id="profile-img" class="profile-img-card" src="/img/logo.png"/>
-        <p id="profile-name" class="profile-name-card">Reset Password</p>
+
+        <h1 class="text-center hero">Friendly Probes
+            <small class="auth">Auth</small>
+        </h1>
+    </div>
+
+
+    <div class="card card-container">
+        <p id="profile-name" class="text-center">Reset Password</p>
 
         @if (session('status'))
             <div class="alert alert-success">

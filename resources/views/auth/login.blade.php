@@ -2,12 +2,15 @@
 
 @section('content')
 
-    <div class="card card-container">
-
+    <div class="logo-container">
         <img id="profile-img" class="profile-img-card" src="/img/logo.png"/>
 
-        <h3 class="text-center">Frienldy Probes</h3>
-        <h3 class="text-center">Auth</h3>
+        <h1 class="text-center hero">Friendly Probes
+            <small class="auth">Auth</small>
+        </h1>
+    </div>
+
+    <div class="card card-container">
 
         <form class="form-signin" method="post" action="{{ route('login') }}">
             {{ csrf_field() }}
@@ -45,7 +48,7 @@
                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                 </label>
             </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
         </form><!-- /form -->
         <a href="{{ route('password.request') }}" class="forgot-password text-center">
             Forgot the password?

@@ -4,6 +4,8 @@
 // Bootstrap
 @import "~bootstrap/dist/css/bootstrap";
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
+
 /*
  * Specific styles of signin component
  */
@@ -11,14 +13,16 @@
  * General styles
  */
 body, html {
-  background-image: url("/img/login_background.jpg");
+  background-image: url("/img/background.jpg");
   background-repeat: no-repeat;
   background-position: center;
+
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .card-container.card {
   max-width: 350px;
-  padding: 40px 40px;
+  padding: 20px 20px;
 }
 
 .btn {
@@ -46,7 +50,6 @@ body, html {
   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  opacity: 0.9;
 
   border-radius: 10px;
 }
@@ -136,7 +139,7 @@ body, html {
 .btn.btn-signin:hover,
 .btn.btn-signin:active,
 .btn.btn-signin:focus {
-  background-color: rgb(12, 97, 33);
+  background-color: darken(rgb(104, 145, 162), 10);
 }
 
 .forgot-password {
@@ -146,5 +149,29 @@ body, html {
 .forgot-password:hover,
 .forgot-password:active,
 .forgot-password:focus{
-  color: rgb(12, 97, 33);
+  color: darken(rgb(104, 145, 162), 20);
+}
+
+.hero {
+  font-weight: 100 !important;
+  font-size: 5em;
+  align-self: center;
+  color: #f3f3f3;
+  font-family:"Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  display: flex;
+  flex-direction: row;
+  margin:0;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth {
+  font-weight: 300 !important;
+  font-size: 0.4em;
+  align-self: flex-end;
+  margin: 0;
+}
+
+.logo-container {
+  margin-top: 50px;
 }

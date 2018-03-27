@@ -3,11 +3,17 @@
 
 @section('content')
 
+    <div class="logo-container">
+        <img id="profile-img" class="profile-img-card" src="/img/logo.png"/>
+
+        <h1 class="text-center hero">Friendly Probes
+            <small class="auth">Auth</small>
+        </h1>
+    </div>
+
     <div class="card card-container">
 
-        <img id="profile-img" class="profile-img-card" src="/img/logo.png"/>
-        <p id="profile-name" class="profile-name-card">Register</p>
-
+        <p id="profile-name" class="text-center">Register</p>
 
         <form class="form-horizontal" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
