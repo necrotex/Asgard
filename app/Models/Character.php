@@ -16,6 +16,7 @@ use Asgard\Models\Character\Skillpoints;
 use Asgard\Models\Character\Skillqueue;
 use Asgard\Models\Character\Status;
 use Asgard\Models\Character\Title;
+use Asgard\Models\Character\Transaction;
 use Asgard\Models\Character\Wallet;
 use Illuminate\Database\Eloquent\Model;
 
@@ -116,6 +117,10 @@ class Character extends Model
         return $this->hasMany(Journal::class);
     }
 
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 
 
 }
