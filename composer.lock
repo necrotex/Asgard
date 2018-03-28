@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "0397ce4d19c089a87a41e496ccf23a31",
+    "content-hash": "b903a73334ccd90b72b2c296dda1330a",
     "packages": [
         {
             "name": "cache/adapter-common",
@@ -2450,17 +2449,12 @@
         },
         {
             "name": "nullx27/conduit",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nullx27/conduit.git",
-                "reference": "316232d80237957f6f968ea14d5cc0fd51c4a7de"
-            },
+            "version": "1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nullx27/conduit/zipball/316232d80237957f6f968ea14d5cc0fd51c4a7de",
-                "reference": "316232d80237957f6f968ea14d5cc0fd51c4a7de",
-                "shasum": ""
+                "type": "path",
+                "url": "/home/apeiffer/sdk/conduit",
+                "reference": "019a3b28e7ce6c8e9ccbebafe1dac2b1833f6c01",
+                "shasum": null
             },
             "require": {
                 "cache/array-adapter": "^0.5.0",
@@ -2481,7 +2475,6 @@
                     "Conduit\\Tests\\": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2498,8 +2491,7 @@
                 "eve-online",
                 "lib",
                 "php"
-            ],
-            "time": "2018-03-19T12:55:15+00:00"
+            ]
         },
         {
             "name": "paragonie/random_compat",
@@ -4356,13 +4348,6 @@
                 "templating"
             ],
             "time": "2018-03-20T04:31:17+00:00"
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 923c5dd... fixed edit functionality
         },
         {
             "name": "vinkla/hashids",
@@ -4436,11 +4421,6 @@
                 "youtube"
             ],
             "time": "2017-09-02T21:55:08+00:00"
-<<<<<<< HEAD
->>>>>>> 6a9cb5f... added front and backend. Working on hash links to single timers
-=======
->>>>>>> 923c5dd... fixed edit functionality
->>>>>>> added front and backend. Working on hash links to single timers
         },
         {
             "name": "vlucas/phpdotenv",

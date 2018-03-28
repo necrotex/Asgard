@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call('asgard:clean:reddit')->hourly();
-        $schedule->call('asgard:clean:timerboard')->everyMinute();
+        //$schedule->call('asgard:clean:timerboard')->everyMinute(); //@todo
 
         $schedule->call('asgard:discord:fetch-roles')->daily();
 

@@ -1,11 +1,12 @@
 <div class="mt-3">
 
-    <table class="table table-striped" id="journal-table">
+    <table class="table table-striped" id="transactions-table">
         <thead>
         <tr>
             <th scope="col">Date</th>
             <th scope="col">Type</th>
             <th scope="col">Amount</th>
+            <th scope="col">Price</th>
         </tr>
         </thead>
     </table>
@@ -24,20 +25,20 @@
         $(document).ready(function(){
             $(function() {
 
-                var table = $('#journal-table').DataTable({
+                var table = $('#transactions-table').DataTable({
                     processing: true,
                     serverSide: true,
                     select: {
                         items: 'row'
                     },
                     autoWidth: false,
-                    ajax: '{!! route('character.journal', $character) !!}',
+                    ajax: '{!! route('character.transactions', $character) !!}',
                     columns: [
                         { data: 'date', name: 'date' },
-                        { data: 'ref_type', name: 'ref_type' },
-                        { data: 'amount', name: 'amount' }
+                        { data: 'type_id', name: 'type_id' },
+                        { data: 'quantity', name: 'quantity' },
+                        { data: 'unit_price', name: 'unit_price' }
                     ]
-
                 });
             });
         });

@@ -6,17 +6,18 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
+
 try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
     require('tether');
     require('jquery-ui');
+    require('select2');
+    require('imports-loader?define=>false!datatables.net')(window, window.jQuery);
+    require('imports-loader?define=>false!datatables.net-bs4')(window, window.jQuery);
 
 } catch (e) {}
-
-
-require('select2');
 
 window.Vue = require('vue');
 require('vue-resource');

@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+let webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -16,16 +17,33 @@ mix.webpackConfig({
         alias: {
             'jquery-ui': 'jquery-ui-dist/jquery-ui.js'
         }
-    }
-});
+    },
 
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        }),
 
-mix
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                loaders: [{
+                    test: /datatables\.net.*/,
+                    loader: 'imports?define=>false'
+                }]
+            }
+        })
+    ]
+
+})
     .autoload({
         jquery: ['$', 'window.jQuery']
     })
 
+    .extract(['jquery'])
+
     .js('resources/assets/js/app.js', 'public/js')
 
     .sass('resources/assets/sass/app.scss', 'public/css')
-   .sass('resources/assets/sass/login.scss', 'public/css');
+    .sass('resources/assets/sass/login.scss', 'public/css');

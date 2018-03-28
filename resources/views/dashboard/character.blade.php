@@ -80,8 +80,8 @@
                         Journal
                     </a>
 
-                    <a class="nav-item nav-link" id="tab-history" data-toggle="tab" href="#history" role="tab"
-                       aria-controls="profile" aria-selected="false">
+                    <a class="nav-item nav-link" id="tab-transactions" data-toggle="tab" href="#transactions" role="tab"
+                       aria-controls="transactions" aria-selected="false">
                         Transactions
                     </a>
 
@@ -128,12 +128,12 @@
                     @include('dashboard.partials.character.journal')
                 </div>
 
+                <div class="tab-pane fade" id="transactions" role="tabpanel" aria-labelledby="journal">
+                    @include('dashboard.partials.character.transactions')
+                </div>
+
             </div>
         </div>
     </div>
 
 @endsection
-
-@push('js')
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-@endpush

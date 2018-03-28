@@ -16,6 +16,18 @@
             </div>
         </div>
 
+        <div class="card mt-3">
+            <div class="card-header">
+                Wallet
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-5">ISK</dt>
+                    <dd class="col-sm-7">{{ number_format($character->wallet->last()->amount, 2) }}</dd>
+                </dl>
+            </div>
+        </div>
+
     </div>
 
     <div class="col-5">

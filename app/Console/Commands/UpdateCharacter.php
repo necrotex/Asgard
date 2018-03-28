@@ -2,14 +2,18 @@
 
 namespace Asgard\Console\Commands;
 
+use Asgard\Jobs\Eve\Assets;
 use Asgard\Jobs\Eve\Contacts;
 use Asgard\Jobs\Eve\CorporationHistory;
 use Asgard\Jobs\Eve\CorporationRoles;
 use Asgard\Jobs\Eve\Fatigue;
+use Asgard\Jobs\Eve\Journal;
 use Asgard\Jobs\Eve\Mails;
 use Asgard\Jobs\Eve\Skillqueue;
 use Asgard\Jobs\Eve\Skills;
 use Asgard\Jobs\Eve\Titles;
+use Asgard\Jobs\Eve\Transactions;
+use Asgard\Jobs\Eve\Wallet;
 use Asgard\Models\Character;
 use Asgard\Jobs\Update\Character as UpdateCharacterJob;
 use Illuminate\Console\Command;
@@ -61,7 +65,11 @@ class UpdateCharacter extends Command
                         new CorporationRoles($character),
                         new Titles($character),
                         new Contacts($character),
-                        new Mails($character)
+                        new Assets($character),
+                        new Mails($character),
+                        new Wallet($character),
+                        new Journal($character),
+                        new Transactions($character),
                     ]
             );
         }

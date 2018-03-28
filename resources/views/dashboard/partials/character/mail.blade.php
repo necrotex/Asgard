@@ -21,40 +21,42 @@
 
 @push('js')
     <script>
-        $(function() {
+        $(document).ready(function(){
+            $(function() {
 
-            var table = $('#mail-table').DataTable({
-                processing: true,
-                serverSide: true,
-                select: {
-                    items: 'row'
-                },
-                autoWidth: false,
-                ajax: '{!! route('character.mails', $character) !!}',
-                columns: [
-                    { data: 'sender_name', name: 'sender_name' },
-                    { data: 'subject', name: 'subject' },
-                    { data: 'date', name: 'date' }
-                ]
+                var table = $('#mail-table').dataTable({
+                    processing: true,
+                    serverSide: true,
+                    select: {
+                        items: 'row'
+                    },
+                    autoWidth: false,
+                    ajax: '{!! route('character.mails', $character) !!}',
+                    columns: [
+                        { data: 'sender_name', name: 'sender_name' },
+                        { data: 'subject', name: 'subject' },
+                        { data: 'date', name: 'date' }
+                    ]
 
-            });
-
-            $('#mail-table').on('click', 'tr', function(event) {
-                var data = table.row(this).data();
-
-                axios.post('{{route('character.mail', [$character])}}', {id: data['mail_id']}).then(function(response) {
-                    var data = response.data;
-
-                    $('#mail-modal').on('show.bs.modal', function (event) {
-                        var modal = $(this);
-
-                        modal.find('.modal-content').html(data);
-                    });
-
-                    $('#mail-modal').modal({show: true});
                 });
-            });
 
+                $('#mail-table').on('click', 'tr', function(event) {
+                    var data = table.row(this).data();
+
+                    axios.post('{{route('character.mail', [$character])}}', {id: data['mail_id']}).then(function(response) {
+                        var data = response.data;
+
+                        $('#mail-modal').on('show.bs.modal', function (event) {
+                            var modal = $(this);
+
+                            modal.find('.modal-content').html(data);
+                        });
+
+                        $('#mail-modal').modal({show: true});
+                    });
+                });
+
+            });
         });
     </script>
 @endpush

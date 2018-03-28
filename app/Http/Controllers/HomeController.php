@@ -5,6 +5,7 @@ namespace Asgard\Http\Controllers;
 use Asgard\Jobs\Eve\Assets;
 
 use Asgard\Jobs\Eve\Journal;
+use Asgard\Jobs\Eve\Transactions;
 use Asgard\Jobs\Eve\Wallet;
 use Asgard\Models\Character;
 
@@ -34,9 +35,7 @@ class HomeController extends Controller
     public function debug()
     {
         $char = Character::find(95149868);
-        dispatch_now(new Journal($char));
 
-        dd($char->journal);
-
+        dd($char->wallet);
     }
 }

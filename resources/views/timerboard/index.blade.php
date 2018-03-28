@@ -72,6 +72,11 @@
 
     @push('js')
         <script>
+
+            const app = new Vue({
+                el: '#TimerStaticTable'
+            });
+
             // For adding new Timer
             $('#select-tab a').click(function (e) {
                 e.preventDefault();
