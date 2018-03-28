@@ -4,6 +4,7 @@ namespace Asgard\Jobs\Eve;
 
 use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
+use Carbon\Carbon;
 use Conduit\Conduit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -38,14 +39,45 @@ class Journal implements ShouldQueue
      */
     public function handle(Conduit $api)
     {
+        $lastId = $this->character->journal()->orderBy('date', 'DESC')->first();
+
         $api->setAuthentication($this->getAuthentication($this->character));
 
         $result = $api->characters($this->character->id)
             ->wallet()
             ->journal()
-            ->query(['from_id' => 15222647422])
             ->get();
 
-        dd($result->data);
+        foreach ($result->data as $entry) {
+
+            $extraInfo = data_get($entry, 'extra_info', null);
+
+            $extraInfoCompiled = [];
+
+            if (!is_null($extraInfo)) {
+                foreach ($extraInfo as $k => $v) {
+                    $extraInfoCompiled['extra_' . $k] = $v;
+                }
+            }
+
+            $data = [
+                'character_id' => $this->character->id,
+                'date' => Carbon::parse(data_get($entry, 'date', null)),
+                'ref_type' => data_get($entry, 'ref_type', null),
+                'first_party_id' => data_get($entry, 'first_party_id', null),
+                'first_party_type' => data_get($entry, 'first_party_type', null),
+                'second_party_id' => data_get($entry, 'second_party_id', null),
+                'second_party_type' => data_get($entry, 'second_party_type', null),
+                'amount' => data_get($entry, 'amount', null),
+                'balance' => data_get($entry, 'balance', null),
+                'reason' => data_get($entry, 'reason', null),
+                'tax_receiver_id' => data_get($entry, 'tax_receiver_id', null),
+                'tax' => data_get($entry, 'tax', null)
+            ];
+
+            $data = array_merge($data, $extraInfoCompiled);
+
+            Character\Journal::firstOrCreate(['ref_id' => data_get($entry, 'ref_id', null)], $data);
+        }
     }
 }

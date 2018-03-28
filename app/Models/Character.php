@@ -8,6 +8,7 @@ use Asgard\Models\Character\Contact;
 use Asgard\Models\Character\CorporationHistory;
 use Asgard\Models\Character\CorporationRole;
 use Asgard\Models\Character\Fatigue;
+use Asgard\Models\Character\Journal;
 use Asgard\Models\Character\Location;
 use Asgard\Models\Character\Mail;
 use Asgard\Models\Character\Skill;
@@ -15,6 +16,7 @@ use Asgard\Models\Character\Skillpoints;
 use Asgard\Models\Character\Skillqueue;
 use Asgard\Models\Character\Status;
 use Asgard\Models\Character\Title;
+use Asgard\Models\Character\Wallet;
 use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
@@ -103,5 +105,17 @@ class Character extends Model
     {
         return $this->hasMany(Asset::class);
     }
+
+    public function wallet()
+    {
+        return $this->hasMany(Wallet::class);
+    }
+
+    public function journal()
+    {
+        return $this->hasMany(Journal::class);
+    }
+
+
 
 }
