@@ -23,7 +23,8 @@ mix.webpackConfig({
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
-            "window.jQuery": "jquery"
+            "window.jQuery": "jquery",
+            clipboard: "clipboard",
         }),
 
         new webpack.LoaderOptionsPlugin({

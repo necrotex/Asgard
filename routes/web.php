@@ -13,6 +13,11 @@
 
 
 Auth::routes();
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/invite/{invite}', 'Recruitment\InviteController@setupApplication')
+    ->name('applications.invite.landing');
+
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -80,7 +85,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::any('characters/{character}/journal', 'JournalController@entries')->name('character.journal');
         Route::any('characters/{character}/transactions', 'TransactionsController@entries')->name('character.transactions');
 
-
     });
 
     Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function() {
@@ -95,6 +99,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/forms/{form}/question/store', 'QuestionController@store')->name('question.store');
         Route::get('/forms/question/{question}', 'QuestionController@edit')->name('question.edit');
         Route::post('/forms/question/{question}/update', 'QuestionController@update')->name('question.update');
+
+        //Applications
+        Route::get('/applications', 'ApplicationController@index')->name('applications.index');
+
+        Route::get('/applications/invite/forms', 'InviteController@forms')->name('applications.invite.forms');
+        Route::post('/applications/invite/code', 'InviteController@inviteCode')->name('applications.invite.code');
+
 
     });
 

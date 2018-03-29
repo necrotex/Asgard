@@ -15,6 +15,14 @@
                 </a>
             </li>
 
+            @if (auth()->user()->can('timer-view'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('timerboard.index')}}">
+                        <i class="fas fa-clock" aria-hidden="true"></i> Timerboard
+                    </a>
+                </li>
+            @endif
+
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Admin</span>
             </h6>
@@ -35,29 +43,31 @@
                 </li>
             @endcan
 
-
             <li class="nav-item">
                 <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
                     <i class="fas fa-users" aria-hidden="true"></i> Corporations
                 </a>
             </li>
 
-
-
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Tools</span>
+                <span>Recruitment</span>
             </h6>
-            @if (auth()->user()->can('timer-view'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('timerboard.index')}}">
-                        <i class="fas fa-clock" aria-hidden="true"></i> Timerboard
-                    </a>
-                </li>
-            @endif
 
             <li class="nav-item">
                 <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
                     <i class="fab fa-wpforms" aria-hidden="true"></i> Application Forms
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{active('applications.index')}}" href="{{route('applications.index')}}">
+                    <i class="fas fa-user-plus" aria-hidden="true"></i> Applications
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
+                    <i class="fas fa-question-circle" aria-hidden="true"></i> Knowledge Base
                 </a>
             </li>
 

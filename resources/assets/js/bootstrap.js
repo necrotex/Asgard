@@ -17,6 +17,12 @@ try {
     require('imports-loader?define=>false!datatables.net')(window, window.jQuery);
     require('imports-loader?define=>false!datatables.net-bs4')(window, window.jQuery);
 
+    window.Chart = require('chart.js');
+    window.clipboard = require("clipboard");
+    window.moment = require("moment");
+
+
+
 } catch (e) {}
 
 window.Vue = require('vue');
@@ -62,9 +68,7 @@ if (token) {
 // });
 
 // timerboard dependencies
-window.moment = require("moment");
 import flatpickr from "flatpickr";
-window.clipboard = require("clipboard");
 
 Vue.filter('two_digits', function (value) {
     if(value.toString().length <= 1)
