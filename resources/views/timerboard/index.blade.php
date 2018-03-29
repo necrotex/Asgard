@@ -8,7 +8,7 @@
     @endphp
     <div class="row">
 
-        <div class="col-md-10">
+        <div class="col-md-12">
 
             <div class="card">
                 <div class="card-body">
@@ -57,116 +57,117 @@
             </div>
 
         </div>
-
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createNewTimerModal">
-                New Timer
-            </button>
-
-        </div>
     </div>
 
     @include('timerboard.partials.new-timer-modal')
     @include('timerboard.partials.delete-timer-modal')
     @include('timerboard.partials.edit-timer-modal')
 
-    @push('js')
-        <script>
-
-            const app = new Vue({
-                el: '#TimerStaticTable'
-            });
-
-            // For adding new Timer
-            $('#select-tab a').click(function (e) {
-                e.preventDefault();
-                $(this).tab('show')
-            });
-
-
-            new flatpickr(".flatpickr", {
-                enableTime: true,
-                enableSeconds: true,
-                inline: true,
-                clickOpens: false,
-                time_24hr: true,
-                minDate: 'today',
-                defaultDate: moment().utc().format(),
-                utc: true,
-                shorthandCurrentMonth: true,
-            });
-
-            // listener for copy link
-            cb = new clipboard('.copyhash');
-
-            cb.on('success', function(e) {
-
-                // show notification to user that link is copied
-                $(e.trigger).popover("show");
-                // hide notification after 1,5s
-                setTimeout(
-                    function() {
-                        $(e.trigger).popover("hide");
-                    }, 1500);
-            });
-
-            // Populate modal with correct data
-            $('#deleteTimerModal').on('show.bs.modal', function (event) {
-                // Button that triggered the modal
-                let button = $(event.relatedTarget);
-
-                // Extract info from data-* attributes
-                let timer = button.data('timer');
-                let owner = button.data('owner');
-
-                let deleteInfo = "'" + timer.title + "'" + "made by '" + owner + "'";
-
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                let modal = $(this);
-                modal.find('.modal-body input').val(deleteInfo);
-
-                // get delete button and the path, for override of correct ID
-                let deleteBtn = modal.find('.modal-footer #deleteBtn');
-                let deletePath = deleteBtn.attr('href');
-
-                // replace last digits with the new id
-                deletePath = deletePath.replace(/(\d)$/,timer.id);
-
-                // set new path
-                deleteBtn.attr('href', deletePath);
-            });
-
-            $('#editTimerModal').on('show.bs.modal', function (event) {
-                // Button that triggered the modal
-                let button = $(event.relatedTarget);
-
-                // Extract info from data-* attributes
-                let timer = button.data('timer');
-
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                let modal = $(this);
-
-                // get delete button and the path, for override of correct ID
-                modal.find('.modal-body form').attr('action', function() {
-
-                    let path = $(this).attr('action');
-
-                    path = path.replace(/(\d)$/,timer.id);
-
-                    return path;
-                });
-
-                //set current data
-                modal.find('.modal-body form').each(function() {
-                    const fp = document.querySelector(".editTime")._flatpickr;
-                    fp.setDate(timer.target, true);
-
-                    $(this).find('.editTitle').val(timer.title);
-                    $(this).find('.editGroup').val(timer.forGroup);
-                    $(this).find('.editPrivate').prop('checked', timer.private)
-                });
-            });
-        </script>
-    @endpush
-
 @endsection
+
+@section('button-bar')
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#createNewTimerModal">New Timer</button>
+        </div>
+    </div>
+@endsection
+
+@push('js')
+    <script>
+
+        const app = new Vue({
+            el: '#TimerStaticTable'
+        });
+
+        // For adding new Timer
+        $('#select-tab a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show')
+        });
+
+
+        new flatpickr(".flatpickr", {
+            enableTime: true,
+            enableSeconds: true,
+            inline: true,
+            clickOpens: false,
+            time_24hr: true,
+            minDate: 'today',
+            defaultDate: moment().utc().format(),
+            utc: true,
+            shorthandCurrentMonth: true,
+        });
+
+        // listener for copy link
+        cb = new clipboard('.copyhash');
+
+        cb.on('success', function(e) {
+
+            // show notification to user that link is copied
+            $(e.trigger).popover("show");
+            // hide notification after 1,5s
+            setTimeout(
+                function() {
+                    $(e.trigger).popover("hide");
+                }, 1500);
+        });
+
+        // Populate modal with correct data
+        $('#deleteTimerModal').on('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            let button = $(event.relatedTarget);
+
+            // Extract info from data-* attributes
+            let timer = button.data('timer');
+            let owner = button.data('owner');
+
+            let deleteInfo = "'" + timer.title + "'" + "made by '" + owner + "'";
+
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            let modal = $(this);
+            modal.find('.modal-body input').val(deleteInfo);
+
+            // get delete button and the path, for override of correct ID
+            let deleteBtn = modal.find('.modal-footer #deleteBtn');
+            let deletePath = deleteBtn.attr('href');
+
+            // replace last digits with the new id
+            deletePath = deletePath.replace(/(\d)$/,timer.id);
+
+            // set new path
+            deleteBtn.attr('href', deletePath);
+        });
+
+        $('#editTimerModal').on('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            let button = $(event.relatedTarget);
+
+            // Extract info from data-* attributes
+            let timer = button.data('timer');
+
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            let modal = $(this);
+
+            // get delete button and the path, for override of correct ID
+            modal.find('.modal-body form').attr('action', function() {
+
+                let path = $(this).attr('action');
+
+                path = path.replace(/(\d)$/,timer.id);
+
+                return path;
+            });
+
+            //set current data
+            modal.find('.modal-body form').each(function() {
+                const fp = document.querySelector(".editTime")._flatpickr;
+                fp.setDate(timer.target, true);
+
+                $(this).find('.editTitle').val(timer.title);
+                $(this).find('.editGroup').val(timer.forGroup);
+                $(this).find('.editPrivate').prop('checked', timer.private)
+            });
+        });
+    </script>
+@endpush

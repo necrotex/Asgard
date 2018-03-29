@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-8">
+    <div class="col-10">
         <div class="card">
             <div class="card-header">
                 Abilities
@@ -21,7 +21,7 @@
     </div>
 
     <div class="col-2">
-        <div class="card">
+        <div class="card ">
             <div class="card-header">
                 Add Ability
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Asgard;
+namespace Asgard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

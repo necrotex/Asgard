@@ -21,7 +21,7 @@ class TimerboardController extends Controller
         //Get all timers where group matches or ownership, or just not private
         if ($user->can('timer-override')) {
             //Get all timers
-            $timers = Timer::all()->get();
+            $timers = Timer::all();
         } else {
             //Get timers based on permission
             $timers = Timer::where('ownerId', $user->id)

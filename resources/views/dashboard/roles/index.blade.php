@@ -6,7 +6,7 @@
 @section('content')
     <div class="row">
 
-        <div class="col-md-10">
+        <div class="col-md-12">
 
             <div class="card">
                 <div class="card-body">
@@ -35,14 +35,15 @@
             </div>
 
         </div>
-
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createNewRoleModal">
-                New Role
-            </button>
-
-        </div>
     </div>
 
     @include('dashboard.partials.roles.new-role-modal')
+@endsection
+
+@section('button-bar')
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#createNewRoleModal">New Role</button>
+        </div>
+    </div>
 @endsection

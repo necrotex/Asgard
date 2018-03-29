@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" readonly id="code" data-clipboard-text="">
+                    <input type="text" class="form-control form-control-sm" readonly id="code" data-clipboard-text="">
 
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="copy"

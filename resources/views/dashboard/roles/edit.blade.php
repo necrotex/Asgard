@@ -8,14 +8,14 @@
         <div class="row">
             {{csrf_field()}}
 
-            <div class="col-md-8">
+            <div class="col-md-10">
                 Name
                 <input type="text" value="{{$role->title}}" name="title" class="form-control">
             </div>
 
             <div class="col-md-2">
 
-                <div class="card">
+                <div class="card mb-2">
                     <div class="card-header">
                         Assign Discord Role
                     </div>

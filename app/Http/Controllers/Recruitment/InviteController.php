@@ -2,8 +2,7 @@
 
 namespace Asgard\Http\Controllers\Recruitment;
 
-use Asgard\ApplicationInvite;
-use Asgard\Http\Resources\Ajax\ApplicationFormCollectionResource;
+use Asgard\Models\ApplicationInvite;
 use Asgard\Models\ApplicationForm;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
