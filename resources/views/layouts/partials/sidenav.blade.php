@@ -66,6 +66,12 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link {{active('applications.create')}}" href="{{route('applications.create')}}">
+                    <i class="fas fa-user-plus" aria-hidden="true"></i> Apply
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
                     <i class="fas fa-question-circle" aria-hidden="true"></i> Knowledge Base
                 </a>

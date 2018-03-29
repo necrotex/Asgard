@@ -106,6 +106,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/applications/invite/forms', 'InviteController@forms')->name('applications.invite.forms');
         Route::post('/applications/invite/code', 'InviteController@inviteCode')->name('applications.invite.code');
 
+        Route::get('/apply', 'ApplicationFormController@create')->name('applications.create');
 
     });
 

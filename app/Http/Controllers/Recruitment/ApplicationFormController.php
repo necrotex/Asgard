@@ -2,12 +2,15 @@
 
 namespace Asgard\Http\Controllers\Recruitment;
 
+use Asgard\Models\ApplicationForm;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 
 class ApplicationFormController extends Controller
 {
-    public function show() {
+    public function create() {
+        $form = ApplicationForm::find(1);
 
+        return view('dashboard.recruitment.application-form', compact('form'));
     }
 }
