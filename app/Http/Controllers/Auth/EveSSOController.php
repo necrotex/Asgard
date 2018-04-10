@@ -2,6 +2,7 @@
 
 namespace Asgard\Http\Controllers\Auth;
 
+use Asgard\Jobs\Update\InitialCharacterSetup;
 use Asgard\Models\Character;
 use Asgard\Models\Token;
 use Exception;
@@ -30,8 +31,6 @@ class EveSSOController extends Controller
     {
         try {
             $this->user = Socialite::driver('eveonline')->stateless()->user();
-
-
             $character_data = $this->get_character();
 
             $character = Character::firstOrNew(['id' => $this->user->id]);
@@ -43,9 +42,11 @@ class EveSSOController extends Controller
 
             Auth::user()->characters()->save($character);
 
+            $this->dispatch(new InitialCharacterSetup($character))->onQueue('high');
+
         } // ignore model not found exceptions
-        catch (ModelNotFoundException $e) {
-        } catch (Exception $exception) {
+        catch (ModelNotFoundException $e) {}
+        catch (Exception $exception) {
             dd($exception);
         } finally {
             // always redirect
