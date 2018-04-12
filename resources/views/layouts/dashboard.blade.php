@@ -9,7 +9,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('PAGE_TITLE', 'C0RE :: ASGARD')</title>
+    <title>{{config('app.name')}} :: @yield('PAGE_TITLE', '')</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{mix('css/app.css')}}" rel="stylesheet">

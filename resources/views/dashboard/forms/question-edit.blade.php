@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('PAGE_TITLE', 'ASGARD :: Question Edit')
+@section('PAGE_TITLE', 'Question Edit')
 @section('CONTENT_TITLE', 'Question: Edit')
 
 @section('content')

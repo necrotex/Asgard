@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('PAGE_TITLE', 'ASGARD :: Applications')
+@section('PAGE_TITLE', 'Applications')
 @section('CONTENT_TITLE', 'Applications')
 
 @section('button-bar')

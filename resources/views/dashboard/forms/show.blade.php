@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('PAGE_TITLE', 'ASGARD :: Application Form')
+@section('PAGE_TITLE', 'Application Form')
 @section('CONTENT_TITLE', 'Application Form: ' . $form->name)
 
 @section('content')

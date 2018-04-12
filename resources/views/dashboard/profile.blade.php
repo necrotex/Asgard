@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('PAGE_TITLE', 'ASGARD :: PROFILE')
+@section('PAGE_TITLE', 'PROFILE')
 @section('CONTENT_TITLE', 'Profile')
 
 @section('content')

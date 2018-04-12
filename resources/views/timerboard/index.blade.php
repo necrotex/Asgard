@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('PAGE_TITLE', 'ASGARD :: ' . 'Timerboard')
+@section('PAGE_TITLE', '' . 'Timerboard')
 @section('CONTENT_TITLE', 'Timerboard')
 @section('content')
     @php

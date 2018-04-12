@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('PAGE_TITLE', 'ASGARD :: ROLES')
+@section('PAGE_TITLE', 'ROLES')
 @section('CONTENT_TITLE', 'Roles - Edit ' . $role->title)
 
 @section('content')

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('PAGE_TITLE', 'ASGARD :: CORPORATION')
+@section('PAGE_TITLE', 'CORPORATION')
 @section('CONTENT_TITLE', 'Corporation - ' . $corporation->ticker)
 
 @section('content')

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('PAGE_TITLE', 'ASGARD :: SEARCH')
+@section('PAGE_TITLE', 'SEARCH')
 @section('CONTENT_TITLE', 'Search - ' . $term)
 
 @section('content')
