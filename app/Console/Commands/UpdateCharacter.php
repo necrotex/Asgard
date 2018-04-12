@@ -2,18 +2,18 @@
 
 namespace Asgard\Console\Commands;
 
-use Asgard\Jobs\Eve\Assets;
-use Asgard\Jobs\Eve\Contacts;
-use Asgard\Jobs\Eve\CorporationHistory;
-use Asgard\Jobs\Eve\CorporationRoles;
-use Asgard\Jobs\Eve\Fatigue;
-use Asgard\Jobs\Eve\Journal;
-use Asgard\Jobs\Eve\Mails;
-use Asgard\Jobs\Eve\Skillqueue;
-use Asgard\Jobs\Eve\Skills;
-use Asgard\Jobs\Eve\Titles;
-use Asgard\Jobs\Eve\Transactions;
-use Asgard\Jobs\Eve\Wallet;
+use Asgard\Jobs\Eve\Character\Assets;
+use Asgard\Jobs\Eve\Character\Contacts;
+use Asgard\Jobs\Eve\Character\CorporationHistory;
+use Asgard\Jobs\Eve\Character\CorporationRoles;
+use Asgard\Jobs\Eve\Character\Fatigue;
+use Asgard\Jobs\Eve\Character\Journal;
+use Asgard\Jobs\Eve\Character\Mails;
+use Asgard\Jobs\Eve\Character\Skillqueue;
+use Asgard\Jobs\Eve\Character\Skills;
+use Asgard\Jobs\Eve\Character\Titles;
+use Asgard\Jobs\Eve\Character\Transactions;
+use Asgard\Jobs\Eve\Character\Wallet;
 use Asgard\Models\Character;
 use Asgard\Jobs\Update\Character as UpdateCharacterJob;
 use Illuminate\Console\Command;
@@ -55,23 +55,19 @@ class UpdateCharacter extends Command
         $characters = Character::where('active', true)->get();
 
         foreach($characters as $character) {
-            dispatch(new UpdateCharacterJob($character))
-                ->chain(
-                    [
-                        new Skills($character),
-                        new Skillqueue($character),
-                        new CorporationHistory($character),
-                        new Fatigue($character),
-                        new CorporationRoles($character),
-                        new Titles($character),
-                        new Contacts($character),
-                        new Assets($character),
-                        new Mails($character),
-                        new Wallet($character),
-                        new Journal($character),
-                        new Transactions($character),
-                    ]
-            );
+            UpdateCharacterJob::dispatch($character)->allOnQueue('low');
+            Skills::dispatch($character)->allOnQueue('low');
+            Skillqueue::dispatch($character)->allOnQueue('low');
+            CorporationHistory::dispatch($character)->allOnQueue('low');
+            Fatigue::dispatch($character)->allOnQueue('low');
+            CorporationRoles::dispatch($character)->allOnQueue('low');
+            Titles::dispatch($character)->allOnQueue('low');
+            Contacts::dispatch($character)->allOnQueue('low');
+            Assets::dispatch($character)->allOnQueue('low');
+            Mails::dispatch($character)->allOnQueue('low');
+            Wallet::dispatch($character)->allOnQueue('low');
+            Journal::dispatch($character)->allOnQueue('low');
+            Transactions::dispatch($character)->allOnQueue('low');
         }
     }
 }

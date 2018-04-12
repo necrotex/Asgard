@@ -48,7 +48,6 @@ class CleanupRedditCommand extends Command
             $result = RedditUser::where('nickname', '=', $submitter->name)->get();
 
             if($result->isEmpty()) {
-
                 dispatch(new RemoveApprovedSubmitterJob($submitter->name));
             }
         }

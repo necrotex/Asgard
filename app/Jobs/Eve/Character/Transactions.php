@@ -1,35 +1,16 @@
 <?php
 
-namespace Asgard\Jobs\Eve;
+namespace Asgard\Jobs\Eve\Character;
 
 use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
 use Carbon\Carbon;
 use Conduit\Conduit;
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
 
-class Transactions implements ShouldQueue
+
+class Transactions extends CharacterUpdateJob
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ConduitAuthTrait;
-
-    /**
-     * @var Character
-     */
-    public $character;
-
-    /**
-     * Create a new job instance.
-     *
-     * @param Character $character
-     */
-    public function __construct(Character $character)
-    {
-        $this->character = $character;
-    }
+    use ConduitAuthTrait;
 
     /**
      * Execute the job.
@@ -40,7 +21,6 @@ class Transactions implements ShouldQueue
     public function handle(Conduit $api)
     {
         $api->setAuthentication($this->getAuthentication($this->character));
-
         $result = $api->characters($this->character->id)->wallet()->transactions()->get();
 
         foreach ($result->data as $entry) {

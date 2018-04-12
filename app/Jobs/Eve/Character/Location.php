@@ -1,31 +1,15 @@
 <?php
 
-namespace Asgard\Jobs\Eve;
+namespace Asgard\Jobs\Eve\Character;
 
 use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
 use Conduit\Conduit;
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
 
-class Location implements ShouldQueue
+
+class Location extends CharacterUpdateJob
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ConduitAuthTrait;
-
-    public $character;
-
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct(Character $character)
-    {
-        $this->character = $character;
-    }
+    use ConduitAuthTrait;
 
     /**
      * Execute the job.

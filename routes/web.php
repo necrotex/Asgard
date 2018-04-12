@@ -12,7 +12,12 @@
 */
 
 
-Auth::routes();
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/login/sso', 'Auth\EveSSOController@siteLogin')->name('sso.site-login');
+Route::get('/eve/callback', 'Auth\EveSSOController@handle_callback')->name('sso.callback');
+
+
+
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/invite/{invite}', 'Recruitment\InviteController@setupApplication')
@@ -34,7 +39,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['namespace' => 'Auth'], function() {
         Route::get('/account/add', 'EveSSOController@login')->name('sso.login');
-        Route::get('/eve/callback', 'EveSSOController@handle_callback')->name('sso.callback');
     });
 
     // admin
@@ -78,7 +82,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
-    Route::group(['prefix' => 'user', 'namespace' => 'Character'], function() {
+    Route::group(['prefix' => 'user', 'namespace' => 'Character', 'middleware' => 'finished-account'], function() {
         Route::any('characters/{character}/mails', 'MailController@mails')->name('character.mails');
         Route::post('characters/{character}/mails', 'MailController@mail')->name('character.mail');
 
@@ -87,7 +91,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
-    Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function() {
+    Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment', 'middleware' => 'finished-account'], function() {
         //Forms
         Route::get('/forms', 'FormController@index')->name('forms.index');
         Route::get('/forms/create', 'FormController@create')->name('forms.create');
@@ -139,11 +143,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/reddit/debug', 'RedditController@runner')->name('services.reddit.runner');
         Route::get('/reddit/redirect/modaccount', 'RedditController@moderatorAccountRedirect')->name('services.reddit.redirect_modaccount');
     });
-
-
-
-
-
 
 });
 

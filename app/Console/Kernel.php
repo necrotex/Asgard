@@ -24,15 +24,26 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call('asgard:clean:reddit')->hourly();
-        //$schedule->call('asgard:clean:timerboard')->everyMinute(); //@todo
+        //run jobs except during downtime
+        $schedule->command('asgard:update:location')
+            ->everyMinute()
+            ->unlessBetween('11:00', '11:30');
 
-        $schedule->call('asgard:discord:fetch-roles')->daily();
+        $schedule->command('asgard:update:status')
+            ->everyMinute()
+            ->unlessBetween('11:00', '11:30');
 
-        $schedule->call('asgard:update:character')->everyThirtyMinutes();
+        $schedule->command('asgard:update:character')
+            ->everyThirtyMinutes()
+            //->withoutOverlapping(60) //@todo: enable again
+            ->unlessBetween('11:00', '11:30');
 
-        $schedule->call('asgard:update:location')->everyTenMinutes();
-        $schedule->call('asgard:update:status')->everyFiveMinutes();
+
+
+        //$schedule->command('asgard:clean:reddit')->hourly(); //@todo
+        //$schedule->command('asgard:clean:timerboard')->everyMinute(); //@todo
+        //$schedule->command('asgard:discord:fetch-roles')->daily(); //@todo
+
     }
 
     /**

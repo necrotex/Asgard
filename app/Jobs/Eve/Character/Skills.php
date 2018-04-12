@@ -1,31 +1,14 @@
 <?php
 
-namespace Asgard\Jobs\Eve;
+namespace Asgard\Jobs\Eve\Character;
 
 use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
 use Conduit\Conduit;
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
 
-class Skills implements ShouldQueue
+class Skills extends CharacterUpdateJob
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ConduitAuthTrait;
-
-    public $character;
-
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct(Character $character)
-    {
-        $this->character = $character;
-    }
+    use ConduitAuthTrait;
 
     /**
      * Execute the job.
@@ -36,7 +19,6 @@ class Skills implements ShouldQueue
     public function handle(Conduit $api)
     {
         $api->setAuthentication($this->getAuthentication($this->character));
-
         $response = $api->characters($this->character->id)->skills()->get();
 
         Character\Skillpoints::updateOrCreate(
@@ -50,6 +32,7 @@ class Skills implements ShouldQueue
         );
 
         $skillIds = [];
+
         foreach ($response->skills as $skill) {
             Character\Skill::updateOrCreate(
                 [
@@ -66,9 +49,7 @@ class Skills implements ShouldQueue
             $skillIds[] = $skill->skill_id;
         }
 
-
         //remove extracted skills
         Character\Skill::where('character_id', '=', $this->character->id)->whereNotIn('skill_id', $skillIds)->delete();
-
     }
 }

@@ -4,9 +4,12 @@ namespace Asgard\Http\Controllers;
 
 use Asgard\Jobs\Eve\Assets;
 
+use Asgard\Jobs\Eve\Character\Location;
+use Asgard\Jobs\Eve\Character\Status;
 use Asgard\Jobs\Eve\Journal;
 use Asgard\Jobs\Eve\Transactions;
 use Asgard\Jobs\Eve\Wallet;
+use Asgard\Jobs\Update\InitialCharacterSetup;
 use Asgard\Models\Character;
 
 
@@ -35,7 +38,10 @@ class HomeController extends Controller
     public function debug()
     {
         $char = Character::find(95149868);
+        //dd($char->status->online);
 
-        dd($char->wallet);
+        dispatch_now(new Status($char));
+
+
     }
 }

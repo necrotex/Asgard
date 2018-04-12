@@ -14,9 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         //todo: remove this after development
         $this->call(RoleAndAbilitiesSeeder::class);
-        $this->call(UserSeeder::class);
 
-        //Abilities
-        //$this->call(Settings::class);
     }
 }

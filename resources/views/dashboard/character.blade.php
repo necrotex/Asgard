@@ -36,7 +36,7 @@
                 <div class="card-body text-center">
 
                     <h4 class="card-title">{{$character->name}}</h4>
-                    <p class="card-text">{{$character->corporation->name}}</p>
+                    <p class="card-text">{{$character->corporation_id}}</p>
 
                     <p class="card-text text-muted">
                         {{$character->location->solarSystem->solarSystemName}}

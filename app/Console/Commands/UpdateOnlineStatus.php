@@ -2,7 +2,7 @@
 
 namespace Asgard\Console\Commands;
 
-use Asgard\Jobs\Eve\Status;
+use Asgard\Jobs\Eve\Character\Status;
 use Asgard\Models\User;
 use Illuminate\Console\Command;
 
@@ -43,7 +43,7 @@ class UpdateOnlineStatus extends Command
 
         foreach($users as $user) {
             foreach($user->characters as $character) {
-                dispatch(new Status($character));
+                dispatch(new Status($character))->onQueue('low');
             }
         }
     }

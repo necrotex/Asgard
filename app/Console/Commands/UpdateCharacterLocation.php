@@ -2,7 +2,7 @@
 
 namespace Asgard\Console\Commands;
 
-use Asgard\Jobs\Eve\Location;
+use Asgard\Jobs\Eve\Character\Location;
 use Asgard\Models\User;
 use Illuminate\Console\Command;
 
@@ -44,7 +44,7 @@ class UpdateCharacterLocation extends Command
         foreach($users as $user) {
             foreach($user->characters as $character) {
 
-                dispatch(new Location($character));
+                dispatch(new Location($character))->onQueue('low');
             }
         }
     }

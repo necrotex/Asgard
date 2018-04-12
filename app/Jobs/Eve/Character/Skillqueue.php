@@ -1,45 +1,29 @@
 <?php
 
-namespace Asgard\Jobs\Eve;
+namespace Asgard\Jobs\Eve\Character;
 
 use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
 use Carbon\Carbon;
 use Conduit\Conduit;
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
 
 /**
  * @property  character
  */
-class Skillqueue implements ShouldQueue
+class Skillqueue extends CharacterUpdateJob
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ConduitAuthTrait;
-    protected $character;
-
-    /**
-     * Create a new job instance.
-     *
-     * @param Character $character
-     */
-    public function __construct(Character $character)
-    {
-        $this->character = $character;
-    }
+    use ConduitAuthTrait;
 
     /**
      * Execute the job.
      *
      * @param Conduit $api
      * @return void
+     * @throws \Exception
      */
     public function handle(Conduit $api)
     {
         $api->setAuthentication($this->getAuthentication($this->character));
-
         $response = $api->characters($this->character->id)->skillqueue()->get();
 
         //completely remove skillqueue for the character for each update
@@ -58,11 +42,9 @@ class Skillqueue implements ShouldQueue
                 $item['finish_date'] = Carbon::parse($item['finish_date']);
             }
 
-
             $data[] = $item;
         }
 
         Character\Skillqueue::insert($data);
-
     }
 }

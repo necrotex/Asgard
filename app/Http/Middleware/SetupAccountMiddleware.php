@@ -23,7 +23,9 @@ class SetupAccountMiddleware
         }
 
         if(!Auth::user()->main_character) {
-            flash('Please select your main character!')->important()->warning();
+            $message = "Please select your <a href=" . route('profile.show', Auth::user()) . ">main character!</a>";
+
+            flash($message)->important()->warning();
 
             return redirect()->route('profile.show', Auth::user()->id);
         }

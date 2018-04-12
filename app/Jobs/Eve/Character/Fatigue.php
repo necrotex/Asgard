@@ -1,32 +1,16 @@
 <?php
 
-namespace Asgard\Jobs\Eve;
+namespace Asgard\Jobs\Eve\Character;
 
+use Asgard\Jobs\Eve\Character\CharacterUpdateJob;
 use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
 use Carbon\Carbon;
 use Conduit\Conduit;
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
 
-class Fatigue implements ShouldQueue
+class Fatigue extends CharacterUpdateJob
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ConduitAuthTrait;
-
-    public $character;
-
-    /**
-     * Create a new job instance.
-     *
-     * @param Character $character
-     */
-    public function __construct(Character $character)
-    {
-        $this->character = $character;
-    }
+    use ConduitAuthTrait;
 
     /**
      * Execute the job.
@@ -37,7 +21,6 @@ class Fatigue implements ShouldQueue
     public function handle(Conduit $api)
     {
         $api->setAuthentication($this->getAuthentication($this->character));
-
         $response = $api->characters($this->character->id)->fatigue()->get();
 
         $last_jump_date = ($response->get('last_jump_date', false)) ? Carbon::parse($response->get('last_jump_date')) : null;
