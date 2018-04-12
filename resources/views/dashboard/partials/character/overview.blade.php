@@ -34,8 +34,12 @@
 
         <div class="card">
             <div class="card-header">
-                Skillqueue <span
-                        class="small text-muted pull-right">Ends {{$character->skillqueue->last()->finish_date}}</span>
+                Skillqueue
+                @if(!is_null($character->skillqueue->last()->finish_date))
+                     <span class="small text-muted pull-right">Ends {{$character->skillqueue->last()->finish_date}}</span>
+                @else
+                    <span class="small text-muted pull-right">No skill in training</span>
+                @endif
             </div>
 
             <div class="card-body">
@@ -44,12 +48,19 @@
                     @foreach($character->skillqueue as $skill)
                         @php
                             $start = 0;
-                            $end = $skill->finish_date->diffInSeconds($skill->start_date);
-                            $current = \Carbon\Carbon::now()->diffInSeconds($skill->start_date);
-                            $percent = (100/$end) * $current;
+                            $end = 0;
+                            $current = 0;
+                            $percent = 0;
+
+                            if(!is_null($skill->start_date)) {
+                                $end = $skill->finish_date->diffInSeconds($skill->start_date);
+                                $current = \Carbon\Carbon::now()->diffInSeconds($skill->start_date);
+                                $percent = (100/$end) * $current;
+                            }
+
                         @endphp
 
-                        @if($loop->first)
+                        @if($loop->first && !is_null($skill->start_date) && !is_null($skill->finish_date))
                             <div class="card">
                                 <div class="card-body">
                                     {{$skill->type->typeName}} {{ $skill->finished_level }}

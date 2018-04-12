@@ -5,6 +5,7 @@ namespace Asgard\Models;
 use Asgard\Events\CharacterUpdateEvent;
 use Asgard\Models\Character\Asset;
 use Asgard\Models\Character\Contact;
+use Asgard\Models\Character\Corporation as CharacterCorporation;
 use Asgard\Models\Character\CorporationHistory;
 use Asgard\Models\Character\CorporationRole;
 use Asgard\Models\Character\Fatigue;
@@ -39,6 +40,11 @@ class Character extends Model
     }
 
     public function corporation()
+    {
+        return $this->hasOne(CharacterCorporation::class);
+    }
+
+    public function systemCorporation()
     {
         return $this->belongsTo(Corporation::class);
     }

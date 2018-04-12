@@ -9,9 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
-
 use Asgard\Models\Character as CharacterModel;
 
 class Character implements ShouldQueue
@@ -37,13 +35,25 @@ class Character implements ShouldQueue
      */
     public function handle(Conduit $api)
     {
-
         Log::info($this->character->id . ' about to update');
 
         $data = $api->characters($this->character->id)->get();
 
         $this->character->corporation_id = $data->corporation_id;
         $this->character->save();
+
+        $corp_data = $api->corporations($this->character->corporation_id)->get();
+
+        CharacterModel\Corporation::updateOrCreate(
+            [
+                'id' => $data->corporation_id,
+                'character_id' => $this->character->id,
+            ],
+            [
+                'name' => $corp_data->get('name'),
+                'ticker' => $corp_data->get('ticker'),
+            ]
+        );
 
     }
 }

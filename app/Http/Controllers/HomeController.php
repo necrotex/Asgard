@@ -40,7 +40,7 @@ class HomeController extends Controller
         $char = Character::find(95149868);
         //dd($char->status->online);
 
-        dispatch_now(new Status($char));
+        dispatch_now(new \Asgard\Jobs\Update\Character($char));
 
 
     }

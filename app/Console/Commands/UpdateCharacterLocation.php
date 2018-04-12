@@ -43,7 +43,6 @@ class UpdateCharacterLocation extends Command
 
         foreach($users as $user) {
             foreach($user->characters as $character) {
-
                 dispatch(new Location($character))->onQueue('low');
             }
         }

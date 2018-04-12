@@ -111,7 +111,7 @@ class User extends Authenticatable
         }
 
         foreach ($this->characters as $character) {
-            $corp = $character->corporation;
+            $corp = $character->systemCorporation;
 
             //not all characters have corps added to the system
             if (!$corp) continue;
