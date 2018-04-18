@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc37da22b1667c7c5a861f10b856ebd7",
+    "content-hash": "e97ae8d9fb73ef26c747bc2f5d173228",
     "packages": [
         {
             "name": "cache/adapter-common",
@@ -251,6 +251,63 @@
                 "tag"
             ],
             "time": "2017-03-13T09:14:27+00:00"
+        },
+        {
+            "name": "cakephp/chronos",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/chronos.git",
+                "reference": "85bcaea6a832684b32ef54b2487b0c14a172e9e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/85bcaea6a832684b32ef54b2487b0c14a172e9e6",
+                "reference": "85bcaea6a832684b32ef54b2487b0c14a172e9e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|^7"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1",
+                "cakephp/cakephp-codesniffer": "~2.3",
+                "phpbench/phpbench": "@dev",
+                "phpstan/phpstan": "^0.6.4",
+                "phpunit/phpunit": "<6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cake\\Chronos\\": "src"
+                },
+                "files": [
+                    "src/carbon_compat.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Nesbitt",
+                    "email": "brian@nesbot.com",
+                    "homepage": "http://nesbot.com"
+                },
+                {
+                    "name": "The CakePHP Team",
+                    "homepage": "http://cakephp.org"
+                }
+            ],
+            "description": "A simple API extension for DateTime.",
+            "homepage": "http://cakephp.org",
+            "keywords": [
+                "date",
+                "datetime",
+                "time"
+            ],
+            "time": "2018-01-13T12:19:50+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -739,16 +796,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.3",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04"
+                "reference": "8790f594151ca6a2010c6218e09d96df67173ad3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
-                "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/8790f594151ca6a2010c6218e09d96df67173ad3",
+                "reference": "8790f594151ca6a2010c6218e09d96df67173ad3",
                 "shasum": ""
             },
             "require": {
@@ -757,7 +814,7 @@
             },
             "require-dev": {
                 "dominicsayers/isemail": "dev-master",
-                "phpunit/phpunit": "^4.8.35",
+                "phpunit/phpunit": "^4.8.35||^5.7||^6.0",
                 "satooshi/php-coveralls": "^1.0.1"
             },
             "suggest": {
@@ -792,7 +849,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2017-11-15T23:40:40+00:00"
+            "time": "2018-04-10T10:11:19+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -839,115 +896,6 @@
                 "parser"
             ],
             "time": "2018-03-08T01:11:30+00:00"
-        },
-        {
-            "name": "eyewitness/cron-expression",
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/eyewitness/cron-expression.git",
-                "reference": "0665701f70761398e333cd999fa4f6b0f95b3c1b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/eyewitness/cron-expression/zipball/0665701f70761398e333cd999fa4f6b0f95b3c1b",
-                "reference": "0665701f70761398e333cd999fa4f6b0f95b3c1b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~6.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Eyewitness\\Cron\\": "src/Eyewitness/Cron/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                },
-                {
-                    "name": "Chris Tankersley",
-                    "email": "chris@ctankersley.com",
-                    "homepage": "https://github.com/dragonmantank"
-                }
-            ],
-            "description": "CRON for PHP: Calculate the next or previous run date and determine if a CRON expression is due",
-            "keywords": [
-                "cron",
-                "schedule"
-            ],
-            "time": "2018-02-07T04:37:19+00:00"
-        },
-        {
-            "name": "eyewitness/eye",
-            "version": "dev-beta",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/eyewitness/eye.git",
-                "reference": "7ce8cbbc2e0495a0c48fd90bacce61910a1a92d9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/eyewitness/eye/zipball/7ce8cbbc2e0495a0c48fd90bacce61910a1a92d9",
-                "reference": "7ce8cbbc2e0495a0c48fd90bacce61910a1a92d9",
-                "shasum": ""
-            },
-            "require": {
-                "eyewitness/cron-expression": "~3.0",
-                "guzzlehttp/guzzle": "5.*|6.*",
-                "laravel/framework": "~5.1",
-                "nesbot/carbon": "*"
-            },
-            "require-dev": {
-                "fzaninotto/faker": "~1.4",
-                "mockery/mockery": "~1.0",
-                "orchestra/testbench": "~3.5",
-                "phpunit/phpunit": "~6.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Eyewitness\\Eye\\EyeServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Eyewitness\\Eye\\": "app"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Laurence",
-                    "email": "laurence@eyewitness.io"
-                }
-            ],
-            "description": "Eyewitness.io client for Laravel 5 applications",
-            "homepage": "https://github.com/eyewitness/eye",
-            "keywords": [
-                "cron",
-                "eyewitness",
-                "laravel 5",
-                "monitor",
-                "queue"
-            ],
-            "time": "2018-03-30T09:02:54+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -1643,16 +1591,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.16",
+            "version": "v5.6.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "fcdbc791bc3e113ada38ab0a1147141fb9ec2b16"
+                "reference": "0f787c763ae8fb9fae0c8c809830ba4fa81e2d9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/fcdbc791bc3e113ada38ab0a1147141fb9ec2b16",
-                "reference": "fcdbc791bc3e113ada38ab0a1147141fb9ec2b16",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0f787c763ae8fb9fae0c8c809830ba4fa81e2d9d",
+                "reference": "0f787c763ae8fb9fae0c8c809830ba4fa81e2d9d",
                 "shasum": ""
             },
             "require": {
@@ -1663,7 +1611,7 @@
                 "ext-openssl": "*",
                 "league/flysystem": "^1.0.8",
                 "monolog/monolog": "~1.12",
-                "nesbot/carbon": "^1.24.1",
+                "nesbot/carbon": "1.25.*",
                 "php": "^7.1.3",
                 "psr/container": "~1.0",
                 "psr/simple-cache": "^1.0",
@@ -1778,7 +1726,75 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-04-09T16:07:04+00:00"
+            "time": "2018-04-17T12:51:04+00:00"
+        },
+        {
+            "name": "laravel/horizon",
+            "version": "v1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/horizon.git",
+                "reference": "36ef9e2d6e09e617cf801050326a69e876ff5535"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/36ef9e2d6e09e617cf801050326a69e876ff5535",
+                "reference": "36ef9e2d6e09e617cf801050326a69e876ff5535",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/chronos": "^1.0",
+                "ext-pcntl": "*",
+                "ext-posix": "*",
+                "illuminate/contracts": "~5.5",
+                "illuminate/queue": "~5.5",
+                "illuminate/support": "~5.5",
+                "php": ">=7.1.0",
+                "predis/predis": "^1.1",
+                "ramsey/uuid": "^3.5",
+                "symfony/debug": "~3.3|~4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "orchestra/database": "~3.5",
+                "orchestra/testbench": "~3.5",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Horizon\\HorizonServiceProvider"
+                    ],
+                    "aliases": {
+                        "Horizon": "Laravel\\Horizon\\Horizon"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Horizon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Dashboard and code-driven configuration for Laravel queues.",
+            "keywords": [
+                "laravel",
+                "queue"
+            ],
+            "time": "2018-03-13T18:00:18+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -2506,6 +2522,51 @@
                 "php"
             ],
             "time": "2018-03-19T12:55:15+00:00"
+        },
+        {
+            "name": "nullx27/eveonline-socialite",
+            "version": "v0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nullx27/eveonline-socialite.git",
+                "reference": "f1964175cf634add879a507ac96947cef485fe5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nullx27/eveonline-socialite/zipball/f1964175cf634add879a507ac96947cef485fe5e",
+                "reference": "f1964175cf634add879a507ac96947cef485fe5e",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3",
+                "laravel/socialite": "3.*",
+                "php": "^5.6 || ^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "nullx27\\Socialite\\EveOnline\\Providers\\EveOnlineServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "nullx27\\Socialite\\EveOnline\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andre Peiffer",
+                    "email": "necrotex@gmail.com"
+                }
+            ],
+            "description": "EveOnline SSO Provider for Laravel Socialite",
+            "time": "2017-12-20T14:38:43+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -5187,51 +5248,6 @@
             "time": "2017-10-19T19:58:43+00:00"
         },
         {
-            "name": "nullx27/eveonline-socialite",
-            "version": "v0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nullx27/eveonline-socialite.git",
-                "reference": "f1964175cf634add879a507ac96947cef485fe5e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nullx27/eveonline-socialite/zipball/f1964175cf634add879a507ac96947cef485fe5e",
-                "reference": "f1964175cf634add879a507ac96947cef485fe5e",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.3",
-                "laravel/socialite": "3.*",
-                "php": "^5.6 || ^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "nullx27\\Socialite\\EveOnline\\Providers\\EveOnlineServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "nullx27\\Socialite\\EveOnline\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andre Peiffer",
-                    "email": "necrotex@gmail.com"
-                }
-            ],
-            "description": "EveOnline SSO Provider for Laravel Socialite",
-            "time": "2017-12-20T14:38:43+00:00"
-        },
-        {
             "name": "phar-io/manifest",
             "version": "1.0.1",
             "source": {
@@ -5799,16 +5815,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.1.2",
+            "version": "7.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "6a17c170fb92845896e1b3b00fcb462cd4b3c017"
+                "reference": "a7834993ddbf4b0ed2c3b2dc1f3b1d093ef910a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6a17c170fb92845896e1b3b00fcb462cd4b3c017",
-                "reference": "6a17c170fb92845896e1b3b00fcb462cd4b3c017",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a7834993ddbf4b0ed2c3b2dc1f3b1d093ef910a9",
+                "reference": "a7834993ddbf4b0ed2c3b2dc1f3b1d093ef910a9",
                 "shasum": ""
             },
             "require": {
@@ -5826,7 +5842,7 @@
                 "phpunit/php-file-iterator": "^1.4.3",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-timer": "^2.0",
-                "phpunit/phpunit-mock-objects": "^6.1",
+                "phpunit/phpunit-mock-objects": "^6.1.1",
                 "sebastian/comparator": "^2.1",
                 "sebastian/diff": "^3.0",
                 "sebastian/environment": "^3.1",
@@ -5875,20 +5891,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-04-10T11:40:22+00:00"
+            "time": "2018-04-13T02:28:50+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "6.1.0",
+            "version": "6.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "3f5ca97eee66a07951d018f6726017629c85c86d"
+                "reference": "70c740bde8fd9ea9ea295be1cd875dd7b267e157"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/3f5ca97eee66a07951d018f6726017629c85c86d",
-                "reference": "3f5ca97eee66a07951d018f6726017629c85c86d",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/70c740bde8fd9ea9ea295be1cd875dd7b267e157",
+                "reference": "70c740bde8fd9ea9ea295be1cd875dd7b267e157",
                 "shasum": ""
             },
             "require": {
@@ -5931,7 +5947,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2018-04-06T08:14:40+00:00"
+            "time": "2018-04-11T04:50:36+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -6646,7 +6662,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "eyewitness/eye": 20,
         "nullx27/conduit": 20,
         "silber/bouncer": 5
     },
