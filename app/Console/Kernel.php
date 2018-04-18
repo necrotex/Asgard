@@ -39,6 +39,8 @@ class Kernel extends ConsoleKernel
             ->unlessBetween('11:00', '11:30');
 
 
+        //horizon metrics
+        $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
         //$schedule->command('asgard:clean:reddit')->hourly(); //@todo
         //$schedule->command('asgard:clean:timerboard')->everyMinute(); //@todo

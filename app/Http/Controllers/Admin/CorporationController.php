@@ -14,12 +14,6 @@ use Silber\Bouncer\Database\Role;
 class CorporationController extends Controller
 {
 
-    public function __construct()
-    {
-        //$this->authorizeResource(Corporation::class);
-        //todo: fix this
-    }
-
     public function index()
     {
         $corporations = Corporation::paginate(15);

@@ -49,6 +49,12 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('horizon.index')}}">
+                    <i class="fas fa-wrench" aria-hidden="true"></i> Job Monitoring
+                </a>
+            </li>
+
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Recruitment</span>
             </h6>

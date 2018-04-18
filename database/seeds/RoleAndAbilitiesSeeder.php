@@ -91,6 +91,21 @@ class RoleAndAbilitiesSeeder extends Seeder
 
         Ability::create(
             [
+                'name' => 'delete-ability',
+                'title' => 'Delete Ability'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'assign-ability',
+                'title' => 'Assign Ability to role'
+            ]
+        );
+
+
+        Ability::create(
+            [
                 'name' => 'assign-discord-roles',
                 'title' => 'Assign Discord Roles'
             ]

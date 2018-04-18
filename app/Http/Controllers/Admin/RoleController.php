@@ -15,7 +15,7 @@ class RoleController extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource(Role::class);
+
     }
 
     /**
@@ -49,9 +49,6 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->authorize('create', Role::class);
-
         $request->validate(['role' => 'required']);
 
         $name = $request->input('role');
@@ -78,11 +75,10 @@ class RoleController extends Controller
      *
      * @param Role $role
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Role $role)
     {
-        $this->authorize('update', $role);
-
         $discordRoles = DiscordRoles::all();
         $roleDiscordRoles = RoleDiscordRole::select('discord_role_id')->where('role_id', '=', $role->id)->get();
 
@@ -115,11 +111,10 @@ class RoleController extends Controller
      * @param Role $role
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Exception
      */
     public function update(Request $request, Role $role)
     {
-        $this->authorize('update', $role);
-
         $this->validate($request, ['title' => 'required']);
 
         $title = $request->input('title');
@@ -151,8 +146,6 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        $this->authorize('delete', $role);
-
         //todo: this needs to cascade correctly
         RoleDiscordRole::where('role_id', '=', $role->id)->delete();
         $role->delete();
