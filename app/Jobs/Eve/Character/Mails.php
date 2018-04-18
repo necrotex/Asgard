@@ -22,13 +22,6 @@ class Mails extends CharacterUpdateJob
         $api->setAuthentication($this->getAuthentication($this->character));
         $mailList = $api->characters($this->character->id)->mail()->get();
 
-        foreach ($mailList->data as $data) {
-            Log::info("Processing: " . $data->from);
-
-            $from = $api->universe()->names()->data([$data->from])->post();
-        }
-
-
         foreach($mailList->data as $item) {
             $mail = $api->characters($this->character->id)->mail($item->mail_id)->get();
 

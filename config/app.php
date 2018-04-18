@@ -177,7 +177,6 @@ return [
         Asgard\Providers\EventServiceProvider::class,
         Asgard\Providers\RouteServiceProvider::class,
         Asgard\Providers\EsiClientServiceProvider::class,
-
     ],
 
     /*

@@ -18,17 +18,13 @@ class CreateSystemMessagesTable extends Migration
 
             $table->string('type');
 
+            $table->text('title');
             $table->text('message');
 
-            $table->text('context')->nullable();
-
-            $table->text('user_id')->nullable();
-
-            $table->text('group_id')->nullable();
+            $table->text('context_type')->nullable();
+            $table->text('context_id')->nullable();
 
             $table->enum('level', ['debug', 'info', 'warning', 'error']);
-
-
             $table->boolean('active')->default(true);
 
             $table->timestamps();

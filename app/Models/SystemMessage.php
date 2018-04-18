@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class SystemMessage extends Model
 {
-    protected $fillable = ['type','message','context','level'];
+    protected $fillable = ['type','message','context_type','level','title','context_id','active'];
 }
