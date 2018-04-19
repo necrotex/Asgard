@@ -6,6 +6,7 @@ use Asgard\Models\Character;
 use Asgard\Models\Token;
 use Asgard\Models\User;
 use Exception;
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
@@ -75,12 +76,17 @@ class EveSSOController extends Controller
             }
 
             if ($type == 'site_login') {
+
                 $name = str_slug($this->user->name);
 
                 // check if the character is already assigned to an account
                 $character = Character::find($this->user->id);
 
                 if (is_null($character)) {
+                    if(config('asgard.open_registration') !== true) {
+                        return abort(403, 'Please contact a recruiter for access.');
+                    }
+
                     $request->session()->put('new_account', true);
                     $user = User::firstOrCreate(['name' => $name]);
                 } else {
@@ -92,13 +98,13 @@ class EveSSOController extends Controller
             }
 
         } // ignore model not found exceptions
-        catch (ModelNotFoundException $e) {
-        } catch (Exception $exception) {
-            dd($exception);
-        } finally {
-            // always redirect
-            return redirect()->intended('/');
+        catch (ModelNotFoundException $e) {}
+        catch (ClientException $e) {
+            return abort(500, 'Something went wrong, please try again!');
         }
+        //@todo: catch errors from eve sso and report it clearly to the user
+
+        return redirect()->intended('/');
     }
 
     private function initalCharacterImport(Character $character)

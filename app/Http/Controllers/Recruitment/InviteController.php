@@ -58,16 +58,17 @@ class InviteController extends Controller
         return $code;
     }
 
-    public function setupApplication(Request $request)
+    public function setupApplication(Request $request, $invite)
     {
-        $this->validate($request, [
-            'invite' => 'required'
-        ]);
+        $invite = ApplicationInvite::where('code', '=', $invite)->firstOrFail();
 
-        $invite = ApplicationInvite::where('code', '=', $request->input('invite'));
+        if($invite->expiry < Carbon::now()) {
+            return abort(403, 'Invite code expired. Please talk to a recruiter to receive a new invite link');
+        }
 
-        //$request->session()->push('recuritment_code', $invite->code);
+        $request->session()->push('recuritment_code', $invite->code);
 
-        dd($invite);
+
+        return view('auth.invite-login', compact('invite'));
     }
 }

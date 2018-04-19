@@ -16,6 +16,11 @@ class SetupAccountMiddleware
      */
     public function handle($request, Closure $next)
     {
+        /*if($request->session()->has('recuritment_code')) {
+
+        }
+
+
         if(count(Auth::user()->characters) == 0) {
             flash('Please add a character!')->warning();
 
@@ -30,6 +35,8 @@ class SetupAccountMiddleware
             return redirect()->route('profile.show', Auth::user()->id);
         }
 
+
+        */
         return $next($request);
     }
 }
