@@ -2,9 +2,11 @@
 
 namespace Asgard\Http\Controllers\Auth;
 
+use Asgard\Models\ApplicationInvite;
 use Asgard\Models\Character;
 use Asgard\Models\Token;
 use Asgard\Models\User;
+use Asgard\Models\UserInvitation;
 use Exception;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -89,6 +91,18 @@ class EveSSOController extends Controller
 
                     $request->session()->put('new_account', true);
                     $user = User::firstOrCreate(['name' => $name]);
+
+                    if($request->session()->has('recruitment_code')) {
+                        $invite = $invite = ApplicationInvite::where('code', '=', $request->session()->pull('recruitment_code'))->first();
+                        UserInvitation::create(['user_id' => $user->id, 'invite_id' => $invite->id]);
+
+                        $user->assign('recruit');
+                    }
+
+                    if($user->isNotA('recruit')) {
+                        $user->assign('guest');
+                    }
+
                 } else {
                     $user = $character->user;
                 }

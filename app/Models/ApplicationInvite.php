@@ -14,4 +14,9 @@ class ApplicationInvite extends Model
     {
         return $this->belongsTo(ApplicationForm::class, 'application_form_id', 'id');
     }
+
+    public function userInvite()
+    {
+        return $this->hasOne(UserInvitation::class, 'invite_id', 'id');
+    }
 }

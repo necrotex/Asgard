@@ -19,6 +19,10 @@ class RoleAndAbilitiesSeeder extends Seeder
         Role::create(['name' => 'ally', 'title' => 'Ally']);
         Role::create(['name' => 'friends', 'title' => 'Friend']);
 
+        Role::create(['name' => 'guest', 'title' => 'Guest']);
+        Role::create(['name' => 'recruit', 'title' => 'Recruit']);
+
+
         Role::create(['name' => 'recruiter', 'title' => 'Recruiter']);
         Role::create(['name' => 'recruitment-officer', 'title' => 'Recruitment Officer']);
 
@@ -247,6 +251,17 @@ class RoleAndAbilitiesSeeder extends Seeder
         Bouncer::allow('friends')->to('update-characters');
         Bouncer::allow('friends')->to('delete-characters');
         Bouncer::allow('friends')->to('access-subreddit');
+
+        Bouncer::allow('guest')->to('add-characters');
+        Bouncer::allow('guest')->to('update-characters');
+        Bouncer::allow('guest')->to('delete-characters');
+        Bouncer::allow('guest')->to('access-subreddit');
+
+        Bouncer::allow('recruit')->to('add-characters');
+        Bouncer::allow('recruit')->to('update-characters');
+        Bouncer::allow('recruit')->to('delete-characters');
+        Bouncer::allow('recruit')->to('access-subreddit');
+        Bouncer::allow('recruit')->to('access-discord');
 
 
     }

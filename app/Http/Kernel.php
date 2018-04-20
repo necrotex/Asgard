@@ -58,6 +58,6 @@ class Kernel extends HttpKernel
         'guest' => \Asgard\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'finished-account' => \Asgard\Http\Middleware\SetupAccountMiddleware::class,
-        'authorized' => \Asgard\Http\Middleware\Authorization::class,
+        'ability' => \Asgard\Http\Middleware\CheckAbility::class,
     ];
 }

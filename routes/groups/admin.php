@@ -4,62 +4,62 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'fini
 
     Route::get('/corporation', 'CorporationController@index')
         ->name('corporation.index')
-        ->middleware('authorized:see-corporation');
+        ->middleware('ability:see-corporation');
 
 
     Route::post('/corporation/add', 'CorporationController@store')
         ->name('corporation.store')
-        ->middleware('authorized:create-corporation');
+        ->middleware('ability:create-corporation');
 
 
     Route::get('/corporation/{id}', 'CorporationController@show')
         ->name('corporation.show')
-        ->middleware('authorized:see-corporation');
+        ->middleware('ability:see-corporation');
 
 
     Route::post('/corporation/{corp}/update', 'CorporationController@update')
         ->name('corporation.update')
-        ->middleware('authorized:update-corporation');
+        ->middleware('ability:update-corporation');
 
 
     //roles
     Route::get('/roles', 'RoleController@index')
         ->name('roles.index')
-        ->middleware('authorized:see-roles');
+        ->middleware('ability:see-roles');
 
 
     Route::get('/roles/create', 'RoleController@create')
         ->name('roles.create')
-        ->middleware('authorized:create-roles');
+        ->middleware('ability:create-roles');
 
     Route::post('/roles/store', 'RoleController@store')
         ->name('roles.store')
-        ->middleware('authorized:create-roles');
+        ->middleware('ability:create-roles');
 
     Route::get('/roles/{role}/edit', 'RoleController@edit')
         ->name('roles.edit')
-        ->middleware('authorized:update-corporation');
+        ->middleware('ability:update-corporation');
 
     Route::post('/roles/{role}/update', 'RoleController@update')
         ->name('roles.update')
-        ->middleware('authorized:update-roles');
+        ->middleware('ability:update-roles');
 
     Route::get('/roles/{role}/destroy', 'RoleController@destroy')
         ->name('roles.destroy')
-        ->middleware('authorized:delete-roles');
+        ->middleware('ability:delete-roles');
 
     //abilities
     Route::get('/abilities/{ability}/destroy', 'AbilityController@destroy')
         ->name('ability.destroy')
-        ->middleware('authorized:delete-roles');
+        ->middleware('ability:delete-roles');
 
     Route::post('/abilities/assign/{role}', 'RoleController@destroy')
         ->name('ability.assign')
-        ->middleware('authorized:delete-roles');
+        ->middleware('ability:delete-roles');
 
 
     //settings
     Route::get('/settings', 'SettingsController@index')
         ->name('settings.index')
-        ->middleware('authorized:manage-settings');
+        ->middleware('ability:manage-settings');
 });

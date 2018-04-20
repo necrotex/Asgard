@@ -183,5 +183,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Application::class, 'user_id', 'id');
     }
+
+    public function invites()
+    {
+        return $this->hasMany(UserInvitation::class, 'user_id', 'id');
+    }
 }
 
