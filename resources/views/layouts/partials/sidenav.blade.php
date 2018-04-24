@@ -9,25 +9,25 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index')}}">
-                    <i class="fas fa-user" aria-hidden="true"></i> Characters
-                </a>
-            </li>
-
-            @if (auth()->user()->can('timer-view'))
+            @can('create', \Asgard\Models\Character::class)
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('timerboard.index')}}">
-                        <i class="fas fa-clock" aria-hidden="true"></i> Timerboard
+                    <a class="nav-link {{active('characters.index')}}" href="{{route('characters.index')}}">
+                        <i class="fas fa-user" aria-hidden="true"></i> Characters
                     </a>
                 </li>
-            @endif
+            @endcan
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('timerboard.index')}}">
+                    <i class="fas fa-clock" aria-hidden="true"></i> Timerboard
+                </a>
+            </li>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Admin</span>
             </h6>
 
-            @can('index', \Asgard\Models\Setting::class)
+            @can('view', \Asgard\Models\Setting::class)
                 <li class="nav-item">
                     <a class="nav-link {{active('settings.index')}}" href="{{route('settings.index')}}">
                         <i class="fas fa-cog" aria-hidden="true"></i> Settings
@@ -35,7 +35,7 @@
                 </li>
             @endcan
 
-            @can('index', \Silber\Bouncer\Database\Role::class)
+            @can('create', \Silber\Bouncer\Database\Role::class)
                 <li class="nav-item">
                     <a class="nav-link {{active('roles.index')}}" href="{{route('roles.index')}}">
                         <i class="fas fa-list" aria-hidden="true"></i> Roles
@@ -43,17 +43,21 @@
                 </li>
             @endcan
 
-            <li class="nav-item">
-                <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
-                    <i class="fas fa-users" aria-hidden="true"></i> Corporations
-                </a>
-            </li>
+            @can('create', \Asgard\Models\Corporation::class)
+                <li class="nav-item">
+                    <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
+                        <i class="fas fa-users" aria-hidden="true"></i> Corporations
+                    </a>
+                </li>
+            @endcan
 
+            @can('view-job-monitoring')
             <li class="nav-item">
                 <a class="nav-link" href="{{route('horizon.index')}}">
                     <i class="fas fa-wrench" aria-hidden="true"></i> Job Monitoring
                 </a>
             </li>
+            @endcan
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Recruitment</span>
@@ -88,13 +92,11 @@
                 <span>External Services</span>
             </h6>
 
-            @can('index', \Asgard\Models\DiscordUser::class)
-                <li class="nav-item">
-                    <a class="nav-link" href="https://discord.gg/rJmM22D">
-                        <i class="fab fa-discord" aria-hidden="true"></i> Discord
-                    </a>
-                </li>
-            @endcan
+            <li class="nav-item">
+                <a class="nav-link" href="https://discord.gg/rJmM22D">
+                    <i class="fab fa-discord" aria-hidden="true"></i> Discord
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link {{active('services.reddit.index')}}"

@@ -16,52 +16,109 @@ class RoleAndAbilitiesSeeder extends Seeder
         Role::create(['name' => 'admin', 'title' => 'Admin']);
         Role::create(['name' => 'director', 'title' => 'Director']);
         Role::create(['name' => 'member', 'title' => 'Member']);
-        Role::create(['name' => 'ally', 'title' => 'Ally']);
+        Role::create(['name' => 'recruiter', 'title' => 'Recruiter']);
         Role::create(['name' => 'friends', 'title' => 'Friend']);
 
         Role::create(['name' => 'guest', 'title' => 'Guest']);
         Role::create(['name' => 'recruit', 'title' => 'Recruit']);
 
 
-        Role::create(['name' => 'recruiter', 'title' => 'Recruiter']);
-        Role::create(['name' => 'recruitment-officer', 'title' => 'Recruitment Officer']);
+        // Misc
+        Ability::create(
+            [
+                'name' => 'access-everything',
+                'title' => '!! Super admin ability, use with extreme care !!'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'use-search',
+                'title' => 'Use Character search'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'see-profiles',
+                'title' => 'See User Profiles'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'view-admin-settings',
+                'title' => 'View Admin Settings'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'view-job-monitoring',
+                'title' => 'Access Job Monitoring'
+            ]
+        );
+
+        // Character
+        Ability::create(
+            [
+                'name' => 'view-characters',
+                'title' => 'View own Characters'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'add-characters',
+                'title' => 'Add Characters'
+            ]
+        );
+
+        // Character Mails
+        Ability::create(
+            [
+                'name' => 'view-mails',
+                'title' => 'View Mails'
+            ]
+        );
+
 
 
         // Corporations
         Ability::create(
             [
-                'name' => 'see-corporation',
-                'title' => 'See Corporations'
+                'name' => 'view-corporations',
+                'title' => 'View Corporations'
             ]
         );
 
         Ability::create(
             [
-                'name' => 'create-corporation',
-                'title' => 'Add Corporations'
+                'name' => 'create-corporations',
+                'title' => 'Add Corporation'
             ]
         );
 
         Ability::create(
             [
-                'name' => 'update-corporation',
-                'title' => 'Update Corporations'
+                'name' => 'update-corporations',
+                'title' => 'Update Corporation'
             ]
         );
 
         Ability::create(
             [
-                'name' => 'delete-corporation',
-                'title' => 'Remove Corporations'
+                'name' => 'delete-corporations',
+                'title' => 'Add Corporation'
             ]
         );
 
 
-        //Roles
+        // Roles
         Ability::create(
             [
-                'name' => 'see-roles',
-                'title' => 'See Roles'
+                'name' => 'view-roles',
+                'title' => 'View Roles'
             ]
         );
 
@@ -86,95 +143,17 @@ class RoleAndAbilitiesSeeder extends Seeder
             ]
         );
 
+
+
+        //Timerboard
         Ability::create(
             [
-                'name' => 'assign-roles',
-                'title' => 'Assign Roles'
+                'name' => 'timer-override',
+                'title' => 'Timerboard override'
             ]
         );
 
-        Ability::create(
-            [
-                'name' => 'delete-ability',
-                'title' => 'Delete Ability'
-            ]
-        );
-
-        Ability::create(
-            [
-                'name' => 'assign-ability',
-                'title' => 'Assign Ability to role'
-            ]
-        );
-
-
-        Ability::create(
-            [
-                'name' => 'assign-discord-roles',
-                'title' => 'Assign Discord Roles'
-            ]
-        );
-
-        Ability::create(
-            [
-                'name' => 'manage-subreddit-access',
-                'title' => 'Manage Subreddit Access'
-            ]
-        );
-
-
-        //Characters
-        Ability::create(
-            [
-                'name' => 'add-characters',
-                'title' => 'Add Characters'
-            ]
-        );
-
-        Ability::create(
-            [
-                'name' => 'update-characters',
-                'title' => 'Update Characters'
-            ]
-        );
-
-        Ability::create(
-            [
-                'name' => 'delete-characters',
-                'title' => 'Delete Characters'
-            ]
-        );
-
-
-        //administrative stuff
-        Ability::create(
-            [
-                'name' => 'manage-characters',
-                'title' => 'Manage other Characters'
-            ]
-        );
-
-        Ability::create(
-            [
-                'name' => 'manage-settings',
-                'title' => 'Manage Auth Settings'
-            ]
-        );
-
-        Ability::create(
-            [
-                'name' => 'see-audit-logs',
-                'title' => 'See Audit Logs'
-            ]
-        );
-
-        Ability::create(
-            [
-                'name' => 'access-everything',
-                'title' => 'Access Everything (ADMIN ONLY!)'
-            ]
-        );
-
+        // Services
         Ability::create(
             [
                 'name' => 'access-subreddit',
@@ -182,86 +161,88 @@ class RoleAndAbilitiesSeeder extends Seeder
             ]
         );
 
+        // Application Forms
+
         Ability::create(
             [
-                'name' => 'access-discord',
-                'title' => 'Access Discord'
+                'name' => 'view-application-forms',
+                'title' => 'View Application Forms'
             ]
         );
 
         Ability::create(
             [
-                'name' => 'see-users',
-                'title' => 'Access User Profiles'
-            ]
-        );
-
-        // Timerboard
-        Ability::create(
-            [
-                'name' => 'timer-view',
-                'title' => 'View Timerboard'
+                'name' => 'create-application-forms',
+                'title' => 'Create Application Forms'
             ]
         );
 
         Ability::create(
             [
-                'name' => 'timer-override',
-                'title' => 'Access all timers, even private'
+                'name' => 'update-application-forms',
+                'title' => 'Update Application Forms'
             ]
         );
 
-        // assign basic abilities
+        // Application form questions
 
-        Bouncer::allow('admin')->to('access-everything');
+        Ability::create(
+            [
+                'name' => 'view-application-form-questions',
+                'title' => 'View Application Form Questions'
+            ]
+        );
 
-        Bouncer::allow('director')->to('see-corporation');
-        Bouncer::allow('director')->to('create-corporation');
-        Bouncer::allow('director')->to('update-corporation');
-        Bouncer::allow('director')->to('delete-corporation');
-        Bouncer::allow('director')->to('see-roles');
-        Bouncer::allow('director')->to('create-roles');
-        Bouncer::allow('director')->to('update-roles');
-        Bouncer::allow('director')->to('delete-roles');
-        Bouncer::allow('director')->to('assign-roles');
-        Bouncer::allow('director')->to('assign-discord-roles');
-        Bouncer::allow('director')->to('manage-subreddit-access');
-        Bouncer::allow('director')->to('manage-characters');
-        Bouncer::allow('director')->to('manage-settings');
-        Bouncer::allow('director')->to('see-audit-logs');
-        Bouncer::allow('director')->to('see-users');
-        Bouncer::allow('director')->to('timer-override');
+        Ability::create(
+            [
+                'name' => 'update-application-form-questions',
+                'title' => 'Update Application Form Questions'
+            ]
+        );
 
+        Ability::create(
+            [
+                'name' => 'create-application-form-questions',
+                'title' => 'Create Application Form Questions'
+            ]
+        );
 
-        Bouncer::allow('member')->to('add-characters');
-        Bouncer::allow('member')->to('update-characters');
-        Bouncer::allow('member')->to('delete-characters');
-        Bouncer::allow('member')->to('access-subreddit');
-        Bouncer::allow('member')->to('access-discord');
-        Bouncer::allow('member')->to('timer-view');
+        Ability::create(
+            [
+                'name' => 'delete-application-form-questions',
+                'title' => 'Delete Application Form Questions'
+            ]
+        );
 
-        Bouncer::allow('ally')->to('access-discord');
-        Bouncer::allow('ally')->to('add-characters');
-        Bouncer::allow('ally')->to('update-characters');
-        Bouncer::allow('ally')->to('delete-characters');
+        // Application Invite
 
-        Bouncer::allow('friends')->to('delete-characters');
-        Bouncer::allow('friends')->to('add-characters');
-        Bouncer::allow('friends')->to('access-discord');
-        Bouncer::allow('friends')->to('update-characters');
-        Bouncer::allow('friends')->to('delete-characters');
-        Bouncer::allow('friends')->to('access-subreddit');
+        Ability::create(
+            [
+                'name' => 'view-application-invite',
+                'title' => 'View Application Invite'
+            ]
+        );
 
-        Bouncer::allow('guest')->to('add-characters');
-        Bouncer::allow('guest')->to('update-characters');
-        Bouncer::allow('guest')->to('delete-characters');
-        Bouncer::allow('guest')->to('access-subreddit');
+        Ability::create(
+            [
+                'name' => 'update-application-invite',
+                'title' => 'Update Application Invite'
+            ]
+        );
 
-        Bouncer::allow('recruit')->to('add-characters');
-        Bouncer::allow('recruit')->to('update-characters');
-        Bouncer::allow('recruit')->to('delete-characters');
-        Bouncer::allow('recruit')->to('access-subreddit');
-        Bouncer::allow('recruit')->to('access-discord');
+        Ability::create(
+            [
+                'name' => 'create-application-invite',
+                'title' => 'Create Application Invite'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'delete-application-invite',
+                'title' => 'Delete Application Invite'
+            ]
+        );
 
 
     }

@@ -4,28 +4,21 @@ namespace Asgard\Policies;
 
 use Asgard\Models\User;
 use Asgard\Models\Setting;
-use Asgard\Support\SuperAdminPolicyTrait;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class SettingPolicy
+class SettingsPolicy
 {
-    use HandlesAuthorization, SuperAdminPolicyTrait;
-
-    public function index(User $user)
-    {
-        return $user->isA('admin');
-    }
+    use HandlesAuthorization;
 
     /**
      * Determine whether the user can view the setting.
      *
      * @param  \Asgard\Models\User  $user
-     * @param  \Asgard\Models\Setting  $setting
      * @return mixed
      */
-    public function view(User $user, Setting $setting)
+    public function view(User $user)
     {
-        return $user->isA('admin');
+        return $user->can('view-admin-settings');
     }
 
     /**
@@ -36,7 +29,7 @@ class SettingPolicy
      */
     public function create(User $user)
     {
-        return $user->isA('admin');
+        //
     }
 
     /**
@@ -48,7 +41,7 @@ class SettingPolicy
      */
     public function update(User $user, Setting $setting)
     {
-        return $user->isA('admin');
+        //
     }
 
     /**
@@ -60,6 +53,6 @@ class SettingPolicy
      */
     public function delete(User $user, Setting $setting)
     {
-        return $user->isA('admin');
+        //
     }
 }

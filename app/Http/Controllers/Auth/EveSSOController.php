@@ -30,6 +30,7 @@ use Asgard\Jobs\Eve\Character\Status;
 use Asgard\Jobs\Eve\Character\Titles;
 use Asgard\Jobs\Eve\Character\Transactions;
 use Asgard\Jobs\Eve\Character\Wallet;
+use Route;
 
 class EveSSOController extends Controller
 {
@@ -85,21 +86,21 @@ class EveSSOController extends Controller
                 $character = Character::find($this->user->id);
 
                 if (is_null($character)) {
-                    if(config('asgard.open_registration') !== true) {
+                    if (config('asgard.open_registration') !== true) {
                         return abort(403, 'Please contact a recruiter for access.');
                     }
 
                     $request->session()->put('new_account', true);
                     $user = User::firstOrCreate(['name' => $name]);
 
-                    if($request->session()->has('recruitment_code')) {
+                    if ($request->session()->has('recruitment_code')) {
                         $invite = $invite = ApplicationInvite::where('code', '=', $request->session()->pull('recruitment_code'))->first();
                         UserInvitation::create(['user_id' => $user->id, 'invite_id' => $invite->id]);
 
                         $user->assign('recruit');
                     }
 
-                    if($user->isNotA('recruit')) {
+                    if ($user->isNotA('recruit')) {
                         $user->assign('guest');
                     }
 
@@ -112,13 +113,13 @@ class EveSSOController extends Controller
             }
 
         } // ignore model not found exceptions
-        catch (ModelNotFoundException $e) {}
-        catch (ClientException $e) {
+        catch (ModelNotFoundException $e) {
+        } catch (ClientException $e) {
             return abort(500, 'Something went wrong, please try again!');
         }
         //@todo: catch errors from eve sso and report it clearly to the user
 
-        return redirect()->intended('/');
+        return redirect()->intended('/'); //@todo: redirect based on login_type
     }
 
     private function initalCharacterImport(Character $character)

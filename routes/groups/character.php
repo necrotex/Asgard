@@ -1,10 +1,16 @@
 <?php
 
-Route::group(['prefix' => 'user', 'namespace' => 'Character', 'middleware' => 'finished-account'], function() {
-    Route::any('characters/{character}/mails', 'MailController@mails')->name('character.mails');
-    Route::post('characters/{character}/mails', 'MailController@mail')->name('character.mail');
+Route::group(['prefix' => 'user', 'namespace' => 'Character'], function() {
 
-    Route::any('characters/{character}/journal', 'JournalController@entries')->name('character.journal');
-    Route::any('characters/{character}/transactions', 'TransactionsController@entries')->name('character.transactions');
+    Route::any('characters/{character}/mails', 'MailController@mails')
+        ->name('character.mails'); //@todo: refactor to work with policies
 
+    Route::post('characters/{character}/mails/{mail}', 'MailController@mail')
+        ->name('character.mail'); //@todo: refactor to work with policies
+
+    Route::any('characters/{character}/journal', 'JournalController@entries')
+        ->name('character.journal'); //@todo: refactor to work with policies
+
+    Route::any('characters/{character}/transactions', 'TransactionsController@entries')
+        ->name('character.transactions'); //@todo: refactor to work with policies
 });

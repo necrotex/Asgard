@@ -4,12 +4,11 @@ namespace Asgard\Policies;
 
 use Asgard\Models\User;
 use Asgard\Models\Corporation;
-use Asgard\Support\SuperAdminPolicyTrait;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CorporationPolicy
 {
-    use HandlesAuthorization, SuperAdminPolicyTrait;
+    use HandlesAuthorization;
 
     /**
      * Determine whether the user can view the corporation.
@@ -20,7 +19,7 @@ class CorporationPolicy
      */
     public function view(User $user, Corporation $corporation)
     {
-        return $user->can('see-corporation');
+        return $user->can('view-corporations');
     }
 
     /**
@@ -31,7 +30,7 @@ class CorporationPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create-corporation');
+        return $user->can('create-corporations');
     }
 
     /**
@@ -43,7 +42,7 @@ class CorporationPolicy
      */
     public function update(User $user, Corporation $corporation)
     {
-        return $user->can('update-corporation');
+        return $user->can('update-corporations');
     }
 
     /**
@@ -55,6 +54,6 @@ class CorporationPolicy
      */
     public function delete(User $user, Corporation $corporation)
     {
-        return $user->can('delete-corporation');
+        return $user->can('delete-corporations');
     }
 }

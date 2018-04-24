@@ -3,20 +3,15 @@
 namespace Asgard\Policies;
 
 use Asgard\Models\User;
-use Asgard\Support\SuperAdminPolicyTrait;
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Silber\Bouncer\Database\Role;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RolePolicy
 {
-    use HandlesAuthorization, SuperAdminPolicyTrait;
-
-    public function index(User $user) {
-        return $user->can('see-roles');
-    }
+    use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view the role.
+     * Determine whether the user can view the silber bouncer database role.
      *
      * @param  \Asgard\Models\User $user
      * @param Role $role
@@ -24,11 +19,11 @@ class RolePolicy
      */
     public function view(User $user, Role $role)
     {
-        return $user->can('see-roles');
+        return $user->can('view-roles');
     }
 
     /**
-     * Determine whether the user can create roles.
+     * Determine whether the user can create silber bouncer database roles.
      *
      * @param  \Asgard\Models\User  $user
      * @return mixed
@@ -39,10 +34,10 @@ class RolePolicy
     }
 
     /**
-     * Determine whether the user can update the role.
+     * Determine whether the user can update the silber bouncer database role.
      *
-     * @param  \Asgard\Models\User  $user
-     * @param  \Asgard\Role  $role
+     * @param  \Asgard\Models\User $user
+     * @param Role $role
      * @return mixed
      */
     public function update(User $user, Role $role)
@@ -51,10 +46,10 @@ class RolePolicy
     }
 
     /**
-     * Determine whether the user can delete the role.
+     * Determine whether the user can delete the silber bouncer database role.
      *
-     * @param  \Asgard\Models\User  $user
-     * @param  \Asgard\Role  $role
+     * @param  \Asgard\Models\User $user
+     * @param Role $role
      * @return mixed
      */
     public function delete(User $user, Role $role)

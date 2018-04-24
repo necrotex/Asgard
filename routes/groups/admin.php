@@ -4,62 +4,52 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'fini
 
     Route::get('/corporation', 'CorporationController@index')
         ->name('corporation.index')
-        ->middleware('ability:see-corporation');
+        ->middleware('can:create,Asgard\Models\Corporation');
 
 
     Route::post('/corporation/add', 'CorporationController@store')
         ->name('corporation.store')
-        ->middleware('ability:create-corporation');
+        ->middleware('can:create,Asgard\Models\Corporation');
 
 
-    Route::get('/corporation/{id}', 'CorporationController@show')
+    Route::get('/corporation/{corporation}', 'CorporationController@show')
         ->name('corporation.show')
-        ->middleware('ability:see-corporation');
+        ->middleware('can:view,corporation');
 
 
-    Route::post('/corporation/{corp}/update', 'CorporationController@update')
+    Route::post('/corporation/{corporation}/update', 'CorporationController@update')
         ->name('corporation.update')
-        ->middleware('ability:update-corporation');
+        ->middleware('can:update,corporation');
 
 
     //roles
     Route::get('/roles', 'RoleController@index')
         ->name('roles.index')
-        ->middleware('ability:see-roles');
-
+        ->middleware('can:view,Silber\Bouncer\Database\Role');
 
     Route::get('/roles/create', 'RoleController@create')
         ->name('roles.create')
-        ->middleware('ability:create-roles');
+        ->middleware('can:create,Silber\Bouncer\Database\Role');
 
     Route::post('/roles/store', 'RoleController@store')
         ->name('roles.store')
-        ->middleware('ability:create-roles');
+        ->middleware('can:create,Silber\Bouncer\Database\Role');
 
     Route::get('/roles/{role}/edit', 'RoleController@edit')
         ->name('roles.edit')
-        ->middleware('ability:update-corporation');
+        ->middleware('can:update,role');
 
     Route::post('/roles/{role}/update', 'RoleController@update')
         ->name('roles.update')
-        ->middleware('ability:update-roles');
+        ->middleware('can:update,role');
 
     Route::get('/roles/{role}/destroy', 'RoleController@destroy')
         ->name('roles.destroy')
-        ->middleware('ability:delete-roles');
-
-    //abilities
-    Route::get('/abilities/{ability}/destroy', 'AbilityController@destroy')
-        ->name('ability.destroy')
-        ->middleware('ability:delete-roles');
-
-    Route::post('/abilities/assign/{role}', 'RoleController@destroy')
-        ->name('ability.assign')
-        ->middleware('ability:delete-roles');
+        ->middleware('can:delete,role');
 
 
     //settings
     Route::get('/settings', 'SettingsController@index')
         ->name('settings.index')
-        ->middleware('ability:manage-settings');
+        ->middleware('can:view,Asgard\Models\Setting');
 });

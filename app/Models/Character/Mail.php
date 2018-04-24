@@ -2,6 +2,7 @@
 
 namespace Asgard\Models\Character;
 
+use Asgard\Models\Character;
 use Illuminate\Database\Eloquent\Model;
 
 class Mail extends Model
@@ -18,5 +19,10 @@ class Mail extends Model
     public function recipients()
     {
         return $this->hasMany(MailRecipient::class, 'mail_id', 'mail_id');
+    }
+
+    public function character()
+    {
+        return $this->belongsTo(Character::class);
     }
 }

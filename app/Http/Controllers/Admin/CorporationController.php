@@ -52,12 +52,12 @@ class CorporationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param Corporation $corporation
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Corporation $corporation)
     {
-        $corporation = Corporation::with('roles')->findOrFail($id); // automatically go 404 if no corp was found
+        $corporation->load('roles');
 
         $roles = Role::all();
 
@@ -85,17 +85,17 @@ class CorporationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param Corporation $corp
+     * @param Corporation $corporation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Corporation $corp)
+    public function update(Request $request, Corporation $corporation)
     {
-        foreach ($corp->roles as $role)
+        foreach ($corporation->roles as $role)
         {
-            Bouncer::retract($role)->from($corp);
+            Bouncer::retract($role)->from($corporation);
         }
 
-        $corp->assign($request->input('defaultRoles'));
+        $corporation->assign($request->input('defaultRoles'));
 
         return back();
     }
