@@ -20,5 +20,5 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
 
     Route::post('{user}/profile/update', 'ProfileController@update')
         ->name('profile.update')
-        ->middleware('can:profile.update,user');
+        ->middleware('can:update,user');
 });

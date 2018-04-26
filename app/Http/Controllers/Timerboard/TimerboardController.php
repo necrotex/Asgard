@@ -105,12 +105,9 @@ class TimerboardController extends Controller
         return view('timerboard.single')->with('timer', $timer);
     }
 
-    public function delete($id)
+    public function delete($timer)
     {
         $user = Auth::user();
-
-        $timer = Timer::findOrFail($id);
-
         //update modified by to see who deleted it
         $timer->modifiedBy = $user->mainCharacter()->first()->name;
         $timer->save();
@@ -120,7 +117,7 @@ class TimerboardController extends Controller
         return redirect()->route('timerboard.index');
     }
 
-    public function edit(Request $request, $id)
+    public function edit(Request $request, $timer)
     {
         $targetDate = null;
         if($request->has('datetime')) {
@@ -147,8 +144,6 @@ class TimerboardController extends Controller
         $user = Auth::user();
 
         //Get existing timer for edit, or fail if timer doesn't exists todo some kind of proper error message instead of an exception
-        $timer = Timer::findOrFail($id);
-
         //Update timer with edited values
         $timer->target = $targetDate;
         $timer->title = $request->input('title');

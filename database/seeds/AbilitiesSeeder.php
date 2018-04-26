@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Silber\Bouncer\Database\Role;
 use Silber\Bouncer\Database\Ability;
 
-class RoleAndAbilitiesSeeder extends Seeder
+class AbilitiesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,16 +12,6 @@ class RoleAndAbilitiesSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => 'admin', 'title' => 'Admin']);
-        Role::create(['name' => 'director', 'title' => 'Director']);
-        Role::create(['name' => 'member', 'title' => 'Member']);
-        Role::create(['name' => 'recruiter', 'title' => 'Recruiter']);
-        Role::create(['name' => 'friends', 'title' => 'Friend']);
-
-        Role::create(['name' => 'guest', 'title' => 'Guest']);
-        Role::create(['name' => 'recruit', 'title' => 'Recruit']);
-
-
         // Misc
         Ability::create(
             [
@@ -143,9 +132,35 @@ class RoleAndAbilitiesSeeder extends Seeder
             ]
         );
 
-
-
         //Timerboard
+        Ability::create(
+            [
+                'name' => 'view-timer',
+                'title' => 'View Timerboard'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'create-timer',
+                'title' => 'Create Timer'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'update-timer',
+                'title' => 'Update Timer'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'delete-timer',
+                'title' => 'Delete Timer'
+            ]
+        );
+
         Ability::create(
             [
                 'name' => 'timer-override',
@@ -241,6 +256,36 @@ class RoleAndAbilitiesSeeder extends Seeder
             [
                 'name' => 'delete-application-invite',
                 'title' => 'Delete Application Invite'
+            ]
+        );
+
+        // Applications
+
+        Ability::create(
+            [
+                'name' => 'view-application',
+                'title' => 'View Application'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'update-application',
+                'title' => 'Update Application'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'create-application',
+                'title' => 'Create Application'
+            ]
+        );
+
+        Ability::create(
+            [
+                'name' => 'delete-application',
+                'title' => 'Delete Application'
             ]
         );
 

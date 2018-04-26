@@ -11,7 +11,7 @@
                     @foreach($role->abilities as $ability)
                         <tr>
                             <td>{{$ability->title}}</td>
-                            <td><a href="{{route('ability.destroy', $role->id)}}" class="btn btn-sm btn-danger">remove</a></td>
+                            <td><a href="#" class="btn btn-sm btn-danger">remove</a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -27,7 +27,7 @@
             </div>
 
             <div class="card-body">
-                <form action="{{route('ability.assign', $role)}}" method="post">
+                <form action="#" method="post">
                     <div class="form-group">
                         <select id="ability-select" name="abilities[]" class="w-100" multiple="multiple">
                             @foreach($abilities as $ability)

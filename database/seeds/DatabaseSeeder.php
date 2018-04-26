@@ -1,6 +1,5 @@
 <?php
 
-use Asgard\Seeds\Abilities\Settings;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,8 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //todo: remove this after development
-        $this->call(RoleAndAbilitiesSeeder::class);
-
+        $this->call(AbilitiesSeeder::class);
+        $this->call(RoleSeeder::class);
     }
 }

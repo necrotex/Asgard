@@ -17,15 +17,23 @@
                 </li>
             @endcan
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('timerboard.index')}}">
-                    <i class="fas fa-clock" aria-hidden="true"></i> Timerboard
-                </a>
-            </li>
+            @can('create', \Asgard\Models\Timer::class)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('timerboard.index')}}">
+                        <i class="fas fa-clock" aria-hidden="true"></i> Timerboard
+                    </a>
+                </li>
+            @endcan
 
+            @if(auth()->user()->can('view', \Asgard\Models\Setting::class)
+            || auth()->user()->can('create', \Silber\Bouncer\Database\Role::class)
+            || auth()->user()->can('create', \Asgard\Models\Corporation::class)
+            || auth()->user()->can('view-job-monitoring')
+            )
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Admin</span>
             </h6>
+            @endif
 
             @can('view', \Asgard\Models\Setting::class)
                 <li class="nav-item">
@@ -52,45 +60,60 @@
             @endcan
 
             @can('view-job-monitoring')
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('horizon.index')}}">
-                    <i class="fas fa-wrench" aria-hidden="true"></i> Job Monitoring
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('horizon.index')}}">
+                        <i class="fas fa-wrench" aria-hidden="true"></i> Job Monitoring
+                    </a>
+                </li>
             @endcan
 
+            @if(auth()->user()->can('create', \Asgard\Models\ApplicationForm::class)
+            || auth()->user()->can('view-application')
+            || auth()->user()->can('create', \Asgard\Models\Application::class)
+            || auth()->user()->can('view-knowledgebase')
+            )
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Recruitment</span>
             </h6>
+            @endif
 
-            <li class="nav-item">
-                <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
-                    <i class="fab fa-wpforms" aria-hidden="true"></i> Application Forms
-                </a>
-            </li>
+            @can('create', \Asgard\Models\ApplicationForm::class)
+                <li class="nav-item">
+                    <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
+                        <i class="fab fa-wpforms" aria-hidden="true"></i> Application Forms
+                    </a>
+                </li>
+            @endcan
 
-            <li class="nav-item">
-                <a class="nav-link {{active('applications.index')}}" href="{{route('applications.index')}}">
-                    <i class="fas fa-user-plus" aria-hidden="true"></i> Applications
-                </a>
-            </li>
+            @can('view-application')
+                <li class="nav-item">
+                    <a class="nav-link {{active('applications.index')}}" href="{{route('applications.index')}}">
+                        <i class="fas fa-user-plus" aria-hidden="true"></i> Applications
+                    </a>
+                </li>
+            @endcan
 
-            <li class="nav-item">
-                <a class="nav-link {{active('applications.create')}}" href="{{route('applications.create')}}">
-                    <i class="fas fa-user-plus" aria-hidden="true"></i> Apply
-                </a>
-            </li>
+            @can('create', \Asgard\Models\Application::class)
+                <li class="nav-item">
+                    <a class="nav-link {{active('applications.create')}}" href="{{route('applications.create')}}">
+                        <i class="fas fa-user-plus" aria-hidden="true"></i> Apply
+                    </a>
+                </li>
+            @endcan
 
-            <li class="nav-item">
-                <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
-                    <i class="fas fa-question-circle" aria-hidden="true"></i> Knowledge Base
-                </a>
-            </li>
+            @can('view-knowledgebase')
+                <li class="nav-item">
+                    <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
+                        <i class="fas fa-question-circle" aria-hidden="true"></i> Knowledge Base
+                    </a>
+                </li>
+            @endcan
 
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>External Services</span>
             </h6>
+
 
             <li class="nav-item">
                 <a class="nav-link" href="https://discord.gg/rJmM22D">
@@ -98,12 +121,14 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link {{active('services.reddit.index')}}"
-                   href="{{route('services.reddit.index')}}">
-                    <i class="fab fa-reddit-alien" aria-hidden="true"></i> Reddit
-                </a>
-            </li>
+            @can('access-subreddit')
+                <li class="nav-item">
+                    <a class="nav-link {{active('services.reddit.index')}}"
+                       href="{{route('services.reddit.index')}}">
+                        <i class="fab fa-reddit-alien" aria-hidden="true"></i> Reddit
+                    </a>
+                </li>
+            @endcan
 
         </ul>
 

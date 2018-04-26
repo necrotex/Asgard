@@ -29,5 +29,4 @@
             <a class="nav-link" href="{{route('logout')}}">Sign out</a>
         </li>
     </ul>
-
 </nav>
