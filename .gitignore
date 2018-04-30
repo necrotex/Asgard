@@ -4,6 +4,7 @@
 /storage/*.key
 /storage/sde
 /storage/logs
+/storage/worker.log
 /storage/debugbar
 /vendor
 /.idea
