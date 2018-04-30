@@ -32,20 +32,18 @@ class FetchRoles implements ShouldQueue
     public function handle()
     {
         $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
+        $response = $discord->guild->getGuildRoles(['guild.id' => (int)config('services.discord.guild_id')]);
 
-        $response = $discord->guild->getGuildRoles(['guild.id' => (int) config('services.discord.guild_id')]);
+        foreach ($response as $role) {
+            // skip @everyone
+            if ($role->name == "@everyone") {
+                continue;
+            }
 
-        //clean up
-
-        foreach($response as $role) {
-            if($role['name'] == "@everyone") continue; // skip @everyone
-
-            $discordRole = DiscordRoles::firstOrNew(['discord_id' => $role['id']]);
-            $discordRole->name = $role['name'];
-            $discordRole->color = $role['color'];
+            $discordRole = DiscordRoles::firstOrNew(['discord_id' => $role->id]);
+            $discordRole->name = $role->name;
+            $discordRole->color = $role->color;
             $discordRole->save();
         }
-
-
     }
 }

@@ -2802,3 +2802,623 @@
 [2018-04-18 05:00:06][tQ3W36XByzThrd2eJDwn1jZH7xrUWpkC] Processing: Asgard\Jobs\Eve\Character\Wallet
 [2018-04-18 05:00:07][tQ3W36XByzThrd2eJDwn1jZH7xrUWpkC] Processed:  Asgard\Jobs\Eve\Character\Wallet
 [2018-04-18 05:00:07][3xv4b00ewKgkc7WoorlsgkXhrh9kh9WW] Processing: Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 17:30:16][3] Processing: Asgard\Jobs\Update\Character
+[2018-04-30 17:30:16][jQid6HwmjZDrRgr54AAIzI9RaIaFguWW] Processing: Eyewitness\Eye\Queue\Jobs\Sonar
+PHP Fatal error:  method_exists(): The script tried to execute a method or access a property of an incomplete object. Please ensure that the class definition "Eyewitness\Eye\Queue\Jobs\Sonar" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide a __autoload() function to load the class definition  in /home/necro/code/asgard/vendor/laravel/framework/src/Illuminate/Queue/CallQueuedHandler.php on line 148
+[2018-04-30 17:30:16][4] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:16][5] Processing: Asgard\Jobs\Eve\Character\Status
+
+In CallQueuedHandler.php line 148:
+                                                                               
+  method_exists(): The script tried to execute a method or access a property   
+  of an incomplete object. Please ensure that the class definition "Eyewitnes  
+  s\Eye\Queue\Jobs\Sonar" of the object you are trying to operate on was load  
+  ed _before_ unserialize() gets called or provide a __autoload() function to  
+   load the class definition                                                   
+                                                                               
+
+[2018-04-30 17:30:16][3] Failed:     Asgard\Jobs\Update\Character
+[2018-04-30 17:30:16][4] Failed:     Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:16][5] Failed:     Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:16][6] Processing: Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 17:30:16][7] Processing: Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 17:30:16][6] Failed:     Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 17:30:16][8] Processing: Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 17:30:16][7] Failed:     Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 17:30:16][8] Failed:     Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 17:30:16][9] Processing: Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 17:30:16][10] Processing: Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 17:30:16][11] Processing: Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 17:30:16][9] Failed:     Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 17:30:16][10] Failed:     Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 17:30:16][11] Failed:     Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 17:30:16][12] Processing: Asgard\Jobs\Eve\Character\Contacts
+[2018-04-30 17:30:16][12] Failed:     Asgard\Jobs\Eve\Character\Contacts
+[2018-04-30 17:30:16][13] Processing: Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 17:30:16][15] Processing: Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 17:30:16][14] Processing: Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 17:30:16][13] Failed:     Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 17:30:16][15] Failed:     Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 17:30:16][14] Failed:     Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 17:30:16][16] Processing: Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 17:30:16][17] Processing: Asgard\Jobs\Eve\Character\Transactions
+[2018-04-30 17:30:16][16] Failed:     Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 17:30:16][MrLSVedOmWlTDpQnoY7SRIBgHXXA9ZuC] Processing: Eyewitness\Eye\Queue\Jobs\Sonar
+PHP Fatal error:  method_exists(): The script tried to execute a method or access a property of an incomplete object. Please ensure that the class definition "Eyewitness\Eye\Queue\Jobs\Sonar" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide a __autoload() function to load the class definition  in /home/necro/code/asgard/vendor/laravel/framework/src/Illuminate/Queue/CallQueuedHandler.php on line 148
+[2018-04-30 17:30:16][17] Failed:     Asgard\Jobs\Eve\Character\Transactions
+
+[2018-04-30 17:30:16][TPAZdrHo9AXGOyWTuT6lrSXzlCE7kCE4] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:16][K3DeIDMvJMXq3SWqSExKA2RFMF5Mw9VJ] Processing: Asgard\Jobs\Eve\Character\Status
+In CallQueuedHandler.php line 148:
+                                                                               
+  method_exists(): The script tried to execute a method or access a property   
+  of an incomplete object. Please ensure that the class definition "Eyewitnes  
+  s\Eye\Queue\Jobs\Sonar" of the object you are trying to operate on was load  
+  ed _before_ unserialize() gets called or provide a __autoload() function to  
+   load the class definition                                                   
+                                                                               
+
+[2018-04-30 17:30:17][K3DeIDMvJMXq3SWqSExKA2RFMF5Mw9VJ] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:17][erBAWnxvgqUqVpqmSXq1hDIEb5mhYcfL] Processing: Eyewitness\Eye\Queue\Jobs\Sonar
+PHP Fatal error:  method_exists(): The script tried to execute a method or access a property of an incomplete object. Please ensure that the class definition "Eyewitness\Eye\Queue\Jobs\Sonar" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide a __autoload() function to load the class definition  in /home/necro/code/asgard/vendor/laravel/framework/src/Illuminate/Queue/CallQueuedHandler.php on line 148
+
+In CallQueuedHandler.php line 148:
+                                                                               
+  method_exists(): The script tried to execute a method or access a property   
+  of an incomplete object. Please ensure that the class definition "Eyewitnes  
+  s\Eye\Queue\Jobs\Sonar" of the object you are trying to operate on was load  
+  ed _before_ unserialize() gets called or provide a __autoload() function to  
+   load the class definition                                                   
+                                                                               
+
+[2018-04-30 17:30:17][18] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:17][19] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:17][20] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:17][19] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:17][21] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:18][21] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:18][22] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:18][TPAZdrHo9AXGOyWTuT6lrSXzlCE7kCE4] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:18][23] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:18][20] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:18][24] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:18][18] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:18][25] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:19][22] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:19][26] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:19][25] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:19][27] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:19][23] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:19][28] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:19][24] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:19][29] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:19][29] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:19][26] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:19][30] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:19][31] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:19][27] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:19][35] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:19][28] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:19][36] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:20][31] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:20][38] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:20][36] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:20][39] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:20][30] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:20][40] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:20][35] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:20][41] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:20][39] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:20][42] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:20][41] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:20][43] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:20][40] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:20][44] Processing: Asgard\Jobs\Update\Character
+[2018-04-30 17:30:21][44] Processed:  Asgard\Jobs\Update\Character
+[2018-04-30 17:30:21][45] Processing: Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 17:30:21][43] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 17:30:21][46] Processing: Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 17:30:21][42] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:21][47] Processing: Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 17:30:21][38] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 17:30:21][48] Processing: Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 17:30:22][46] Processed:  Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 17:30:22][49] Processing: Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 17:30:22][48] Processed:  Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 17:30:22][50] Processing: Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 17:30:23][47] Processed:  Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 17:30:23][51] Processing: Asgard\Jobs\Eve\Character\Contacts
+[2018-04-30 17:30:23][49] Processed:  Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 17:30:23][52] Processing: Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 17:30:23][45] Processed:  Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 17:30:23][53] Processing: Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 17:30:23][50] Processed:  Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 17:30:23][54] Processing: Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 17:30:24][54] Processed:  Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 17:30:24][55] Processing: Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 17:30:25][55] Failed:     Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 17:30:25][56] Processing: Asgard\Jobs\Eve\Character\Transactions
+[2018-04-30 17:30:27][56] Processed:  Asgard\Jobs\Eve\Character\Transactions
+[2018-04-30 17:30:27][dD28khKa3w9COu5NoEGbHuFCM8euzC4U] Processing: Eyewitness\Eye\Queue\Jobs\Sonar
+PHP Fatal error:  method_exists(): The script tried to execute a method or access a property of an incomplete object. Please ensure that the class definition "Eyewitness\Eye\Queue\Jobs\Sonar" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide a __autoload() function to load the class definition  in /home/necro/code/asgard/vendor/laravel/framework/src/Illuminate/Queue/CallQueuedHandler.php on line 148
+
+In CallQueuedHandler.php line 148:
+                                                                               
+  method_exists(): The script tried to execute a method or access a property   
+  of an incomplete object. Please ensure that the class definition "Eyewitnes  
+  s\Eye\Queue\Jobs\Sonar" of the object you are trying to operate on was load  
+  ed _before_ unserialize() gets called or provide a __autoload() function to  
+   load the class definition                                                   
+                                                                               
+
+[2018-04-30 17:30:28][1] Processing: Asgard\Listeners\RedditAccessCheck
+[2018-04-30 17:30:28][1] Failed:     Asgard\Listeners\RedditAccessCheck
+[2018-04-30 17:30:28][2] Processing: Asgard\Listeners\DiscordAccessCheck
+[2018-04-30 17:30:28][2] Failed:     Asgard\Listeners\DiscordAccessCheck
+[2018-04-30 17:30:28][32] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:30:29] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:30:29] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:30:30 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d3a69e4b9e535ecf3bcad4a1c95ca5f491525109430; expires=Tue, 30-Apr-19 17:30:30 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bbc9409122762-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:30:29][32] Failed:     Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:30:29][33] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 17:30:29] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 17:30:29] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 17:30:30 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=d3a69e4b9e535ecf3bcad4a1c95ca5f491525109430; expires=Tue, 30-Apr-19 17:30:30 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 9 X-RateLimit-Reset: 1525109441 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bbc95da912762-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 17:30:29][33] Failed:     Asgard\Jobs\Discord\Rename
+[2018-04-30 17:30:29][34] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 17:30:29] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:30:29] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:30:31 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d501bf2bb489d71dc92d24fc7e63a66d31525109430; expires=Tue, 30-Apr-19 17:30:30 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 4 X-RateLimit-Reset: 1525109432 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bbc972f052342-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 17:30:29][34] Failed:     Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 17:30:29][37] Processing: Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 17:30:30][37] Failed:     Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 17:30:30][57] Processing: Asgard\Listeners\RedditAccessCheck
+[2018-04-30 17:30:30][57] Processed:  Asgard\Listeners\RedditAccessCheck
+[2018-04-30 17:30:30][58] Processing: Asgard\Listeners\DiscordAccessCheck
+[2018-04-30 17:30:30][58] Processed:  Asgard\Listeners\DiscordAccessCheck
+[2018-04-30 17:30:32][52] Processed:  Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 17:30:42][53] Failed:     Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 17:30:42][51] Processed:  Asgard\Jobs\Eve\Character\Contacts
+Horizon started successfully.
+[2018-04-30 17:33:55][65] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:33:55][65] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:33:56][65] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:33:56][65] Failed:     Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:33:55] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:33:55] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:33:57 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d074ee4c275c669de2a835f3551f164dd1525109636; expires=Tue, 30-Apr-19 17:33:56 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc19f39b7279e-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:33:56] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:33:56] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:33:57 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d24aa327dc256c3b8c26a03253a31e6611525109637; expires=Tue, 30-Apr-19 17:33:57 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc1a0cdef2744-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:33:56] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:33:56] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:33:57 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d18a5f67e667d0f75e5e993e84f97230c1525109637; expires=Tue, 30-Apr-19 17:33:57 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc1a21946233c-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:34:46][68] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:34:46][68] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:34:46] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:34:46] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:34:48 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d2ce8a0cec365bbceca4e993059991f121525109687; expires=Tue, 30-Apr-19 17:34:47 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc2dde8a42738-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:34:47][68] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:34:47][68] Failed:     Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:34:47] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:34:47] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:34:48 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=dfc400e0c8e07066494bf7e685fe7f92d1525109688; expires=Tue, 30-Apr-19 17:34:48 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc2df4cc02348-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:34:47] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:34:47] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:34:48 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d30736b990a79583c6f060a4b77c18c2e1525109688; expires=Tue, 30-Apr-19 17:34:48 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc2e0bac62756-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:35:10][71] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:35:10][71] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:35:10] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:35:10] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:35:12 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d8cb5c11b8709600c7a9f14d788cc50911525109712; expires=Tue, 30-Apr-19 17:35:12 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc3741f59276e-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:35:11][71] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:35:11][71] Failed:     Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:35:11] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:35:11] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:35:12 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d435751b52f5ac0304fedbce2403b7fd61525109712; expires=Tue, 30-Apr-19 17:35:12 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc3759ed02666-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:35:11] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:35:11] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:35:12 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d5fa4c4df3c128d83dafd8284d34569141525109712; expires=Tue, 30-Apr-19 17:35:12 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc376ec662744-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:35:38][72] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:35:38][72] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:35:38][72] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:35:39][72] Failed:     Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:35:38] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:35:38] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:35:39 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d35062db0a4de0b6ada60fc8bf58b907b1525109739; expires=Tue, 30-Apr-19 17:35:39 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc4211f2c2738-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:35:38] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:35:38] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:35:40 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=ddf274143cec7b29d6dfed381c4e4cc7d1525109739; expires=Tue, 30-Apr-19 17:35:39 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc42279e72762-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:35:39] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:35:39] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:35:40 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=ddb341225bbe0df7474fb36964f98c1201525109740; expires=Tue, 30-Apr-19 17:35:40 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc423d999275c-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:36:41][75] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:36:41][75] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:36:41][75] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:36:42][75] Failed:     Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:36:41] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:36:41] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:36:42 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=dfdff819fb3a89f8c70af4438786d58bb1525109802; expires=Tue, 30-Apr-19 17:36:42 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc5ab3d882744-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:36:41] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:36:41] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:36:43 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=ddbaf1af25ce185c31ee9972b8a6f4f041525109802; expires=Tue, 30-Apr-19 17:36:42 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc5ac79f1274a-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:36:42] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:36:42] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:36:43 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=dac6be44be9149b663bf855924c1ab4b71525109803; expires=Tue, 30-Apr-19 17:36:43 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bc5adba4f275c-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:39:48][80] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:39:49][80] Processed:  Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:39:49] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:39:49] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:39:50 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=da0580bb0aecb85a8e6abb7a48a47a1f51525109990; expires=Tue, 30-Apr-19 17:39:50 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bca3e58c7273e-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:40:09][81] Processing: Asgard\Listeners\RedditAccessCheck
+[2018-04-30 17:40:09][81] Failed:     Asgard\Listeners\RedditAccessCheck
+[2018-04-30 17:40:09][82] Processing: Asgard\Listeners\DiscordAccessCheck
+[2018-04-30 17:40:09][82] Failed:     Asgard\Listeners\DiscordAccessCheck
+[2018-04-30 17:41:12][100] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 17:41:12][101] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 17:41:13][101] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 17:41:13][101] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 17:41:13][101] Failed:     Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 17:41:13] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:41:13] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:41:14 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=dfe16d85d8bbf7456f42618666f979b881525110074; expires=Tue, 30-Apr-19 17:41:14 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 4 X-RateLimit-Reset: 1525110076 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bcc4bfec4232a-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 17:41:13] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:41:13] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:41:14 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=db0ad3675d3fcfdee2333ae89fd04a2b31525110074; expires=Tue, 30-Apr-19 17:41:14 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 3 X-RateLimit-Reset: 1525110076 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bcc4ddd332384-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 17:41:13] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:41:13] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:41:14 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d2cc29a156c2776d8806130df54da63511525110074; expires=Tue, 30-Apr-19 17:41:14 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 2 X-RateLimit-Reset: 1525110076 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bcc4f5bac2330-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 17:41:13][100] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 17:41:13][100] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 17:41:13][100] Failed:     Asgard\Jobs\Discord\Rename
+[2018-04-30 17:41:13] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 17:41:13] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 17:41:14 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=d0625c8245d05a58e9533a8c977cf430c1525110074; expires=Tue, 30-Apr-19 17:41:14 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 9 X-RateLimit-Reset: 1525110085 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bcc4bec4a231e-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 17:41:13] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 17:41:13] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 17:41:14 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=d168e5fc70cc30abc22aa4b9fc8c870001525110074; expires=Tue, 30-Apr-19 17:41:14 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 8 X-RateLimit-Reset: 1525110085 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bcc4d2b4d2318-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 17:41:13] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 17:41:13] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 17:41:14 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=d2cc29a156c2776d8806130df54da63511525110074; expires=Tue, 30-Apr-19 17:41:14 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 7 X-RateLimit-Reset: 1525110085 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bcc4e9b0a2330-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 17:41:19][102] Processing: Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 17:41:19][102] Processing: Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 17:41:20][102] Processing: Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 17:41:20][102] Failed:     Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 17:50:12][119] Processing: Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:50:13][119] Processed:  Asgard\Jobs\Discord\FetchRoles
+[2018-04-30 17:50:13] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/roles GET /api/v6/guilds/261572776274427904/roles HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 17:50:13] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 17:50:14 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d563dc7ea3bddf7781e409f2ca1c623ad1525110614; expires=Tue, 30-Apr-19 17:50:14 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bd97d1c0c27aa-FRA  [{"hoist": false, "name": "@everyone", "mentionable": false, "color": 0, "position": 0, "id": "261572776274427904", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "VGSDFDSA", "mentionable": false, "color": 0, "position": 3, "id": "406052562475679745", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "DFASDASDASD", "mentionable": false, "color": 0, "position": 2, "id": "406052591471034368", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test 2", "mentionable": false, "color": 3066993, "position": 4, "id": "403178074415431690", "managed": false, "permissions": 104324161}, {"hoist": false, "name": "test role", "mentionable": false, "color": 15105570, "position": 5, "id": "403172812702875659", "managed": false, "permissions": 104324169}, {"hoist": false, "name": "Admin", "mentionable": false, "color": 15277667, "position": 6, "id": "403178099057098762", "managed": false, "permissions": 2117598463}, {"hoist": false, "name": "DASDAS", "mentionable": false, "color": 0, "position": 1, "id": "406052613461639168", "managed": false, "permissions": 104324161}] [] []
+[2018-04-30 17:51:10][120] Processing: Asgard\Listeners\RedditAccessCheck
+[2018-04-30 17:51:10][120] Failed:     Asgard\Listeners\RedditAccessCheck
+[2018-04-30 17:51:10][121] Processing: Asgard\Listeners\DiscordAccessCheck
+[2018-04-30 17:51:10][121] Failed:     Asgard\Listeners\DiscordAccessCheck
+Horizon started successfully.
+[2018-04-30 18:02:47][89] Processing: Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 18:02:47][89] Failed:     Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 18:02:47][92] Processing: Asgard\Jobs\Eve\Character\Contacts
+[2018-04-30 18:02:47][92] Failed:     Asgard\Jobs\Eve\Character\Contacts
+[2018-04-30 18:02:47][96] Processing: Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 18:02:47][96] Failed:     Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 18:02:47][123] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:47][123] Failed:     Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:47][127] Processing: Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 18:02:47][127] Failed:     Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 18:02:47][131] Processing: Asgard\Jobs\Eve\Character\Contacts
+[2018-04-30 18:02:47][131] Failed:     Asgard\Jobs\Eve\Character\Contacts
+[2018-04-30 18:02:47][135] Processing: Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 18:02:47][135] Failed:     Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 18:02:47][83] Processing: Asgard\Jobs\Update\Character
+[2018-04-30 18:02:47][83] Failed:     Asgard\Jobs\Update\Character
+[2018-04-30 18:02:47][84] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:47][84] Failed:     Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:47][85] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:47][85] Failed:     Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:47][86] Processing: Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 18:02:47][86] Failed:     Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 18:02:47][91] Processing: Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 18:02:47][91] Failed:     Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 18:02:47][95] Processing: Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 18:02:47][95] Failed:     Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 18:02:47][125] Processing: Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 18:02:47][125] Failed:     Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 18:02:47][129] Processing: Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 18:02:47][129] Failed:     Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 18:02:47][134] Processing: Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 18:02:47][134] Failed:     Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 18:02:47][88] Processing: Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 18:02:47][88] Failed:     Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 18:02:47][94] Processing: Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 18:02:47][94] Failed:     Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 18:02:47][122] Processing: Asgard\Jobs\Update\Character
+[2018-04-30 18:02:47][122] Failed:     Asgard\Jobs\Update\Character
+[2018-04-30 18:02:47][126] Processing: Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 18:02:47][126] Failed:     Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 18:02:47][128] Processing: Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 18:02:47][128] Failed:     Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 18:02:47][133] Processing: Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 18:02:47][133] Failed:     Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 18:02:47][87] Processing: Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 18:02:47][87] Failed:     Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 18:02:47][90] Processing: Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 18:02:47][90] Failed:     Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 18:02:47][93] Processing: Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 18:02:47][93] Failed:     Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 18:02:47][97] Processing: Asgard\Jobs\Eve\Character\Transactions
+[2018-04-30 18:02:47][97] Failed:     Asgard\Jobs\Eve\Character\Transactions
+[2018-04-30 18:02:47][124] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:47][124] Failed:     Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:47][130] Processing: Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 18:02:47][130] Failed:     Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 18:02:47][132] Processing: Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 18:02:47][132] Failed:     Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 18:02:47][136] Processing: Asgard\Jobs\Eve\Character\Transactions
+[2018-04-30 18:02:47][136] Failed:     Asgard\Jobs\Eve\Character\Transactions
+[2018-04-30 18:02:47][60] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:47][59] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:48][60] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:48][61] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:49][59] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:49][62] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:49][61] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:49][63] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:50][63] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:50][66] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:50][62] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:50][64] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:51][66] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:51][70] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:50][64] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:50][67] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:50][67] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:50][69] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:51][70] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:51][74] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:52][74] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:52][76] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:51][69] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:51][73] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:52][73] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:52][77] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:52][77] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:52][78] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:53][79] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:53][79] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:53][98] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:55][76] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:55][103] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:56][103] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:56][107] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:55][78] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:55][104] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:56][104] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:56][106] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:55][98] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:55][99] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:56][99] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:56][105] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:56][107] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:56][110] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:57][110] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:57][112] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:56][106] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:56][108] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:56][108] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:56][111] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:56][105] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:56][109] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:57][109] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:57][113] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:57][112] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:57][114] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:57][114] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:57][117] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:57][111] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:57][115] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:58][115] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:58][137] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:57][113] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:57][116] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:58][116] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:58][118] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:58][117] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:58][138] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:58][138] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:58][140] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:59][140] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:59][142] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:58][137] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:58][141] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:58][118] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:58][139] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:59][142] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:59][145] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:00][145] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:00][148] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:59][141] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:59][144] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:59][144] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:02:59][146] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:00][146] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:00][149] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:59][139] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:02:59][143] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:00][143] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:00][147] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:00][148] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:00][150] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:01][150] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:01][151] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:02][151] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:02][155] Processing: Asgard\Jobs\Update\Character
+[2018-04-30 18:03:02][155] Processed:  Asgard\Jobs\Update\Character
+[2018-04-30 18:03:02][156] Processing: Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 18:03:02][149] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:02][153] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:01][147] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:01][152] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:02][152] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:02][154] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:02][174] Processing: Asgard\Listeners\RedditAccessCheck
+[2018-04-30 18:03:02][174] Processed:  Asgard\Listeners\RedditAccessCheck
+[2018-04-30 18:03:02][175] Processing: Asgard\Listeners\DiscordAccessCheck
+[2018-04-30 18:03:02][175] Processed:  Asgard\Listeners\DiscordAccessCheck
+[2018-04-30 18:03:02][153] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:02][158] Processing: Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 18:03:02][154] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:02][157] Processing: Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 18:03:04][157] Processed:  Asgard\Jobs\Eve\Character\Skillqueue
+[2018-04-30 18:03:04][159] Processing: Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 18:03:04][156] Processed:  Asgard\Jobs\Eve\Character\Skills
+[2018-04-30 18:03:04][160] Processing: Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 18:03:05][160] Processed:  Asgard\Jobs\Eve\Character\CorporationRoles
+[2018-04-30 18:03:05][162] Processing: Asgard\Jobs\Eve\Character\Contacts
+[2018-04-30 18:03:05][158] Processed:  Asgard\Jobs\Eve\Character\CorporationHistory
+[2018-04-30 18:03:05][163] Processing: Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 18:03:05][159] Processed:  Asgard\Jobs\Eve\Character\Fatigue
+[2018-04-30 18:03:05][161] Processing: Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 18:03:05][161] Processed:  Asgard\Jobs\Eve\Character\Titles
+[2018-04-30 18:03:05][164] Processing: Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 18:03:11][162] Processed:  Asgard\Jobs\Eve\Character\Contacts
+[2018-04-30 18:03:11][165] Processing: Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 18:03:12][165] Processed:  Asgard\Jobs\Eve\Character\Wallet
+[2018-04-30 18:03:12][166] Processing: Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 18:03:12][166] Failed:     Asgard\Jobs\Eve\Character\Journal
+[2018-04-30 18:03:12][167] Processing: Asgard\Jobs\Eve\Character\Transactions
+[2018-04-30 18:03:13][167] Processed:  Asgard\Jobs\Eve\Character\Transactions
+[2018-04-30 18:03:13][169] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:13][163] Processed:  Asgard\Jobs\Eve\Character\Assets
+[2018-04-30 18:03:13][168] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:13][169] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:13][170] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:14][170] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:14][171] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:15][171] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:15][172] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:15][172] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:15][168] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:03:15][173] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:16][173] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:03:23][164] Failed:     Asgard\Jobs\Eve\Character\Mails
+[2018-04-30 18:04:02][176] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:04:04][177] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:04:04][176] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:04:05][177] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:05:02][178] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:05:03][178] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:05:03][179] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:05:03][179] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:06:04][180] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:06:04][181] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:06:06][180] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:06:06][181] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:07:03][183] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:07:03][183] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:07:03][182] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:07:04][182] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:08:03][184] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:08:05][184] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:08:04][185] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:08:05][185] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:09:02][186] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:09:04][186] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:09:03][187] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:09:04][187] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:10:04][189] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:10:04][188] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:10:05][189] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:10:05][188] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:11:02][190] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:11:04][190] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:11:04][191] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:11:04][191] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:12:01][192] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:12:02][193] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:12:02][193] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:12:02][192] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:13:03][195] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:13:03][194] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:13:03][195] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:13:05][194] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:14:01][196] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:14:02][197] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:14:02][196] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:14:03][197] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:14:19][198] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 18:14:19][199] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 18:14:19] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 18:14:19] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 18:14:20 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=d2a8ea4bb7024c49195e9c152ea6b7ec91525112060; expires=Tue, 30-Apr-19 18:14:20 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 9 X-RateLimit-Reset: 1525112071 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bfcc959422738-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 18:14:19][199] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 18:14:19][199] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 18:14:20][199] Failed:     Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 18:14:19] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 18:14:19] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 18:14:20 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d5730b7c0533f292cf3276352213746481525112060; expires=Tue, 30-Apr-19 18:14:20 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 4 X-RateLimit-Reset: 1525112062 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bfccadd462342-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 18:14:19] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 18:14:19] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 18:14:20 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d2c063de8cae67625a74f83355d79d57d1525112060; expires=Tue, 30-Apr-19 18:14:20 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 3 X-RateLimit-Reset: 1525112062 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bfccc395e2744-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 18:14:20] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 18:14:20] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 18:14:21 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=dcbf66357525178f568182b5beeb9ec801525112061; expires=Tue, 30-Apr-19 18:14:21 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 2 X-RateLimit-Reset: 1525112062 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bfccd8b3e2732-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 18:14:19][198] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 18:14:19][198] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 18:14:20][198] Failed:     Asgard\Jobs\Discord\Rename
+[2018-04-30 18:14:19] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 18:14:19] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 18:14:20 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=d84cfb07e34adbf4949199565770c666c1525112060; expires=Tue, 30-Apr-19 18:14:20 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 8 X-RateLimit-Reset: 1525112071 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bfccbefc62762-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 18:14:20] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 18:14:20] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 18:14:21 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=df61aa45e05b0ae0ddf19e428397ad1721525112061; expires=Tue, 30-Apr-19 18:14:21 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 7 X-RateLimit-Reset: 1525112071 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413bfccd586b275c-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 18:14:23][200] Processing: Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 18:14:23][200] Processing: Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 18:14:23][200] Processing: Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 18:14:23][200] Failed:     Asgard\Jobs\Reddit\AddApprovedSubmitterJob
+[2018-04-30 18:15:03][202] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:15:02][201] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:15:04][202] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:15:04][201] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:16:04][203] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:16:04][204] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:16:05][204] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:16:06][203] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:17:02][205] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:17:03][206] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:17:04][206] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:17:04][205] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:17:47][208] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 18:17:47][208] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 18:17:47][208] Processing: Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 18:17:47][208] Failed:     Asgard\Jobs\Discord\UpdateUserRolesJob
+[2018-04-30 18:17:47] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 18:17:47] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 18:17:48 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d8aed6cc4ced62f98a6aab0b5c0f7052a1525112268; expires=Tue, 30-Apr-19 18:17:48 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 4 X-RateLimit-Reset: 1525112270 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413c01dd4b2b2744-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 18:17:47] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 18:17:47] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 18:17:48 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d9852a62b44f654b3fe19eeed0da7ea151525112268; expires=Tue, 30-Apr-19 18:17:48 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 3 X-RateLimit-Reset: 1525112270 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413c01defb432732-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 18:17:47] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 GET /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Content-Type: application/json Host: discordapp.com   [] []
+[2018-04-30 18:17:47] Logger.INFO: HTTP/1.1 200 OK Date: Mon, 30 Apr 2018 18:17:48 GMT Content-Type: application/json Connection: close Set-Cookie: __cfduid=d0e4729c5380fb3b67d43bc06d7270a5c1525112268; expires=Tue, 30-Apr-19 18:17:48 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 5 X-RateLimit-Remaining: 2 X-RateLimit-Reset: 1525112270 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413c01e068fd2738-FRA  {"nick": "asdasd", "user": {"username": "Grimm", "discriminator": "1337", "id": "111704367224094720", "avatar": "34dfb16487044187a7d1747f5468aee3"}, "roles": [], "mute": false, "deaf": false, "joined_at": "2016-12-22T19:16:49.656000+00:00"} [] []
+[2018-04-30 18:17:47][207] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 18:17:47][207] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 18:17:47][207] Processing: Asgard\Jobs\Discord\Rename
+[2018-04-30 18:17:47][207] Failed:     Asgard\Jobs\Discord\Rename
+[2018-04-30 18:17:47] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 18:17:47] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 18:17:48 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=d4f2ad55e130ea65f654d4374462d79c31525112268; expires=Tue, 30-Apr-19 18:17:48 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 9 X-RateLimit-Reset: 1525112279 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413c01dd3da12756-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 18:17:47] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 18:17:47] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 18:17:48 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=d5152c92311b7b93e5a19523ff532f04a1525112268; expires=Tue, 30-Apr-19 18:17:48 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 8 X-RateLimit-Reset: 1525112279 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413c01df7c4a234e-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 18:17:47] Logger.INFO: https://discordapp.com/api/v6/guilds/261572776274427904/members/111704367224094720 PATCH /api/v6/guilds/261572776274427904/members/111704367224094720 HTTP/1.1 Content-Length: 57 Authorization: Bot <TOKEN> User-Agent: DiscordBot (https://github.com/aequasi/php-restcord, 0.1.1) Host: discordapp.com Content-Type: application/json  {"nick":"[BAERS] Grimm Venris","mute":false,"deaf":false} [] []
+[2018-04-30 18:17:47] Logger.INFO: HTTP/1.1 403 FORBIDDEN Date: Mon, 30 Apr 2018 18:17:49 GMT Content-Type: application/json Content-Length: 49 Connection: close Set-Cookie: __cfduid=d759d870f8f75b500d7289552c37196ae1525112268; expires=Tue, 30-Apr-19 18:17:48 GMT; path=/; domain=.discordapp.com; HttpOnly Strict-Transport-Security: max-age=31536000; includeSubDomains X-RateLimit-Limit: 10 X-RateLimit-Remaining: 7 X-RateLimit-Reset: 1525112279 Via: 1.1 google Alt-Svc: clear Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" Server: cloudflare CF-RAY: 413c01e0b8f52750-FRA  {"code": 0, "message": "Privilege is too low..."} [] []
+[2018-04-30 18:18:04][210] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:18:04][210] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:18:04][209] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:18:05][209] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:19:02][211] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:19:04][211] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:19:04][212] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:19:04][212] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:20:01][213] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:20:01][214] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:20:02][214] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:20:04][213] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:21:02][215] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:21:03][215] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:21:03][216] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:21:05][216] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:22:02][217] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:22:04][217] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:22:04][218] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:22:04][218] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:23:01][219] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:23:02][219] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:23:02][220] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:23:03][220] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:24:03][221] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:24:04][222] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:24:05][222] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:24:05][221] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:25:02][223] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:25:02][224] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:25:03][224] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:25:04][223] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:26:03][225] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:26:03][226] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:26:05][225] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:26:04][226] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:27:02][227] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:27:03][227] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:27:03][228] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:27:03][228] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:28:01][229] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:28:03][229] Processed:  Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:28:03][230] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:28:04][230] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:29:03][231] Processing: Asgard\Jobs\Eve\Character\Location
+[2018-04-30 18:29:04][232] Processing: Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:29:04][232] Processed:  Asgard\Jobs\Eve\Character\Status
+[2018-04-30 18:29:05][231] Processed:  Asgard\Jobs\Eve\Character\Location

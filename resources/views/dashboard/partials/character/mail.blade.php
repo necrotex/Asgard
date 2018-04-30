@@ -12,7 +12,8 @@
 
 </div>
 
-<div class="modal fade" id="mail-modal" tabindex="-1" role="dialog" aria-labelledby="mail-modal-subject" aria-hidden="true">
+<div class="modal fade" id="mail-modal" tabindex="-1" role="dialog" aria-labelledby="mail-modal-subject"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         </div>
@@ -21,42 +22,40 @@
 
 @push('js')
     <script>
-        $(document).ready(function(){
-            $(function() {
+        $(function () {
 
-                var table = $('#mail-table').dataTable({
-                    processing: true,
-                    serverSide: true,
-                    select: {
-                        items: 'row'
-                    },
-                    autoWidth: false,
-                    ajax: '{!! route('character.mails', $character) !!}',
-                    columns: [
-                        { data: 'sender_name', name: 'sender_name' },
-                        { data: 'subject', name: 'subject' },
-                        { data: 'date', name: 'date' }
-                    ]
-
-                });
-
-                $('#mail-table').on('click', 'tr', function(event) {
-                    var data = table.row(this).data();
-
-                    axios.post('{{route('character.mail', [$character])}}', {id: data['mail_id']}).then(function(response) {
-                        var data = response.data;
-
-                        $('#mail-modal').on('show.bs.modal', function (event) {
-                            var modal = $(this);
-
-                            modal.find('.modal-content').html(data);
-                        });
-
-                        $('#mail-modal').modal({show: true});
-                    });
-                });
+            var table = $('#mail-table').DataTable({
+                processing: true,
+                serverSide: true,
+                select: {
+                    items: 'row'
+                },
+                autoWidth: false,
+                ajax: '{!! route('character.mails', $character) !!}',
+                columns: [
+                    {data: 'sender_name', name: 'sender_name'},
+                    {data: 'subject', name: 'subject'},
+                    {data: 'date', name: 'date'}
+                ]
 
             });
+
+            $('#mail-table').on('click', 'tr', function () {
+                var data = table.row(this).data();
+
+                axios.post('{{route('character.mail', [$character])}}', {id: data['mail_id']}).then(function (response) {
+                    var data = response.data;
+
+                    $('#mail-modal').on('show.bs.modal', function () {
+                        var modal = $(this);
+
+                        modal.find('.modal-content').html(data);
+                    });
+
+                    $('#mail-modal').modal({show: true});
+                });
+            });
+
         });
     </script>
 @endpush

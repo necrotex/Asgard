@@ -41,7 +41,9 @@ class SetupCommand extends Command
         $this->call('migrate:fresh');
         $this->call('db:seed');
         $this->call('eve:update-sde');
+        $this->call('asgard:discord:fetch-roles');
         $this->call('queue:restart');
+
 
     }
 }

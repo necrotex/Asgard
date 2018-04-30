@@ -11,28 +11,31 @@
                 @endforeach
             </div>
 
-            <div class="card-body">
+            @can('update-roles')
+                <div class="card-body">
 
-                <form method="post" action="{{route('profile.update', $user->id)}}">
+                    <form method="post" action="{{route('profile.update', $user->id)}}">
 
-                    {{csrf_field()}}
+                        {{csrf_field()}}
 
-                    <select name="roles[]" id="roles" multiple="multiple" class="w-100">
-                        @foreach($roles as $role)
-                            <option value="{{$role->name}}" class="form-control"
-                                    @if(in_array($role->id, $userRoles)) selected @endif>
-                                {{$role->title}}
-                            </option>
-                        @endforeach
-                    </select>
+                        <select name="roles[]" id="roles" multiple="multiple" class="w-100">
+                            @foreach($roles as $role)
+                                <option value="{{$role->name}}" class="form-control"
+                                        @if(in_array($role->id, $userRoles)) selected @endif>
+                                    {{$role->title}}
+                                </option>
+                            @endforeach
+                        </select>
 
-                    <button type="submit" name="roleSubmit" class="btn btn-primary btn-block">Save</button>
-                    </div>
-                </form>
-            </div>
+                        <button type="submit" name="roleSubmit" class="btn btn-primary btn-block">Save</button>
+                    </form>
 
+                </div>
+            @endcan
         </div>
     </div>
+
+</div>
 </div>
 
 @push('js')

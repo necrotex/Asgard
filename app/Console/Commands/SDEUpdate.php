@@ -62,11 +62,10 @@ class SDEUpdate extends Command
     protected $guzzle;
 
     /**
-     * The response Json from the resources repo.
-     *
+
      * @var
      */
-    protected $json;
+    protected $data;
 
     /**
      * The SDE file storage path.
@@ -80,6 +79,11 @@ class SDEUpdate extends Command
      */
     public function __construct()
     {
+        $this->data = new \stdClass();
+        $this->data->url = 'https://www.fuzzwork.co.uk/dump/:version/';
+        $this->data->version = env('ASGARD_SDE_VERSION', 'latest');
+        $this->data->format = '.sql.bz2';
+        $this->data->tables = explode(',', env('ASGARD_SDE_TABLES', ''));
 
         parent::__construct();
 
@@ -97,7 +101,7 @@ class SDEUpdate extends Command
         $this->comment('mysql shell command to import an extracted dump. Due');
         $this->comment('to the way the command is constructed, should someone ');
         $this->comment('view the current running processes of your server, they ');
-        $this->comment('will be able to see your SeAT database users password.');
+        $this->comment('will be able to see your database users password.');
         $this->line('');
         $this->line('Ensure that you understand this before continuing.');
 
@@ -112,38 +116,17 @@ class SDEUpdate extends Command
             return;
         }
 
-        // Request the json from eveseat/resources
-        $this->json = $this->getJsonResource();
-
         // Ensure we got a response, else fail.
-        if (! $this->json) {
+        if (! $this->data) {
 
             $this->warn('Unable to reach the resources endpoint.');
 
             return;
         }
 
-        // Check if we should attempt getting the
-        // version string locally
-        if ($this->option('local')) {
-
-            $version_number = env('SDE_VERSION', null);
-
-            if (! is_null($version_number)) {
-
-                $this->comment('Using locally sourced version number of: ' . $version_number);
-                $this->json->version = env('SDE_VERSION');
-
-            } else {
-
-                $this->warn('Unable to determine the version number override. ' .
-                    'Using remote version: ' . $this->json->version);
-            }
-        }
-
         // Avoid an existing SDE to be accidentally installed again
         // except if the user explicitly ask for it
-        if ($this->json->version == Setting::get('installed_sde') &&
+        if ($this->data->version == Setting::get('installed_sde') &&
             $this->option('force') == false
         ) {
 
@@ -170,10 +153,10 @@ class SDEUpdate extends Command
 
         // Show a final confirmation with some info on what
         // we are going to be doing.
-        $this->info('The local SDE data will be updated to ' . $this->json->version);
-        $this->info(count($this->json->tables) . ' tables will be updated: ' .
-            implode(', ', $this->json->tables));
-        $this->info('Download format will be: ' . $this->json->format);
+        $this->info('The local SDE data will be updated to ' . $this->data->version);
+        $this->info(count($this->data->tables) . ' tables will be updated: ' .
+            implode(', ', $this->data->tables));
+        $this->info('Download format will be: ' . $this->data->format);
         $this->line('');
         $this->info('The SDE will be imported to mysql://' .
             config('database.connections.mysql.username') . '@' .
@@ -200,27 +183,10 @@ class SDEUpdate extends Command
 
         $this->importSde();
 
-        Setting::set('installed_sde', $this->json->version);
+        Setting::set('installed_sde', $this->data->version);
 
         $this->line('SDE Update Command Complete');
 
-    }
-
-    /**
-     * Query the eveseat/resources repository for SDE
-     * related information.
-     *
-     * @return \Psr\Http\Message\StreamInterface|void
-     */
-    public function getJsonResource()
-    {
-
-        return json_decode('{
-            "version": "sde-20171205-TRANQUILITY",
-            "url": "https:\/\/www.fuzzwork.co.uk\/dump\/:version\/",
-            "format": ".sql.bz2",
-            "tables": ["invCategories", "invFlags", "invGroups", "invItems", "invMarketGroups", "invMetaGroups", "invMetaTypes", "invNames", "invPositions", "invTypes", "invUniqueNames", "mapDenormalize", "mapSolarSystems"]
-        }');
     }
 
     /**
@@ -249,7 +215,7 @@ class SDEUpdate extends Command
     public function isStorageOk()
     {
 
-        $storage = storage_path() . '/sde/' . $this->json->version . '/';
+        $storage = storage_path() . '/sde/' . $this->data->version . '/';
         $this->info('Storage path is: ' . $storage);
 
         if (File::isWritable(storage_path())) {
@@ -276,13 +242,13 @@ class SDEUpdate extends Command
     {
 
         $this->line('Downloading...');
-        $bar = $this->getProgressBar(count($this->json->tables));
+        $bar = $this->getProgressBar(count($this->data->tables));
 
-        foreach ($this->json->tables as $table) {
+        foreach ($this->data->tables as $table) {
 
-            $url = str_replace(':version', $this->json->version, $this->json->url) .
-                $table . $this->json->format;
-            $destination = $this->storage_path . $table . $this->json->format;
+            $url = str_replace(':version', $this->data->version, $this->data->url) .
+                $table . $this->data->format;
+            $destination = $this->storage_path . $table . $this->data->format;
 
             $file_handler = fopen($destination, 'w');
 
@@ -329,11 +295,11 @@ class SDEUpdate extends Command
     {
 
         $this->line('Importing...');
-        $bar = $this->getProgressBar(count($this->json->tables));
+        $bar = $this->getProgressBar(count($this->data->tables));
 
-        foreach ($this->json->tables as $table) {
+        foreach ($this->data->tables as $table) {
 
-            $archive_path = $this->storage_path . $table . $this->json->format;
+            $archive_path = $this->storage_path . $table . $this->data->format;
             $extracted_path = $this->storage_path . $table . '.sql';
 
             if (! File::exists($archive_path)) {

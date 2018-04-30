@@ -34,7 +34,7 @@ class UpdateUserRolesJob implements ShouldQueue
     public function handle()
     {
 
-        if($this->user->discordAccount) {
+        if ($this->user->discordAccount) {
             $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
 
             $assigedRoles = $this->user->getDiscordRolesAsArray();
@@ -47,22 +47,21 @@ class UpdateUserRolesJob implements ShouldQueue
             );
 
             $remove = [];
-            foreach($member['roles'] as $memberRole) {
-                if(!in_array($memberRole, $assigedRoles)) {
+            foreach ($member['roles'] as $memberRole) {
+                if (!in_array($memberRole, $assigedRoles)) {
                     $remove[] = $memberRole;
                 }
             }
 
             $add = [];
             foreach ($assigedRoles as $assigedRole) {
-                if(!in_array($assigedRole, $member['roles'])){
+                if (!in_array($assigedRole, $member['roles'])) {
                     $add[] = $assigedRole;
                 }
             }
 
-
             //remove not authorized roles
-            foreach($remove as $role) {
+            foreach ($remove as $role) {
                 $discord->guild->removeGuildMemberRole(
                     [
                         'user.id' => $this->user->discordAccount->id,
@@ -73,7 +72,7 @@ class UpdateUserRolesJob implements ShouldQueue
             }
 
             //add authorized roles
-            foreach($add as $role) {
+            foreach ($add as $role) {
                 $response = $discord->guild->addGuildMemberRole(
                     [
                         'user.id' => $this->user->discordAccount->id,

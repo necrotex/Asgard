@@ -72,21 +72,37 @@ return [
 
     'environments' => [
         'production' => [
-            'supervisor-1' => [
+            'high-prio' => [
                 'connection' => 'redis',
-                'queue' => ['default'],
-                'balance' => 'simple',
-                'processes' => 10,
+                'queue' => ['high'],
+                'balance' => 'auto',
+                'processes' => 4,
+                'tries' => 3,
+            ],
+
+            'default-prio' => [
+                'connection' => 'redis',
+                'queue' => ['default', 'low'],
+                'balance' => 'auto',
+                'processes' => 4,
                 'tries' => 3,
             ],
         ],
 
         'local' => [
-            'supervisor-1' => [
+            'high-prio' => [
                 'connection' => 'redis',
-                'queue' => ['default'],
-                'balance' => 'simple',
-                'processes' => 3,
+                'queue' => ['high'],
+                'balance' => 'auto',
+                'processes' => 4,
+                'tries' => 3,
+            ],
+
+            'default-prio' => [
+                'connection' => 'redis',
+                'queue' => ['default', 'low'],
+                'balance' => 'auto',
+                'processes' => 4,
                 'tries' => 3,
             ],
         ],
