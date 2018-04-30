@@ -250,6 +250,8 @@ class SDEUpdate extends Command
                 $table . $this->data->format;
             $destination = $this->storage_path . $table . $this->data->format;
 
+            $this->output->write($url);
+
             $file_handler = fopen($destination, 'w');
 
             $result = $this->getGuzzle()->request('GET', $url, [

@@ -13,5 +13,4 @@
             @include('dashboard.partials.home.recruitment-notice')
         @endif
 
-
 @endsection

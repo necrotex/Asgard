@@ -31,6 +31,7 @@ class Character implements ShouldQueue
     /**
      * Execute the job.
      *
+     * @param Conduit $api
      * @return void
      */
     public function handle(Conduit $api)
@@ -46,7 +47,6 @@ class Character implements ShouldQueue
 
         CharacterModel\Corporation::updateOrCreate(
             [
-                'id' => $data->corporation_id,
                 'character_id' => $this->character->id,
             ],
             [

@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
 {
-
+#
     protected $fillable = ['id'];
     protected $casts = [
         'active' => 'boolean'

@@ -20,7 +20,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/invite/{invite}', 'Recruitment\InviteController@setupApplication')
     ->name('applications.invite.landing');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'finished-account']], function () {
 
     Route::get('/home', function() {
         return redirect('/');

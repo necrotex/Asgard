@@ -16,7 +16,18 @@ class SetupAccountMiddleware
      */
     public function handle($request, Closure $next)
     {
-        //@todo: do we need this anymore?
+        if(\auth()->user()->characters->count() > 0)  {
+            if(!\auth()->user()->mainCharacter) {
+                flash('Please select your main character!')->warning()->important();
+
+                if(!in_array(\Route::currentRouteName(), ['profile.show', 'profile.update'])) {
+                    return redirect()->route('profile.show', auth()->user());
+                }
+            }
+
+        }
+
+
         return $next($request);
     }
 }
