@@ -14,7 +14,7 @@ class CreateCharacterCorporation extends Migration
     public function up()
     {
         Schema::create('character_corporation', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+            $table->increments('id');
             $table->unsignedInteger('corporation_id');
             $table->unsignedInteger('character_id');
             $table->text('name');

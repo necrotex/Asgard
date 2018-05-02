@@ -50,6 +50,7 @@ class Character implements ShouldQueue
                 'character_id' => $this->character->id,
             ],
             [
+                'corporation_id' => $corp_data->get('id'),
                 'name' => $corp_data->get('name'),
                 'ticker' => $corp_data->get('ticker'),
             ]
