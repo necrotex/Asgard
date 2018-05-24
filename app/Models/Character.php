@@ -23,7 +23,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
 {
-#
+
+    public $incrementing = false;
+
     protected $fillable = ['id'];
     protected $casts = [
         'active' => 'boolean'

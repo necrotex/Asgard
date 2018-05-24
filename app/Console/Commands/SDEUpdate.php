@@ -81,9 +81,9 @@ class SDEUpdate extends Command
     {
         $this->data = new \stdClass();
         $this->data->url = 'https://www.fuzzwork.co.uk/dump/:version/';
-        $this->data->version = env('ASGARD_SDE_VERSION', 'latest');
+        $this->data->version = env('ASGARD_SDE_VERSION', 'sde-20180323-TRANQUILITY');
         $this->data->format = '.sql.bz2';
-        $this->data->tables = explode(',', env('ASGARD_SDE_TABLES', ''));
+        $this->data->tables = explode(',', env('ASGARD_SDE_TABLES', 'invCategories,invFlags,invGroups,invItems,invMarketGroups,invMetaGroups,invMetaTypes,invNames,invPositions,invTypes,invUniqueNames,mapDenormalize,mapSolarSystems'));
 
         parent::__construct();
 

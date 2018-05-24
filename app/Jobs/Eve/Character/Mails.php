@@ -24,8 +24,6 @@ class Mails extends CharacterUpdateJob
 
         foreach($mailList->data as $item) {
             $mail = $api->characters($this->character->id)->mail($item->mail_id)->get();
-
-
             $from = $api->universe()->names()->data([$item->from])->post();
 
             $mailModel = Character\Mail::firstOrCreate(
@@ -47,16 +45,18 @@ class Mails extends CharacterUpdateJob
 
             if($mailModel->wasRecentlyCreated) {
                 foreach($item->recipients as $recipient) {
-                    $recipientName = $api->universe()->names()->data([$recipient->recipient_id])->post();
+                    try{
+                        $recipientName = $api->universe()->names()->data([$recipient->recipient_id])->post();
 
-                    Character\MailRecipient::insert(
-                        [
-                            'mail_id' => $item->mail_id,
-                            'type' => $recipient->recipient_type,
-                            'recipient_id' => $recipient->recipient_id,
-                            'recipient_name' => $recipientName->data[0]->name,
-                        ]
-                    );
+                        Character\MailRecipient::insert(
+                            [
+                                'mail_id' => $item->mail_id,
+                                'type' => $recipient->recipient_type,
+                                'recipient_id' => $recipient->recipient_id,
+                                'recipient_name' => $recipientName->data[0]->name,
+                            ]
+                        );
+                    } catch (\Exception $e) {} //todo: logging and stuff
                 }
             }
         }

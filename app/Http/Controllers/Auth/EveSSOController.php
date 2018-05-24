@@ -2,6 +2,7 @@
 
 namespace Asgard\Http\Controllers\Auth;
 
+use Asgard\Jobs\Update\InitialImportJob;
 use Asgard\Models\ApplicationInvite;
 use Asgard\Models\Character;
 use Asgard\Models\Token;
@@ -59,6 +60,8 @@ class EveSSOController extends Controller
 
     public function handle_callback(Request $request)
     {
+        $redirectRoute = '/';
+
         try {
             $this->user = Socialite::driver('eveonline')->stateless()->user();
             $character_data = $this->get_character();
@@ -75,7 +78,10 @@ class EveSSOController extends Controller
 
                 Auth::user()->characters()->save($character);
 
-                $this->initalCharacterImport($character);
+                InitialImportJob::dispatch($character)->onQueue('high');
+
+                $redirectRoute = route('characters.index');
+                flash('Character successfully added! It can take up to a minute or two until the character sheet is accessible.')->success();
             }
 
             if ($type == 'site_login') {
@@ -115,31 +121,10 @@ class EveSSOController extends Controller
         } // ignore model not found exceptions
         catch (ModelNotFoundException $e) {
         } catch (ClientException $e) {
-            return abort(500, 'Something went wrong, please try again!');
+            return abort(500, 'Something went wrong while talking to the CCP API. Please try again in a minute.');
         }
         //@todo: catch errors from eve sso and report it clearly to the user
 
-        return redirect()->intended('/'); //@todo: redirect based on login_type
+        return redirect()->intended($redirectRoute);
     }
-
-    private function initalCharacterImport(Character $character)
-    {
-        \Asgard\Jobs\Update\Character::dispatch($character)->allOnQueue('high');
-        Location::dispatch($character)->allOnQueue('high');
-        Status::dispatch($character)->allOnQueue('high');
-        Skills::dispatch($character)->allOnQueue('high');
-        Skillqueue::dispatch($character)->allOnQueue('high');
-        CorporationHistory::dispatch($character)->allOnQueue('high');
-        Fatigue::dispatch($character)->allOnQueue('high');
-        CorporationRoles::dispatch($character)->allOnQueue('high');
-        Titles::dispatch($character)->allOnQueue('high');
-        Contacts::dispatch($character)->allOnQueue('high');
-        Assets::dispatch($character)->allOnQueue('high');
-        Mails::dispatch($character)->allOnQueue('high');
-        Wallet::dispatch($character)->allOnQueue('high');
-        Journal::dispatch($character)->allOnQueue('high');
-        Transactions::dispatch($character)->allOnQueue('high');
-
-    }
-
 }

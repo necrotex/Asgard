@@ -53,6 +53,10 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
+        if(!$character->ready) {
+            return view('dashboard.character-updating', compact('character'));
+        }
+
         $character->load(
             [
                 'corporationHistory',

@@ -18,15 +18,12 @@ class CreateCharactersTable extends Migration
 
             // this can't be a foreign key b/c not all corps are save into the system
             $table->integer('corporation_id')->unsigned();
-
             $table->text('refresh_token');
-
             $table->integer('id')->primary();
             $table->text('name');
             $table->text('owner_hash');
-
-            $table->boolean('active')->default(true);
-
+            $table->boolean('active')->default(false);
+            $table->boolean('ready')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')
