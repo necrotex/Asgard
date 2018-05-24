@@ -8,6 +8,7 @@ use Asgard\Models\Character;
 use Asgard\Models\Token;
 use Asgard\Models\User;
 use Asgard\Models\UserInvitation;
+use Asgard\Support\SendsSystemMessage;
 use Exception;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -35,7 +36,7 @@ use Route;
 
 class EveSSOController extends Controller
 {
-    use EveAuth;
+    use EveAuth, SendsSystemMessage;
 
     public function siteLogin(Request $request)
     {
@@ -82,6 +83,7 @@ class EveSSOController extends Controller
 
                 $redirectRoute = route('characters.index');
                 flash('Character successfully added! It can take up to a minute or two until the character sheet is accessible.')->success();
+                $this->notifySystem('info', 'New Character', auth()->user()->name  . " added a character: " . $this->user->name, 'character');
             }
 
             if ($type == 'site_login') {
@@ -109,6 +111,8 @@ class EveSSOController extends Controller
                     if ($user->isNotA('recruit')) {
                         $user->assign('guest');
                     }
+
+                    $this->notifySystem('info', 'New Account', "{$this->user->name} created at new Account", 'account');
 
                 } else {
                     $user = $character->user;

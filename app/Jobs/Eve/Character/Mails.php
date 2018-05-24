@@ -6,6 +6,7 @@ use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
 use Carbon\Carbon;
 use Conduit\Conduit;
+use Log;
 
 class Mails extends CharacterUpdateJob
 {
@@ -24,6 +25,8 @@ class Mails extends CharacterUpdateJob
 
         foreach($mailList->data as $item) {
             $mail = $api->characters($this->character->id)->mail($item->mail_id)->get();
+
+            Log::debug('Mail sender', ['sender' => print_r($item->from, true)]);
             $from = $api->universe()->names()->data([$item->from])->post();
 
             $mailModel = Character\Mail::firstOrCreate(

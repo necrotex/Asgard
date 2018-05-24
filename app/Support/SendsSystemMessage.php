@@ -11,8 +11,8 @@ trait SendsSystemMessage
         string $title,
         string $message,
         string $type = "system",
-        ?string $contextType,
-        ?int $contextId,
+        ?string $contextType = null,
+        ?int $contextId = null,
         $active = true
     ) {
 

@@ -63,7 +63,8 @@ class InitialImportJob implements ShouldQueue
                 new Wallet($this->character),
                 new Journal($this->character),
                 new Transactions($this->character),
-                new Mails($this->character)
+                new Mails($this->character),
+                new CharacterReadyJob($this->character)
             ]
         )->dispatch($this->character)->allOnQueue('high');
     }

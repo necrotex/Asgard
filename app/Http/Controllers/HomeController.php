@@ -13,6 +13,7 @@ use Asgard\Jobs\Eve\Transactions;
 use Asgard\Jobs\Eve\Wallet;
 use Asgard\Jobs\Update\InitialCharacterSetup;
 use Asgard\Models\Character;
+use Asgard\Models\SystemMessage;
 
 
 class HomeController extends Controller
@@ -34,9 +35,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $messages = SystemMessage::all(); //todo: filter this according to the user etc
 
-
-        return view('dashboard.home');
+        return view('dashboard.home', compact('messages'));
     }
 
     public function debug()

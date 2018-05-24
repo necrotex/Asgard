@@ -7,6 +7,7 @@ use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
 use Carbon\Carbon;
 use Conduit\Conduit;
+use Log;
 
 class Journal extends CharacterUpdateJob
 {
@@ -22,12 +23,14 @@ class Journal extends CharacterUpdateJob
     {
         $api->setAuthentication($this->getAuthentication($this->character));
 
-        $result = $api->characters($this->character->id)
-            ->wallet()
-            ->journal()
-            ->get();
+        $result = $api->characters($this->character->id)->wallet()->journal()->get();
 
         foreach ($result->data as $entry) {
+
+            if (is_null(data_get($entry, 'ref_id', null))) { //todo: debug this correctly
+                Log::debug("Coundl't load journal entry");
+                continue;
+            }
 
             $extraInfo = data_get($entry, 'extra_info', null);
 
