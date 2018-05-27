@@ -35,7 +35,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $messages = SystemMessage::all(); //todo: filter this according to the user etc
+        if (auth()->user()->can('view-application')) {
+            $messages = SystemMessage::limit(15)->latest()->get();
+        } else {
+            $messages = []; // todo: write query for normal users
+        }
 
         return view('dashboard.home', compact('messages'));
     }

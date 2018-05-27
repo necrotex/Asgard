@@ -16,26 +16,14 @@
 
                         <div class="row">
 
-                           <div class="col-md-1">
-                               <img class="media-object avatar"
-                                    src="https://image.eveonline.com/Character/{{$character->id}}_64.jpg"/>
-                           </div>
+                            <div class="col-md-1">
+                                <img class="media-object avatar"
+                                     src="https://image.eveonline.com/Character/{{$character->id}}_64.jpg"/>
+                            </div>
 
                             <div class="col-md-10">
                                 <h4><a href="{{route('characters.show', $character->id)}}">{{$character->name}}</a></h4>
                                 <span class="small text-muted">Last updated at: {{$character->updated_at}}</span>
-
-                            </div>
-
-                            <div class="col-md-1 align-baseline">
-                                <form method="post" action="{{route('characters.destroy', $character->id)}}">
-                                    {{csrf_field()}}
-
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-times" aria-hidden="true"></i>
-                                </button>
-
-                                </form>
                             </div>
 
                         </div>
@@ -50,12 +38,15 @@
 
             <div class="card">
                 <div class="card-header">
-                      Add Character
+                    Add Character
                 </div>
                 <div class="card-body">
                     <div class="">Please add all Characters on all accounts here.</div>
 
-                    <a href="{{route('sso.login')}}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Add <Charcater></Charcater></a>
+                    <a href="{{route('sso.login')}}" class="btn btn-primary btn-lg btn-block" role="button"
+                       aria-pressed="true">Add
+                        <Charcater></Charcater>
+                    </a>
                 </div>
             </div>
 

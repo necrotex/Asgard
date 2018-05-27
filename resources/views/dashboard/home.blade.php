@@ -38,7 +38,7 @@
                                 }
                             @endphp
 
-                            <li class="list-group-item list-group-item {{$class}}"><b>{{$message->title}}:</b> {{$message->message}}</li>
+                            <li class="list-group-item list-group-item {{$class}}"><b>{{$message->title}}:</b> {{$message->message}} <br /> <small class="text-muted">{{$message->created_at}}</small> </li>
                         @endforeach
                     </ul>
                 </div>

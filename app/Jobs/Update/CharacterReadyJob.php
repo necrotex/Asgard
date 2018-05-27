@@ -21,7 +21,6 @@ class CharacterReadyJob implements ShouldQueue
      */
     public function __construct(\Asgard\Models\Character $character)
     {
-        //
         $this->character = $character;
     }
 

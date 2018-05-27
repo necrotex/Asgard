@@ -76,6 +76,7 @@ class EveSSOController extends Controller
                 $character->name = $this->user->name;
                 $character->owner_hash = $this->user->owner_hash;
                 $character->corporation_id = $character_data->corporation_id;
+                $character->active = true;
 
                 Auth::user()->characters()->save($character);
 

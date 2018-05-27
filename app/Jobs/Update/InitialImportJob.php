@@ -16,6 +16,7 @@ use Asgard\Jobs\Eve\Character\Status;
 use Asgard\Jobs\Eve\Character\Titles;
 use Asgard\Jobs\Eve\Character\Transactions;
 use Asgard\Jobs\Eve\Character\Wallet;
+use Asgard\Jobs\Update\VerifyTokenJob;
 use Asgard\Models\Character;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -48,8 +49,9 @@ class InitialImportJob implements ShouldQueue
      */
     public function handle()
     {
-        \Asgard\Jobs\Update\Character::withChain(
+        VerifyTokenJob::withChain(
             [
+                new \Asgard\Jobs\Update\Character($this->character),
                 new Location($this->character),
                 new Status($this->character),
                 new Skills($this->character),
