@@ -12,7 +12,13 @@
 
             <hr>
 
-            <form>
+            <div class="alert alert-info">
+                <h4>A word of advice</h4>
+                <p>Our recruiters like to see potential recruits putting actual effort into the application form. This doesn't mean you need to write a novel,
+                    but try to avoid single word answers.</p>
+            </div>
+
+            <form method="post" action="{{route('applications.create')}}">
                 @foreach($form->questions()->orderBy('order')->get() as $question)
                     <div class="form-group">
                         <label for="question-{{$question->id}}">
@@ -26,6 +32,7 @@
                     </div>
                 @endforeach
 
+                {{csrf_field()}}
                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
             </form>
 

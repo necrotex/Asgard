@@ -5,11 +5,9 @@ namespace Asgard\Http\Controllers\Auth;
 use Asgard\Jobs\Update\InitialImportJob;
 use Asgard\Models\ApplicationInvite;
 use Asgard\Models\Character;
-use Asgard\Models\Token;
 use Asgard\Models\User;
 use Asgard\Models\UserInvitation;
 use Asgard\Support\SendsSystemMessage;
-use Exception;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -18,21 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use nullx27\Socialite\EveOnline\Traits\EveAuth;
 
-use Asgard\Jobs\Eve\Character\Assets;
-use Asgard\Jobs\Eve\Character\Contacts;
-use Asgard\Jobs\Eve\Character\CorporationHistory;
-use Asgard\Jobs\Eve\Character\CorporationRoles;
-use Asgard\Jobs\Eve\Character\Fatigue;
-use Asgard\Jobs\Eve\Character\Journal;
-use Asgard\Jobs\Eve\Character\Location;
-use Asgard\Jobs\Eve\Character\Mails;
-use Asgard\Jobs\Eve\Character\Skillqueue;
-use Asgard\Jobs\Eve\Character\Skills;
-use Asgard\Jobs\Eve\Character\Status;
-use Asgard\Jobs\Eve\Character\Titles;
-use Asgard\Jobs\Eve\Character\Transactions;
-use Asgard\Jobs\Eve\Character\Wallet;
-use Route;
+
 
 class EveSSOController extends Controller
 {
@@ -102,8 +86,9 @@ class EveSSOController extends Controller
                     $request->session()->put('new_account', true);
                     $user = User::firstOrCreate(['name' => $name]);
 
-                    if ($request->session()->has('recruitment_code')) {
-                        $invite = $invite = ApplicationInvite::where('code', '=', $request->session()->pull('recruitment_code'))->first();
+                    if ($request->session()->has('recuritment_code')) {
+                        $invite = $invite = ApplicationInvite::where('code', '=', $request->session()->pull('recuritment_code'))->first();
+
                         UserInvitation::create(['user_id' => $user->id, 'invite_id' => $invite->id]);
 
                         $user->assign('recruit');

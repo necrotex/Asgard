@@ -55,9 +55,13 @@ Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function
 
 
     // Apply
-    Route::get('/apply', 'ApplicationFormController@create')
+    Route::get('/apply', 'ApplicationFormController@index')
+        ->name('applications.index')
+        ->middleware('ability:create-application');
+
+    Route::post('/apply', 'ApplicationFormController@create')
         ->name('applications.create')
-        ->middleware('can:create, Asgard/Models/Application');
+        ->middleware('ability:create-application');
 
 
 });

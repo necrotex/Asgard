@@ -19,8 +19,7 @@
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea class="form-control" id="description" rows="4" name="description"></textarea>
-                        <small class="form-text text-muted">Not visable to the applicant! Use this field to describe your intent asking the question,
-                        so that other recruiters know what to look out for.</small>
+                        <small class="form-text text-muted">Short description about the question if there is something to explain.</small>
                     </div>
 
                     <div class="form-check">

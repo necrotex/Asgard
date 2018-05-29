@@ -9,7 +9,7 @@
             @include('dashboard.partials.home.add-characters')
         @endif
 
-        @if(session()->has('recuritment_code'))
+        @if(auth()->user()->isA('recruit'))
             @include('dashboard.partials.home.recruitment-notice')
         @endif
 
