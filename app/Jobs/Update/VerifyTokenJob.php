@@ -38,7 +38,7 @@ class VerifyTokenJob implements ShouldQueue
         $api->setAuthentication($this->getAuthentication($this->character));
 
         // just make the call to verify the token, failed() will handle the rest
-        $api->verify()->get();
+        //$api->verify()->get(); @todo make this work
     }
 
     public function failed($exception = null)

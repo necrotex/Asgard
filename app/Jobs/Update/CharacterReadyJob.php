@@ -32,6 +32,6 @@ class CharacterReadyJob implements ShouldQueue
     public function handle()
     {
         $this->character->ready = true;
-        $this->character->save;
+        $this->character->save();
     }
 }

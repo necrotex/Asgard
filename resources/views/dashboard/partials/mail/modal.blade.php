@@ -31,7 +31,7 @@
 
         <dt class="col-sm-3">Sender</dt>
         <dd class="col-sm-9" id="mail-modal-sender">
-            @switch($recipient->type)
+            @switch($mail->sender_type)
                 @case('character')
                 <a href="https://evewho.com/pilot/{{str_replace(' ', '+', $mail->sender_name)}}">
                     {{$mail->sender_name}}
@@ -48,6 +48,10 @@
                 <a href="https://evewho.com/alli/{{str_replace(' ', '+', $mail->sender_name)}}">
                     {{$mail->sender_name}}
                 </a>
+                @break
+
+                @default
+                    n/a (Couldn't resolve ID)
                 @break
             @endswitch
         </dd>

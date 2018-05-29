@@ -3,9 +3,12 @@
 namespace Asgard\Jobs\Eve\Character;
 
 use Asgard\Models\Character;
+use Asgard\Models\SystemMessage;
 use Asgard\Support\ConduitAuthTrait;
+use Asgard\Support\EVEOnlineIDs;
 use Carbon\Carbon;
 use Conduit\Conduit;
+use Conduit\Exceptions\HttpStatusException;
 use Log;
 
 class Mails extends CharacterUpdateJob
@@ -26,8 +29,20 @@ class Mails extends CharacterUpdateJob
         foreach($mailList->data as $item) {
             $mail = $api->characters($this->character->id)->mail($item->mail_id)->get();
 
-            Log::debug('Mail sender', ['sender' => print_r($item->from, true)]);
-            $from = $api->universe()->names()->data([$item->from])->post();
+            $id = EVEOnlineIDs::sort([$item->from]);
+            Log::debug('Mail sender', ['sender' => print_r($id, true)]);
+
+            try {
+                $from = $api->universe()->names()->data([$item->from])->post();
+
+                $sender = $from->data[0]->name;
+                $category = $from->data[0]->category;
+            } catch (HttpStatusException $e) {
+                Log::error("Can't get sender from mail", [$mail, $item]);
+
+                $sender = "n/a (Could not resolve id: $item->from)";
+                $category = null;
+            }
 
             $mailModel = Character\Mail::firstOrCreate(
                 [
@@ -38,8 +53,8 @@ class Mails extends CharacterUpdateJob
                     'subject' => strip_tags($mail->subject, '<color></color><a></a><b></b>'),
                     'content' => strip_tags($mail->body, '<color></color><a></a><b></b><br></br>'),
 
-                    'sender_name' => $from->data[0]->name,
-                    'sender_type' => $from->data[0]->category,
+                    'sender_name' => $sender,
+                    'sender_type' => $category,
                     'sender_id' => $item->from,
 
                     'date' => Carbon::parse($item->timestamp),
@@ -59,7 +74,9 @@ class Mails extends CharacterUpdateJob
                                 'recipient_name' => $recipientName->data[0]->name,
                             ]
                         );
-                    } catch (\Exception $e) {} //todo: logging and stuff
+                    } catch (\Exception $e) {
+                        Log::error('Could not reoslve recipient id for mail.', [$mail, $recipient]);
+                    }
                 }
             }
         }

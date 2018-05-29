@@ -22,8 +22,6 @@ class MailController extends Controller
     {
         $mail = Mail::where('mail_id', '=', $request->input('id'))->first();
 
-        $this->authorize('access', $mail);
-
         return view('dashboard.partials.mail.modal', ['mail' => $mail]);
     }
 }
