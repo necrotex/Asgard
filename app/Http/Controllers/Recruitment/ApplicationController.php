@@ -16,7 +16,6 @@ class ApplicationController extends Controller
 
     public function show(Application $application)
     {
-
-        return view('dashboard.recruitment.application', compact($application));
+        return view('dashboard.recruitment.application', compact('application'));
     }
 }

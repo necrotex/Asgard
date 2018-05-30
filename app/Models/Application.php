@@ -10,7 +10,7 @@ class Application extends Model
 
     public function applicant()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function status()
@@ -21,5 +21,10 @@ class Application extends Model
     public function comments()
     {
         return $this->hasMany(ApplicationComment::class, 'application_id');
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(ApplicationFormQuestionAnswer::class, 'application_id', 'id');
     }
 }

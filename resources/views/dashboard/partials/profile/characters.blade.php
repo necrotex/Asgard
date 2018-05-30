@@ -1,18 +1,25 @@
-<div class="col-md-5">
+<h3>Characters</h3>
+
+
+@foreach($user->characters as $character)
     <div class="card">
-        <div class="card-header">
-            Characters
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-lg-8 col-md-6">
+                    <h3 class="mb-0 text-truncated">
+                        <a href="{{route('characters.show', $character->id)}}">
+                            {{$character->name}}
+                        </a>
+                    </h3>
+                    <p class="lead">{{$character->corporation->name}}</p>
+
+                </div>
+                <div class="col-12 col-lg-4 col-md-6 text-center">
+                    <img src="https://image.eveonline.com/Character/{{$character->id}}_128.jpg" width="100" alt="{{$character->name}}"
+                         class="mx-auto rounded-circle img-fluid">
+                </div>
+            </div>
+            <!--/row-->
         </div>
-
-        <ul class="list-group list-group-flush">
-            @foreach($user->characters as $character)
-                <a href="{{route('characters.show', $character->id)}}" class="list-group-item">
-                    <img class="media-object avatar-profile"
-                         src="https://image.eveonline.com/Character/{{$character->id}}_64.jpg"/>
-                    <h5 @if(!$character->active) class="text-muted" @endif>{{$character->name}}</h5>
-                </a>
-            @endforeach
-        </ul>
-
     </div>
-</div>
+@endforeach

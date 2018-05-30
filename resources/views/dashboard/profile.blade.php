@@ -6,7 +6,9 @@
 @section('content')
     <div class="row">
 
-        @include('dashboard.partials.profile.characters')
+        <div class="col-md-5">
+            @include('dashboard.partials.profile.characters')
+        </div>
 
         <div class="col-3">
             @include('dashboard.partials.profile.select-main-chracter')
