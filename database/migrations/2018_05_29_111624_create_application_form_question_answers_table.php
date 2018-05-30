@@ -18,7 +18,8 @@ class CreateApplicationFormQuestionAnswersTable extends Migration
             $table->unsignedInteger('application_id');
             $table->integer('question_id');
             $table->text('question');
-            $table->text('answer');
+            $table->text('answer')->nullable();
+            $table->integer('version')->default(1);
             $table->timestamps();
         });
     }

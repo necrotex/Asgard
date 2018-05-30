@@ -34,11 +34,11 @@ Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function
 
     Route::get('/forms/question/{question}', 'QuestionController@edit')
         ->name('question.edit')
-        ->middleware('can:update,Asgard/Models/ApplicationFormQuestion');
+        ->middleware('can:update,question');
 
     Route::post('/forms/question/{question}/update', 'QuestionController@update')
         ->name('question.update')
-        ->middleware('can:update,Asgard/Models/ApplicationFormQuestion');
+        ->middleware('can:update,question');
 
     //Applications
     Route::get('/applications', 'ApplicationController@index')
@@ -53,14 +53,18 @@ Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function
         ->name('applications.invite.code')
         ->middleware('ability:create-application-invite');
 
+    Route::get('/applications/{application}', 'ApplicationController@show')
+        ->name('applications.show')
+        ->middleware('can:view,application');
+
 
     // Apply
-    Route::get('/apply', 'ApplicationFormController@index')
-        ->name('applications.index')
+    Route::get('/apply', 'ApplicationFormController@create')
+        ->name('applications.create')
         ->middleware('ability:create-application');
 
-    Route::post('/apply', 'ApplicationFormController@create')
-        ->name('applications.create')
+    Route::post('/apply', 'ApplicationFormController@store')
+        ->name('applications.store')
         ->middleware('ability:create-application');
 
 

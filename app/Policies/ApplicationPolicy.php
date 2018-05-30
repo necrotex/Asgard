@@ -19,7 +19,7 @@ class ApplicationPolicy
      */
     public function view(User $user, Application $application)
     {
-        return $user->can('view-application') || $application->user->id == $user->id;
+        return $user->can('view-application') || $application->user_id == $user->id;
     }
 
     /**

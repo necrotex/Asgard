@@ -16,9 +16,7 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->json('form');
-            $table->unsignedInteger('status_id');
-
+            $table->unsignedInteger('status_id')->nullable();
             $table->timestamps();
         });
     }

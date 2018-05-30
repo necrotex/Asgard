@@ -95,7 +95,7 @@
 
             @can('create', \Asgard\Models\Application::class)
                 <li class="nav-item">
-                    <a class="nav-link {{active('applications.index')}}" href="{{route('applications.index')}}">
+                    <a class="nav-link {{active('applications.create')}}" href="{{route('applications.create')}}">
                         <i class="fas fa-user-plus" aria-hidden="true"></i> Apply
                     </a>
                 </li>
