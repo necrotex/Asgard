@@ -4,7 +4,9 @@ namespace Asgard\Jobs\Eve\Character;
 
 use Asgard\Models\Character\Asset;
 use Asgard\Support\ConduitAuthTrait;
+use Asgard\Support\EVEOnlineIDs;
 use Conduit\Conduit;
+use Log;
 
 class Assets extends CharacterUpdateJob {
 
@@ -69,7 +71,11 @@ class Assets extends CharacterUpdateJob {
             }
         }
 
-        $res = $api->universe()->names()->data(array_unique($location_ids))->post();
+        $orderLocaltionIds = EVEOnlineIDs::sort(array_unique($location_ids));
+
+        Log::debug('Asset Location Ids: ' . print_r($orderLocaltionIds, true));
+
+        $res = $api->universe()->names()->data($orderLocaltionIds['stations'])->post();
         $this->locations = $res->data;
 
         // remove all assets for the character

@@ -68,7 +68,11 @@ class EveSSOController extends Controller
 
                 $redirectRoute = route('characters.index');
                 flash('Character successfully added! It can take up to a minute or two until the character sheet is accessible.')->success();
-                $this->notifySystem('info', 'New Character', auth()->user()->name  . " added a character: " . $this->user->name, 'character');
+
+                // only notify the system if its a new character
+                if($character->wasRecentlyCreated) {
+                    $this->notifySystem('info', 'New Character', ucwords(str_replace('-', ' ', auth()->user()->name))  . " added a character: " . $this->user->name, 'character');
+                }
             }
 
             if ($type == 'site_login') {

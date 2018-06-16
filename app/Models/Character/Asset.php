@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Asset extends Model
 {
     public $timestamps = false;
+
     protected $table = 'character_assets';
+    protected $appends = ['type_name'];
+
     protected $fillable = [
         'character_id',
         'location_flag',
@@ -25,6 +28,11 @@ class Asset extends Model
     public function type()
     {
         return $this->hasOne(Type::class, 'typeID', 'type_id');
+    }
+
+    public function getTypeNameAttribute($value)
+    {
+        return $value->type->name;
     }
 
 }
