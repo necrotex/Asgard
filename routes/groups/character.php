@@ -13,4 +13,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'Character'], function() {
 
     Route::any('characters/{character}/transactions', 'TransactionsController@entries')
         ->name('character.transactions'); //@todo: refactor to work with policies
+
+    Route::any('characters/{character}/assets', 'AssetControler@entries')
+        ->name('character.assets'); //@todo: refactor to work with policies
 });

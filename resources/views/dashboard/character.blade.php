@@ -90,8 +90,8 @@
                         Mail
                     </a>
 
-                    <a class="nav-item nav-link" id="tab-history" data-toggle="tab" href="#history" role="tab"
-                       aria-controls="profile" aria-selected="false">
+                    <a class="nav-item nav-link" id="tab-assets" data-toggle="tab" href="#assets" role="tab"
+                       aria-controls="assets" aria-selected="false">
                         Assets
                     </a>
 
@@ -130,6 +130,10 @@
 
                 <div class="tab-pane fade" id="transactions" role="tabpanel" aria-labelledby="journal">
                     @include('dashboard.partials.character.transactions')
+                </div>
+
+                <div class="tab-pane fade" id="assets" role="tabpanel" aria-labelledby="assets">
+                    @include('dashboard.partials.character.assets')
                 </div>
 
             </div>

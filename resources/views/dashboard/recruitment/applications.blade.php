@@ -31,6 +31,7 @@
       </div>
 
    </div>
+
+   @include('dashboard.partials.application.invite-modal')
 @endsection
 
-@include('dashboard.partials.application.invite-modal')
