@@ -26,7 +26,9 @@
          </ul>
 
       <div class="tab-content" id="applicationsTabContent">
-         <div class="tab-pane fade show active" id="active" role="tabpanel" aria-labelledby="active-tab">Active</div>
+         <div class="tab-pane fade show active" id="active" role="tabpanel" aria-labelledby="active-tab">
+            @include('dashboard.partials.application.active-applications')
+         </div>
          <div class="tab-pane fade" id="archive" role="tabpanel" aria-labelledby="archive-tab">Archive</div>
       </div>
 

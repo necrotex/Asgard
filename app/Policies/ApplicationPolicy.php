@@ -30,7 +30,9 @@ class ApplicationPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create-application');
+        $invite = $user->invites()->where('completed', false)->first();
+
+        return $user->can('create-application') && $invite->exists();
     }
 
     /**

@@ -101,6 +101,7 @@
                 </li>
             @endcan
 
+            <?php /*
             @can('view-knowledgebase')
                 <li class="nav-item">
                     <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
@@ -108,7 +109,7 @@
                     </a>
                 </li>
             @endcan
-
+            */ ?>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>External Services</span>

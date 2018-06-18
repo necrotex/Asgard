@@ -45,6 +45,14 @@ Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function
         ->name('applications.index')
         ->middleware('ability:create-application-invite');
 
+    Route::any('/applications/active', 'ApplicationController@activeApplications')
+        ->name('applications.active')
+        ->middleware('ability:create-application-invite');
+
+    Route::any('/applications/archive', 'ApplicationController@achivedApplications')
+        ->name('applications.archive')
+        ->middleware('ability:create-application-invite');
+
     Route::get('/applications/invite/forms', 'InviteController@forms')
         ->name('applications.invite.forms')
         ->middleware('ability:create-application-invite');

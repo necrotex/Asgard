@@ -11,9 +11,7 @@ class ApplicationController extends Controller
 {
     public function index()
     {
-        $applications = Application::all(); //todo: lazy loading
-
-        return view('dashboard.recruitment.applications', compact('applications'));
+        return view('dashboard.recruitment.applications');
     }
 
     public function activeApplications()

@@ -18,6 +18,8 @@ use Asgard\Jobs\Eve\Character\Transactions;
 use Asgard\Jobs\Eve\Character\Wallet;
 use Asgard\Jobs\Update\VerifyTokenJob;
 use Asgard\Models\Character;
+use Asgard\Support\SendsSystemMessage;
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -26,7 +28,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 class InitialImportJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, SendsSystemMessage;
+
     /**
      * @var Character
      */
@@ -69,5 +72,16 @@ class InitialImportJob implements ShouldQueue
                 new CharacterReadyJob($this->character)
             ]
         )->dispatch($this->character)->allOnQueue('high');
+    }
+
+    // retry adding the character for 20 min until the job fails
+    public function retryUntil()
+    {
+        return now()->addMinutes(20); //@todo: this probably should be a config value
+    }
+
+    public function failed(Exception $exception)
+    {
+        $this->notifySystem('error', 'Inital import for ' . $this->character->name . 'failed', $exception->getMessage());
     }
 }

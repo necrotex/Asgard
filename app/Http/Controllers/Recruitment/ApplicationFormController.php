@@ -15,7 +15,7 @@ class ApplicationFormController extends Controller
     public function create()
     {
 
-        $userInvite = auth()->user()->invites()->where('completed', false)->first();
+        $userInvite = auth()->user()->invites()->where('completed', false)->firstOrFail();
 
         $form = ApplicationForm::find($userInvite->invite->application_form_id);
 
@@ -26,9 +26,7 @@ class ApplicationFormController extends Controller
     public function store(Request $request)
     {
 
-        $userInvite = auth()->user()->invites()->where('completed', false)->first();
-
-        $form = ApplicationForm::find($userInvite->invite->application_form_id);
+        $userInvite = auth()->user()->invites()->where('completed', false)->firstOrFail();
 
         $application = Application::create(
             [
