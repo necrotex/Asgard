@@ -17,6 +17,7 @@ class CreateApplicationsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('status_id')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
