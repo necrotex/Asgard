@@ -15,10 +15,13 @@ class CreateCharacterCorporationRoles extends Migration
     {
         Schema::create('character_corporation_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('character_id');
+            $table->integer('character_id')->unsigned();
             $table->text('role');
-
             $table->timestamps();
+        });
+
+        Schema::table('character_corporation_roles', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

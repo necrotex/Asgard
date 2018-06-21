@@ -19,8 +19,11 @@ class CreateCharacterCorporation extends Migration
             $table->unsignedInteger('character_id');
             $table->text('name');
             $table->text('ticker');
-
             $table->timestamps();
+        });
+
+        Schema::table('character_corporation', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

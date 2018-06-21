@@ -16,7 +16,6 @@ class CreateCharacterSkillqueue extends Migration
         Schema::create('character_skillqueue', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('character_id');
-
             $table->integer('skill_id');
             $table->dateTime('finish_date')->nullable();
             $table->dateTime('start_date')->nullable();
@@ -25,8 +24,10 @@ class CreateCharacterSkillqueue extends Migration
             $table->integer('training_start_sp')->nullable();
             $table->integer('level_end_sp')->nullable();
             $table->integer('level_start_sp')->nullable();
+        });
 
-
+        Schema::table('character_skillqueue', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

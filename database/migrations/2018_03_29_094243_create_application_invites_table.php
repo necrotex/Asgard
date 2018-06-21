@@ -21,6 +21,11 @@ class CreateApplicationInvitesTable extends Migration
             $table->dateTime('expiry');
             $table->timestamps();
         });
+
+        Schema::table('application_invites', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('application_form_id')->references('id')->on('application_forms')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

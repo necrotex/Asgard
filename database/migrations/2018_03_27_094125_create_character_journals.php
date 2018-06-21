@@ -16,23 +16,18 @@ class CreateCharacterJournals extends Migration
         Schema::create('character_journals', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('character_id');
-
             $table->bigInteger('ref_id');
             $table->string('ref_type');
             $table->dateTime('date');
-
             $table->bigInteger('first_party_id')->nullable();
             $table->string('first_party_type')->nullable();
             $table->bigInteger('second_party_id')->nullable();
             $table->string('second_party_type')->nullable();
-
             $table->double('amount')->nullable();
             $table->double('balance')->nullable();
             $table->text('reason')->nullable();
-
             $table->bigInteger('tax_receiver_id')->nullable();
             $table->double('tax')->nullable();
-
             $table->bigInteger('extra_location_id')->nullable();
             $table->bigInteger('extra_transaction_id')->nullable();
             $table->string('extra_npc_name')->nullable();
@@ -45,9 +40,11 @@ class CreateCharacterJournals extends Migration
             $table->bigInteger('extra_contract_id')->nullable();
             $table->bigInteger('extra_system_id')->nullable();
             $table->bigInteger('extra_planet_id')->nullable();
-
-
             $table->timestamps();
+        });
+
+        Schema::table('character_journals', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

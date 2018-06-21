@@ -16,7 +16,6 @@ class CreateCharacterTransactions extends Migration
         Schema::create('character_transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('character_id');
-
             $table->bigInteger('transaction_id');
             $table->dateTime('date');
             $table->bigInteger('type_id');
@@ -27,8 +26,11 @@ class CreateCharacterTransactions extends Migration
             $table->boolean('is_buy');
             $table->boolean('is_personal');
             $table->bigInteger('journal_ref_id');
-
             $table->timestamps();
+        });
+
+        Schema::table('character_transactions', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

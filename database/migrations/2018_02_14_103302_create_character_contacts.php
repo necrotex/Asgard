@@ -19,11 +19,13 @@ class CreateCharacterContacts extends Migration
             $table->float('standing');
             $table->string('contact_type');
             $table->integer('contact_id');
-
             $table->string('name');
             $table->string('label')->nullable();
-
             $table->timestamps();
+        });
+
+        Schema::table('character_contacts', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

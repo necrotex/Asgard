@@ -22,6 +22,10 @@ class CreateApplicationFormQuestionAnswersTable extends Migration
             $table->integer('version')->default(1);
             $table->timestamps();
         });
+
+        Schema::table('application_form_question_answers', function (Blueprint $table) {
+            $table->foreign('application_id')->references('id')->on('applications')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

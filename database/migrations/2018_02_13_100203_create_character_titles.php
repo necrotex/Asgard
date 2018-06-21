@@ -15,11 +15,14 @@ class CreateCharacterTitles extends Migration
     {
         Schema::create('character_titles', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('character_id');
+            $table->integer('character_id')->unsigned();
             $table->bigInteger('title_id');
             $table->text('name');
-
             $table->timestamps();
+        });
+
+        Schema::table('character_titles', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

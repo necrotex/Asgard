@@ -15,12 +15,17 @@ class CreateCharacterMailRecipients extends Migration
     {
         Schema::create('character_mail_recipients', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('mail_id');
-
+            $table->integer('mail_id')->unsigned();
             $table->string('type');
             $table->string('recipient_id');
             $table->string('recipient_name');
         });
+
+        /*@todo: figure out why this doesn't work
+        Schema::table('character_mail_recipients', function (Blueprint $table) {
+            $table->foreign('mail_id')->references('mail_id')->on('character_mails')->onUpdate('cascade')->onDelete('cascade');
+        });
+        */
     }
 
     /**

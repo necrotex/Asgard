@@ -20,6 +20,11 @@ class CreateApplicationsTable extends Migration
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
+
+        Schema::table('applications', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('status_id')->references('id')->on('application_statuses')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

@@ -19,6 +19,10 @@ class CreateCharacterSkillpoints extends Migration
             $table->integer('total_sp');
             $table->integer('unallocated_sp')->nullable();
         });
+
+        Schema::table('character_skillpoints', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

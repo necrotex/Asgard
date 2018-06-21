@@ -21,6 +21,10 @@ class CreateApplicationCommentsTable extends Migration
             $table->boolean('system_message')->default(false);
             $table->timestamps();
         });
+
+        Schema::table('application_comments', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

@@ -15,13 +15,15 @@ class CreateCharacterLocation extends Migration
     {
         Schema::create('character_location', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->bigInteger('character_id');
+            $table->integer('character_id')->unsigned();
             $table->bigInteger('ship_type_id');
             $table->text('ship_name');
             $table->bigInteger('solar_system_id');
-
             $table->timestamps();
+        });
+
+        Schema::table('character_location', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

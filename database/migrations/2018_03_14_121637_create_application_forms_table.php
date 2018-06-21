@@ -21,6 +21,10 @@ class CreateApplicationFormsTable extends Migration
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
+
+        Schema::table('application_forms', function (Blueprint $table) {
+            $table->foreign('corporation_id')->references('id')->on('corporations')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

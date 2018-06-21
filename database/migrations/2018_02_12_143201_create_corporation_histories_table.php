@@ -15,13 +15,16 @@ class CreateCorporationHistoriesTable extends Migration
     {
         Schema::create('character_corporation_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('corporation_id');
+            $table->integer('character_id')->unsigned();
+            $table->integer('corporation_id')->unsigned();
             $table->string('corporation_name');
-            $table->unsignedInteger('character_id');
             $table->dateTime('start_date');
             $table->integer('record_id');
 
+        });
 
+        Schema::table('character_corporation_histories', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

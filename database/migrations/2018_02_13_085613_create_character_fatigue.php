@@ -18,10 +18,14 @@ class CreateCharacterFatigue extends Migration
             $table->dateTime('last_jump_date')->nullable();
             $table->dateTime('jump_fatigue_expire_date')->nullable();
             $table->dateTime('last_update_date')->nullable();
-
             $table->unsignedInteger('character_id');
             $table->timestamps();
         });
+
+        Schema::table('character_fatigue', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
+        });
+
     }
 
     /**

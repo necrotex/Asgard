@@ -16,11 +16,14 @@ class CreateCharacterSkills extends Migration
         Schema::create('character_skills', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('character_id');
-
             $table->integer('skill_id');
             $table->integer('skillpoints_in_skill');
             $table->integer('trained_skill_level');
             $table->integer('active_skill_level');
+        });
+
+        Schema::table('character_skills', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

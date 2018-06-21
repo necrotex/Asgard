@@ -16,15 +16,15 @@ class CreateDiscordUsersTable extends Migration
     {
         Schema::create('discord_users', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->unique();
-
-            $table->integer('user_id')->unisigned();
-
+            $table->integer('user_id')->unsigned();
             $table->text('nickname');
             $table->text('avatar_url')->nullable();
             $table->text('refresh_token');
-
             $table->timestamps();
+        });
 
+        Schema::table('discord_users', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

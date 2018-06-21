@@ -20,6 +20,11 @@ class CreateUserInvitationsTable extends Migration
             $table->boolean('completed')->default(false);
             $table->timestamps();
         });
+
+        Schema::table('user_invitations', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('invite_id')->references('id')->on('application_invites')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

@@ -15,7 +15,7 @@ class CreateCorporationsTable extends Migration
     {
         Schema::create('corporations', function (Blueprint $table) {
 
-            $table->integer('id')->unique();
+            $table->integer('id')->unsigned()->unique();
             $table->string('name');
             $table->string('ticker');
             $table->integer('member_count')->nullable();

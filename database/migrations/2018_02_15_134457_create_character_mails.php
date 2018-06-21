@@ -15,17 +15,18 @@ class CreateCharacterMails extends Migration
     {
         Schema::create('character_mails', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('character_id');
-
-            $table->integer('mail_id')->nullable();
+            $table->integer('character_id')->unsigned();
+            $table->integer('mail_id')->unsigned();
             $table->text('subject')->nullable();
             $table->longText('content')->nullable();
-
             $table->text('sender_name')->nullable();
             $table->text('sender_type')->nullable();
             $table->integer('sender_id')->nullable();
-
             $table->dateTime('date')->nullable();
+        });
+
+        Schema::table('character_mails', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

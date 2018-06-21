@@ -16,12 +16,13 @@ class CreateRedditUsersTable extends Migration
         Schema::create('reddit_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('reddit_id');
-            $table->integer('user_id')->unsinged();
-
+            $table->integer('user_id')->unsigned();
             $table->string('nickname');
-
             $table->timestamps();
+        });
 
+        Schema::table('reddit_users', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

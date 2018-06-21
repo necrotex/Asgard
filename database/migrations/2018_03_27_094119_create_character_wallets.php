@@ -17,8 +17,11 @@ class CreateCharacterWallets extends Migration
             $table->increments('id');
             $table->unsignedInteger('character_id');
             $table->double('amount');
-
             $table->timestamps();
+        });
+
+        Schema::table('character_wallets', function (Blueprint $table) {
+            $table->foreign('character_id')->references('id')->on('characters')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
