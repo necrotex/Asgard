@@ -11,7 +11,7 @@
                             {{$character->name}}
                         </a>
                     </h3>
-                    <p class="lead">{{$character->corporation->name}}</p>
+                    <p class="lead">{{optional($character->corporation)->name}}</p>
 
                 </div>
                 <div class="col-12 col-lg-4 col-md-6 text-center">
