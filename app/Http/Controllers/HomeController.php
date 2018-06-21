@@ -3,17 +3,8 @@
 namespace Asgard\Http\Controllers;
 
 use Asgard\Jobs\Discord\FetchRoles;
-use Asgard\Jobs\Eve\Assets;
-
-use Asgard\Jobs\Eve\Character\Location;
-use Asgard\Jobs\Eve\Character\Mails;
-use Asgard\Jobs\Eve\Character\Status;
-use Asgard\Jobs\Eve\Journal;
-use Asgard\Jobs\Eve\Transactions;
-use Asgard\Jobs\Eve\Wallet;
-use Asgard\Jobs\Update\InitialCharacterSetup;
 use Asgard\Models\Character;
-use Asgard\Models\SystemMessage;
+use Spatie\Activitylog\Models\Activity;
 
 
 class HomeController extends Controller
@@ -35,11 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->can('view-application')) {
-            $messages = SystemMessage::limit(15)->latest()->get();
-        } else {
-            $messages = []; // todo: write query for normal users
-        }
+
+        //todo: filter this according to acl
+        $messages = Activity::limit(15)->latest()->get();
 
         return view('dashboard.home', compact('messages'));
     }

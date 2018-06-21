@@ -3,7 +3,6 @@
 namespace Asgard\Jobs\Update;
 
 use Asgard\Support\ConduitAuthTrait;
-use Asgard\Support\SendsSystemMessage;
 use Conduit\Conduit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -13,7 +12,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 class VerifyTokenJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ConduitAuthTrait, SendsSystemMessage;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ConduitAuthTrait;
 
     public $character;
 
@@ -44,14 +43,16 @@ class VerifyTokenJob implements ShouldQueue
     public function failed($exception = null)
     {
         // don't do anything if the api is fucked and returns a server error
-        if($exception->getCode() >= 500) {
+        if ($exception->getCode() >= 500) {
             return;
         }
 
         $this->character->active = false;
         $this->character->save();
 
-        $this->notifySystem('error', 'Character Authentification failed for ' . $this->character->name,
-            $exception->getMessage(), 'token', 'character', $this->character->id);
+        activity('error')
+            ->performedOn($this->character)
+            ->withProperty('exception', $exception->getMessage())
+            ->log('Access token verification failed');
     }
 }

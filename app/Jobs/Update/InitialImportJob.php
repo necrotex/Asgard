@@ -18,7 +18,6 @@ use Asgard\Jobs\Eve\Character\Transactions;
 use Asgard\Jobs\Eve\Character\Wallet;
 use Asgard\Jobs\Update\VerifyTokenJob;
 use Asgard\Models\Character;
-use Asgard\Support\SendsSystemMessage;
 use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -28,7 +27,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 class InitialImportJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, SendsSystemMessage;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * @var Character
@@ -82,6 +81,9 @@ class InitialImportJob implements ShouldQueue
 
     public function failed(Exception $exception)
     {
-        $this->notifySystem('error', 'Inital import for ' . $this->character->name . 'failed', $exception->getMessage());
+        activity('error')
+            ->performedOn($this->character)
+            ->withProperty('exception', $exception->getMessage())
+            ->log('Inital Character import failed.');
     }
 }

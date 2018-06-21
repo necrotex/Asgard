@@ -4,7 +4,6 @@ namespace Asgard\Jobs\Eve\Character;
 
 
 use Asgard\Models\Character;
-use Asgard\Support\SendsSystemMessage;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Bus\Queueable;
@@ -14,11 +13,11 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 abstract class CharacterUpdateJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, SendsSystemMessage;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $character;
     public $tries = 1;
-    public $timeout = 120; //@todo: find a reasonable timeframe for the timeout
+    public $timeout = 120; //@todo: find a reasonable time frame for the timeout
 
     public function  __construct(Character $character)
     {
@@ -27,9 +26,9 @@ abstract class CharacterUpdateJob implements ShouldQueue
 
     public function failed(Exception $exception)
     {
-        $title = "Job " . __CLASS__ . " failed for " . $this->character->name;
-        $message = $exception->getMessage();
-
-        $this->notifySystem('error', $title, $message, 'job', 'character', $this->character->id);
+        activity('error')
+            ->performedOn($this->character)
+            ->withProperty('exception', $exception->getMessage())
+            ->log("Job " . __CLASS__ . " failed");
     }
 }

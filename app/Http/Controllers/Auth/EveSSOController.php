@@ -7,7 +7,6 @@ use Asgard\Models\ApplicationInvite;
 use Asgard\Models\Character;
 use Asgard\Models\User;
 use Asgard\Models\UserInvitation;
-use Asgard\Support\SendsSystemMessage;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -20,7 +19,7 @@ use nullx27\Socialite\EveOnline\Traits\EveAuth;
 
 class EveSSOController extends Controller
 {
-    use EveAuth, SendsSystemMessage;
+    use EveAuth;
 
     public function siteLogin(Request $request)
     {
@@ -71,7 +70,13 @@ class EveSSOController extends Controller
 
                 // only notify the system if its a new character
                 if($character->wasRecentlyCreated) {
-                    $this->notifySystem('info', 'New Character', ucwords(str_replace('-', ' ', auth()->user()->name))  . " added a character: " . $this->user->name, 'character');
+                    activity('info')->performedOn(auth()->user())
+                        ->causedBy($character)
+                        ->log('Added new Character');
+                } else {
+                    activity('info')->performedOn(auth()->user())
+                        ->causedBy($character)
+                        ->log('Refreshed Character');
                 }
             }
 
@@ -102,7 +107,7 @@ class EveSSOController extends Controller
                         $user->assign('guest');
                     }
 
-                    $this->notifySystem('info', 'New Account', "{$this->user->name} created at new Account", 'account');
+                    activity('info')->performedOn($user)->log('Account Created');
 
                 } else {
                     $user = $character->user;

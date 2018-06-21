@@ -3,7 +3,6 @@
 namespace Asgard\Jobs\Eve\Character;
 
 use Asgard\Models\Character;
-use Asgard\Models\SystemMessage;
 use Asgard\Support\ConduitAuthTrait;
 use Asgard\Support\EVEOnlineIDs;
 use Carbon\Carbon;
