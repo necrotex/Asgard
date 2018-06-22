@@ -52,6 +52,9 @@ class ApplicationFormController extends Controller
         }
 
         $userInvite->completed = true;
+        $userInvite->application_id = $application->id;
+        $userInvite->save();
+
 
         return redirect()->route('applications.show', $application);
     }

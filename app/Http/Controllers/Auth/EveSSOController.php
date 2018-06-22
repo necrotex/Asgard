@@ -16,7 +16,6 @@ use Laravel\Socialite\Facades\Socialite;
 use nullx27\Socialite\EveOnline\Traits\EveAuth;
 
 
-
 class EveSSOController extends Controller
 {
     use EveAuth;
@@ -69,7 +68,7 @@ class EveSSOController extends Controller
                 flash('Character successfully added! It can take up to a minute or two until the character sheet is accessible.')->success();
 
                 // only notify the system if its a new character
-                if($character->wasRecentlyCreated) {
+                if ($character->wasRecentlyCreated) {
                     activity('info')->performedOn(auth()->user())
                         ->causedBy($character)
                         ->log('Added new Character');

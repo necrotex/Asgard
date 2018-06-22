@@ -3,6 +3,10 @@
 namespace Asgard\Http\Controllers\Recruitment;
 
 use Asgard\Models\Application;
+use Asgard\Models\ApplicationStatus;
+use Asgard\Models\Character;
+use Asgard\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
@@ -16,19 +20,39 @@ class ApplicationController extends Controller
 
     public function activeApplications()
     {
-        $applications = Application::where('active', '=', true)->get();
-        return DataTables::of($applications);
+        return $this->getApplicationsTable(true);
     }
 
     public function achivedApplications()
     {
-        $applications = Application::where('active', '=', false)->get();
-        return DataTables::of($applications);
+        return $this->getApplicationsTable(false);
     }
-
 
     public function show(Application $application)
     {
-        return view('dashboard.recruitment.application', compact('application'));
+        $application->load(['comments', 'questions', 'invite']);
+        $statuses = ApplicationStatus::all();
+
+        return view('dashboard.recruitment.application', compact('application', 'statuses'));
+    }
+
+    private function getApplicationsTable($active = true)
+    {
+        $applications = Application::with(['status', 'applicant'])->where('active', '=', $active)->get();
+
+        return DataTables::of($applications)
+            ->addColumn('name', function ($application) {
+                return $application->applicant->mainCharacter->name;
+            })
+            ->addColumn('route', function ($application) {
+                return route('applications.show', $application);
+            })
+            ->addColumn('status', function ($application) {
+                return $application->status->title ?? 'New';
+            })
+            ->addColumn('last_update', function ($application) {
+                return Carbon::parse($application->updated_at)->diffForHumans();
+            })
+            ->make(true);
     }
 }

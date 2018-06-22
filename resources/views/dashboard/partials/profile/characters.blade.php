@@ -1,6 +1,5 @@
 <h3>Characters</h3>
 
-
 @foreach($user->characters as $character)
     <div class="card">
         <div class="card-body">

@@ -50,9 +50,7 @@
                                     <i class="fas fa-info-circle"></i>
                                 </a>
                                 <div class="collapse" id="collapse-{{$message->id}}">
-                                    <pre>
-                                        {{$message->getExtraProperty('exception')}}
-                                    </pre>
+                                    <code>{{$message->getExtraProperty('exception')}}</code>
                                 </div>
                             @endif
                         </li>

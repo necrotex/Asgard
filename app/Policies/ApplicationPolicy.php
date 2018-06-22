@@ -32,7 +32,7 @@ class ApplicationPolicy
     {
         $invite = $user->invites()->where('completed', false)->first();
 
-        return $user->can('create-application') && $invite->exists();
+        return $user->can('create-application') && optional($invite)->exists();
     }
 
     /**

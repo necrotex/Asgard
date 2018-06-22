@@ -28,6 +28,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $with = ['mainCharacter'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

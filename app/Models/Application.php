@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
     protected $fillable = ['user_id', 'status_id'];
+    protected $with = ['status', 'applicant'];
 
     public function applicant()
     {
@@ -26,5 +27,10 @@ class Application extends Model
     public function questions()
     {
         return $this->hasMany(ApplicationFormQuestionAnswer::class, 'application_id', 'id');
+    }
+
+    public function invite()
+    {
+        return $this->hasOne(UserInvitation::class, 'application_id', 'id');
     }
 }

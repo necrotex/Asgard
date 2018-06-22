@@ -19,4 +19,8 @@ class ApplicationInvite extends Model
     {
         return $this->hasOne(UserInvitation::class, 'invite_id', 'id');
     }
+
+    public function creator() {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
