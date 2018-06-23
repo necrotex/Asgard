@@ -15,6 +15,18 @@ class ApplicationFormController extends Controller
     public function create()
     {
 
+        if (count(auth()->user()->characters) == 0) {
+            flash('Please add your characters to the system before you apply.')->warning();
+
+            return redirect()->route('characters.index');
+        }
+
+        if (!auth()->user()->mainCharacter) {
+            flash('Please select your main character before you apply.')->warning();
+
+            return redirect()->route('profile.show', auth()->user());
+        }
+
         $userInvite = auth()->user()->invites()->where('completed', false)->firstOrFail();
 
         $form = ApplicationForm::find($userInvite->invite->application_form_id);
@@ -35,7 +47,9 @@ class ApplicationFormController extends Controller
         );
 
         foreach ($request->all() as $question => $answer) {
-            if ($question == '_token') continue;
+            if ($question == '_token') {
+                continue;
+            }
 
             $question_id = str_replace('question-', '', $question);
             $questionModel = ApplicationFormQuestion::find($question_id);
@@ -55,6 +69,7 @@ class ApplicationFormController extends Controller
         $userInvite->application_id = $application->id;
         $userInvite->save();
 
+        activity('recruitment')->performedOn($application)->causedBy(auth()->user())->log('New Application');
 
         return redirect()->route('applications.show', $application);
     }

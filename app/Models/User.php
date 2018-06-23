@@ -186,6 +186,11 @@ class User extends Authenticatable
         return $this->hasMany(Application::class, 'user_id', 'id');
     }
 
+    public function latestApplication()
+    {
+        return $this->hasMany(Application::class, 'user_id', 'id')->latest();
+    }
+
     public function invites()
     {
         return $this->hasMany(UserInvitation::class, 'user_id', 'id');

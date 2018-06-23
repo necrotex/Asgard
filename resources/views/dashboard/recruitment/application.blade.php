@@ -12,10 +12,10 @@
 
             <hr>
 
-            <h3>Questions</h3>
+            <h5>Questions</h5>
 
             @foreach($application->questions as $question)
-                <div class="card">
+                <div class="card mb-2">
                     <div class="card-header">
                         {{$question->question}}
                     </div>
@@ -62,7 +62,7 @@
 
             <hr>
 
-            <label for="comment">Comment</label>
+            <label for="comment"><h5>Comment</h5></label>
             <textarea class="form-control" name="comment"></textarea>
             <input type="submit" class="btn btn-block btn-primary mt-1" value="Save">
 

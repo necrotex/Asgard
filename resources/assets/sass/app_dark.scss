@@ -1,0 +1,327 @@
+
+// Bootstrap
+@import "~bootswatch/dist/slate/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/slate/bootswatch";
+
+// Variables
+@import "variables";
+@import "icons";
+
+
+@import "~select2/src/scss/core";
+@import "~datatables/media/css/jquery.dataTables";
+@import "~jquery-ui-dist/jquery-ui";
+
+
+//flatpickr
+@import "~flatpickr/dist/flatpickr.css";
+
+body {
+  font-size: .875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px; /* Height of navbar */
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+/*
+ * Utilities
+ */
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+
+.avatar {
+  border-radius: 35px;
+  float: left;
+
+  width:50px;
+  height:50px;
+}
+
+.avatar-profile {
+  border-radius: 35px;
+  float: left;
+
+  width:25px;
+  height:25px;
+}
+
+.add-corporation {
+  width:100%;
+}
+
+.profile-image {
+  position: relative;
+  text-align: center;
+}
+
+.profile-overlay {
+  position: absolute;
+  bottom: 0px;
+
+  height:30px;
+
+  width: 100%;
+  background-color: black;
+  opacity: 0.8;
+}
+
+.profile-overlay-text {
+  letter-spacing: 10px;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+#mail-table tbody tr {
+
+  &:hover {
+    cursor: pointer;
+  }
+
+}
+
+.brand-text {
+  letter-spacing: 10px;
+  text-align: center;
+}
+
+.grip {
+  cursor: grabbing;
+}
+
+.btn-group-xs > .btn, .btn-xs {
+  padding  : .25rem .4rem;
+  font-size  : .875rem;
+  line-height  : .5;
+  border-radius : .2rem;
+}
+
+// Time picker
+.timepicker {
+  width: 60px !important;
+}
+
+.flatpickr-calendar {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flatpickr-input {
+  text-align: center;
+}
+
+.timepicker-group {
+  height: 80px;
+  width: 60px;
+  float: left;
+  margin-left: 15px;
+}
+
+.center-timepicker-group {
+  display: inline-block;
+}
+
+#countdowntime {
+  padding: 20px;
+}
+
+.submit {
+  margin-top: 10px;
+}
+
+.tab-pane > form {
+  background: #fff;
+}
+
+#date {
+  min-height: 350px;
+  padding: 30px;
+}
+
+.timepicker-form {
+  text-align: center;
+}
+
+.countdown {
+  width: 50%;
+  margin: 0 auto;
+  display: inline;
+}
+
+.block {
+  display: block;
+  margin-right: 5px;
+  float: left;
+  text-align: center;
+}
+
+.digit {
+  color:$brand-primary;
+  font-size: 23px;
+  width: 43px;
+  margin-bottom: 0;
+}
+
+.text {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.icon-vertical-align {
+  padding-right: 0.75rem;
+  padding-bottom: 0;
+  padding-top: 0;
+  padding-left: 0;
+}
+
+.created {
+  width:100%;
+  display:block;
+  padding:10px;
+}
+
+// Checkbox ios style
+.custom-control{
+
+  &.ios-switch{
+    --color: #4cd964;
+    padding-left: 0;
+    text-align: center;
+
+    .ios-switch-control-input{
+      display: none;
+
+      &:active~.ios-switch-control-indicator{
+        &::after{
+          width: 20px;
+        }
+      }
+
+      &:checked{
+        ~.ios-switch-control-indicator{
+          border: 10px solid var(--color);
+
+          &::after{
+            top: -8px;
+            left: 12px;
+          }
+        }
+
+        &:active~.ios-switch-control-indicator{
+          &::after{
+            left: 0px;
+          }
+        }
+      }
+    }
+    .ios-switch-control-indicator{
+      display: inline-block;
+      position: relative;
+      margin: 0 10px;
+      top: 4px;
+      width: 40px;
+      height: 20px;
+      background: #fff;
+      border-radius: 16px;
+      transition: .3s;
+      border: 2px solid #ddd;
+
+      &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 16px;
+        transition: .3s;
+        top: 0px;
+        left: 0px;
+        background: #fff;
+        box-shadow: 0 0 2px #aaa, 0 2px 5px #999;
+      }
+    }
+  }
+}

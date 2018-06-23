@@ -16,8 +16,6 @@ abstract class CharacterUpdateJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $character;
-    public $tries = 1;
-    public $timeout = 120; //@todo: find a reasonable time frame for the timeout
 
     public function  __construct(Character $character)
     {

@@ -47,4 +47,5 @@ mix.webpackConfig({
     .js('resources/assets/js/app.js', 'public/js')
 
     .sass('resources/assets/sass/app.scss', 'public/css')
+    .sass('resources/assets/sass/app_dark.scss', 'public/css/app_dark.css')
     .sass('resources/assets/sass/login.scss', 'public/css');

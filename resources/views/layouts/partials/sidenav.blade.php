@@ -93,23 +93,13 @@
                 </li>
             @endcan
 
-            @can('create', \Asgard\Models\Application::class)
+            @if(optional(auth()->user()->invites()->where('completed', false)->first())->exists())
                 <li class="nav-item">
                     <a class="nav-link {{active('applications.create')}}" href="{{route('applications.create')}}">
                         <i class="fas fa-user-plus" aria-hidden="true"></i> Apply
                     </a>
                 </li>
-            @endcan
-
-            <?php /*
-            @can('view-knowledgebase')
-                <li class="nav-item">
-                    <a class="nav-link {{active('forms.index')}}" href="{{route('forms.index')}}">
-                        <i class="fas fa-question-circle" aria-hidden="true"></i> Knowledge Base
-                    </a>
-                </li>
-            @endcan
-            */ ?>
+            @endif
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>External Services</span>

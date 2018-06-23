@@ -1,4 +1,4 @@
-<h3>Characters</h3>
+<h5>Characters</h5>
 
 @foreach($user->characters as $character)
     <div class="card">

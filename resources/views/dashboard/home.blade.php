@@ -5,12 +5,18 @@
 
 @section('content')
 
-    @if(count(auth()->user()->characters) == 0)
-        @include('dashboard.partials.home.add-characters')
+    @if(auth()->user()->isA('recruit'))
+
+        @if(optional(auth()->user()->application()->whereActive(true)->latest())->exists())
+            @include('dashboard.partials.home.recruitment-after-application')
+        @else
+            @include('dashboard.partials.home.recruitment-notice')
+        @endif
+
     @endif
 
-    @if(auth()->user()->isA('recruit'))
-        @include('dashboard.partials.home.recruitment-notice')
+    @if(count(auth()->user()->characters) == 0)
+        @include('dashboard.partials.home.add-characters')
     @endif
 
     <div class="row">

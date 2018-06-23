@@ -30,9 +30,10 @@ class ApplicationPolicy
      */
     public function create(User $user)
     {
-        $invite = $user->invites()->where('completed', false)->first();
+        //$invite = auth()->user()->invites()->where('completed', false)->first()->exists();
 
-        return $user->can('create-application') && optional($invite)->exists();
+        //return optional($invite)->exists();
+        return optional(auth()->user()->invites()->where('completed', false)->first())->exists();
     }
 
     /**
