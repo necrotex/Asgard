@@ -39,29 +39,23 @@
                                 case 'error':
                                     $class = 'list-group-item-danger';
                                     break;
+
+                                case 'recruitment':
+                                    $class = 'list-group-item-info';
+                                    break;
                                 default:
                                     $class = 'list-group-item-primary';
                             }
                         @endphp
 
-                        <li class="list-group-item list-group-item {{$class}}"><b>{{$message->subject->name}}
-                                :</b> {{$message->description}} {{optional($message->causer)->name}}<br/>
-
-                            <small class="text-muted">{{$message->created_at}}</small>
-
-                            @if($message->log_name == 'error')
-                                <a href="#" class="text-muted" data-toggle="collapse"
-                                   data-target="#collapse-{{$message->id}}" aria-expanded="false"
-                                   aria-controls="collapse-{{$message->id}}">
-                                    <i class="fas fa-info-circle"></i>
-                                </a>
-                                <div class="collapse" id="collapse-{{$message->id}}">
-                                    <code>{{$message->getExtraProperty('exception')}}</code>
-                                </div>
-                            @endif
-                        </li>
+                        @include('dashboard.partials.home.log-' . $message->log_name)
                     @endforeach
                 </ul>
+
+            </div>
+
+            <div class="card-body">
+                {{ $messages->links() }}
             </div>
         </div>
 

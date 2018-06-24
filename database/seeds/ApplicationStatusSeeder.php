@@ -13,6 +13,13 @@ class ApplicationStatusSeeder extends Seeder
     {
         \Asgard\Models\ApplicationStatus::create(
             [
+                'title' => 'New',
+                'slug' => 'new',
+            ]
+        );
+
+        \Asgard\Models\ApplicationStatus::create(
+            [
                 'title' => 'In Progress',
                 'slug' => 'in-progress',
             ]

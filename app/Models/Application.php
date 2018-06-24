@@ -21,7 +21,7 @@ class Application extends Model
 
     public function comments()
     {
-        return $this->hasMany(ApplicationComment::class, 'application_id');
+        return $this->hasMany(ApplicationComment::class, 'application_id', 'id');
     }
 
     public function questions()

@@ -5,6 +5,20 @@
 
 
 @section('content')
+
+    @if(!$application->active)
+        <div class="row">
+            <div class="col-12">
+                <div class="alert @if($application->status->slug == 'accepted') alert-success @else alert-danger @endif"
+                     role="alert">
+                    <h4 class="alert-heading">This Application is done, the applicant was
+                        <b>{{$application->status->slug}}</b></h4>
+                    <p>Hi, this application was completed. IF you need to repoen it please talk to a director.</p>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-md-7">
 
@@ -47,13 +61,22 @@
 
                         <dt class="col-sm-3">Status</dt>
                         <dd class="col-sm-9">
-                            <select id="application-status" class="w-75" name="application_status">
-                                @foreach($statuses as $status)
-                                    <option name="{{$status->slug}}">{{$status->title}}</option>
-                                @endforeach
-                            </select>
+                            @if($application->active)
+                                <form method="post" action="{{ route('applications.status', $application) }}">
 
-                            <input type="submit" class="btn btn-sm btn-primary small" value="Save">
+                                    <select id="application-status" class="w-75" name="application_status">
+                                        @foreach($statuses as $status)
+                                            <option name="{{$status->slug}}" value="{{$status->id}}"
+                                                    @if($status->id == $application->status_id) selected @endif>{{$status->title}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    {{csrf_field()}}
+                                    <input type="submit" class="btn btn-sm btn-primary small" value="Save">
+                                </form>
+                            @else
+                                <b>{{$application->status->title}}</b>
+                            @endif
                         </dd>
 
                     </dl>
@@ -62,22 +85,35 @@
 
             <hr>
 
-            <label for="comment"><h5>Comment</h5></label>
-            <textarea class="form-control" name="comment"></textarea>
-            <input type="submit" class="btn btn-block btn-primary mt-1" value="Save">
+            <h5>Comments</h5>
+            @if($application->active)
+                <form method="post" action="{{route('applications.comment', $application)}}" class="mb-4">
+                    <textarea class="form-control" name="comment"></textarea>
 
+                    {{csrf_field()}}
+                    <input type="submit" class="btn btn-block btn-primary mt-1" value="Save">
+                </form>
+            @endif
 
-            @foreach($application->comments as $comment)
-                <div class="card">
-                    <div class="card-body @if($comment->system_message) .bg-light @endif">
+            @foreach($application->comments->reverse() as $comment)
+                <div class="card mb-2">
+                    <div class="card-body border @if($comment->system_message) text-white font-weight-bold bg-primary @endif">
                         {{$comment->comment}}
-                    </div>
 
-                    <div class="card-footer">
-                        @if(!$comment->system_message)
-                            {{$comment->author->mainCharacter->name}} on {{$comment->created_at}}
+                        @if($comment->system_message)
+                            <br>
+                            <span class="small text-white">
+                                {{$comment->author->mainCharacter->name}} on {{$comment->created_at}}</span>
                         @endif
                     </div>
+
+                    @if(!$comment->system_message)
+                        <div class="card-footer small text-muted">
+                            @if($comment->author)
+                                {{$comment->author->mainCharacter->name}} on {{$comment->created_at}}
+                            @endif
+                        </div>
+                    @endif
                 </div>
 
             @endforeach
@@ -91,7 +127,8 @@
     <script>
         $(document).ready(function () {
             $('#application-status').select2({
-                width: 'resolve'
+                width: 'resolve',
+                'minimumResultsForSearch': Infinity,
             });
         });
     </script>

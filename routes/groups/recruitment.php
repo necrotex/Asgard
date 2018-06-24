@@ -65,6 +65,14 @@ Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function
         ->name('applications.show')
         ->middleware('can:view,application');
 
+    Route::post('/applications/{application}/comment', 'ApplicationCommentController@store')
+        ->name('applications.comment')
+        ->middleware('can:create,Asgard/Models/ApplicationComment');
+
+    Route::post('/applications/{application}/status', 'ApplicationStatusController@update')
+        ->name('applications.status')
+        ->middleware('can:create,Asgard/Models/ApplicationStatus');
+
 
     // Apply
     Route::get('/apply', 'ApplicationFormController@create')

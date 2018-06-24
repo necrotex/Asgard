@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
 
         //todo: filter this according to acl
-        $messages = Activity::limit(15)->latest()->get();
+        $messages = Activity::limit(150)->latest()->paginate(10);
 
         return view('dashboard.home', compact('messages'));
     }

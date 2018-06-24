@@ -29819,6 +29819,8 @@ __webpack_require__(148);
 
 Vue.component('countdown', __webpack_require__(231));
 
+//$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+
 /***/ }),
 /* 148 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

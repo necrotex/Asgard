@@ -6,6 +6,7 @@ use Asgard\Models\Application;
 use Asgard\Models\ApplicationForm;
 use Asgard\Models\ApplicationFormQuestion;
 use Asgard\Models\ApplicationFormQuestionAnswer;
+use Asgard\Models\ApplicationStatus;
 use Asgard\Models\UserInvitation;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
@@ -16,13 +17,13 @@ class ApplicationFormController extends Controller
     {
 
         if (count(auth()->user()->characters) == 0) {
-            flash('Please add your characters to the system before you apply.')->warning();
+            flash('Please add your characters to the system before you apply.')->warning()->important();
 
             return redirect()->route('characters.index');
         }
 
         if (!auth()->user()->mainCharacter) {
-            flash('Please select your main character before you apply.')->warning();
+            flash('Please select your main character before you apply.')->warning()->important();
 
             return redirect()->route('profile.show', auth()->user());
         }
@@ -37,12 +38,13 @@ class ApplicationFormController extends Controller
 
     public function store(Request $request)
     {
-
         $userInvite = auth()->user()->invites()->where('completed', false)->firstOrFail();
+        $newStatus = ApplicationStatus::whereSlug('new')->first();
 
         $application = Application::create(
             [
                 'user_id' => auth()->user()->id,
+                'status_id' => $newStatus->id
             ]
         );
 

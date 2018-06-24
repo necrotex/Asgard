@@ -3,15 +3,19 @@
 namespace Asgard\Providers;
 
 use Asgard\Models\Application;
+use Asgard\Models\ApplicationComment;
 use Asgard\Models\ApplicationForm;
 use Asgard\Models\ApplicationFormQuestion;
+use Asgard\Models\ApplicationStatus;
 use Asgard\Models\Character;
 use Asgard\Models\Corporation;
 use Asgard\Models\Setting;
 use Asgard\Models\Timer;
 use Asgard\Models\User;
+use Asgard\Policies\ApplicationCommentPolicy;
 use Asgard\Policies\ApplicationFormQuestionPolicy;
 use Asgard\Policies\ApplicationPolicy;
+use Asgard\Policies\ApplicationStatusPolicy;
 use Asgard\Policies\CharacterMailPolicy;
 use Asgard\Policies\CharacterPolicy;
 
@@ -40,7 +44,9 @@ class AuthServiceProvider extends ServiceProvider
         ApplicationFormQuestion::class => ApplicationFormQuestionPolicy::class,
         Setting::class => SettingsPolicy::class,
         Timer::class => TimerPolicy::class,
-        Application::class => ApplicationPolicy::class
+        Application::class => ApplicationPolicy::class,
+        ApplicationComment::class => ApplicationCommentPolicy::class,
+        ApplicationStatus::class => ApplicationStatusPolicy::class,
     ];
 
     /**
