@@ -16,7 +16,6 @@
 
                 if($contact->standing == 10) $class = 'primary';
                 if($contact->standing >= 5 && $contact->standing < 10) $class = 'info';
-
                 if($contact->standing >= -5 && $contact->standing < 5) $class = 'light';
                 if($contact->standing >= -5 && $contact->standing < -10) $class = 'warning';
                 if($contact->standing == -10) $class = 'danger';

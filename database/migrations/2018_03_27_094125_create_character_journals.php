@@ -16,31 +16,26 @@ class CreateCharacterJournals extends Migration
         Schema::create('character_journals', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('character_id');
-            $table->bigInteger('ref_id');
+            $table->unsignedBigInteger('ref_id');
             $table->string('ref_type');
-            $table->dateTime('date');
-            $table->bigInteger('first_party_id')->nullable();
+            $table->unsignedBigInteger('context_id')->nullable();
+            $table->enum('context_type', [
+                'structure_id', 'station_id', 'market_transaction_id', 'character_id', 'corporation_id', 'alliance_id', 'eve_system', 'industry_job_id', 'contract_id', 'planet_id', 'system_id', 'type_id'
+            ])->nullable();
+            $table->text('description');
+            $table->dateTime('date')->nullable();
+            $table->string('reason')->nullable();
+            $table->unsignedBigInteger('first_party_id')->nullable();
             $table->string('first_party_type')->nullable();
-            $table->bigInteger('second_party_id')->nullable();
+            $table->unsignedBigInteger('second_party_id')->nullable();
             $table->string('second_party_type')->nullable();
-            $table->double('amount')->nullable();
-            $table->double('balance')->nullable();
-            $table->text('reason')->nullable();
-            $table->bigInteger('tax_receiver_id')->nullable();
-            $table->double('tax')->nullable();
-            $table->bigInteger('extra_location_id')->nullable();
-            $table->bigInteger('extra_transaction_id')->nullable();
-            $table->string('extra_npc_name')->nullable();
-            $table->bigInteger('extra_npc_id')->nullable();
-            $table->bigInteger('extra_destroyed_ship_type_id')->nullable();
-            $table->bigInteger('extra_character_id')->nullable();
-            $table->bigInteger('extra_corporation_id')->nullable();
-            $table->bigInteger('extra_alliance_id')->nullable();
-            $table->bigInteger('extra_job_id')->nullable();
-            $table->bigInteger('extra_contract_id')->nullable();
-            $table->bigInteger('extra_system_id')->nullable();
-            $table->bigInteger('extra_planet_id')->nullable();
+            $table->float('amount', 17, 2)->nullable();
+            $table->float('balance', 17, 2)->nullable();
+            $table->float('tax', 17, 2)->nullable();
+            $table->unsignedBigInteger('tax_receiver_id')->nullable();
+
             $table->timestamps();
+
         });
 
         Schema::table('character_journals', function (Blueprint $table) {

@@ -17,6 +17,17 @@ class AppServiceProvider extends ServiceProvider
         Horizon::auth(function ($request) {
             return auth()->user()->can('view-job-monitoring');
         });
+
+        \Illuminate\Support\Collection::macro('recursive', function () {
+            return $this->map(function ($value) {
+                if (is_array($value) || is_object($value)) {
+                    return collect($value)->recursive();
+                }
+
+                return $value;
+            });
+        });
+
     }
 
     /**

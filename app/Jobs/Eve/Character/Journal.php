@@ -25,41 +25,73 @@ class Journal extends CharacterUpdateJob
 
         $result = $api->characters($this->character->id)->wallet()->journal()->get();
 
-        foreach ($result->data as $entry) {
+        $journals = collect($result->data)->recursive()->keyBy('id');
+        $existingJournals = Character\Journal::whereIn('ref_id', $journals->keys())->get()->keyBy('ref_id');
 
-            if (is_null(data_get($entry, 'ref_id', null))) { //todo: debug this correctly
-                Log::debug("Coundl't load journal entry");
-                continue;
+        $journals = $journals->diffKeys($existingJournals);
+
+        if ($journals->isEmpty()) {
+            return;
+        }
+
+        $firstPartyIds = $journals->pluck('first_party_id');
+        $secondPartyIds = $journals->pluck('second_party_id');
+
+        $partyIds = $firstPartyIds->merge($secondPartyIds)->unique()->reject(function ($id) {
+            return is_null($id);
+        })->values()->push(500001);
+
+        $partyIds->filter(function ($id, $key) use ($partyIds) {
+            if ($id >= 500000 && $id < 1000000) {
+                $partyIds->forget($key);
+                return true;
             }
+        });
 
-            $extraInfo = data_get($entry, 'extra_info', null);
+        $resoledIdsRaw = $api->universe()->names()->data($partyIds->toArray())->post();
+        $resolvedIds = collect($resoledIdsRaw->data)->recursive()->keyBy('id');
 
-            $extraInfoCompiled = [];
+        $insert = collect();
+        $journals->each(function ($journal) use ($resolvedIds, $insert) {
 
-            if (!is_null($extraInfo)) {
-                foreach ($extraInfo as $k => $v) {
-                    $extraInfoCompiled['extra_' . $k] = $v;
+            $i = collect([
+                'date' => Carbon::parse($journal->get('date')),
+                'ref_id' => $journal->get('id', null),
+                'ref_type' => $journal->get('ref_type', null),
+                'context_id' => $journal->get('context_id', null),
+                'context_type' => $journal->get('context_id_type', null),
+                'description' => $journal->get('description', null),
+                'first_party_id' => $journal->get('first_party_id', null),
+                'second_party_id' => $journal->get('second_party_id', null),
+                'amount' => $journal->get('amount', null),
+                'balance' => $journal->get('balance', null),
+                'reason' => $journal->get('reason', null),
+                'tax_receiver_id' => $journal->get('tax_receiver_id', null),
+                'tax' => $journal->get('tax', null),
+            ]);
+
+            if (!is_null($i->get('first_party_id'))) {
+                $id = $i->get('first_party_id');
+
+                if ($id >= 500000 && $id < 1000000) {
+                    $i->put('first_party_type', 'faction');
+                } else if ($resolvedIds->has($id)) {
+                    $i->put('first_party_type', $resolvedIds->get($id)->get('category'));
                 }
             }
 
-            $data = [
-                'character_id' => $this->character->id,
-                'date' => Carbon::parse(data_get($entry, 'date', null)),
-                'ref_type' => data_get($entry, 'ref_type', null),
-                'first_party_id' => data_get($entry, 'first_party_id', null),
-                'first_party_type' => data_get($entry, 'first_party_type', null),
-                'second_party_id' => data_get($entry, 'second_party_id', null),
-                'second_party_type' => data_get($entry, 'second_party_type', null),
-                'amount' => data_get($entry, 'amount', null),
-                'balance' => data_get($entry, 'balance', null),
-                'reason' => data_get($entry, 'reason', null),
-                'tax_receiver_id' => data_get($entry, 'tax_receiver_id', null),
-                'tax' => data_get($entry, 'tax', null)
-            ];
+            if (!is_null($i->get('second_party_id'))) {
+                $id = $i->get('second_party_id');
+                if ($id >= 500000 && $id < 1000000) {
+                    $i->put('second_party_id', 'faction');
+                } else if ($resolvedIds->has($id)) {
+                    $i->put('second_party_type', $resolvedIds->get($id)->get('category'));
+                }
+            }
 
-            $data = array_merge($data, $extraInfoCompiled);
+            $insert->push($i);
+        });
 
-            Character\Journal::firstOrCreate(['ref_id' => data_get($entry, 'ref_id', null)], $data);
-        }
+        $this->character->journal()->createMany($insert->toArray());
     }
 }

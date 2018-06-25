@@ -31,24 +31,7 @@
                 <ul class="list-group list-group-flush">
 
                     @foreach($messages as $message)
-                        @php
-                            switch ($message->log_name) {
-                                case 'warning':
-                                    $class = 'list-group-item-warning';
-                                    break;
-                                case 'error':
-                                    $class = 'list-group-item-danger';
-                                    break;
-
-                                case 'recruitment':
-                                    $class = 'list-group-item-info';
-                                    break;
-                                default:
-                                    $class = 'list-group-item-primary';
-                            }
-                        @endphp
-
-                        @include('dashboard.partials.home.log-' . $message->log_name)
+                      @include('dashboard.partials.home.log-' . $message->log_name)
                     @endforeach
                 </ul>
 
