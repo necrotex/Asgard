@@ -22,7 +22,6 @@ class Journal extends CharacterUpdateJob
     public function handle(Conduit $api)
     {
         $api->setAuthentication($this->getAuthentication($this->character));
-
         $result = $api->characters($this->character->id)->wallet()->journal()->get();
 
         $journals = collect($result->data)->recursive()->keyBy('id');

@@ -16,17 +16,22 @@ class CreateCharacterTransactions extends Migration
         Schema::create('character_transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('character_id');
-            $table->bigInteger('transaction_id');
-            $table->dateTime('date');
-            $table->bigInteger('type_id');
-            $table->bigInteger('location_id');
-            $table->double('unit_price');
-            $table->bigInteger('quantity');
-            $table->bigInteger('client_id');
+            $table->unsignedBigInteger('transaction_id');
+            $table->unsignedBigInteger('client_id');
+            $table->text('client_name')->nullable();
+            $table->enum('client_type', ['character', 'corporation']);
             $table->boolean('is_buy');
             $table->boolean('is_personal');
-            $table->bigInteger('journal_ref_id');
+            $table->unsignedBigInteger('journal_ref_id');
+            $table->unsignedBigInteger('location_id');
+            $table->text('location_name')->nullable();
+            $table->enum('location_type', ['station', 'structure']);
+            $table->integer('quantity');
+            $table->integer('type_id');
+            $table->float('unit_price',17,2);
+            $table->timestamp('date')->nullable();
             $table->timestamps();
+
         });
 
         Schema::table('character_transactions', function (Blueprint $table) {
