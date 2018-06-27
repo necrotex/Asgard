@@ -65,7 +65,7 @@ class EveSSOController extends Controller
                 InitialImportJob::dispatch($character)->onQueue('high');
 
                 $redirectRoute = route('characters.index');
-                flash('Character successfully added! It can take up to a minute or two until the character sheet is accessible.')->success();
+                flash('Character successfully added! It can take up to 10 minutes until the character sheet is accessible.')->success();
 
                 // only notify the system if its a new character
                 if ($character->wasRecentlyCreated) {
