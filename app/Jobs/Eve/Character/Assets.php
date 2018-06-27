@@ -6,9 +6,11 @@ use Asgard\Models\Character\Asset;
 use Asgard\Support\ConduitAuthTrait;
 use Asgard\Support\EVEOnlineIDs;
 use Conduit\Conduit;
+use Illuminate\Support\Collection;
 use Log;
 
-class Assets extends CharacterUpdateJob {
+class Assets extends CharacterUpdateJob
+{
 
     use ConduitAuthTrait;
 
@@ -27,101 +29,60 @@ class Assets extends CharacterUpdateJob {
     public function handle(Conduit $api)
     {
         $api->setAuthentication($this->getAuthentication($this->character));
+        $response = $api->characters($this->character->id)->assets()->get();
 
-        $result = $api->characters($this->character->id)->assets()->get();
+        $pages = (int)$response->getHeader('X-Pages');
+        $assets = collect($response->data)->recursive()->keyBy('item_id');
 
-        $pages = (int) $result->getHeader('X-Pages');
-        $data = $result->data;
-
-        if($pages > 1) {
-           for($i=2; $i<=$pages; $i++) {
-               $result = $api->characters($this->character->id)
-                   ->assets()
-                   ->query(['page' => $i])
-                   ->get();
-
-               $data = array_merge($data, $result->data);
-           }
-        }
-
-        $ordered = [];
-        $packaged = [];
-        $other = [];
-
-        $location_ids = [];
-        foreach ($data as $item) {
-            // if the id is in the rage of stations
-            if($item->location_id < 61000000) {
-                if($item->is_singleton === false) {
-                    $packaged[] = $item;
-                } else {
-                    $ordered[$item->item_id][] = $item;
-                }
-
-                $location_ids[] = $item->location_id;
-            } else {
-                $other[] = $item;
+        if ($pages > 1) {
+            for ($i = 2; $i <= $pages; $i++) {
+                $response = $api->characters($this->character->id)->assets()->query(['page' => $i])->get();
+                $assets = $assets->merge($response->data);
             }
         }
 
-        foreach($other as $item) {
-            //if it above the range of stations
-            if($item->location_id > 61000000) {
-                $ordered[$item->location_id][] = $item;
-            }
-        }
+        $assets = $assets->recursive()->keyBy('item_id');
 
-        $orderLocaltionIds = EVEOnlineIDs::sort(array_unique($location_ids));
+        // resolve station and solar system names
+        $stationIds = $assets->where('location_type', 'station')->pluck('location_id')->unique()->values();
+        $systemIds = $assets->where('location_type', 'solar_system')->pluck('location_id')->unique()->values();
 
-        Log::debug('Asset Location Ids: ' . print_r($orderLocaltionIds, true));
+        $ids = $stationIds->merge($systemIds)->unique()->values();
 
-        $res = $api->universe()->names()->data($orderLocaltionIds['stations'])->post();
-        $this->locations = $res->data;
+        $response = $api->universe()->names()->data($ids->toArray())->post();
+        $resolvedIds = collect($response->data)->recursive()->keyBy('id');
 
-        // remove all assets for the character
-        Asset::where('character_id', '=', $this->character->id)->delete();
+        // asset names
+        $assetNames = collect();
+        $assets->chunk(250)->each(function ($asset) use ($api, &$assetNames) {
+            $response = $api->characters($this->character->id)->assets()->names()->data($asset->keys()->toArray())->post();
+            $assetNames = $assetNames->merge($response->data);
+        });
 
-        foreach($packaged as $item) {
-            $this->addItem($item);
-        }
+        $assetNames = $assetNames->recursive()->reject(function ($item) {
+            return $item->get('name') === "None";
+        })->keyBy('item_id');
 
-        foreach($ordered as $group) {
-            foreach($group as $key => $item) {
-                // the first element in each grouping is the parent
-                if($key == 0) {
-                    $this->addItem($item);
-                } else {
-                    $this->addItem($item, $group[0]->item_id);
-                }
-            }
-        }
-    }
+        //clean up assets
+        $this->character->assets()->delete();
 
-    private function addItem($item, $parent = null) {
-        Asset::insert([
-            'type_id' => $item->type_id,
-            'character_id' => $this->character->id,
-            'quantity' => $item->quantity,
-            'location_id' => $item->location_id,
-            'location_type' => $item->location_type,
-            'item_id' => $item->item_id,
-            'location_flag' => $item->location_flag,
-            'is_singleton' => $item->is_singleton,
+        $newAssets = collect();
+        $assets->each(function ($item) use (&$newAssets, $resolvedIds, $assetNames) {
+            $i = [
+                'item_id' => $item->get('item_id'),
+                'location_id' => $item->get('location_id'),
+                'location_type' => $item->get('location_type'),
+                'location_flag' => $item->get('location_flag'),
+                'location_name' => optional($resolvedIds->get($item->get('location_id'), null))->get('name'),
+                'is_singleton' => $item->get('is_singleton'),
+                'type_id' => $item->get('type_id'),
+                'quantity' => $item->get('quantity'),
+                'name' => optional($assetNames->get($item->get('item_id')), null)->get('name'),
+            ];
 
-            'related_asset' => $parent,
-            'location_name' => $this->findLocation($item->location_id)
+            $newAssets->push($i);
+        });
 
-            // $table->string('name')->nullable(); // This is way to much work for now, maybe later
-        ]);
-    }
-
-    private function findLocation(int $id) {
-        foreach($this->locations as $location) {
-            if($id == $location->id) {
-                return $location->name;
-            }
-        }
-
-        return null;
+        $this->character->assets()->createMany($newAssets->toArray());
     }
 }

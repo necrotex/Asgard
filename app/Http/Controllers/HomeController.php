@@ -3,6 +3,7 @@
 namespace Asgard\Http\Controllers;
 
 use Asgard\Jobs\Discord\FetchRoles;
+use Asgard\Jobs\Eve\Character\Assets;
 use Asgard\Jobs\Eve\Character\Journal;
 use Asgard\Jobs\Eve\Character\Mails;
 use Asgard\Jobs\Eve\Character\Transactions;
@@ -56,6 +57,6 @@ class HomeController extends Controller
         $char = Character::find(95149868);
         //dd($char->status->online);
 
-        dispatch_now(new Mails($char));
+        dispatch_now(new Assets($char));
     }
 }

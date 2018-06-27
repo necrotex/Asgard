@@ -2,28 +2,28 @@
 
 namespace Asgard\Models\Character;
 
+use Asgard\Models\Character;
 use Asgard\Models\Eve\Type;
 use Illuminate\Database\Eloquent\Model;
 
 class Asset extends Model
 {
     public $timestamps = false;
-
+    public $incrementing = false;
     protected $table = 'character_assets';
+    protected static $unguarded = true;
+    protected $primaryKey = 'item_id';
     protected $appends = ['type_name'];
 
-    protected $fillable = [
-        'character_id',
-        'location_flag',
-        'location_id',
-        'is_singleton',
-        'type_id',
-        'item_id',
-        'location_type',
-        'quantity',
-        'name',
-        'location_name'
+    protected $casts = [
+        'is_singleton' => 'boolean',
     ];
+
+
+    public function character()
+    {
+        return $this->hasOne(Character::class);
+    }
 
     public function type()
     {

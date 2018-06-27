@@ -14,18 +14,20 @@ class CreateCharacterAssets extends Migration
     public function up()
     {
         Schema::create('character_assets', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedBigInteger('item_id');
             $table->unsignedInteger('character_id');
-            $table->string('location_flag');
-            $table->double('location_id');
-            $table->string('location_type');
+            $table->unsignedBigInteger('location_id');
+            $table->enum('location_type',['station', 'solar_system', 'other']);
             $table->string('location_name')->nullable();
+            $table->string('location_flag');
             $table->boolean('is_singleton');
-            $table->integer('type_id');
-            $table->double('item_id');
+            $table->unsignedBigInteger('type_id');
             $table->integer('quantity');
-            $table->double('related_asset')->nullable();
+            $table->unsignedBigInteger('related_asset')->nullable();
             $table->string('name')->nullable();
+
+            $table->primary(['item_id', 'character_id']);
+            $table->index('type_id');
         });
 
         Schema::table('character_assets', function (Blueprint $table) {
