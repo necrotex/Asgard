@@ -77,7 +77,7 @@ class Mails extends CharacterUpdateJob
                 'subject' => strip_tags($fullMail->get('subject'), '<color></color><a></a><b></b>'),
                 'content' => strip_tags($fullMail->get('body'), '<color></color><a></a><b></b><br></br>'),
                 'sender_name' => $resolvedIds->get($mail->get('from'))->get('name'),
-                'sender_type' => $resolvetrdIds->get($mail->get('from'))->get('category'),
+                'sender_type' => $resolvedIds->get($mail->get('from'))->get('category'),
                 'sender_id' => $resolvedIds->get($mail->get('from'))->get('id'),
                 'date' => Carbon::parse($mail->get('timestamp'))
             ];
