@@ -2,15 +2,9 @@
 
 namespace Asgard\Http\Controllers;
 
-use Asgard\Jobs\Discord\FetchRoles;
-use Asgard\Jobs\Eve\Character\Assets;
-use Asgard\Jobs\Eve\Character\Journal;
-use Asgard\Jobs\Eve\Character\Mails;
-use Asgard\Jobs\Eve\Character\Transactions;
 use Asgard\Models\Character;
 use Asgard\Models\User;
 use Spatie\Activitylog\Models\Activity;
-
 
 class HomeController extends Controller
 {
@@ -52,11 +46,4 @@ class HomeController extends Controller
         return view('dashboard.home', compact('messages'));
     }
 
-    public function debug()
-    {
-        $char = Character::find(95149868);
-        //dd($char->status->online);
-
-        dispatch_now(new Assets($char));
-    }
 }
