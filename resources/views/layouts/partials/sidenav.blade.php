@@ -123,6 +123,9 @@
 
         </ul>
 
+        <div class="text-center w-100 position-absolute" style="bottom: 0">
+            <small class="text-muted">{{config('app.version')}} - {{config('app.hash')}}</small>
+        </div>
 
     </div>
 </nav>

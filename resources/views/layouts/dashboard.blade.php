@@ -37,7 +37,10 @@
             @include('layouts.partials.notifications')
 
             @yield('content')
+
         </main>
+
+
     </div>
 </div>
 

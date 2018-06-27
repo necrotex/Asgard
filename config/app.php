@@ -41,6 +41,9 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+    'version' => env('APP_VERSION', 0),
+    'hash' => env('APP_HASH', 000),
+
     /*
     |--------------------------------------------------------------------------
     | Application URL
