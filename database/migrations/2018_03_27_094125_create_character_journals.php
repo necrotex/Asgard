@@ -27,8 +27,10 @@ class CreateCharacterJournals extends Migration
             $table->string('reason')->nullable();
             $table->unsignedBigInteger('first_party_id')->nullable();
             $table->string('first_party_type')->nullable();
+            $table->string('first_party_name')->nullable();
             $table->unsignedBigInteger('second_party_id')->nullable();
             $table->string('second_party_type')->nullable();
+            $table->string('second_party_name')->nullable();
             $table->float('amount', 17, 2)->nullable();
             $table->float('balance', 17, 2)->nullable();
             $table->float('tax', 17, 2)->nullable();

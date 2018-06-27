@@ -1,6 +1,6 @@
 <div class="mt-3">
 
-    <table class="table table-striped" id="mail-table">
+    <table class="table table-striped table-hover data-table-clickable" id="mail-table">
         <thead>
         <tr>
             <th scope="col">Sender</th>

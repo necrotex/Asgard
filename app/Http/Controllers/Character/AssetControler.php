@@ -11,8 +11,8 @@ class AssetControler extends Controller
 {
     public function entries(Character $character)
     {
-        //@todo: this is not right, needs better filtering
-        $assets = $character->assets()->with('type')->whereNotNull('location_name')->get();
+        //@todo: needs better filtering
+        $assets = $character->assets()->with('type');
 
         return DataTables::of($assets)
             ->addColumn('type_name', function ($asset) {
@@ -25,8 +25,8 @@ class AssetControler extends Controller
                 return $asset->is_singleton ? 'Yes' : 'No';
             })
             ->addColumn('volume', function ($asset) {
-                return number_format($asset->type->volume * $asset->quantity, 2) . 'm³';
+                return number_format($asset->type->volume * $asset->quantity, 2) . ' m³';
             })
-            ->toJson();
+            ->make(true);
     }
 }

@@ -77,6 +77,10 @@ class Journal extends CharacterUpdateJob
                 } else if ($resolvedIds->has($id)) {
                     $i->put('first_party_type', $resolvedIds->get($id)->get('category'));
                 }
+
+                if($resolvedIds->has($id)) {
+                    $i->put('first_party_name', $resolvedIds->get($id)->get('name'));
+                }
             }
 
             if (!is_null($i->get('second_party_id'))) {
@@ -85,6 +89,10 @@ class Journal extends CharacterUpdateJob
                     $i->put('second_party_id', 'faction');
                 } else if ($resolvedIds->has($id)) {
                     $i->put('second_party_type', $resolvedIds->get($id)->get('category'));
+                }
+
+                if($resolvedIds->has($id)) {
+                    $i->put('second_party_name', $resolvedIds->get($id)->get('name'));
                 }
             }
 
