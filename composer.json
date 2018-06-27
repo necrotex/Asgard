@@ -17,7 +17,6 @@
         "madewithlove/illuminate-psr-cache-bridge": "^1.0",
         "nullx27/conduit": "*@dev",
         "nullx27/eveonline-socialite": "*",
-        "pragmarx/version": "^0.2.7",
         "predis/predis": "^1.1",
         "restcord/restcord": "^0.1.4",
         "rtheunissen/oauth2-reddit": "^2.0",
@@ -71,6 +70,9 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
+        ],
+        "post-install-cmd": [
+            "bash version.sh"
         ]
     },
     "config": {
