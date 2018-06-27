@@ -23,7 +23,7 @@ class Transactions extends CharacterUpdateJob
     {
         $api->setAuthentication($this->getAuthentication($this->character));
         $result = $api->characters($this->character->id)->wallet()->transactions()->get();
-        
+
         $transactions = collect($result->data)->recursive()->keyBy('transaction_id');
         $transactionIds = $transactions->keys();
 
@@ -54,7 +54,7 @@ class Transactions extends CharacterUpdateJob
             // structures
             if ($location > 1000000000000) {
                 try {
-                    $response = $api->universe()->structure($location)->get();
+                    $response = $api->universe()->structures($location)->get();
                     $resolvedLocations->push(collect($response->data));
 
                 } catch (HttpStatusException $exception) {
