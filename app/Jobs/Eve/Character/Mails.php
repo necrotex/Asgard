@@ -23,61 +23,81 @@ class Mails extends CharacterUpdateJob
     public function handle(Conduit $api)
     {
         $api->setAuthentication($this->getAuthentication($this->character));
-        $mailList = $api->characters($this->character->id)->mail()->get();
+        $response = $api->characters($this->character->id)->mail()->get();
 
-        foreach($mailList->data as $item) {
-            $mail = $api->characters($this->character->id)->mail($item->mail_id)->get();
+        // only new mails
+        $mailItems = collect($response->data)->recursive()->keyBy('mail_id');
+        $knownMails = $this->character->mails()->get()->keyBy('mail_id');
+        $mails = $mailItems->diffKeys($knownMails);
 
-            $id = EVEOnlineIDs::sort([$item->from]);
-            Log::debug('Mail sender', ['sender' => print_r($id, true)]);
-
-            try {
-                $from = $api->universe()->names()->data([$item->from])->post();
-
-                $sender = $from->data[0]->name;
-                $category = $from->data[0]->category;
-            } catch (HttpStatusException $e) {
-                Log::error("Can't get sender from mail", [$mail, $item]);
-
-                $sender = "n/a (Could not resolve id: $item->from)";
-                $category = null;
-            }
-
-            $mailModel = Character\Mail::firstOrCreate(
-                [
-                    'character_id' => $this->character->id,
-                    'mail_id' => $item->mail_id
-                ],
-                [
-                    'subject' => strip_tags($mail->subject, '<color></color><a></a><b></b>'),
-                    'content' => strip_tags($mail->body, '<color></color><a></a><b></b><br></br>'),
-
-                    'sender_name' => $sender,
-                    'sender_type' => $category,
-                    'sender_id' => $item->from,
-
-                    'date' => Carbon::parse($item->timestamp),
-                ]
-            );
-
-            if($mailModel->wasRecentlyCreated) {
-                foreach($item->recipients as $recipient) {
-                    try{
-                        $recipientName = $api->universe()->names()->data([$recipient->recipient_id])->post();
-
-                        Character\MailRecipient::insert(
-                            [
-                                'mail_id' => $item->mail_id,
-                                'type' => $recipient->recipient_type,
-                                'recipient_id' => $recipient->recipient_id,
-                                'recipient_name' => $recipientName->data[0]->name,
-                            ]
-                        );
-                    } catch (\Exception $e) {
-                        Log::error('Could not reoslve recipient id for mail.', [$mail, $recipient]);
-                    }
-                }
-            }
+        if ($mails->isEmpty()) {
+            return;
         }
+
+        // get mail senders and recipients
+        $response = $api->characters($this->character->id)->mail()->lists()->get();
+        $mailingLists = collect($response->data)->recursive()->keyBy('mailing_list_id');
+
+        $senderIds = $mails->pluck('from')->unique();
+        $recipientIds = $mails->pluck('recipients')->flatten(1)->pluck('recipient_id')->unique();
+
+        $ids = $senderIds->merge($recipientIds)->unique()->reject(function ($v, $k) use ($mailingLists) {
+            return $mailingLists->has($v);
+        })->values();
+
+        $resolvedIds = collect();
+        $ids->chunk(250)->each(function ($item) use ($api, &$resolvedIds) {
+            $response = $api->universe()->names()->data($item->toArray())->post();
+            $resolvedIds = $resolvedIds->merge($response->data);
+        });
+
+        $resolvedIds->recursive();
+
+        $mailingLists->each(function ($item) use (&$resolvedIds) {
+            $entry = [
+                "category" => "mailing_list",
+                "id" => $item->get('mailing_list_id'),
+                "name" => $item->get('name'),
+            ];
+
+            $resolvedIds->push(collect($entry));
+        });
+
+        $resolvedIds = $resolvedIds->recursive()->keyBy('id');
+
+        $newMails = collect();
+        $newRecipients = collect();
+
+        $mails->each(function ($mail) use ($api, $resolvedIds, $mailingLists, $newMails, $newRecipients) {
+            $response = $api->characters($this->character->id)->mail($mail->get('mail_id'))->get();
+            $fullMail = collect($response->data);
+
+            $i = [
+                'mail_id' => $mail->get('mail_id'),
+                'subject' => strip_tags($fullMail->get('subject'), '<color></color><a></a><b></b>'),
+                'content' => strip_tags($fullMail->get('body'), '<color></color><a></a><b></b><br></br>'),
+                'sender_name' => $resolvedIds->get($mail->get('from'))->get('name'),
+                'sender_type' => $resolvedIds->get($mail->get('from'))->get('category'),
+                'sender_id' => $resolvedIds->get($mail->get('from'))->get('id'),
+                'date' => Carbon::parse($mail->get('timestamp'))
+            ];
+
+            $newMails->push($i);
+
+            $mail->get('recipients')->each(function ($item) use ($mail, $resolvedIds, $newRecipients) {
+                $i = [
+                    'mail_id' => $mail->get('mail_id'),
+                    'type' => $resolvedIds->get($item->get('recipient_id'))->get('category'),
+                    'recipient_id' => $resolvedIds->get($item->get('recipient_id'))->get('id'),
+                    'recipient_name' => $resolvedIds->get($item->get('recipient_id'))->get('name'),
+                ];
+
+                $newRecipients->push($i);
+            });
+
+        });
+
+        $this->character->mails()->createMany($newMails->toArray());
+        Character\MailRecipient::insert($newRecipients->toArray());
     }
 }
