@@ -23,9 +23,7 @@ class Transactions extends CharacterUpdateJob
     {
         $api->setAuthentication($this->getAuthentication($this->character));
         $result = $api->characters($this->character->id)->wallet()->transactions()->get();
-
-        $api->getConfiguration()->setCache(null);
-
+        
         $transactions = collect($result->data)->recursive()->keyBy('transaction_id');
         $transactionIds = $transactions->keys();
 
