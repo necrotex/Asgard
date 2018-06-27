@@ -5,21 +5,23 @@
         <tr>
             <th scope="col">Date</th>
             <th scope="col">Type</th>
+            <th scope="col">Group</th>
             <th scope="col">Amount</th>
             <th scope="col">Price</th>
+            <th scope="col">Total</th>
+            <th scope="col">Buy/Sell</th>
         </tr>
         </thead>
     </table>
 
 </div>
 
-<div class="modal fade" id="mail-modal" tabindex="-1" role="dialog" aria-labelledby="mail-modal-subject" aria-hidden="true">
+<div class="modal fade" id="transaction-modal" tabindex="-1" role="dialog" aria-labelledby="transaction-modal-subject" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         </div>
     </div>
 </div>
-
 @push('js')
     <script>
         $(document).ready(function(){
@@ -35,11 +37,15 @@
                     ajax: '{!! route('character.transactions', $character) !!}',
                     columns: [
                         { data: 'date', name: 'date' },
-                        { data: 'type_id', name: 'type_id' },
+                        { data: 'type_name', name: 'type_name' },
+                        { data: 'group_name', name: 'group_name' },
                         { data: 'quantity', name: 'quantity' },
-                        { data: 'unit_price', name: 'unit_price' }
+                        { data: 'unit_price', name: 'unit_price' },
+                        { data: 'total_price', name: 'total_price' },
+                        { data: 'action_type', name: 'action_type' }
                     ]
                 });
+
             });
         });
 
