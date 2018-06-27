@@ -11,13 +11,22 @@ class AssetControler extends Controller
 {
     public function entries(Character $character)
     {
-        $assets = Character\Asset::with('type')
-            ->where('character_id', '=', $character->id)
-            ->whereNull('related_asset')
-            ->get();
+        //@todo: this is not right, needs better filtering
+        $assets = $character->assets()->with('type')->whereNotNull('location_name')->get();
 
-        dd($assets);
-
-        return DataTables::of($assets)->make(true);
+        return DataTables::of($assets)
+            ->addColumn('type_name', function ($asset) {
+                return $asset->type->typeName;
+            })
+            ->addColumn('group', function ($asset) {
+                return $asset->type->group->groupName;
+            })
+            ->addColumn('packaged', function ($asset) {
+                return $asset->is_singleton ? 'Yes' : 'No';
+            })
+            ->addColumn('volume', function ($asset) {
+                return number_format($asset->type->volume * $asset->quantity, 2) . 'm³';
+            })
+            ->toJson();
     }
 }

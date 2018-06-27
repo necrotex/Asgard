@@ -19,10 +19,9 @@ class Asset extends Model
         'is_singleton' => 'boolean',
     ];
 
-
     public function character()
     {
-        return $this->hasOne(Character::class);
+        return $this->hasOne(Character::class, 'id', 'character_id');
     }
 
     public function type()
@@ -32,7 +31,8 @@ class Asset extends Model
 
     public function getTypeNameAttribute($value)
     {
-        return $value->type->name;
+        if(is_null($value)) return null;
+        return $value->type->typeName;
     }
 
 }

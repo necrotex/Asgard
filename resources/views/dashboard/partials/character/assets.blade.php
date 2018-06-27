@@ -4,8 +4,11 @@
         <thead>
         <tr>
             <th scope="col">Type</th>
+            <th scope="col">Group</th>
+            <th scope="col">Packaged</th>
             <th scope="col">Location</th>
             <th scope="col">Amount</th>
+            <th scope="col">Volume</th>
         </tr>
         </thead>
     </table>
@@ -26,9 +29,12 @@
                     autoWidth: false,
                     ajax: '{!! route('character.assets', $character) !!}',
                     columns: [
-                        { data: 'type_name', name: 'type.typeName' },
-                        { data: 'location_name', name: 'character_assets.location_name' },
-                        { data: 'quantity', name: 'character_assets.quantity' }
+                        { data: 'type_name', name: 'type_name' },
+                        { data: 'group', name: 'group' },
+                        { data: 'packaged', name: 'packaged' },
+                        { data: 'location_name', name: 'location_name' },
+                        { data: 'quantity', name: 'quantity' },
+                        { data: 'volume', name: 'volume' }
                     ]
 
                 });
