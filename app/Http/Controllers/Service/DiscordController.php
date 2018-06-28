@@ -4,7 +4,6 @@ namespace Asgard\Http\Controllers\Service;
 
 use Asgard\Jobs\Discord\Rename;
 use Asgard\Jobs\Discord\UpdateUserRolesJob;
-use Asgard\Models\DiscordRoles;
 use Asgard\Models\DiscordUser;
 use Asgard\Models\User;
 use Illuminate\Http\Request;

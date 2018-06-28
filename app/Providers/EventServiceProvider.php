@@ -18,9 +18,9 @@ class EventServiceProvider extends ServiceProvider
             'Asgard\Listeners\DiscordAccessCheck',
         ],
 
-        'SocialiteProviders\Manager\SocialiteWasCalled'  => [
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             'SocialiteProviders\Discord\DiscordExtendSocialite@handle',
-            'SocialiteProviders\Reddit\RedditExtendSocialite@handle'
+            'SocialiteProviders\Reddit\RedditExtendSocialite@handle',
         ],
     ];
 
