@@ -9,4 +9,4 @@ require('./bootstrap');
 
 Vue.component('countdown', require('./components/Countdown.vue'));
 
-$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+//$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
