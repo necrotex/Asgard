@@ -32,7 +32,6 @@ class Character extends Model
     ];
 
     protected $dispatchesEvents = [
-        'updated' => CharacterUpdateEvent::class,
         'saved' => CharacterUpdateEvent::class,
     ];
 
