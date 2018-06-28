@@ -14,11 +14,6 @@ use Laravel\Socialite\Facades\Socialite;
 
 class DiscordController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(DiscordUser::class);
-    }
-
     /**
      * Display a listing of the resource.
      *
