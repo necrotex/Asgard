@@ -7,7 +7,7 @@
             </div>
             <div class="card-body">
 
-                @if(!$user->discordAccount)
+                @if(!$user->discordAccount && auth()->user()->id == $user->id)
 
                     <a href="{{route('services.discord.redirect')}}">Add discord account</a>
                 @else
@@ -15,15 +15,17 @@
                     <div class="row">
                         <div class="col-md-2">
                             <img class="media-object avatar"
-                                 src="{{$user->discordAccount->avatar_url}}"/>
+                                 src="{{$user->discordAccount->avatar_url ?? 'http://via.placeholder.com/50'}}"/>
                         </div>
 
-                        <div class="col-md-5">{{$user->discordAccount->nickname}}</div>
+                        <div class="col-md-5">{{$user->discordAccount->nickname ?? 'N/A'}}</div>
 
-                        <div class="col-md-1">
-                            <a href="{{route('services.discord.unlink', $user)}}"
-                               class="btn btn-sm btn-danger">unlink</a>
-                        </div>
+                        @if(auth()->user()->id == $user->id)
+                            <div class="col-md-1">
+                                <a href="{{route('services.discord.unlink', $user)}}"
+                                   class="btn btn-sm btn-danger">unlink</a>
+                            </div>
+                        @endif
 
                     </div>
 

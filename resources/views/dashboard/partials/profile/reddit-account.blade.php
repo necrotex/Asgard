@@ -8,17 +8,19 @@
                 </div>
                 <div class="card-body">
 
-                    @if(!$user->redditAccount)
+                    @if(!$user->redditAccount && auth()->user()->id == $user->id)
 
                         <a href="{{route('services.reddit.redirect')}}">Add reddit account</a>
                     @else
 
                         <div class="row">
-                            <div class="col-md-9">{{$user->redditAccount->nickname}}</div>
+                            <div class="col-md-9">{{$user->redditAccount->nickname ?? 'N/A'}}</div>
 
-                            <div class="col-md-1">
-                                <a href="{{route('services.reddit.destroy', $user)}}" class="btn btn-sm btn-danger">unlink</a>
-                            </div>
+                            @if(auth()->user()->id == $user->id)
+                                <div class="col-md-1">
+                                    <a href="{{route('services.reddit.destroy', $user)}}" class="btn btn-sm btn-danger">unlink</a>
+                                </div>
+                            @endif
                         </div>
 
                     @endif
