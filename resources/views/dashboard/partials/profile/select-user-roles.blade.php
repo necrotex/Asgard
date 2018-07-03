@@ -6,7 +6,7 @@
                 <h5>Roles</h5>
             </div>
             <div class="card-body">
-                @foreach($user->getAssociatedRoles() as $role)
+                @foreach($user->getCombinedRoles() as $role)
                     <span class="badge @if(in_array($role->id, $userRoles)) badge-primary @else badge-secondary @endif">{{$role->title}}</span>
                 @endforeach
             </div>

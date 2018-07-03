@@ -68,10 +68,7 @@ class User extends Authenticatable
      */
     public function roleCan($ability)
     {
-        $roles = $this->getAssociatedRoles();
-        $roles->merge($this->roles);
-
-        //todo: how should we handle forbidden abilities etc
+        $roles = $this->getCombinedRoles();
 
         foreach ($roles as $role) {
 
@@ -85,11 +82,11 @@ class User extends Authenticatable
 
     public function can($ability, $arguments = [])
     {
-        if($this->isSuperAdmin()) {
+        if ($this->isSuperAdmin()) {
             return true;
         }
 
-        if($ret = parent::can($ability, $arguments)) {
+        if ($ret = parent::can($ability, $arguments)) {
             return $ret;
         }
 
@@ -106,36 +103,20 @@ class User extends Authenticatable
      */
     public function getAssociatedRoles()
     {
-        $roles = collect();
+        $corpRoles = collect();
 
-        foreach($this->roles as $role) {
-            $roles->push($role);
-        }
-
-        foreach ($this->characters as $character) {
-            $corp = $character->systemCorporation;
-
-            //not all characters have corps added to the system
-            if (!$corp) continue;
-
-            $inheritedRoles = $corp->roles;
-
-            foreach ($inheritedRoles as $ir) {
-                $roles->push($ir);
+        $this->characters->each(function ($character) use (&$corpRoles) {
+            if (!is_null($character->systemCorporation)) {
+                $corpRoles = $corpRoles->merge($character->systemCorporation->roles->values());
             }
-        }
+        });
 
-        //remove redundant roles
-        foreach ($roles as $i => $role) {
-            foreach ($roles as $k => $role2) {
-                if ($i == $k) continue;
+        return $corpRoles->unique();
+    }
 
-                if ($role->id == $role2->id)
-                    $roles->pull($i);
-            }
-        }
-
-        return $roles;
+    public function getCombinedRoles()
+    {
+        return $this->roles->merge($this->getAssociatedRoles())->unique()->values();
     }
 
     /**

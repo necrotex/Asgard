@@ -47,7 +47,7 @@ class Character extends Model
 
     public function systemCorporation()
     {
-        return $this->belongsTo(Corporation::class);
+        return $this->belongsTo(Corporation::class, 'corporation_id', 'id');
     }
 
     public function scopeActive($query)
