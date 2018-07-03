@@ -14,20 +14,24 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{route('profile.update', $user->id)}}">
-                    {{csrf_field()}}
+                @if(auth()->user()->id == $user->id)
+                    <form method="post" action="{{route('profile.update', $user->id)}}">
+                        {{csrf_field()}}
 
-                    <select id="main_character" name="mainCharacter" class="w-100">
-                        @foreach($user->characters as $character)
-                            <option value="{{$character->id}}"
-                                    @if($character->id == $user->main_character) selected @endif>
-                                {{$character->name}}
-                            </option>
-                        @endforeach
-                    </select>
+                        <select id="main_character" name="mainCharacter" class="w-100">
+                            @foreach($user->characters as $character)
+                                <option value="{{$character->id}}"
+                                        @if($character->id == $user->main_character) selected @endif>
+                                    {{$character->name}}
+                                </option>
+                            @endforeach
+                        </select>
 
-                    <button type="submit" class="btn btn-primary btn-block mt-2 w-100">Save</button>
-                </form>
+                        <button type="submit" class="btn btn-primary btn-block mt-2 w-100">Save</button>
+                    </form>
+                @else
+                    <h5>{{optional($user->mainCharacter)->name ?? 'N/A'}}</h5>
+                @endif
             </div>
         </div>
     </div>

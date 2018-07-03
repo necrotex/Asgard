@@ -82,6 +82,10 @@ class ProfileController extends Controller
     public function update(Request $request, User $user)
     {
 
+        if (auth()->user()->id != $user->id) {
+            abort(403, 'Not Authorized');
+        }
+
         if ($request->has('mainCharacter')) {
             $this->validate($request, [
                 'mainCharacter' => 'integer|required'
