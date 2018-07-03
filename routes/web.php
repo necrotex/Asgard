@@ -28,8 +28,6 @@ Route::group(['middleware' => ['auth', 'finished-account']], function () {
 
     Route::get('/', 'HomeController@index')->name('home')->middleware(['finished-account']);
 
-    Route::post('/search', 'SearchController@search')->name('search');
-
     Route::group(['namespace' => 'Auth'], function() {
         Route::get('/account/add', 'EveSSOController@login')->name('sso.login');
     });

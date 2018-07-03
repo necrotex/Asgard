@@ -22,6 +22,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'fini
         ->middleware('can:update,corporation');
 
 
+    //search
+    Route::post('/search', 'SearchController@search')
+        ->name('search')
+        ->middleware('ability:use-search');
+
+
     //roles
     Route::get('/roles', 'RoleController@index')
         ->name('roles.index')

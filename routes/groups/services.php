@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['prefix' => 'services', 'namespace' => 'Service', 'middleware' => 'finished-account'], function() {
-    Route::get('/discord', 'DiscordController@index')->name('services.discord.index');
+    Route::get('/discord', 'DiscordControllerSearchController@index')->name('services.discord.index');
     Route::get('/discord/redirect', 'DiscordController@create')->name('services.discord.redirect');
     Route::get('/discord/callback', 'DiscordController@store')->name('services.discord.callback');
 
