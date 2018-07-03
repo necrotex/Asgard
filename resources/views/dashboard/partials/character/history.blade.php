@@ -9,7 +9,7 @@
         </thead>
         <tbody>
 
-        @foreach($character->corporationHistory as $entry)
+        @foreach($character->corporationHistory->reverse() as $entry)
             <tr>
                 <td>
                     <img src="https://image.eveonline.com/Corporation/{{$entry->corporation_id}}_32.png" class="rounded-circle">
