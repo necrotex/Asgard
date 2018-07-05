@@ -1,5 +1,5 @@
 <li class="list-group-item list-group-item list-group-item-danger">
-    <b>Error:</b> {{$message->description}} <b>{{$message->subject->name}}</b>
+    <b>Error:</b> {{$message->description}} for <b>{{$message->subject->name}}</b>
 
     <a href="#" class="text-muted" data-toggle="collapse"
        data-target="#collapse-{{$message->id}}" aria-expanded="false"

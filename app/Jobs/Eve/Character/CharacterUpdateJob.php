@@ -24,6 +24,10 @@ abstract class CharacterUpdateJob implements ShouldQueue
 
     public function failed(Exception $exception)
     {
+        if($exception->getCode() > 500) {
+            $this->release(500);
+        }
+
         activity('error')
             ->performedOn($this->character)
             ->withProperty('exception', $exception->getMessage())

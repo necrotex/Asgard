@@ -27,15 +27,17 @@ class Kernel extends ConsoleKernel
         //run jobs except during downtime
         $schedule->command('asgard:update:location')
             ->everyMinute()
+            ->withoutOverlapping(5)
             ->unlessBetween('11:00', '11:30');
 
         $schedule->command('asgard:update:status')
             ->everyMinute()
+            ->withoutOverlapping(5)
             ->unlessBetween('11:00', '11:30');
 
         $schedule->command('asgard:update:character')
             ->everyThirtyMinutes()
-            //->withoutOverlapping(60) //@todo: enable again
+            ->withoutOverlapping(60)
             ->unlessBetween('11:00', '11:30');
 
 
@@ -43,8 +45,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
         //$schedule->command('asgard:clean:reddit')->hourly(); //@todo
-        //$schedule->command('asgard:clean:timerboard')->everyMinute(); //@todo
-        //$schedule->command('asgard:discord:fetch-roles')->daily(); //@todo
+        $schedule->command('asgard:clean:timerboard')->everyMinute();
+        $schedule->command('asgard:discord:fetch-roles')->daily(); //@todo
 
     }
 
