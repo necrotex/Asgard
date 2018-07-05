@@ -2,10 +2,9 @@
 
 namespace Asgard\Http\Controllers\User;
 
+use Asgard\Http\Controllers\Controller;
 use Asgard\Models\User;
 use Illuminate\Http\Request;
-use Asgard\Http\Controllers\Controller;
-use Bouncer;
 use Silber\Bouncer\Database\Role;
 
 class ProfileController extends Controller
@@ -82,11 +81,11 @@ class ProfileController extends Controller
     public function update(Request $request, User $user)
     {
 
-        if (auth()->user()->id != $user->id) {
-            abort(403, 'Not Authorized');
-        }
-
         if ($request->has('mainCharacter')) {
+            if(auth()->user()->id != $user->id) {
+                return abort(403, 'Not Authorized');
+            }
+
             $this->validate($request, [
                 'mainCharacter' => 'integer|required'
             ]);
@@ -97,6 +96,10 @@ class ProfileController extends Controller
 
 
         if ($request->has('roleSubmit')) {
+
+            if(!auth()->user()->isA('director')) {
+                return abort(403, 'Not Authorized');
+            }
 
             $roles = $request->input('roles', []);
             $userRoles = $user->roles;
