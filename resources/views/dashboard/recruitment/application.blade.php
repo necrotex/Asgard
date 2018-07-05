@@ -61,7 +61,7 @@
 
                         <dt class="col-sm-3">Status</dt>
                         <dd class="col-sm-9">
-                            @if($application->active)
+                            @if($application->active && auth()->user()->can('view-application'))
                                 <form method="post" action="{{ route('applications.status', $application) }}">
 
                                     <select id="application-status" class="w-75" name="application_status">
@@ -85,39 +85,41 @@
 
             <hr>
 
-            <h5>Comments</h5>
-            @if($application->active)
-                <form method="post" action="{{route('applications.comment', $application)}}" class="mb-4">
-                    <textarea class="form-control" name="comment"></textarea>
+            @can('view-application')
+                <h5>Comments</h5>
+                @if($application->active)
+                    <form method="post" action="{{route('applications.comment', $application)}}" class="mb-4">
+                        <textarea class="form-control" name="comment"></textarea>
 
-                    {{csrf_field()}}
-                    <input type="submit" class="btn btn-block btn-primary mt-1" value="Save">
-                </form>
-            @endif
+                        {{csrf_field()}}
+                        <input type="submit" class="btn btn-block btn-primary mt-1" value="Save">
+                    </form>
+                @endif
 
-            @foreach($application->comments->reverse() as $comment)
-                <div class="card mb-2">
-                    <div class="card-body border @if($comment->system_message) text-white font-weight-bold bg-primary @endif">
-                        {{$comment->comment}}
+                @foreach($application->comments->reverse() as $comment)
+                    <div class="card mb-2">
+                        <div class="card-body border @if($comment->system_message) text-white font-weight-bold bg-primary @endif">
+                            {{$comment->comment}}
 
-                        @if($comment->system_message)
-                            <br>
-                            <span class="small text-white">
-                                {{$comment->author->mainCharacter->name}} on {{$comment->created_at}}</span>
+                            @if($comment->system_message)
+                                <br>
+                                <span class="small text-white">
+                                    {{$comment->author->mainCharacter->name}} on {{$comment->created_at}}</span>
+                            @endif
+                        </div>
+
+                        @if(!$comment->system_message)
+                            <div class="card-footer small text-muted">
+                                @if($comment->author)
+                                    {{$comment->author->mainCharacter->name}} on {{$comment->created_at}}
+                                @endif
+                            </div>
                         @endif
                     </div>
 
-                    @if(!$comment->system_message)
-                        <div class="card-footer small text-muted">
-                            @if($comment->author)
-                                {{$comment->author->mainCharacter->name}} on {{$comment->created_at}}
-                            @endif
-                        </div>
-                    @endif
-                </div>
-
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        @endcan
 
     </div>
 @endsection
