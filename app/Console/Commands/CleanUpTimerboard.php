@@ -40,6 +40,6 @@ class CleanUpTimerboard extends Command
      */
     public function handle()
     {
-        Timer::where('target', '<', Carbon::now('UTC')->addDay(1))->delete();
+        Timer::where('target', '<', Carbon::now('UTC')->subDay(1))->delete();
     }
 }
