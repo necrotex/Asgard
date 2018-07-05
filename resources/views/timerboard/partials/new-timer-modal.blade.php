@@ -21,22 +21,22 @@
                                 <div class="center-timepicker-group">
                                     <div class="form-group timepicker-group">
                                         <label for="time-days">Days</label>
-                                        <input type="number" class="form-control timepicker" name="time-days" placeholder="0" step="1" min="0" required="required">
+                                        <input type="number" class="form-control timepicker onFocusSelectAll" name="time-days" value="0" step="1" min="0" required="required">
                                     </div>
 
                                     <div class="form-group timepicker-group">
                                         <label for="time-hours">Hours</label>
-                                        <input type="number" class="form-control timepicker" name="time-hours" placeholder="0" min="0" step="1" max="23" required="required">
+                                        <input type="number" class="form-control timepicker onFocusSelectAll" name="time-hours" value="0" min="0" step="1" max="23" required="required">
                                     </div>
 
                                     <div class="form-group timepicker-group">
                                         <label for="time-minutes">Min</label>
-                                        <input type="number" class="form-control timepicker" name="time-minutes" placeholder="0" min="0" step="1" max="59" required="required">
+                                        <input type="number" class="form-control timepicker onFocusSelectAll" name="time-minutes" value="0" min="0" step="1" max="59" required="required">
                                     </div>
 
                                     <div class="form-group timepicker-group">
                                         <label for="time-seconds">Sec</label>
-                                        <input type="number" class="form-control timepicker" name="time-seconds" placeholder="0" min="0" step="1" max="59" required="required">
+                                        <input type="number" class="form-control timepicker onFocusSelectAll" name="time-seconds" value="0" min="0" step="1" max="59" required="required">
                                     </div>
 
                                     </div>

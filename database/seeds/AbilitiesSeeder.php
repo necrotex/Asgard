@@ -156,13 +156,6 @@ class AbilitiesSeeder extends Seeder
 
         Ability::create(
             [
-                'name' => 'delete-timer',
-                'title' => 'Delete Timer'
-            ]
-        );
-
-        Ability::create(
-            [
                 'name' => 'timer-override',
                 'title' => 'Timerboard override'
             ]

@@ -86,6 +86,10 @@
             $(this).tab('show')
         });
 
+        // Entering new digit field should auto select text for fast entering
+        $('#createNewTimerModal').on('focus', '.onFocusSelectAll', function() {
+            $(this).select();
+        });
 
         new flatpickr(".flatpickr", {
             enableTime: true,
@@ -163,6 +167,20 @@
             modal.find('.modal-body form').each(function() {
                 const fp = document.querySelector(".editTime")._flatpickr;
                 fp.setDate(timer.target, true);
+
+                // Set countdown for the countdown option
+                let moTarget = moment.utc(timer.target).format('X');
+                let moNow = moment.utc().format('X');
+
+                let moDays = Math.trunc((moTarget - moNow) / 60 / 60 / 24);
+                let moHours = Math.trunc((moTarget - moNow) / 60 / 60) % 24;
+                let moMin = Math.trunc((moTarget - moNow) / 60) % 60;
+                let moSec = (moTarget - moNow) % 60;
+
+                $(this).find('.countdown_days').val(moDays);
+                $(this).find('.countdown_hours').val(moHours);
+                $(this).find('.countdown_min').val(moMin);
+                $(this).find('.countdown_sec').val(moSec);
 
                 $(this).find('.editTitle').val(timer.title);
                 $(this).find('.editGroup').val(timer.forGroup);

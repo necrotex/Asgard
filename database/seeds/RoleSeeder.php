@@ -33,7 +33,6 @@ class RoleSeeder extends Seeder
         Bouncer::allow('director')->to('delete-roles');
         Bouncer::allow('director')->to('view-timer');
         Bouncer::allow('director')->to('create-timer');
-        Bouncer::allow('director')->to('delete-timer');
         Bouncer::allow('director')->to('timer-override');
         Bouncer::allow('director')->to('access-subreddit');
         Bouncer::allow('director')->to('view-application-forms');
