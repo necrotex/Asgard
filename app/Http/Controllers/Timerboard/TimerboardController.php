@@ -102,7 +102,9 @@ class TimerboardController extends Controller
         $realId = Hashids::decode($id)[0];
         $timer = Timer::withTrashed()->findOrFail($realId);
 
-        return view('timerboard.single')->with('timer', $timer);
+        $roles = Role::all();
+
+        return view('timerboard.single')->with('timer', $timer)->with('roles', $roles);
     }
 
     public function delete(Timer $timer)

@@ -31,6 +31,7 @@
                         <tbody id="TimerStaticTable">
                         @php
                             $forGroup = $timer->forGroup();
+                            $ownerName = $timer->owner()->mainCharacter()->first()->name;
                         @endphp
                             <tr>
                                 <td class="align-middle">
@@ -39,16 +40,15 @@
                                 <td class="align-middle">
                                     <i class="btn fas fa-link icon-vertical-align copyhash pull-right" data-content="Link Copied" data-clipboard-text="{{url("/") . "/timerboard/timer/" . Hashids::encode($timer->id)}}"></i>
                                 </td>
-                                <td class="align-middle">{{$timer->owner()->mainCharacter()->first()->name}}</td>
-                                <td class="align-middle">{{$forGroup == null ? "" : $forGroup->name}}</td>
+                                <td class="align-middle">{{$ownerName}}</td>
+                                <td class="align-middle">{{$forGroup == null ? "" : ucfirst($forGroup->name)}} {{$timer->private == true ? "Private" : ""}}</td>
                                 <td class="align-middle">{{$timer->target}}</td>
                                 <td class="align-middle"><countdown date="{{$timer->target}}"></countdown></td>
 
-                                @if (($user->can('timer-override') or $timer->owner()->id == $user->id) and $timer->trashed() == false)
-                                    <td class="align-middle"><a href="{{route('timerboard.edit', $timer->id)}}" class="btn btn-sm btn-warning">edit</a></td>
-                                    <td class="align-middle"><a href="{{route('timerboard.delete', $timer->id)}}" class="btn btn-sm btn-danger">delete</a></td>
+                                @if ($user->can('timer-override') || $timer->owner()->id == $user->id)
+                                    <td class="align-middle"><button type="button" class="btn btn-sm btn-warning" data-timer="{{$timer}}" data-toggle="modal" data-target="#editTimerModal">Edit</button></td>
+                                    <td class="align-middle"><button type="button" class="btn btn-sm btn-danger" data-timer="{{$timer}}" data-owner="{{$ownerName}}" data-toggle="modal" data-target="#deleteTimerModal">Delete</button></td>
                                 @endif
-
                             </tr>
                         </tbody>
                     </table>
@@ -57,24 +57,124 @@
         </div>
     </div>
 
-    @push('js')
-        <script>
-           // listener for copy link
-            $('#TimerStaticTable').on('click', '.copyhash', function() {
-                //Ajax call to get url then paste to clipboard
-                $.ajax({
-                    method: 'GET', // Type of response and matches what we said in the route
-                    url: '/timerboard/timer/' + $(this).data('id') + '/getlink',
-                    success: function(response){ // What to do if we succeed
-                        console.log(response);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-                        console.log(JSON.stringify(jqXHR));
-                        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-                    }
-                });
-            });
-        </script>
-    @endpush
+    @include('timerboard.partials.delete-timer-modal')
+    @include('timerboard.partials.edit-timer-modal')
 
 @endsection
+@push('js')
+    <script>
+
+        const app = new Vue({
+            el: '#TimerStaticTable'
+        });
+
+        // For adding new Timer
+        $('#select-tab a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show')
+        });
+
+        // Entering new digit field should auto select text for fast entering
+        $('#createNewTimerModal').on('focus', '.onFocusSelectAll', function() {
+            $(this).select();
+        });
+
+        new flatpickr(".flatpickr", {
+            enableTime: true,
+            enableSeconds: true,
+            inline: true,
+            clickOpens: false,
+            time_24hr: true,
+            minDate: 'today',
+            defaultDate: moment().utc().format(),
+            utc: true,
+            shorthandCurrentMonth: true,
+        });
+
+        // listener for copy link
+        cb = new clipboard('.copyhash');
+
+        cb.on('success', function(e) {
+
+            // show notification to user that link is copied
+            $(e.trigger).popover("show");
+            // hide notification after 1,5s
+            setTimeout(
+                function() {
+                    $(e.trigger).popover("hide");
+                }, 1500);
+        });
+
+        // Populate modal with correct data
+        $('#deleteTimerModal').on('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            let button = $(event.relatedTarget);
+
+            // Extract info from data-* attributes
+            let timer = button.data('timer');
+            let owner = button.data('owner');
+
+            let deleteInfo = "'" + timer.title + "'" + " " + "made by '" + owner + "'";
+
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            let modal = $(this);
+            modal.find('.modal-body input').val(deleteInfo);
+
+            // get delete button and the path, for override of correct ID
+            let deleteBtn = modal.find('.modal-footer #deleteBtn');
+            let deletePath = deleteBtn.attr('href');
+
+            // replace last digits with the new id
+            deletePath = deletePath.replace(/(\d)$/,timer.id);
+
+            // set new path
+            deleteBtn.attr('href', deletePath);
+        });
+
+        $('#editTimerModal').on('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            let button = $(event.relatedTarget);
+
+            // Extract info from data-* attributes
+            let timer = button.data('timer');
+
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            let modal = $(this);
+
+            // get delete button and the path, for override of correct ID
+            modal.find('.modal-body form').attr('action', function() {
+
+                let path = $(this).attr('action');
+
+                path = path.replace(/(\d)$/,timer.id);
+
+                return path;
+            });
+
+            //set current data
+            modal.find('.modal-body form').each(function() {
+                const fp = document.querySelector(".editTime")._flatpickr;
+                fp.setDate(timer.target, true);
+
+                // Set countdown for the countdown option
+                let moTarget = moment.utc(timer.target).format('X');
+                let moNow = moment.utc().format('X');
+
+                let moDays = Math.trunc((moTarget - moNow) / 60 / 60 / 24);
+                let moHours = Math.trunc((moTarget - moNow) / 60 / 60) % 24;
+                let moMin = Math.trunc((moTarget - moNow) / 60) % 60;
+                let moSec = (moTarget - moNow) % 60;
+
+                $(this).find('.countdown_days').val(moDays);
+                $(this).find('.countdown_hours').val(moHours);
+                $(this).find('.countdown_min').val(moMin);
+                $(this).find('.countdown_sec').val(moSec);
+
+                $(this).find('.editTitle').val(timer.title);
+                $(this).find('.editGroup').val(timer.forGroup);
+                $(this).find('.editPrivate').prop('checked', timer.private)
+            });
+        });
+    </script>
+@endpush
+

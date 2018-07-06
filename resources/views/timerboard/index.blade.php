@@ -126,7 +126,7 @@
             let timer = button.data('timer');
             let owner = button.data('owner');
 
-            let deleteInfo = "'" + timer.title + "'" + "made by '" + owner + "'";
+            let deleteInfo = "'" + timer.title + "'" + " " + "made by '" + owner + "'";
 
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
             let modal = $(this);
