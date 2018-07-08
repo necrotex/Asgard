@@ -55,7 +55,7 @@ class UpdateCharacter extends Command
      */
     public function handle()
     {
-        $characters = Character::where('active', true)->get();
+        $characters = Character::whereActive(true)->whereReady(true)->get();
 
         foreach($characters as $character) {
 
