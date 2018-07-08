@@ -41,7 +41,7 @@ class Kernel extends ConsoleKernel
             ->unlessBetween('11:00', '11:30');
 
         $schedule->command('asgard:character:reimport')
-            ->everyThirtyMinutes()
+            ->everyFifteenMinutes()
             ->withoutOverlapping(60)
             ->unlessBetween('11:00', '11:30');
 

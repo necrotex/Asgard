@@ -41,7 +41,7 @@ class ReimportCharacter extends Command
     public function handle()
     {
         // get all characters that failed to import and are older then 30 min
-        $characters = Character::whereReady(false)->where('created_at', '<', Carbon::now()->subMinutes(30))->get();
+        $characters = Character::whereReady(false)->whereActive(true)->where('created_at', '<', Carbon::now()->subMinutes(30))->get();
 
         foreach ($characters as $character) {
             InitialImportJob::dispatch($character)->onQueue('high');

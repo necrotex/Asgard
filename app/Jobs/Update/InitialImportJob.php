@@ -81,6 +81,8 @@ class InitialImportJob implements ShouldQueue
 
     public function failed(Exception $exception)
     {
+        // @todo: if the there is a client error we need to disable the character so it doesn't spam notifications
+
         activity('error')
             ->performedOn($this->character)
             ->withProperty('exception', $exception->getMessage())
