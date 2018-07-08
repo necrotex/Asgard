@@ -21,59 +21,33 @@ class Contacts extends CharacterUpdateJob
         $api->setAuthentication($this->getAuthentication($this->character));
 
         $response = $api->characters($this->character->id)->contacts()->get();
-        $labels = $api->characters($this->character->id)->contacts()->labels()->get();
+        $contacts = collect($response->data)->recursive()->keyBy('contact_id');
 
-        $contactIds = [];
-        foreach ($response->data as $contact) {
+        //filter out factions, no body cares about them anyway
+        $contacts = $contacts->reject(function ($contact) {
+            return $contact->get('contact_type') == 'faction';
+        });
 
-            //skip factions, no body cares about them anyway
-            if($contact->contact_type == 'faction') continue;
+        $ids = $contacts->pluck('contact_id')->unique()->values();
 
-            switch ($contact->contact_type) {
-                case 'character':
-                    $data = $api->characters($contact->contact_id)->get();
-                    $name = $data->get('name');
-                    break;
-                case 'corporation':
-                    $data = $api->corporations($contact->contact_id)->get();
-                    $name = $data->get('name');
-                    break;
-                case 'alliance':
-                    $data = $api->alliances($contact->contact_id)->get();
-                    $name = $data->get('name');
-                    break;
-                default:
-                    $name = 'n/a';
-            }
+        $response = $api->universe()->names()->data($ids->toArray())->post();
+        $resolvedIds = collect($response->data)->recursive()->keyBy('id');
 
-            $label = null;
-            if(property_exists($contact, 'label_id')) {
-                foreach($labels as $l) {
-                    if($l->label_id == $contact->label_id) {
-                        $label = $l->label_name;
-                        break;
-                    }
-                }
-            }
+        $data = collect();
+        $contacts->each(function ($contact, $id) use ($data, $resolvedIds) {
+            $item = [
+                'contact_id' => $id,
+                'contact_type' => $resolvedIds->get($id)->get('category'),
+                'standing' => $contact->get('standing'),
+                'name' => $resolvedIds->get($id)->get('name'),
+                'label' => null // @todo: this needs to be reworked!
+            ];
 
-            Character\Contact::updateOrCreate(
-                [
-                    'character_id' => $this->character->id,
-                    'contact_id' => $contact->contact_id
-                ],
-                [
-                    'contact_type' => $contact->contact_type,
-                    'standing' => $contact->standing,
-                    'name' => $name,
-                    'label' => $label
-                ]
-            );
+            $data->push($item);
+        });
 
-            $contactIds[] = $contact->contact_id;
-        }
-
-        Character\Contact::where('character_id', '=', $this->character->id)
-            ->whereNotIn('contact_id', $contactIds)
-            ->delete();
+        // remove all contacts before adding the new ones
+        $this->character->contacts()->delete();
+        $this->character->contacts()->createMany($data->toArray());
     }
 }
