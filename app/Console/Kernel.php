@@ -40,13 +40,19 @@ class Kernel extends ConsoleKernel
             ->withoutOverlapping(60)
             ->unlessBetween('11:00', '11:30');
 
+        $schedule->command('asgard:character:reimport')
+            ->everyThirtyMinutes()
+            ->withoutOverlapping(60)
+            ->unlessBetween('11:00', '11:30');
+
 
         //horizon metrics
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
         //$schedule->command('asgard:clean:reddit')->hourly(); //@todo
         $schedule->command('asgard:clean:timerboard')->everyMinute();
-        $schedule->command('asgard:discord:fetch-roles')->daily(); //@todo
+        $schedule->command('asgard:discord:fetch-roles')->daily();
+        $schedule->command('activitylog:clean')->daily();
 
     }
 

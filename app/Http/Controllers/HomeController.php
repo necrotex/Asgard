@@ -2,7 +2,6 @@
 
 namespace Asgard\Http\Controllers;
 
-use Asgard\Jobs\Eve\Character\Contacts;
 use Asgard\Models\Character;
 use Asgard\Models\User;
 use Spatie\Activitylog\Models\Activity;
