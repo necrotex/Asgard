@@ -47,8 +47,13 @@ class Mails extends CharacterUpdateJob
 
         $resolvedIds = collect();
         $ids->chunk(250)->each(function ($item) use ($api, &$resolvedIds) {
-            $response = $api->universe()->names()->data($item->toArray())->post();
-            $resolvedIds = $resolvedIds->merge($response->data);
+            try {
+                $response = $api->universe()->names()->data($item->toArray())->post();
+                $resolvedIds = $resolvedIds->merge($response->data);
+            } catch (\Exception $exception) {
+                Log::error('Coudn\'t resolve ids via universe->names.', $item->toArray());
+                throw $exception;
+            }
         });
 
         $resolvedIds->recursive();
