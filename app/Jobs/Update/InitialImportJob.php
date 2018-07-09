@@ -76,13 +76,11 @@ class InitialImportJob implements ShouldQueue
     // retry adding the character for 20 min until the job fails
     public function retryUntil()
     {
-        return now()->addMinutes(20); //@todo: this probably should be a config value
+        return now()->addMinutes(10);
     }
 
     public function failed(Exception $exception)
     {
-        // @todo: if the there is a client error we need to disable the character so it doesn't spam notifications
-
         activity('error')
             ->performedOn($this->character)
             ->withProperty('exception', $exception->getMessage())

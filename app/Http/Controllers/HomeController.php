@@ -2,6 +2,7 @@
 
 namespace Asgard\Http\Controllers;
 
+use Asgard\Jobs\Update\VerifyTokenJob;
 use Asgard\Models\Character;
 use Asgard\Models\User;
 use Spatie\Activitylog\Models\Activity;
