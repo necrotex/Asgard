@@ -30,7 +30,7 @@ class EVEOnlineIDs
         'characters_after_2010-11-03' => [90000000, 98000000],
         'corporations_after_2010-11-03' => [98000000, 99000000],
         'alliances_after_2010-11-03' => [99000000, 100000000],
-        'characters_corporations_alliances_before_2010-11-03' => [100000000, 2100000000],
+        'characters_corporations_alliances_before_2010-11-03' => [100000000	, 2100000000],
         'characters_after_2016-05-30' => [2100000000, 2147483647],
 
     ];

@@ -2,9 +2,12 @@
 
 namespace Asgard\Http\Controllers;
 
+use Asgard\Jobs\Eve\Character\Mails;
 use Asgard\Jobs\Update\VerifyTokenJob;
 use Asgard\Models\Character;
 use Asgard\Models\User;
+use Asgard\Support\EVEOnlineIDs;
+use Conduit\Conduit;
 use Spatie\Activitylog\Models\Activity;
 
 class HomeController extends Controller

@@ -39,7 +39,9 @@ class Mails extends CharacterUpdateJob
         $mailingLists = collect($response->data)->recursive()->keyBy('mailing_list_id');
 
         $senderIds = $mails->pluck('from')->unique();
-        $recipientIds = $mails->pluck('recipients')->flatten(1)->pluck('recipient_id')->unique();
+        $recipientIds = $mails->pluck('recipients')->flatten(1)->reject(function($item) {
+            return $item->get('recipient_type') == 'mailing_list';
+        })->pluck('recipient_id')->unique();
 
         $ids = $senderIds->merge($recipientIds)->unique()->reject(function ($v, $k) use ($mailingLists) {
             return $mailingLists->has($v);
