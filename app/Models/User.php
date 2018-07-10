@@ -111,7 +111,7 @@ class User extends Authenticatable
             }
         });
 
-        return $corpRoles->unique();
+        return $corpRoles->keyBy('id')->unique();
     }
 
     public function getCombinedRoles()
