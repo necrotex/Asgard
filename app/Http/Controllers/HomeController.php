@@ -2,6 +2,7 @@
 
 namespace Asgard\Http\Controllers;
 
+use Asgard\Jobs\Discord\FetchRoles;
 use Asgard\Jobs\Eve\Character\Mails;
 use Asgard\Jobs\Update\VerifyTokenJob;
 use Asgard\Models\Character;

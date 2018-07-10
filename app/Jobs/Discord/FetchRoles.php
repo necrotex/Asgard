@@ -8,6 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use LaravelRestcord\Discord;
 use RestCord\DiscordClient;
 
 class FetchRoles implements ShouldQueue
@@ -27,6 +28,7 @@ class FetchRoles implements ShouldQueue
     /**
      * Execute the job.
      *
+     * @param Discord $discord
      * @return void
      */
     public function handle()
