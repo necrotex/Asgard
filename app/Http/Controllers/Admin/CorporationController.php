@@ -62,12 +62,13 @@ class CorporationController extends Controller
         $roles = Role::all();
 
         $defaultRoles = [];
-        foreach($corporation->roles as $dr) {
+        foreach ($corporation->roles as $dr) {
             $defaultRoles[] = $dr->id;
         }
 
 
-        return view('dashboard.corporation.show', ['corporation' => $corporation, 'roles' => $roles, 'defaultRoles' => $defaultRoles]);
+        return view('dashboard.corporation.show',
+            ['corporation' => $corporation, 'roles' => $roles, 'defaultRoles' => $defaultRoles]);
     }
 
     /**
@@ -90,12 +91,13 @@ class CorporationController extends Controller
      */
     public function update(Request $request, Corporation $corporation)
     {
-        foreach ($corporation->roles as $role)
-        {
+        foreach ($corporation->roles as $role) {
             Bouncer::retract($role)->from($corporation);
         }
 
-        $corporation->assign($request->input('defaultRoles'));
+        if (count($request->input('defaultRoles')) > 0) {
+            $corporation->assign($request->input('defaultRoles'));
+        }
 
         return back();
     }
@@ -103,7 +105,7 @@ class CorporationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
