@@ -33,7 +33,10 @@ class FetchRoles implements ShouldQueue
      */
     public function handle()
     {
-        $discord = new DiscordClient(['token' => config('services.discord.bot_token'), 'tokenType' => 'Bot']);
+        \Log::debug('token: ' . config('services.discord.bot_token'));
+        \Log::debug('Guild ID: ' . config('services.discord.guild_id'));
+
+        $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
         $response = $discord->guild->getGuildRoles(['guild.id' => (int)config('services.discord.guild_id')]);
 
         foreach ($response as $role) {
