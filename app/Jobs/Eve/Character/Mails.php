@@ -94,7 +94,7 @@ class Mails extends CharacterUpdateJob
                 $i = [
                     'mail_id' => $mail->get('mail_id'),
                     'type' => optional($resolvedIds->get($item->get('recipient_id')))->get('category') ?? 'N/A',
-                    'recipient_id' => $item->recipient_id,
+                    'recipient_id' => $item->get('recipient_id'),
                     'recipient_name' => optional($resolvedIds->get($item->get('recipient_id')))->get('name') ?? 'N/A',
                 ];
 
