@@ -93,9 +93,9 @@ class Mails extends CharacterUpdateJob
             $mail->get('recipients')->each(function ($item) use ($mail, $resolvedIds, $newRecipients) {
                 $i = [
                     'mail_id' => $mail->get('mail_id'),
-                    'type' => $resolvedIds->get($item->get('recipient_id'))->get('category'),
-                    'recipient_id' => optional($resolvedIds->get($item->get('recipient_id')))->get('id'),
-                    'recipient_name' => optional($resolvedIds->get($item->get('recipient_id')))->get('name'),
+                    'type' => optional($resolvedIds->get($item->get('recipient_id')))->get('category') ?? 'N/A',
+                    'recipient_id' => $item->recipient_id,
+                    'recipient_name' => optional($resolvedIds->get($item->get('recipient_id')))->get('name') ?? 'N/A',
                 ];
 
                 $newRecipients->push($i);
