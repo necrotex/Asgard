@@ -25,12 +25,14 @@ abstract class CharacterUpdateJob implements ShouldQueue
 
     public function failed(Exception $exception)
     {
-        Log::error(__CLASS__ . ': ' . $exception->getMessage(), $exception);
+        $class = get_class($this);
+
+        Log::error($class . ': ' . $exception->getMessage(), $exception);
 
         activity('error')
             ->performedOn($this->character)
             ->withProperty('exception', $exception->getMessage())
-            ->log("Job " . __CLASS__ . " failed");
+            ->log("Job " . $class . " failed");
 
         // if we have a client error, dispatch the next job in the chain
         if($exception->getCode() > 400 && $exception->getCode() < 500) {
