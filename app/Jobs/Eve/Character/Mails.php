@@ -4,10 +4,8 @@ namespace Asgard\Jobs\Eve\Character;
 
 use Asgard\Models\Character;
 use Asgard\Support\ConduitAuthTrait;
-use Asgard\Support\EVEOnlineIDs;
 use Carbon\Carbon;
 use Conduit\Conduit;
-use Conduit\Exceptions\HttpStatusException;
 use Log;
 
 class Mails extends CharacterUpdateJob
@@ -39,9 +37,10 @@ class Mails extends CharacterUpdateJob
         $mailingLists = collect($response->data)->recursive()->keyBy('mailing_list_id');
 
         $senderIds = $mails->pluck('from')->unique();
+
         $recipientIds = $mails->pluck('recipients')->flatten(1)->reject(function($item) {
             return $item->get('recipient_type') == 'mailing_list';
-        })->pluck('recipient_id')->unique()l
+        })->pluck('recipient_id')->unique();
 
         $ids = $senderIds->merge($recipientIds)->unique()->reject(function ($v, $k) use ($mailingLists) {
             return $mailingLists->has($v);
@@ -95,8 +94,8 @@ class Mails extends CharacterUpdateJob
                 $i = [
                     'mail_id' => $mail->get('mail_id'),
                     'type' => $resolvedIds->get($item->get('recipient_id'))->get('category'),
-                    'recipient_id' => $resolvedIds->get($item->get('recipient_id'))->get('id'),
-                    'recipient_name' => $resolvedIds->get($item->get('recipient_id'))->get('name'),
+                    'recipient_id' => optional($resolvedIds->get($item->get('recipient_id')))->get('id'),
+                    'recipient_name' => optional($resolvedIds->get($item->get('recipient_id')))->get('name'),
                 ];
 
                 $newRecipients->push($i);

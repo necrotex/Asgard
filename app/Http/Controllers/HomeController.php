@@ -52,5 +52,4 @@ class HomeController extends Controller
 
         return view('dashboard.home', compact('messages'));
     }
-
 }
