@@ -27,7 +27,7 @@ abstract class CharacterUpdateJob implements ShouldQueue
     {
         $class = get_class($this);
 
-        Log::error($class . ': ' . $exception->getMessage(), $exception);
+        Log::error($class . ': ' . $exception->getMessage());
 
         activity('error')
             ->performedOn($this->character)

@@ -41,7 +41,7 @@ class Mails extends CharacterUpdateJob
         $senderIds = $mails->pluck('from')->unique();
         $recipientIds = $mails->pluck('recipients')->flatten(1)->reject(function($item) {
             return $item->get('recipient_type') == 'mailing_list';
-        })->pluck('recipient_id')->unique();
+        })->pluck('recipient_id')->unique()l
 
         $ids = $senderIds->merge($recipientIds)->unique()->reject(function ($v, $k) use ($mailingLists) {
             return $mailingLists->has($v);
