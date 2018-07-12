@@ -15,6 +15,9 @@
                         </a></h5>
 
                     <h6 class="card-subtitle mb-2 text-muted">{{optional($character->corporation)->name}}</h6>
+                    <small class="card-subtitle text-muted">
+                        {{optional($character->location->solarSystem)->solarSystemName}} - {{optional($character->location->shipType)->typeName}}
+                    </small>
                 </div>
             </div>
         </div>
