@@ -19,7 +19,7 @@ class UpdateUserRolesJob implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param User $user
      */
     public function __construct(User $user)
     {
