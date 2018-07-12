@@ -5,6 +5,7 @@
         <tr>
             <th scope="col">Date</th>
             <th scope="col">Type</th>
+            <th scope="col">Other Party</th>
             <th scope="col">Amount</th>
             <th scope="col">Balance</th>
         </tr>
@@ -14,7 +15,7 @@
 </div>
 
 <div class="modal fade" id="journal-modal" tabindex="-1" role="dialog" aria-labelledby="journal-modal-subject" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         </div>
     </div>
@@ -36,6 +37,7 @@
                     columns: [
                         { data: 'date', name: 'date' },
                         { data: 'ref_type', name: 'ref_type' },
+                        { data: 'other_party', name: 'other_party' },
                         { data: 'amount', name: 'amount' },
                         { data: 'balance', name: 'balance' }
                     ]

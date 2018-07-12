@@ -71,4 +71,30 @@
     @endif
 
 
+    @if($entry->transaction()->count() > 0)
+        <table class="table table-striped" id="transactions-table">
+            <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Type</th>
+                <th scope="col">Group</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Unit Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($entry->transaction as $transaction)
+                <tr>
+                    <td>{{$transaction->date}}</td>
+                    <td>{{$transaction->type->typeName}}</td>
+                    <td>{{$transaction->type->group->groupName}}</td>
+                    <td>{{$transaction->quantity}}</td>
+                    <td>{{$transaction->unit_price}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
+
+
 </div>

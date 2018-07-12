@@ -30,4 +30,9 @@ class Journal extends Model
         return number_format($amount, 2);
     }
 
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class, 'journal_ref_id', 'ref_id');
+    }
+
 }
