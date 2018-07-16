@@ -30,6 +30,10 @@ class Contacts extends CharacterUpdateJob
 
         $ids = $contacts->pluck('contact_id')->unique()->values();
 
+        if($ids->isEmpty()) {
+            return;
+        }
+
         $response = $api->universe()->names()->data($ids->toArray())->post();
         $resolvedIds = collect($response->data)->recursive()->keyBy('id');
 
