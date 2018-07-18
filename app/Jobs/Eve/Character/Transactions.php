@@ -75,8 +75,8 @@ class Transactions extends CharacterUpdateJob
         });
 
         $resolvedLocations = $resolvedLocations->values()->keyBy(function ($item) {
-            if ($item->has('structure_id')) return $item['structure_id'];
-            return $item['station_id'];
+            if ($item->has('structure_id')) return $item->get('structure_id');
+            return $item->get('station_id');
         });
 
         $newTransactions = collect();

@@ -4,8 +4,10 @@ namespace Asgard\Http\Controllers;
 
 use Asgard\Jobs\Discord\FetchRoles;
 use Asgard\Jobs\Eve\Character\Mails;
+use Asgard\Jobs\Eve\Corporation\Members;
 use Asgard\Jobs\Update\VerifyTokenJob;
 use Asgard\Models\Character;
+use Asgard\Models\Corporation;
 use Asgard\Models\User;
 use Asgard\Support\EVEOnlineIDs;
 use Conduit\Conduit;
@@ -52,5 +54,12 @@ class HomeController extends Controller
         }
 
         return view('dashboard.home', compact('messages'));
+    }
+
+    public function debug()
+    {
+        $corp = Corporation::find(98224068);
+
+        dispatch_now(new Members($corp));
     }
 }
