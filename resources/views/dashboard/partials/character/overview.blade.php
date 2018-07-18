@@ -35,7 +35,7 @@
         <div class="card">
             <div class="card-header">
                 Skillqueue
-                @if(!is_null($character->skillqueue->last()->finish_date))
+                @if(!is_null(optional($character->skillqueue->last())->finish_date))
                      <span class="small text-muted pull-right">Ends {{$character->skillqueue->last()->finish_date}}</span>
                 @else
                     <span class="small text-muted pull-right">No skill in training</span>
