@@ -16,6 +16,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'fini
         ->name('corporation.show')
         ->middleware('can:view,corporation');
 
+    Route::any('/corporation/{corporation}/active-members', 'CorporationController@activeMembers')
+        ->name('corporation.active-members')
+        ->middleware('can:view,corporation');
+
+    Route::any('/corporation/{corporation}/missing-members', 'CorporationController@missingMembers')
+        ->name('corporation.missing-members')
+        ->middleware('can:view,corporation');
+
 
     Route::post('/corporation/{corporation}/update', 'CorporationController@update')
         ->name('corporation.update')

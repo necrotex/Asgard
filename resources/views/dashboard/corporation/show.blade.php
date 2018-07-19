@@ -4,71 +4,39 @@
 @section('CONTENT_TITLE', 'Corporation - ' . $corporation->ticker)
 
 @section('content')
-    <form method="post" action="{{route('corporation.update', $corporation->id)}}">
-        {{csrf_field()}}
+    <div class="col-12">
+        <nav class="mb-1">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="tab-overview" data-toggle="tab" href="#overview" role="tab"
+                   aria-controls="overview" aria-selected="true">
+                    Overview
+                </a>
 
-        <div class="row">
-            <div class="col-md-9">
-                <div class="card mb-3">
-                    <div class="card-body">
+                <a class="nav-item nav-link" id="tab-active-members" data-toggle="tab" href="#active-members" role="tab"
+                   aria-controls="active-members" aria-selected="false">
+                    Active Members
+                </a>
 
-                        <dl class="row">
+                <a class="nav-item nav-link" id="tab-missing-members" data-toggle="tab" href="#missing-members" role="tab"
+                   aria-controls="missing-members" aria-selected="false">
+                    Missing Members
+                </a>
+            </div>
+        </nav>
 
-                            <dt class="col-sm-3">Name</dt>
-                            <dd class="col-sm-3">{{$corporation->name}}</dd>
-
-                            <dt class="col-sm-3">ID</dt>
-                            <dd class="col-sm-3">{{$corporation->id}}</dd>
-
-                            <dt class="col-sm-3">Member Count</dt>
-                            <dd class="col-sm-3">{{$corporation->member_count}}</dd>
-
-                            <dt class="col-sm-3">Tax Rate</dt>
-                            <dd class="col-sm-3">{{$corporation->tax_rate}}%</dd>
-                        </dl>
-
-                    </div>
-                </div>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+                @include('dashboard.partials.corporation.overview')
             </div>
 
-
-            <div class="col-2">
-                <div class="card">
-                    <div class="card-body">
-                        <button type="submit" class="btn btn-primary btn-block">Save</button>
-                    </div>
-                </div>
+            <div class="tab-pane fade show" id="active-members" role="tabpanel" aria-labelledby="active-members">
+                @include('dashboard.partials.corporation.members', ['table' => 'active-members', 'route' => 'corporation.active-members'])
             </div>
 
+            <div class="tab-pane fade show" id="missing-members" role="tabpanel" aria-labelledby="missing-members">
+                @include('dashboard.partials.corporation.members', ['table' => 'missing-members', 'route' => 'corporation.missing-members'])
+            </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Default Member role
-                    </div>
-                    <div class="card-body">
-
-                        <select multiple="multiple" class="w-100" id="member-role" name="defaultRoles[]">
-                            @foreach($roles as $role)
-                                <option value="{{$role->name}}" @if(in_array($role->id, $defaultRoles)) selected @endif>
-                                    {{$role->title}}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </form>
+    </div>
 @endsection
 
-@push('js')
-    <script>
-        $('#member-role').select2();
-    </script>
-
-@endpush

@@ -2,9 +2,11 @@
 
 namespace Asgard\Http\Controllers\Admin;
 
+use Asgard\Models\Character;
 use Asgard\Models\Corporation;
 use Conduit\Conduit;
 use Conduit\Exceptions\HttpStatusException;
+use DataTables;
 use Illuminate\Http\Request;
 use Asgard\Http\Controllers\Controller;
 use Bouncer;
@@ -66,7 +68,6 @@ class CorporationController extends Controller
             $defaultRoles[] = $dr->id;
         }
 
-
         return view('dashboard.corporation.show',
             ['corporation' => $corporation, 'roles' => $roles, 'defaultRoles' => $defaultRoles]);
     }
@@ -111,5 +112,30 @@ class CorporationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @param Corporation $corporation
+     * @return
+     * @throws \Exception
+     */
+    public function activeMembers(Corporation $corporation)
+    {
+
+        $members = $corporation->members()->has('character');
+
+        return DataTables::of($members)
+            ->addColumn('route', function ($member) {
+                return route('characters.show', $member->character);
+            })
+            ->make(true);
+    }
+
+    public function missingMembers(Corporation $corporation)
+    {
+        $members = $corporation->members()->doesntHave('character');
+
+        return DataTables::of($members)
+            ->make(true);
     }
 }
