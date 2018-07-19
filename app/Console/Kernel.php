@@ -28,22 +28,27 @@ class Kernel extends ConsoleKernel
         $schedule->command('asgard:update:location')
             ->everyMinute()
             ->withoutOverlapping(5)
-            ->unlessBetween('11:00', '11:30');
+            ->unlessBetween('10:45', '11:30');
 
         $schedule->command('asgard:update:status')
             ->everyMinute()
             ->withoutOverlapping(5)
-            ->unlessBetween('11:00', '11:30');
+            ->unlessBetween('10:45', '11:30');
 
         $schedule->command('asgard:update:character')
             ->everyThirtyMinutes()
             ->withoutOverlapping(60)
-            ->unlessBetween('11:00', '11:30');
+            ->unlessBetween('10:45', '11:30');
 
         $schedule->command('asgard:character:reimport')
             ->everyFifteenMinutes()
             ->withoutOverlapping(60)
-            ->unlessBetween('11:00', '11:30');
+            ->unlessBetween('10:45', '11:30');
+
+        $schedule->command('asgard:corporation:members')
+            ->hourly()
+            ->withoutOverlapping(60)
+            ->unlessBetween('10:45', '11:30');
 
 
         //horizon metrics
