@@ -32,7 +32,7 @@ class DiscordController extends Controller
      */
     public function create()
     {
-        return Socialite::with('discord')->redirect();
+        return Socialite::with('discord')->setScopes(['identify', 'guilds.join'])->redirect();
     }
 
     /**
