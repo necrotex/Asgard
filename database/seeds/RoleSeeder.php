@@ -52,13 +52,11 @@ class RoleSeeder extends Seeder
         Bouncer::allow('director')->to('delete-application');
         Bouncer::allow('director')->to('delete-application');
 
-
         Role::create(['name' => 'member', 'title' => 'Member']);
         Bouncer::allow('member')->to('add-characters');
         Bouncer::allow('member')->to('view-timer');
         Bouncer::allow('member')->to('create-timer');
         Bouncer::allow('member')->to('access-subreddit');
-
 
         Role::create(['name' => 'recruiter', 'title' => 'Recruiter']);
         Bouncer::allow('recruiter')->to('use-search');
@@ -72,15 +70,12 @@ class RoleSeeder extends Seeder
         Bouncer::allow('recruiter')->to('view-application');
         Bouncer::allow('recruiter')->to('update-application');
 
-
         Role::create(['name' => 'friends', 'title' => 'Friend']);
         Bouncer::allow('friends')->to('add-characters');
         Bouncer::allow('friends')->to('access-subreddit');
 
-
         Role::create(['name' => 'guest', 'title' => 'Guest']);
         Bouncer::allow('guest')->to('add-characters');
-
 
         Role::create(['name' => 'recruit', 'title' => 'Recruit']);
         Bouncer::allow('recruit')->to('add-characters');
