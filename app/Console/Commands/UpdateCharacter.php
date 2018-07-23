@@ -57,7 +57,7 @@ class UpdateCharacter extends Command
     {
         $characters = Character::whereActive(true)->whereReady(true)->get();
 
-        foreach($characters as $character) {
+        foreach ($characters as $character) {
 
             VerifyTokenJob::withChain(
                 [
@@ -78,9 +78,9 @@ class UpdateCharacter extends Command
                     new Mails($character),
                 ]
             )->dispatch($character)->allOnQueue('low');
-        }
 
-        // update timestamps
-        $character->touch();
+            // update timestamps
+            $character->touch();
+        }
     }
 }

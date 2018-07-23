@@ -26,13 +26,13 @@ class Kernel extends ConsoleKernel
     {
         //run jobs except during downtime
         $schedule->command('asgard:update:location')
-            ->everyMinute()
-            ->withoutOverlapping(5)
+            ->everyFiveMinutes()
+            ->withoutOverlapping(15)
             ->unlessBetween('10:45', '11:30');
 
         $schedule->command('asgard:update:status')
-            ->everyMinute()
-            ->withoutOverlapping(5)
+            ->everyFiveMinutes()
+            ->withoutOverlapping(15)
             ->unlessBetween('10:45', '11:30');
 
         $schedule->command('asgard:update:character')
