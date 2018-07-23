@@ -97,7 +97,7 @@ class ProfileController extends Controller
 
         if ($request->has('roleSubmit')) {
 
-            if(!auth()->user()->isA('director')) {
+            if(!auth()->user()->can('update-roles')) {
                 return abort(403, 'Not Authorized');
             }
 
