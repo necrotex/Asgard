@@ -32,10 +32,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->isA('director')) {
+        if (auth()->user()->can('view-full-systemlog')) {
             $messages = Activity::limit(150)->latest()->paginate(10);
         } else {
-            if (auth()->user()->isA('recruiter')) {
+            if (auth()->user()->can('view-recruitment-systemlog')) {
                 $messages = Activity::whereIn('log_name', ['recruitment', 'info'])->limit(150)->latest()->paginate(10);
             } else {
                 $messages = Activity::where('log_name', '=', 'info')
