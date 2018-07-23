@@ -27,7 +27,7 @@ $directory = '/var/www/auth.friendlyprobes.net';
     cd {{$directory}}
 
     {{ message("📀  Backing up database...") }}
-    php artisan backup:run --only-db
+    php artisan backup:run --only-db --disable-notifications
 
     {{ message("🙈  Migrating database...") }}
     php artisan migrate --force
@@ -67,7 +67,10 @@ $directory = '/var/www/auth.friendlyprobes.net';
 @endtask
 
 @task('done')
+    chown -R www-data:www-data {{$directory}}
+    cd {{$directory}}
     php artisan up
+
     {{ message("🚀  Application deployed!") }}
 @endtask
 
