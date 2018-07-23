@@ -49,8 +49,13 @@ class Assets extends CharacterUpdateJob
 
         $ids = $stationIds->merge($systemIds)->unique()->values();
 
+        if ($ids->isEmpty()) {
+            return;
+        }
+
         $response = $api->universe()->names()->data($ids->toArray())->post();
         $resolvedIds = collect($response->data)->recursive()->keyBy('id');
+
 
         // asset names
         $assetNames = collect();
