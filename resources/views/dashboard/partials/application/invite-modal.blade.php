@@ -1,4 +1,5 @@
-<div class="modal fade" id="inviteModal" tabindex="-1" role="dialog" aria-labelledby="inviteModalTitle" aria-hidden="true">
+<div class="modal fade" id="inviteModal" tabindex="-1" role="dialog" aria-labelledby="inviteModalTitle"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -29,42 +30,43 @@
 </div>
 
 @push('js')
-<script>
-    $(document).ready(function(){
-        $('#form').select2({
-            'minimumResultsForSearch': Infinity,
-            ajax: {
-                url: '{{route('applications.invite.forms')}}',
-                dataType: 'json'
-            }
+    <script>
+        $(document).ready(function () {
+            $('#form').select2({
+                'minimumResultsForSearch': Infinity,
+                width: '100%',
+                ajax: {
+                    url: '{{route('applications.invite.forms')}}',
+                    dataType: 'json'
+                }
+            });
+
+            $('#form').on('select2:select', function (e) {
+                var data = e.params.data;
+                console.log(data);
+
+                axios.post('{{route('applications.invite.code')}}',
+                    {
+                        form: data.id
+                    })
+                    .then(function (data) {
+                        $('#code').val(data.data);
+                        $('#code').attr('data-clipboard-text', data.data)
+                    });
+            });
+
+            var clipboard = new window.clipboard('#copy');
+
+            clipboard.on('success', function (e) {
+                $(e.trigger).popover("show");
+                // hide notification after 1,5s
+                setTimeout(
+                    function () {
+                        $(e.trigger).popover("hide");
+                    }, 1500);
+            });
         });
 
-        $('#form').on('select2:select', function(e) {
-            var data = e.params.data;
-            console.log(data);
-
-            axios.post('{{route('applications.invite.code')}}',
-                {
-                    form: data.id
-                })
-                .then(function(data){
-                    $('#code').val(data.data);
-                    $('#code').attr('data-clipboard-text', data.data)
-                });
-        });
-
-        var clipboard = new window.clipboard('#copy');
-
-        clipboard.on('success', function (e) {
-            $(e.trigger).popover("show");
-            // hide notification after 1,5s
-            setTimeout(
-                function() {
-                    $(e.trigger).popover("hide");
-                }, 1500);
-        });
-    });
-
-</script>
+    </script>
 
 @endpush

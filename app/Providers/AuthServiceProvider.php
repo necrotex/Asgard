@@ -13,6 +13,7 @@ use Asgard\Models\Setting;
 use Asgard\Models\Timer;
 use Asgard\Models\User;
 use Asgard\Policies\ApplicationCommentPolicy;
+use Asgard\Policies\ApplicationFormPolicy;
 use Asgard\Policies\ApplicationFormQuestionPolicy;
 use Asgard\Policies\ApplicationPolicy;
 use Asgard\Policies\ApplicationStatusPolicy;
@@ -40,7 +41,7 @@ class AuthServiceProvider extends ServiceProvider
         Character::class => CharacterPolicy::class,
         Corporation::class => CorporationPolicy::class,
         Role::class => RolePolicy::class,
-        ApplicationForm::class => ApplicationFormQuestionPolicy::class,
+        ApplicationForm::class => ApplicationFormPolicy::class,
         ApplicationFormQuestion::class => ApplicationFormQuestionPolicy::class,
         Setting::class => SettingsPolicy::class,
         Timer::class => TimerPolicy::class,

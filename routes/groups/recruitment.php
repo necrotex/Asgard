@@ -5,11 +5,11 @@ Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function
     //Forms
     Route::get('/forms', 'FormController@index')
         ->name('forms.index')
-        ->middleware('can:create,Asgard/Models/ApplicationForm');
+        ->middleware('can:create,' . \Asgard\Models\ApplicationForm::class);
 
     Route::get('/forms/create', 'FormController@create')
         ->name('forms.create')
-        ->middleware('can:create,Asgard/Models/ApplicationForm');
+        ->middleware('can:create,' . \Asgard\Models\ApplicationForm::class);
 
     Route::get('/forms/{form}', 'FormController@show')
         ->name('forms.show')
@@ -21,7 +21,7 @@ Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function
 
     Route::post('/forms/store', 'FormController@store')
         ->name('forms.store')
-        ->middleware('can:create,Asgard/Models/ApplicationForm');
+        ->middleware('can:create,' . \Asgard\Models\ApplicationForm::class);
 
     Route::post('/forms/{form}/update', 'FormController@update')
         ->name('forms.update')
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function
 
     Route::post('/forms/{form}/question/store', 'QuestionController@store')
         ->name('question.store')
-        ->middleware('can:create,Asgard/Models/ApplicationFormQuestion');
+        ->middleware('can:create,' . \Asgard\Models\ApplicationFormQuestion::class);
 
     Route::get('/forms/question/{question}', 'QuestionController@edit')
         ->name('question.edit')
@@ -67,21 +67,19 @@ Route::group(['prefix' => 'recruitment', 'namespace' => 'Recruitment'], function
 
     Route::post('/applications/{application}/comment', 'ApplicationCommentController@store')
         ->name('applications.comment')
-        ->middleware('can:create,Asgard/Models/ApplicationComment');
+        ->middleware('can:create,' . \Asgard\Models\ApplicationComment::class);
 
     Route::post('/applications/{application}/status', 'ApplicationStatusController@update')
         ->name('applications.status')
-        ->middleware('can:create,Asgard/Models/ApplicationStatus');
+        ->middleware('can:create,' . \Asgard\Models\ApplicationStatus::class);
 
 
     // Apply
     Route::get('/apply', 'ApplicationFormController@create')
         ->name('applications.create')
-        ->middleware('ability:create-application');
+        ->middleware('can:create', \Asgard\Models\Application::class);
 
     Route::post('/apply', 'ApplicationFormController@store')
         ->name('applications.store')
-        ->middleware('ability:create-application');
-
-
+        ->middleware('can:create', \Asgard\Models\Application::class);
 });
