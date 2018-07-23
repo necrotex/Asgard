@@ -42,7 +42,6 @@ class QuestionController extends Controller
         $this->validate($request,
             [
                 'question' => 'required',
-                'description' => 'required',
             ]
         );
 
@@ -57,7 +56,7 @@ class QuestionController extends Controller
         $form->questions()->create(
             [
                 'question' => $request->input('question'),
-                'description' => $request->input('description'),
+                'description' => $request->input('description', null),
                 'required' => $request->has('required'),
                 'order' => $lastOrderNumber+1
             ]
