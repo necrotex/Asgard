@@ -1,39 +1,51 @@
 @servers(['prod' => ['root@friendlyprobes.net']])
 
 @setup
-function log($message) {
+function message($message) {
 return "echo '\033[32m" .$message. "\033[0m';\n";
 }
+
+$directory = '/var/www/auth.friendlyprobes.net';
 @endsetup
 
 @task('git')
-    {{ log("🌀  Updating Code from Git...") }}
+    cd {{$directory}}
+
+    {{ message("🌀  Updating Code from Git...") }}
     git reset --hard HEAD
     git pull origin master
 @endtask
 
 @task('composer')
-    {{ log("🚚  Running Composer...") }}
+    cd {{$directory}}
+
+    {{ message("🚚  Running Composer...") }}
     composer install --prefer-dist --no-scripts --no-dev -q -o;
 @endtask
 
-@task('migrate')
-    {{ log("📀  Backing up database...") }}
+@task('migrate', ['confirm' => true])
+    cd {{$directory}}
+
+    {{ message("📀  Backing up database...") }}
     php artisan backup:run --only-db
 
-    {{ log("🙈  Migrating database...") }}
+    {{ message("🙈  Migrating database...") }}
     php artisan migrate --force
 @endtask
 
-@task('yarn')
-    {{ log("🌅  Generating assets...") }}
+@task('yarn', ['confirm' => true])
+    cd {{$directory}}
+
+    {{ message("🌅  Generating assets...") }}
     yarn config set ignore-engines true
     yarn --frozen-lockfile
     yarn run production --progress false
 @endtask
 
 @task('optimize')
-    {{ log("🙏  Optimizing...") }}
+    cd {{$directory}}
+
+    {{ message("🙏  Optimizing...") }}
     bash version.sh
     php artisan clear-compiled;
     php artisan horizon:terminate
@@ -44,19 +56,28 @@ return "echo '\033[32m" .$message. "\033[0m';\n";
 
     sudo service php7.1-fpm restart
     sudo supervisorctl restart asgard
-
 @endtask
 
+@task('start')
+    {{ message("🏃  Starting deployment...") }}
+
+    cd {{$directory}}
+    php artisan down
+    composer dump-autoload
+@endtask
+
+@task('done')
+    php artisan up
+    {{ message("🚀  Application deployed!") }}
+@endtask
 
 @story('deploy')
-    {{ log("🏃  Starting deployment...") }}
-
+    start
     git
     composer
     yarn
     migrate
     optimize
-
-    {{ log("🚀  Application deployed!") }}
+    done
 @endstory
 
