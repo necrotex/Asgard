@@ -13,6 +13,7 @@ $directory = '/var/www/auth.friendlyprobes.net';
 
     {{ message("🌀  Updating Code from Git...") }}
     git reset --hard HEAD
+    git fetch
     git pull origin master
 @endtask
 

@@ -56,7 +56,6 @@ class Assets extends CharacterUpdateJob
         $response = $api->universe()->names()->data($ids->toArray())->post();
         $resolvedIds = collect($response->data)->recursive()->keyBy('id');
 
-
         // asset names
         $assetNames = collect();
         $assets->chunk(250)->each(function ($asset) use ($api, &$assetNames) {
