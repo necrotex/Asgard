@@ -30,7 +30,11 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         Route::bind('user', function ($value, $route) {
-            return User::whereName($value)->first();
+            if(is_numeric($value)) {
+                return User::findOrFail($value);
+            }
+
+            return User::whereName($value)->firstOrFail();
         });
 
         Route::bind('application', function ($value, $route) {
