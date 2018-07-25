@@ -93,7 +93,7 @@
                 </li>
             @endcan
 
-            @if(optional(auth()->user()->invites()->where('completed', false)->first())->exists())
+            @can('create', \Asgard\Models\Application::class)
                 <li class="nav-item">
                     <a class="nav-link {{active('applications.create')}}" href="{{route('applications.create')}}">
                         <i class="fas fa-user-plus" aria-hidden="true"></i> Apply

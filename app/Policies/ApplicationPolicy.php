@@ -19,7 +19,7 @@ class ApplicationPolicy
      */
     public function view(User $user, Application $application)
     {
-        return $user->can('view-application') || $application->user_id == $user->id;
+        return $user->can('view-application');
     }
 
     /**
@@ -33,7 +33,9 @@ class ApplicationPolicy
         //$invite = auth()->user()->invites()->where('completed', false)->first()->exists();
 
         //return optional($invite)->exists();
-        return optional(auth()->user()->invites()->where('completed', false)->first())->exists();
+        $return = optional($user->invites()->where('completed', false)->first())->exists();
+
+        return !is_null($return);
     }
 
     /**

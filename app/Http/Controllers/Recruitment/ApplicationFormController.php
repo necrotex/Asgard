@@ -73,7 +73,7 @@ class ApplicationFormController extends Controller
 
         activity('recruitment')->performedOn($application)->causedBy(auth()->user())->log('New Application');
 
-        return redirect()->route('applications.show', $application);
+        return redirect()->route('home');
     }
 
 }
