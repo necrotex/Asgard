@@ -43,7 +43,9 @@ class Mails extends CharacterUpdateJob
         })->pluck('recipient_id')->unique();
 
         $ids = $senderIds->merge($recipientIds)->unique()->reject(function ($v, $k) use ($mailingLists) {
-            return $mailingLists->has($v);
+            // it seems like mailing lists are in the range of 145000000 so we just sort everything out thats in there
+            // to make sure this works. 
+            return $mailingLists->has($v) || ((int) $v > 145000000 && (int) $v < 146000000);
         })->values();
 
         $resolvedIds = collect();
