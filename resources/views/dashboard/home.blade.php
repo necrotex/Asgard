@@ -31,7 +31,7 @@
                 <ul class="list-group list-group-flush">
 
                     @foreach($messages as $message)
-                      @include('dashboard.partials.home.log-' . $message->log_name)
+                        @include('dashboard.partials.home.log-' . $message->log_name)
                     @endforeach
                 </ul>
 

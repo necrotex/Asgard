@@ -5,8 +5,6 @@
             <p>Thank you for your application. It takes around 48 hours to process an application. If you have any
                 questions please contact one of our recuriters. In the meantime please join our discord and hang out and
                 get to know us a bit more.</p>
-            <hr>
-            <p class="mb-0">Your application status: {{optional(auth()->user()->application()->latest()->get())->name ?? 'Unprocessed'}}</p>
         </div>
     </div>
 </div>
