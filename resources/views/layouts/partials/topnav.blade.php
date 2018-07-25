@@ -14,7 +14,7 @@
 
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="{{route('profile.show', auth()->user()->id)}}">
+            <a class="nav-link" href="{{route('profile.show', auth()->user())}}">
                 @if(!is_null(auth()->user()->main_character))
                     {{auth()->user()->mainCharacter->name}}
                 @else

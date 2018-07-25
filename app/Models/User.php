@@ -30,6 +30,12 @@ class User extends Authenticatable
 
     protected $with = ['mainCharacter'];
 
+
+    public function getRouteKey()
+    {
+        return $this->getAttribute('name');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

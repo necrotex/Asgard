@@ -7,7 +7,7 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('profile.show', $character->user->id)}}">
+            <li class="breadcrumb-item"><a href="{{route('profile.show', $character->user)}}">
                     {{$character->user->mainCharacter->name}}
                 </a>
             </li>

@@ -16,7 +16,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
 
     Route::get('{user}/profile', 'ProfileController@show')
         ->name('profile.show')
-        ->middleware(['can:view,user']);
+        ->middleware('can:view,user');
 
     Route::post('{user}/profile/update', 'ProfileController@update')
         ->name('profile.update')

@@ -2,10 +2,13 @@
 
 namespace Asgard\Models;
 
+use Asgard\Support\Hashidable;
 use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
+    use Hashidable;
+
     protected $fillable = ['user_id', 'status_id'];
     protected $with = ['status', 'applicant'];
 
