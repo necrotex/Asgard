@@ -25,11 +25,12 @@ class TimerboardController extends Controller
         } else {
             //Get timers based on permission
             $timers = Timer::where('ownerId', $user->id)
-                ->orWhereNull('forGroup')
+                ->orWhereNull('forGroup')->where('private', false)
                 ->orWhereIn('forGroup', $roles)
-                ->orWhere('private', false)
+                ->orWhere('private', false)->whereNull('forgroup')
                 ->orderBy('target', 'asc')
                 ->get();
+
         }
 
         //remove duplicates

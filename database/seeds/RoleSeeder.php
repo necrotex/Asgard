@@ -13,11 +13,11 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => 'admin', 'title' => 'Admin']);
+        Role::firstOrCreate(['name' => 'admin', 'title' => 'Admin']);
         Bouncer::allow('admin')->everything();
         Bouncer::allow('admin')->to('access-everything');
 
-        Role::create(['name' => 'director', 'title' => 'Director']);
+        Role::firstOrCreate(['name' => 'director', 'title' => 'Director']);
         Bouncer::allow('director')->to('use-search');
         Bouncer::allow('director')->to('see-profiles');
         Bouncer::allow('director')->to('view-characters');
@@ -52,13 +52,13 @@ class RoleSeeder extends Seeder
         Bouncer::allow('director')->to('delete-application');
         Bouncer::allow('director')->to('delete-application');
 
-        Role::create(['name' => 'member', 'title' => 'Member']);
+        Role::firstOrCreate(['name' => 'member', 'title' => 'Member']);
         Bouncer::allow('member')->to('add-characters');
         Bouncer::allow('member')->to('view-timer');
         Bouncer::allow('member')->to('create-timer');
         Bouncer::allow('member')->to('access-subreddit');
 
-        Role::create(['name' => 'recruiter', 'title' => 'Recruiter']);
+        Role::firstOrCreate(['name' => 'recruiter', 'title' => 'Recruiter']);
         Bouncer::allow('recruiter')->to('use-search');
         Bouncer::allow('recruiter')->to('see-profiles');
         Bouncer::allow('recruiter')->to('view-characters');
@@ -70,14 +70,14 @@ class RoleSeeder extends Seeder
         Bouncer::allow('recruiter')->to('view-application');
         Bouncer::allow('recruiter')->to('update-application');
 
-        Role::create(['name' => 'friends', 'title' => 'Friend']);
+        Role::firstOrCreate(['name' => 'friends', 'title' => 'Friend']);
         Bouncer::allow('friends')->to('add-characters');
         Bouncer::allow('friends')->to('access-subreddit');
 
-        Role::create(['name' => 'guest', 'title' => 'Guest']);
+        Role::firstOrCreate(['name' => 'guest', 'title' => 'Guest']);
         Bouncer::allow('guest')->to('add-characters');
 
-        Role::create(['name' => 'recruit', 'title' => 'Recruit']);
+        Role::firstOrCreate(['name' => 'recruit', 'title' => 'Recruit']);
         Bouncer::allow('recruit')->to('add-characters');
         Bouncer::allow('recruit')->to('create-application');
     }

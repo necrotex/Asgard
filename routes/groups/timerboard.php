@@ -7,7 +7,7 @@ Route::group(['prefix' => 'timerboard', 'namespace' => 'Timerboard'], function()
 
     Route::get('/timer/{id}', 'TimerboardController@show')
         ->name('timerboard.show')
-        ->middleware('ability:view-timer');
+        ->middleware('can:view,timer');
 
     Route::post('/timer/edit/{timer}', 'TimerboardController@edit')
         ->name('timerboard.edit')

@@ -41,10 +41,9 @@ class TimerPolicy
      * @param  \Asgard\Models\Timer  $timer
      * @return mixed
      */
-    public function update(User $user, Timer $timer)
+    public function edit(User $user, Timer $timer)
     {
-        return $user->can('update-timer');
-
+        return $user->can('timer-override') || $timer->ownerId == $user->id;
     }
 
     /**
@@ -56,6 +55,6 @@ class TimerPolicy
      */
     public function delete(User $user, Timer $timer)
     {
-        return $user->can('delete-timer');
+        return $user->can('timer-override') || $timer->ownerId == $user->id;
     }
 }
