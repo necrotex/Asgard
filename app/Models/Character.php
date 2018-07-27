@@ -35,6 +35,8 @@ class Character extends Model
         'saved' => CharacterUpdateEvent::class,
     ];
 
+    protected $with = ['systemCorporation', 'corporation'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

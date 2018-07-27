@@ -2,15 +2,10 @@
 
 namespace Asgard\Http\Controllers;
 
-use Asgard\Jobs\Discord\FetchRoles;
-use Asgard\Jobs\Eve\Character\Mails;
 use Asgard\Jobs\Eve\Corporation\Members;
-use Asgard\Jobs\Update\VerifyTokenJob;
 use Asgard\Models\Character;
 use Asgard\Models\Corporation;
 use Asgard\Models\User;
-use Asgard\Support\EVEOnlineIDs;
-use Conduit\Conduit;
 use Spatie\Activitylog\Models\Activity;
 
 class HomeController extends Controller
@@ -33,12 +28,12 @@ class HomeController extends Controller
     public function index()
     {
         if (auth()->user()->can('view-full-systemlog')) {
-            $messages = Activity::limit(150)->latest()->paginate(10);
+            $messages = Activity::with(['subject', 'causer'])->limit(150)->latest()->paginate(10);
         } else {
             if (auth()->user()->can('view-recruitment-systemlog')) {
-                $messages = Activity::whereIn('log_name', ['recruitment', 'info'])->limit(150)->latest()->paginate(10);
+                $messages = Activity::with(['subject', 'causer'])->whereIn('log_name', ['recruitment', 'info'])->limit(150)->latest()->paginate(10);
             } else {
-                $messages = Activity::where('log_name', '=', 'info')
+                $messages = Activity::with(['subject', 'causer'])->where('log_name', '=', 'info')
                     ->where(function ($q) {
                         $q->where(function ($qq) {
                             $qq->where('subject_type', '=', User::class)->where('subject_id', '=', auth()->user()->id);

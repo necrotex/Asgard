@@ -2,12 +2,12 @@
 
 namespace Asgard\Http\Controllers\Recruitment;
 
+use Asgard\Http\Controllers\Controller;
 use Asgard\Http\Requests\NewApplicationFormRequest;
 use Asgard\Models\ApplicationForm;
 use Asgard\Models\ApplicationFormQuestion;
 use Asgard\Models\Corporation;
 use Illuminate\Http\Request;
-use Asgard\Http\Controllers\Controller;
 
 class FormController extends Controller
 {
@@ -18,7 +18,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $forms = ApplicationForm::all();
+        $forms = ApplicationForm::with('corporation')->get();
 
         return view('dashboard.forms.index', compact('forms'));
     }
@@ -30,7 +30,7 @@ class FormController extends Controller
      */
     public function create()
     {
-        $corporations = Corporation::all();
+        $corporations = Corporation::with('corporation')->get();
 
         return view('dashboard.forms.create', compact('corporations'));
     }

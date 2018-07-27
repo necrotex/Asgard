@@ -26,7 +26,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
+        $user = Auth::user()->with(['characters', 'characters.corporation', 'characters.systemCorporation', 'characters.location']);
 
         return view('dashboard.profile', ['user' => $user]);
     }
