@@ -1,6 +1,6 @@
 <h5>Characters</h5>
 
-@foreach($user->characters as $character)
+@foreach($user->characters()->with(['location', 'corporation'])->get() as $character)
     <div class="card mb-1">
         <div class="card-body">
             <div class="row">

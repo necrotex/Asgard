@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="card-body">
-                        {{$question->answer}}
+                        {!! nl2br(e($question->answer)) !!}
                     </div>
 
                 </div>

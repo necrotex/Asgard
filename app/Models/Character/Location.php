@@ -13,6 +13,8 @@ class Location extends Model
 
     protected $fillable = ['character_id','ship_type_id','ship_name','solar_system_id','structure'];
 
+    protected $with = ['solarSystem', 'shipType', 'character'];
+
     public function character()
     {
         return $this->belongsTo(Character::class);
