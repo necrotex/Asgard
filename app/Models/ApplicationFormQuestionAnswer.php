@@ -13,4 +13,9 @@ class ApplicationFormQuestionAnswer extends Model
         'answer',
         'version',
     ];
+
+    public function application()
+    {
+        return $this->belongsTo(Application::class);
+    }
 }
