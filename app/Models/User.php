@@ -10,6 +10,15 @@ class User extends Authenticatable
 {
     use Notifiable, HasRolesAndAbilities;
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->api_token = str_random(60);
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,7 +34,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token'
     ];
 
     protected $with = ['mainCharacter'];
