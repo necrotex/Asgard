@@ -19,10 +19,9 @@ class HaikuController extends Controller
     public function find($name)
     {
         $name = urldecode($name);
+        $haiku = Haiku::where('author', 'like', "%$name%")->inRandomOrder()->first();
 
-        $haiku = Haiku::where('author', 'like', "%$name%")->first();
-
-        if(is_null($haiku)) {
+        if (is_null($haiku)) {
             return response()->json()->setStatusCode(404);
         }
 
