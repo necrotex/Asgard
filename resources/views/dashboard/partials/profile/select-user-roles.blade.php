@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-10">
 
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-header">
                 <h5>Roles</h5>
             </div>
@@ -36,7 +36,7 @@
     </div>
 
 </div>
-</div>
+
 
 @push('js')
     <script>

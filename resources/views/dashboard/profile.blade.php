@@ -19,12 +19,11 @@
         <div class="col-4">
             @include('dashboard.partials.profile.select-user-roles')
 
+            @can('see-api-token')
+                @include('dashboard.partials.profile.api-token')
+            @endcan
         </div>
 
-    </div>
-
-    <div class="row">
-        @include('dashboard.partials.profile.info-box')
     </div>
 @endsection
 
