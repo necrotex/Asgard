@@ -2,10 +2,8 @@
 
 namespace Asgard\Http\Controllers;
 
-use Asgard\Jobs\Asgard\Haikus;
-use Asgard\Jobs\Eve\Corporation\Members;
+use Asgard\Jobs\Discord\Channels;
 use Asgard\Models\Character;
-use Asgard\Models\Corporation;
 use Asgard\Models\User;
 use Spatie\Activitylog\Models\Activity;
 
@@ -50,5 +48,10 @@ class HomeController extends Controller
         }
 
         return view('dashboard.home', compact('messages'));
+    }
+
+    public function debug()
+    {
+        dispatch_now(new Channels());
     }
 }

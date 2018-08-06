@@ -2,9 +2,10 @@
 
 namespace Asgard\Http\Controllers\Admin;
 
+use Asgard\Http\Controllers\Controller;
+use Asgard\Models\DiscordChannel;
 use Asgard\Models\Setting;
 use Illuminate\Http\Request;
-use Asgard\Http\Controllers\Controller;
 
 class SettingsController extends Controller
 {
@@ -15,9 +16,9 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        $account = Setting::get('reddit.modaccount.name');
+        $discord_channels = DiscordChannel::whereActive(true)->get();
 
-        return view('dashboard.settings', compact('account'));
+        return view('dashboard.settings', compact('discord_channels'));
     }
 
     /**
@@ -70,9 +71,16 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        if($request->has('recruitment-notification-channel')){
+            $channel = $request->input('recruitment-notification-channel');
+            Setting::set('notification.recruitment', $channel);
+        }
+
+        flash()->success('Successfully saved');
+
+        return back();
     }
 
     /**

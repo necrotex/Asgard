@@ -3,6 +3,7 @@
 namespace Asgard\Console;
 
 use Asgard\Jobs\Asgard\Haikus;
+use Asgard\Jobs\Discord\Channels;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -58,12 +59,15 @@ class Kernel extends ConsoleKernel
         //$schedule->command('asgard:clean:reddit')->hourly(); //@todo
         $schedule->command('asgard:clean:timerboard')->everyMinute();
         $schedule->command('asgard:discord:fetch-roles')->daily();
-        $schedule->job(new Haikus())->daily();
 
         $schedule->command('activitylog:clean')->daily();
 
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run --only-db --disable-notifications')->daily()->at('02:00');
+
+        $schedule->job(new Haikus())->daily();
+        $schedule->job(new Channels())->daily();
+
     }
 
     /**

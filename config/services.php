@@ -48,6 +48,7 @@ return [
         'redirect' => env('DISCORD_REDIRECT_URI'),
 
         'bot_token' => env('DISCORD_BOT_TOKEN'),
+        'token' => env('DISCORD_BOT_TOKEN'),
         'guild_id'  => (int) env('DISCORD_GUILD_ID'), // cast as int
     ],
 

@@ -8,7 +8,7 @@
                 <?php
                     $total = 0;
                     $user->characters->each(function ($character) use (&$total) {
-                        $total += $character->wallet->last()->amount;
+                        $total += optional($character->wallet->last())->amount;
                     });
                 ?>
                 {{ number_format($total, 2) }} ISK

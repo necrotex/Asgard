@@ -2,11 +2,12 @@
 
 namespace Asgard\Http\Controllers\Recruitment;
 
+use Asgard\Http\Controllers\Controller;
 use Asgard\Models\Application;
 use Asgard\Models\ApplicationComment;
 use Asgard\Models\ApplicationStatus;
+use Asgard\Notifications\Recruitment\NewStatus;
 use Illuminate\Http\Request;
-use Asgard\Http\Controllers\Controller;
 
 class ApplicationStatusController extends Controller
 {
@@ -42,8 +43,9 @@ class ApplicationStatusController extends Controller
         if($status->slug == 'accepted') {
             $application->applicant();
 
-
         }
+
+        $application->notify(new NewStatus($application, $status, auth()->user()));
 
         return back();
     }
