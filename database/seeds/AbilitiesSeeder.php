@@ -29,7 +29,7 @@ class AbilitiesSeeder extends Seeder
 
         Ability::create(
             [
-                'name' => 'see-profiles',
+                'name' => 'users.overview',
                 'title' => 'See User Profiles'
             ]
         );

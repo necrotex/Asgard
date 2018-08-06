@@ -29,11 +29,20 @@
             || auth()->user()->can('create', \Silber\Bouncer\Database\Role::class)
             || auth()->user()->can('create', \Asgard\Models\Corporation::class)
             || auth()->user()->can('view-job-monitoring')
+            || auth()->user()->can('see-profiles')
             )
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Admin</span>
             </h6>
             @endif
+
+            @can('see-profiles')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('users.overview')}}">
+                        <i class="fas fa-users" aria-hidden="true"></i> Users
+                    </a>
+                </li>
+            @endcan
 
             @can('view', \Asgard\Models\Setting::class)
                 <li class="nav-item">

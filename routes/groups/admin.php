@@ -66,4 +66,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'fini
     Route::get('/settings', 'SettingsController@index')
         ->name('settings.index')
         ->middleware('can:view,Asgard\Models\Setting');
+
+
+    //Users Overview
+    Route::any('/users/table', 'UsersController@table')
+        ->name('users.table')
+        ->middleware('ability:see-profiles');
+
+    Route::get('/users', 'UsersController@overview')
+        ->name('users.overview')
+        ->middleware('ability:see-profiles');
 });
