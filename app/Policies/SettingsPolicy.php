@@ -2,8 +2,8 @@
 
 namespace Asgard\Policies;
 
-use Asgard\Models\User;
 use Asgard\Models\Setting;
+use Asgard\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class SettingsPolicy
@@ -41,7 +41,7 @@ class SettingsPolicy
      */
     public function update(User $user, Setting $setting)
     {
-        //
+        return $user->can('view-admin-settings');
     }
 
     /**

@@ -2,14 +2,14 @@
 
 namespace Asgard\Http\Controllers\Recruitment;
 
+use Asgard\Http\Controllers\Controller;
 use Asgard\Models\Application;
 use Asgard\Models\ApplicationForm;
 use Asgard\Models\ApplicationFormQuestion;
 use Asgard\Models\ApplicationFormQuestionAnswer;
 use Asgard\Models\ApplicationStatus;
-use Asgard\Models\UserInvitation;
+use Asgard\Notifications\Recruitment\NewApplication;
 use Illuminate\Http\Request;
-use Asgard\Http\Controllers\Controller;
 
 class ApplicationFormController extends Controller
 {
@@ -72,6 +72,8 @@ class ApplicationFormController extends Controller
         $userInvite->save();
 
         activity('recruitment')->performedOn($application)->causedBy(auth()->user())->log('New Application');
+
+        $application->notify(new NewApplication($application));
 
         return redirect()->route('home');
     }

@@ -2,16 +2,18 @@
 
 namespace Asgard\Http\Controllers\Recruitment;
 
+use Asgard\Http\Controllers\Controller;
 use Asgard\Models\Application;
 use Asgard\Models\ApplicationComment;
+use Asgard\Notifications\Recruitment\NewComment;
+use Asgard\Notifications\RecruitmentAction;
 use Illuminate\Http\Request;
-use Asgard\Http\Controllers\Controller;
 
 class ApplicationCommentController extends Controller
 {
     public function store(Request $request, Application $application)
     {
-        ApplicationComment::create(
+        $comment = ApplicationComment::create(
             [
                 'application_id' => $application->id,
                 'user_id' => auth()->user()->id,
@@ -27,6 +29,8 @@ class ApplicationCommentController extends Controller
             ->log('New Comment');
 
         flash('Sucessfully commented')->success();
+
+        $application->notify(new NewComment($comment));
 
         return back();
     }

@@ -4,10 +4,11 @@ namespace Asgard\Models;
 
 use Asgard\Support\Hashidable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Application extends Model
 {
-    use Hashidable;
+    use Hashidable, Notifiable;
 
     protected $fillable = ['user_id', 'status_id'];
     protected $with = ['status', 'applicant'];
@@ -35,5 +36,10 @@ class Application extends Model
     public function invite()
     {
         return $this->hasOne(UserInvitation::class, 'application_id', 'id');
+    }
+
+    public function routeNotificationForDiscord()
+    {
+        return Setting::get('notification.recruitment');
     }
 }

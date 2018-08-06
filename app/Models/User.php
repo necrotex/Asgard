@@ -2,8 +2,9 @@
 
 namespace Asgard\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use NotificationChannels\Discord\Discord;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable
@@ -190,6 +191,13 @@ class User extends Authenticatable
     public function invites()
     {
         return $this->hasMany(UserInvitation::class, 'user_id', 'id');
+    }
+
+
+    public function routeNotificationForDiscord()
+    {
+        $channel = app(Discord::class)->getPrivateChannel($this->discordAccount->id);
+        return $channel;
     }
 }
 
