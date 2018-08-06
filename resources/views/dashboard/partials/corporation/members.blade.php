@@ -16,6 +16,7 @@
             $(function() {
 
                 var table = $('#{{$table}}-table').DataTable({
+                    lengthMenu: [[10, 50, 100, -1], [10, 50, 100, "All"]],
                     processing: true,
                     serverSide: true,
                     select: {

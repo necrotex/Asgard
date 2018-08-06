@@ -2,11 +2,11 @@
 
 namespace Asgard\Http\Controllers\Recruitment;
 
-use Asgard\Models\ApplicationInvite;
+use Asgard\Http\Controllers\Controller;
 use Asgard\Models\ApplicationForm;
+use Asgard\Models\ApplicationInvite;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Asgard\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 
 class InviteController extends Controller
@@ -66,7 +66,7 @@ class InviteController extends Controller
             return abort(403, 'Invite code expired. Please talk to a recruiter to receive a new invite link');
         }
 
-        $request->session()->push('recuritment_code', $invite->code);
+        $request->session()->push('recruitment_code', $invite->code);
 
 
         return view('auth.invite-login', compact('invite'));
