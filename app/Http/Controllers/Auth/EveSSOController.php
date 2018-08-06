@@ -2,6 +2,7 @@
 
 namespace Asgard\Http\Controllers\Auth;
 
+use Asgard\Http\Controllers\Controller;
 use Asgard\Jobs\Update\InitialImportJob;
 use Asgard\Models\ApplicationInvite;
 use Asgard\Models\Character;
@@ -10,7 +11,6 @@ use Asgard\Models\UserInvitation;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Asgard\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use nullx27\Socialite\EveOnline\Traits\EveAuth;
@@ -94,8 +94,8 @@ class EveSSOController extends Controller
                     $request->session()->put('new_account', true);
                     $user = User::firstOrCreate(['name' => $name]);
 
-                    if ($request->session()->has('recuritment_code')) {
-                        $invite = $invite = ApplicationInvite::where('code', '=', $request->session()->pull('recuritment_code'))->first();
+                    if ($request->session()->has('recruitment_code')) {
+                        $invite = $invite = ApplicationInvite::where('code', '=', $request->session()->pull('recruitment_code'))->first();
 
                         UserInvitation::create(['user_id' => $user->id, 'invite_id' => $invite->id]);
 
