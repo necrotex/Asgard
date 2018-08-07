@@ -148,7 +148,7 @@ class User extends Authenticatable
      */
     public function getAssociatedDiscordRoles()
     {
-        $inheritedRoles = $this->getAssociatedRoles();
+        $inheritedRoles = $this->getCombinedRoles();
 
         $roleIds = collect();
 
