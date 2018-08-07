@@ -165,17 +165,15 @@ class User extends Authenticatable
     /**
      * @return array
      */
-    public function getDiscordRolesAsArray()
+    public function getDiscordRoles()
     {
         $roles = [];
 
         $userRoles = $this->getAssociatedDiscordRoles();
 
-        foreach ($userRoles as $userRole) {
-            $roles[] = $userRole->discord_id;
-        }
+        $userRoles = collect($userRoles);
 
-        return array_unique($roles);
+        return $userRoles->keyBy('discord_id')->unique();
     }
 
     public function application()

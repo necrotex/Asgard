@@ -2,7 +2,9 @@
 
 namespace Asgard\Jobs\Discord;
 
+use Asgard\Models\DiscordRoles;
 use Asgard\Models\User;
+use function foo\func;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -37,31 +39,23 @@ class UpdateUserRolesJob implements ShouldQueue
         if ($this->user->discordAccount) {
             $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
 
-            $assigedRoles = $this->user->getDiscordRolesAsArray();
+            $assigedRoles = $this->user->getDiscordRoles();
+            $unrestrictedRoles = DiscordRoles::whereRestricted(false)->get()->keyBy('discord_id');
 
-            $member = $discord->guild->getGuildMember(
+            $response = $discord->guild->getGuildMember(
                 [
                     'user.id' => $this->user->discordAccount->id,
                     'guild.id' => config('services.discord.guild_id')
                 ]
             );
 
-            $remove = [];
-            foreach ($member['roles'] as $memberRole) {
-                if (!in_array($memberRole, $assigedRoles)) {
-                    $remove[] = $memberRole;
-                }
-            }
+            $member = collect($response)->recursive();
 
-            $add = [];
-            foreach ($assigedRoles as $assigedRole) {
-                if (!in_array($assigedRole, $member['roles'])) {
-                    $add[] = $assigedRole;
-                }
-            }
-
-            //remove not authorized roles
-            foreach ($remove as $role) {
+            // remove roles that are restricted and not assigned
+            $member->get('roles')->reject(function ($role) use ($assigedRoles, $unrestrictedRoles) {
+                if ($assigedRoles->has($role) || $unrestrictedRoles->has($role))
+                    return true;
+            })->each(function ($role) use ($discord) {
                 $discord->guild->removeGuildMemberRole(
                     [
                         'user.id' => $this->user->discordAccount->id,
@@ -69,18 +63,20 @@ class UpdateUserRolesJob implements ShouldQueue
                         'role.id' => $role
                     ]
                 );
-            }
+            });
 
-            //add authorized roles
-            foreach ($add as $role) {
-                $response = $discord->guild->addGuildMemberRole(
-                    [
-                        'user.id' => $this->user->discordAccount->id,
-                        'guild.id' => config('services.discord.guild_id'),
-                        'role.id' => $role
-                    ]
-                );
-            }
+            // asign roles that are not already granted
+            $assigedRoles->each(function ($role) use ($member, $discord) {
+                if(!$member->get('roles')->contains($role->discord_id)) {
+                    $discord->guild->addGuildMemberRole(
+                        [
+                            'user.id' => $this->user->discordAccount->id,
+                            'guild.id' => config('services.discord.guild_id'),
+                            'role.id' => $role->discord_id
+                        ]
+                    );
+                }
+            });
 
             //todo: logging
         }

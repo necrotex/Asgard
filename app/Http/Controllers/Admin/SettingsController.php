@@ -4,6 +4,7 @@ namespace Asgard\Http\Controllers\Admin;
 
 use Asgard\Http\Controllers\Controller;
 use Asgard\Models\DiscordChannel;
+use Asgard\Models\DiscordRoles;
 use Asgard\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,9 @@ class SettingsController extends Controller
     public function index()
     {
         $discord_channels = DiscordChannel::whereActive(true)->get();
+        $discord_roles = DiscordRoles::all();
 
-        return view('dashboard.settings', compact('discord_channels'));
+        return view('dashboard.settings', compact('discord_channels', 'discord_roles'));
     }
 
     /**
@@ -77,6 +79,19 @@ class SettingsController extends Controller
             $channel = $request->input('recruitment-notification-channel');
             Setting::set('notification.recruitment', $channel);
         }
+
+        $restrictedRoles = $request->input('unrestricted-discord-roles');
+        $roles = DiscordRoles::all();
+        $roles->each(function($role) use ($restrictedRoles) {
+            if(in_array($role->id, $restrictedRoles)){
+                $role->restricted = false;
+            } else {
+                $role->restricted = true;
+            }
+
+            $role->save();
+        });
+
 
         flash()->success('Successfully saved');
 

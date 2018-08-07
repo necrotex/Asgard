@@ -52,5 +52,6 @@ Route::group(['middleware' => ['auth', 'finished-account']], function () {
 
 });
 
-
-Route::get('/debug', 'HomeController@debug');
+if(config('app.debug')) {
+    Route::get('/debug', 'DebugController@index');
+}
