@@ -36,7 +36,7 @@
             @if($user->discordAccount)
                 <div class="card-footer">
                     Discord Roles:
-                    @foreach($user->getAssociatedDiscordRoles() as $role)
+                    @foreach($user->getDiscordRoles() as $role)
                         <span class="badge badge-secondary"
                               style="background-color: #{{dechex($role->color)}} !important;">{{$role->name}}</span>
                     @endforeach
