@@ -36,7 +36,7 @@ class SettingsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +47,7 @@ class SettingsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -58,7 +58,7 @@ class SettingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -69,21 +69,21 @@ class SettingsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
-        if($request->has('recruitment-notification-channel')){
+        if ($request->has('recruitment-notification-channel')) {
             $channel = $request->input('recruitment-notification-channel');
             Setting::set('notification.recruitment', $channel);
         }
 
         $restrictedRoles = $request->input('unrestricted-discord-roles');
         $roles = DiscordRoles::all();
-        $roles->each(function($role) use ($restrictedRoles) {
-            if(in_array($role->id, $restrictedRoles)){
+        $roles->each(function ($role) use ($restrictedRoles) {
+            if (!is_null($restrictedRoles) && in_array($role->id, $restrictedRoles)) {
                 $role->restricted = false;
             } else {
                 $role->restricted = true;
@@ -101,7 +101,7 @@ class SettingsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
