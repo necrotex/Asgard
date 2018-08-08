@@ -15,18 +15,19 @@ class InviteController extends Controller
     {
         $forms = ApplicationForm::where('active', '=', true)->get();
 
-        if(is_null($forms))
+        if (is_null($forms))
             return response()->json([]);
 
         $formatted = [];
-        foreach($forms as $form) {
+        foreach ($forms as $form) {
             $formatted['results'][] = ['id' => $form->id, 'text' => $form->name];
         }
 
         return response()->json($formatted);
     }
 
-    public function inviteCode(Request $request) {
+    public function inviteCode(Request $request)
+    {
 
         $this->validate($request, [
             'form' => 'required|numeric'
@@ -48,7 +49,7 @@ class InviteController extends Controller
 
     private function generateCode()
     {
-        $invite = false;
+        $invite = null;
         do {
             $code = Str::random(16);
             $invite = ApplicationInvite::where('code', '=', $code)->first();
@@ -62,7 +63,7 @@ class InviteController extends Controller
     {
         $invite = ApplicationInvite::where('code', '=', $invite)->firstOrFail();
 
-        if($invite->expiry < Carbon::now()) {
+        if ($invite->expiry < Carbon::now()) {
             return abort(403, 'Invite code expired. Please talk to a recruiter to receive a new invite link');
         }
 

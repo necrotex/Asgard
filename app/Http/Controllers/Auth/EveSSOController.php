@@ -98,12 +98,10 @@ class EveSSOController extends Controller
                         $invite = $invite = ApplicationInvite::where('code', '=', $request->session()->pull('recruitment_code'))->firstOrFail();
                         UserInvitation::create(['user_id' => $user->id, 'invite_id' => $invite->id]);
 
-                        //todo: check for expiry
-
                         $user->assign('recruit');
                     }
 
-                    if ($user->isNotA('recruit')) {
+                    if ($user->isNotA('recruit') && $user->isNotA('member')) {
                         $user->assign('guest');
                     }
 
