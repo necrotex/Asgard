@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Redis;
 use RestCord\DiscordClient;
 
 class Rename implements ShouldQueue
@@ -34,21 +35,30 @@ class Rename implements ShouldQueue
      */
     public function handle(Conduit $api)
     {
-        //todo: logging
+        if(! $this->user->discordAccount) {
+            return;
+        }
 
-        if($this->user->discordAccount) {
-            $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
+        Redis::throttle(__CLASS__)->allow(20)->every(60)->then(function () use ($api) {
+
+            $discord = new DiscordClient(
+                [
+                    'token' => config('services.discord.bot_token'),
+                    'throwOnRatelimit' => true,
+                    'logger' => app('log'),
+                ]
+            );
 
             // we need to get the corp ticker for corps that are not added to the system
             // todo: maybe we should just add unknown corps to the system when a character is added
-            if(!$this->user->mainCharacter->corporation) {
+            if (!$this->user->mainCharacter->corporation) {
                 $corp = $api->corporations($this->user->mainCharacter->corporation_id)->get();
                 $ticker = $corp->ticker;
             } else {
                 $ticker = $this->user->mainCharacter->corporation->ticker;
             }
 
-            $name = '['. $ticker .'] ' . $this->user->mainCharacter->name;
+            $name = '[' . $ticker . '] ' . $this->user->mainCharacter->name;
 
             $response = $discord->guild->modifyGuildMember(
                 [
@@ -58,8 +68,8 @@ class Rename implements ShouldQueue
                 ]
             );
 
-            //todo: check response etc
-        }
-
+        }, function () {
+            return $this->release(10);
+        });
     }
 }

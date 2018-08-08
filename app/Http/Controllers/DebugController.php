@@ -3,6 +3,7 @@
 namespace Asgard\Http\Controllers;
 
 use Asgard\Jobs\Discord\Rename;
+use Asgard\Jobs\Discord\SyncUsers;
 use Asgard\Jobs\Discord\UpdateUserRolesJob;
 use Asgard\Models\Character;
 use Asgard\Models\User;
@@ -12,7 +13,7 @@ class DebugController extends Controller
 {
     public function index()
     {
-        $char = User::find(1);
-        dispatch_now(new Rename($char));
+        //(dispatch_now(new SyncUsers());
+        dispatch_now(new UpdateUserRolesJob(User::find(1)));
     }
 }

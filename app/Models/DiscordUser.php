@@ -10,6 +10,6 @@ class DiscordUser extends Model
     protected $fillable = ['id'];
 
     public function user() {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

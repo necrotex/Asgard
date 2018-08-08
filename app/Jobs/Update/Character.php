@@ -2,6 +2,8 @@
 
 namespace Asgard\Jobs\Update;
 
+use Asgard\Jobs\Discord\Rename;
+use Asgard\Jobs\Discord\UpdateUserRolesJob;
 use Conduit\Authentication;
 use Conduit\Conduit;
 use Illuminate\Bus\Queueable;
@@ -45,7 +47,7 @@ class Character implements ShouldQueue
 
         $corp_data = $api->corporations($this->character->corporation_id)->get();
 
-        CharacterModel\Corporation::updateOrCreate(
+        $character = CharacterModel\Corporation::updateOrCreate(
             [
                 'character_id' => $this->character->id,
             ],
@@ -56,5 +58,9 @@ class Character implements ShouldQueue
             ]
         );
 
+        if(count($character->getDirty()) > 0) {
+            dispatch(new UpdateUserRolesJob($character->user));
+            dispatch(new Rename($character->user));
+        }
     }
 }
