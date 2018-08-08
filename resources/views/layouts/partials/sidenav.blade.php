@@ -25,7 +25,7 @@
                 </li>
             @endcan
 
-            @can('create-feedback')
+            @can('create', \Asgard\Models\Feedback::class)
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('feedback.create')}}">
                         <i class="fas fa-comment-alt" aria-hidden="true"></i> Feedback
