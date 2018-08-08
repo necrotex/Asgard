@@ -31,7 +31,7 @@ class DiscordAccessCheck implements ShouldQueue
         Log::debug('Event fired ' . self::class);
 
         if($event->hasChanged()) {
-            //dispatch(new UpdateUserRolesJob($event->character->user))->onQueue('low');
+            dispatch(new UpdateUserRolesJob($event->character->user))->onQueue('low');
         }
     }
 }
