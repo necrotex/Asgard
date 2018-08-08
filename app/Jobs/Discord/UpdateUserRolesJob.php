@@ -36,18 +36,19 @@ class UpdateUserRolesJob implements ShouldQueue
      */
     public function handle()
     {
-
         if ($this->user->discordAccount) {
 
-            Redis::throttle('discord_update_roles')->allow(10)->every(60)->then(function () {
+            $user = $this->user;
+
+            Redis::throttle('discord_update_roles')->allow(10)->every(60)->then(function () use ($user) {
                 $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
 
-                $assigedRoles = $this->user->getDiscordRoles();
+                $assigedRoles = $user->getDiscordRoles();
                 $unrestrictedRoles = DiscordRoles::whereRestricted(false)->get()->keyBy('discord_id');
 
                 $response = $discord->guild->getGuildMember(
                     [
-                        'user.id' => $this->user->discordAccount->id,
+                        'user.id' => $user->discordAccount->id,
                         'guild.id' => config('services.discord.guild_id')
                     ]
                 );
@@ -61,7 +62,7 @@ class UpdateUserRolesJob implements ShouldQueue
                 })->each(function ($role) use ($discord) {
                     $discord->guild->removeGuildMemberRole(
                         [
-                            'user.id' => $this->user->discordAccount->id,
+                            'user.id' => $user->discordAccount->id,
                             'guild.id' => config('services.discord.guild_id'),
                             'role.id' => $role
                         ]
@@ -73,7 +74,7 @@ class UpdateUserRolesJob implements ShouldQueue
                     if (!$member->get('roles')->contains($role->discord_id)) {
                         $discord->guild->addGuildMemberRole(
                             [
-                                'user.id' => $this->user->discordAccount->id,
+                                'user.id' => $user->discordAccount->id,
                                 'guild.id' => config('services.discord.guild_id'),
                                 'role.id' => $role->discord_id
                             ]
