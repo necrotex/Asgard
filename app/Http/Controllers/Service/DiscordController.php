@@ -52,8 +52,8 @@ class DiscordController extends Controller
 
         Auth::user()->discordAccount()->save($discordUser);
 
-        $this->dispatch(new Rename(Auth::user()));
-        $this->dispatch(new UpdateUserRolesJob(Auth::user()));
+        dispatch(new Rename(Auth::user()))->onQueue('high');
+        dispatch(new UpdateUserRolesJob(Auth::user()))->onQueue('high');
 
         return redirect()->route('profile.show', auth()->user()->id);
     }

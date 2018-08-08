@@ -87,7 +87,7 @@ class EveSSOController extends Controller
                 $character = Character::find($this->user->id);
 
                 if (is_null($character)) {
-                    if (config('asgard.open_registration') !== true) {
+                    if (config('asgard.open_registration') !== true && !$request->session()->has('recruitment_code')) {
                         return abort(403, 'Please contact a recruiter for access.');
                     }
 
@@ -95,14 +95,13 @@ class EveSSOController extends Controller
                     $user = User::firstOrCreate(['name' => $name]);
 
                     if ($request->session()->has('recruitment_code')) {
-                        $invite = $invite = ApplicationInvite::where('code', '=', $request->session()->pull('recruitment_code'))->first();
-
+                        $invite = $invite = ApplicationInvite::where('code', '=', $request->session()->pull('recruitment_code'))->firstOrFail();
                         UserInvitation::create(['user_id' => $user->id, 'invite_id' => $invite->id]);
 
                         $user->assign('recruit');
                     }
 
-                    if ($user->isNotA('recruit')) {
+                    if ($user->isNotA('recruit') && $user->isNotA('member')) {
                         $user->assign('guest');
                     }
 
