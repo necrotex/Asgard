@@ -25,11 +25,20 @@
                 </li>
             @endcan
 
+            @can('write-feedback')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('feedback.create')}}">
+                        <i class="fas fa-comment-alt" aria-hidden="true"></i> Feedback
+                    </a>
+                </li>
+            @endcan
+
             @if(auth()->user()->can('view', \Asgard\Models\Setting::class)
             || auth()->user()->can('create', \Silber\Bouncer\Database\Role::class)
             || auth()->user()->can('create', \Asgard\Models\Corporation::class)
             || auth()->user()->can('view-job-monitoring')
             || auth()->user()->can('see-profiles')
+            || auth()->user()->can('see-feedback')
             )
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Admin</span>
@@ -40,6 +49,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('users.overview')}}">
                         <i class="fas fa-users" aria-hidden="true"></i> Users
+                    </a>
+                </li>
+            @endcan
+
+            @can('view', \Asgard\Models\Feedback::class)
+                <li class="nav-item">
+                    <a class="nav-link {{active('feedback.index')}}" href="{{route('feedback.index')}}">
+                        <i class="fas fa-comments" aria-hidden="true"></i> Feedback
+                    </a>
+                </li>
+            @endcan
+
+            @can('create', \Asgard\Models\Corporation::class)
+                <li class="nav-item">
+                    <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
+                        <i class="fas fa-users" aria-hidden="true"></i> Corporations
                     </a>
                 </li>
             @endcan
@@ -56,14 +81,6 @@
                 <li class="nav-item">
                     <a class="nav-link {{active('roles.index')}}" href="{{route('roles.index')}}">
                         <i class="fas fa-list" aria-hidden="true"></i> Roles
-                    </a>
-                </li>
-            @endcan
-
-            @can('create', \Asgard\Models\Corporation::class)
-                <li class="nav-item">
-                    <a class="nav-link {{active('corporation.index')}}" href="{{route('corporation.index')}}">
-                        <i class="fas fa-users" aria-hidden="true"></i> Corporations
                     </a>
                 </li>
             @endcan

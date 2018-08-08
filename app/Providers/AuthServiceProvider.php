@@ -9,6 +9,7 @@ use Asgard\Models\ApplicationFormQuestion;
 use Asgard\Models\ApplicationStatus;
 use Asgard\Models\Character;
 use Asgard\Models\Corporation;
+use Asgard\Models\Feedback;
 use Asgard\Models\Setting;
 use Asgard\Models\Timer;
 use Asgard\Models\User;
@@ -21,6 +22,7 @@ use Asgard\Policies\CharacterMailPolicy;
 use Asgard\Policies\CharacterPolicy;
 
 use Asgard\Policies\CorporationPolicy;
+use Asgard\Policies\FeedbackPolicy;
 use Asgard\Policies\ProfilePolicy;
 
 use Asgard\Policies\RolePolicy;
@@ -48,6 +50,7 @@ class AuthServiceProvider extends ServiceProvider
         Application::class => ApplicationPolicy::class,
         ApplicationComment::class => ApplicationCommentPolicy::class,
         ApplicationStatus::class => ApplicationStatusPolicy::class,
+        Feedback::class => FeedbackPolicy::class,
     ];
 
     /**

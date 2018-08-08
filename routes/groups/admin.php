@@ -80,4 +80,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'fini
     Route::get('/users', 'UsersController@overview')
         ->name('users.overview')
         ->middleware('ability:see-profiles');
+
+    // Feedback
+
+    Route::get('/feedback', '\Asgard\Http\Controllers\Service\FeedbackController@index')
+        ->name('feedback.index')
+        ->middleware('can:view,' . \Asgard\Models\Feedback::class);
+
+    Route::get('/feedback/{feedback}', '\Asgard\Http\Controllers\Service\FeedbackController@show')
+        ->name('feedback.show')
+        ->middleware('can:view,feedback');
 });
