@@ -48,7 +48,7 @@ class SyncDiscordCommand extends Command
             return is_null($user->discordAccount);
         })
             ->each(function ($user) use (&$delay) {
-                $delay = $delay->addSeconds(3);
+                $delay = $delay->addSeconds(5);
                 dispatch(new Rename($user))->onQueue('high')->delay($delay);
                 dispatch(new UpdateUserRolesJob($user))->onQueue('high')->delay($delay);
             });

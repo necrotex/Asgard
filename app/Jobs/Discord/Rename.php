@@ -9,7 +9,6 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Redis;
 use RestCord\DiscordClient;
 
 class Rename implements ShouldQueue
@@ -38,33 +37,26 @@ class Rename implements ShouldQueue
         //todo: logging
 
         if($this->user->discordAccount) {
+            $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
 
-            $user = $this->user;
+            // we need to get the corp ticker for corps that are not added to the system
+            // todo: maybe we should just add unknown corps to the system when a character is added
+            if(!$this->user->mainCharacter->corporation) {
+                $corp = $api->corporations($this->user->mainCharacter->corporation_id)->get();
+                $ticker = $corp->ticker;
+            } else {
+                $ticker = $this->user->mainCharacter->corporation->ticker;
+            }
 
-            Redis::throttle('discord_rename')->allow(10)->every(60)->then(function () use ($user) {
-                $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
+            $name = '['. $ticker .'] ' . $this->user->mainCharacter->name;
 
-                // we need to get the corp ticker for corps that are not added to the system
-                // todo: maybe we should just add unknown corps to the system when a character is added
-                if(!$user->mainCharacter->corporation) {
-                    $corp = $api->corporations($user->mainCharacter->corporation_id)->get();
-                    $ticker = $corp->ticker;
-                } else {
-                    $ticker = $user->mainCharacter->corporation->ticker;
-                }
-
-                $name = '['. $ticker .'] ' . $user->mainCharacter->name;
-
-                $response = $discord->guild->modifyGuildMember(
-                    [
-                        'user.id' => $user->discordAccount->id,
-                        'nick' => $name,
-                        'guild.id' => config('services.discord.guild_id')
-                    ]
-                );
-            }, function () {
-                return $this->release(5);
-            });
+            $response = $discord->guild->modifyGuildMember(
+                [
+                    'user.id' => $this->user->discordAccount->id,
+                    'nick' => $name,
+                    'guild.id' => config('services.discord.guild_id')
+                ]
+            );
 
             //todo: check response etc
         }

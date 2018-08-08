@@ -10,7 +10,6 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Redis;
 use RestCord\DiscordClient;
 
 class UpdateUserRolesJob implements ShouldQueue
@@ -36,55 +35,50 @@ class UpdateUserRolesJob implements ShouldQueue
      */
     public function handle()
     {
+
         if ($this->user->discordAccount) {
+            $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
 
-            $user = $this->user;
+            $assigedRoles = $this->user->getDiscordRoles();
+            $unrestrictedRoles = DiscordRoles::whereRestricted(false)->get()->keyBy('discord_id');
 
-            Redis::throttle('discord_update_roles')->allow(10)->every(60)->then(function () use ($user) {
-                $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
+            $response = $discord->guild->getGuildMember(
+                [
+                    'user.id' => $this->user->discordAccount->id,
+                    'guild.id' => config('services.discord.guild_id')
+                ]
+            );
 
-                $assigedRoles = $user->getDiscordRoles();
-                $unrestrictedRoles = DiscordRoles::whereRestricted(false)->get()->keyBy('discord_id');
+            $member = collect($response)->recursive();
 
-                $response = $discord->guild->getGuildMember(
+            // remove roles that are restricted and not assigned
+            $member->get('roles')->reject(function ($role) use ($assigedRoles, $unrestrictedRoles) {
+                if ($assigedRoles->has($role) || $unrestrictedRoles->has($role))
+                    return true;
+            })->each(function ($role) use ($discord) {
+                $discord->guild->removeGuildMemberRole(
                     [
-                        'user.id' => $user->discordAccount->id,
-                        'guild.id' => config('services.discord.guild_id')
+                        'user.id' => $this->user->discordAccount->id,
+                        'guild.id' => config('services.discord.guild_id'),
+                        'role.id' => $role
                     ]
                 );
-
-                $member = collect($response)->recursive();
-
-                // remove roles that are restricted and not assigned
-                $member->get('roles')->reject(function ($role) use ($assigedRoles, $unrestrictedRoles) {
-                    if ($assigedRoles->has($role) || $unrestrictedRoles->has($role))
-                        return true;
-                })->each(function ($role) use ($discord) {
-                    $discord->guild->removeGuildMemberRole(
-                        [
-                            'user.id' => $user->discordAccount->id,
-                            'guild.id' => config('services.discord.guild_id'),
-                            'role.id' => $role
-                        ]
-                    );
-                });
-
-                // asign roles that are not already granted
-                $assigedRoles->each(function ($role) use ($member, $discord) {
-                    if (!$member->get('roles')->contains($role->discord_id)) {
-                        $discord->guild->addGuildMemberRole(
-                            [
-                                'user.id' => $user->discordAccount->id,
-                                'guild.id' => config('services.discord.guild_id'),
-                                'role.id' => $role->discord_id
-                            ]
-                        );
-                    }
-                });
-            }, function () {
-                return $this->release(10);
             });
 
+            // asign roles that are not already granted
+            $assigedRoles->each(function ($role) use ($member, $discord) {
+                if(!$member->get('roles')->contains($role->discord_id)) {
+                    $discord->guild->addGuildMemberRole(
+                        [
+                            'user.id' => $this->user->discordAccount->id,
+                            'guild.id' => config('services.discord.guild_id'),
+                            'role.id' => $role->discord_id
+                        ]
+                    );
+                }
+            });
+
+            //todo: logging
         }
     }
 }
