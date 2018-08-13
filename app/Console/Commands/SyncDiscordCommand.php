@@ -2,9 +2,7 @@
 
 namespace Asgard\Console\Commands;
 
-use Asgard\Jobs\Discord\Rename;
-use Asgard\Jobs\Discord\UpdateUserRolesJob;
-use Asgard\Models\User;
+use Asgard\Jobs\Discord\SyncUsers;
 use Illuminate\Console\Command;
 
 class SyncDiscordCommand extends Command
@@ -40,17 +38,6 @@ class SyncDiscordCommand extends Command
      */
     public function handle()
     {
-        $users = User::all();
-
-        $delay = now();
-
-        $users->reject(function ($user) {
-            return is_null($user->discordAccount);
-        })
-            ->each(function ($user) use (&$delay) {
-                $delay = $delay->addSeconds(5);
-                dispatch(new Rename($user))->onQueue('high')->delay($delay);
-                dispatch(new UpdateUserRolesJob($user))->onQueue('high')->delay($delay);
-            });
+        dispatch_now(new SyncUsers());
     }
 }

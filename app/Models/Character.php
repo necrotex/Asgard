@@ -31,10 +31,6 @@ class Character extends Model
         'active' => 'boolean'
     ];
 
-    protected $dispatchesEvents = [
-        'saved' => CharacterUpdateEvent::class,
-    ];
-
     protected $with = ['systemCorporation', 'corporation'];
 
     public function user()

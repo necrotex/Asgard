@@ -4,6 +4,7 @@ namespace Asgard\Jobs\Update;
 
 use Asgard\Support\ConduitAuthTrait;
 use Conduit\Conduit;
+use GuzzleHttp\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -29,15 +30,23 @@ class VerifyTokenJob implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param Conduit $api
      * @return void
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function handle(Conduit $api)
+    public function handle()
     {
-        $api->setAuthentication($this->getAuthentication($this->character));
+        $httpClient = new Client();
+        $payload = [
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $this->character->refresh_token
+        ];
 
-        // just make the call to verify the token, failed() will handle the rest
-        //@todo make this work
+        $httpClient->request('POST', 'https://login.eveonline.com/oauth/token',
+            [
+                'auth' => [config('services.eveonline.client_id'), config('services.eveonline.client_secret')],
+                'form_params' => $payload
+            ]
+        );
     }
 
     public function failed($exception = null)

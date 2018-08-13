@@ -18,6 +18,13 @@
                     <small class="card-subtitle text-muted">
                         {{optional($character->location)->solarSystem->solarSystemName ?? ''}} - {{optional($character->location)->shipType->typeName ?? ''}}
                     </small>
+
+                    @if(!$character->active)
+                        <br />
+                        <small class="text-danger clearfix">
+                            Character token expired, please re-add the character to the system.
+                        </small>
+                    @endif
                 </div>
             </div>
         </div>

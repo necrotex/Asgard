@@ -1,4 +1,30 @@
 
+v1.0.8 / 2018-08-13
+==================
+
+  * added expired token notice to character infos
+  * add verify token check before each update and disable updates if it failed
+  * Reworked discord integration
+  * discord integration changed wip
+  * changed sidenav access policy
+  * fixed feedback form permissions
+  * remove throttling and add delay between jobs
+  * get the user variable into the scope
+  * added rate limiting to discord jobs
+  * added discord sync command
+  * enable discord role management
+  * added expired token notice to character infos
+  * add verify token check before each update and disable updates if it failed
+  * Reworked discord integration
+  * discord integration changed wip
+  * changed sidenav access policy
+  * fixed feedback form permissions
+  * remove throttling and add delay between jobs
+  * get the user variable into the scope
+  * added rate limiting to discord jobs
+  * added discord sync command
+  * enable discord role management
+
 v1.0.7 / 2018-08-08
 ===================
   

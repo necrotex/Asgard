@@ -73,7 +73,7 @@ class InitialImportJob implements ShouldQueue
         )->dispatch($this->character)->allOnQueue('high');
     }
 
-    // retry adding the character for 20 min until the job fails
+    // retry adding the character for 10 min until the job fails
     public function retryUntil()
     {
         return now()->addMinutes(10);
