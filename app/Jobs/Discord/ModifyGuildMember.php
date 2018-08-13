@@ -10,11 +10,15 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Redis;
 use RestCord\DiscordClient;
 
-class UpdateRoles implements ShouldQueue
+class ModifyGuildMember implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $discord_id;
+    public $discordUserId;
+    /**
+     * @var string
+     */
+    public $name;
     /**
      * @var array
      */
@@ -23,12 +27,14 @@ class UpdateRoles implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $discord_id
+     * @param $discordUserId
+     * @param string $name
      * @param array $roles
      */
-    public function __construct($discord_id, array $roles)
+    public function __construct($discordUserId, ?string $name = null, ?array $roles = null)
     {
-        $this->discord_id = $discord_id;
+        $this->discordUserId = $discordUserId;
+        $this->name = $name;
         $this->roles = $roles;
     }
 
@@ -49,13 +55,25 @@ class UpdateRoles implements ShouldQueue
                 ]
             );
 
-            $discord->guild->modifyGuildMember(
-                [
-                    'guild.id' => config('services.discord.guild_id'),
-                    'user.id' => $this->discord_id,
-                    'roles' => $this->roles
-                ]
-            );
+            $payload = [
+                'guild.id' => config('services.discord.guild_id'),
+                'user.id' => $this->discordUserId,
+            ];
+
+            if (!is_null($this->name)) {
+                $payload['nick'] = $this->name;
+            }
+
+            if (!is_null($this->roles)) {
+                $payload['roles'] = $this->roles;
+            }
+
+            try {
+                $discord->guild->modifyGuildMember($payload);
+            } catch (\Exception $e) {
+                \Log::debug("Could not modify discord user {$this->discordUserId}");
+            }
+
 
         }, function () {
             return $this->release(10);

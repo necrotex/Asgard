@@ -4,6 +4,7 @@ namespace Asgard\Jobs\Discord;
 
 use Asgard\Models\DiscordRoles;
 use Asgard\Models\DiscordUser;
+use Conduit\Conduit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -28,9 +29,10 @@ class SyncUsers implements ShouldQueue
     /**
      * Execute the job.
      *
+     * @param Conduit $api
      * @return void
      */
-    public function handle()
+    public function handle(Conduit $api)
     {
         $discord = new DiscordClient(
             [
@@ -58,7 +60,7 @@ class SyncUsers implements ShouldQueue
                 // don't touch bots
                 return $member->get('user')->get('bot');
             })
-            ->each(function ($member, $id) use ($unrestrictedRoles, $unauthedMembers, $authUsers, $discord) {
+            ->each(function ($member, $id) use ($unrestrictedRoles, $unauthedMembers, $authUsers, $discord, $api) {
 
                 // reject all roles form a user that are not unrestricted
                 $roles = $member->get('roles')->values()->reject(function ($role) use ($unrestrictedRoles) {
@@ -67,11 +69,23 @@ class SyncUsers implements ShouldQueue
 
                 // if the user has a discord account in auth merge his discord roles with the unrestricted roles and rename him
                 if ($authUsers->has($id)) {
-                    $roles = $roles->merge($authUsers->get($id)->user->getDiscordRoles()->keys())->unique();
-                    Rename::dispatch($authUsers->get($id)->user)->onQueue('high');
-                }
+                    $user = $authUsers->get($id)->user;
 
-                UpdateRoles::dispatch($id, $roles->toArray())->onQueue('high');
+                    $roles = $roles->merge($user->getDiscordRoles()->keys())->unique();
+
+                    if (!$user->mainCharacter->corporation) {
+                        $corp = $api->corporations($user->mainCharacter->corporation_id)->get();
+                        $ticker = $corp->ticker;
+                    } else {
+                        $ticker = $user->mainCharacter->corporation->ticker;
+                    }
+
+                    $name = '[' . $ticker . '] ' . $user->mainCharacter->name;
+
+                    ModifyGuildMember::dispatch($id, $name, $roles->toArray())->onQueue('high');
+                } else {
+                    ModifyGuildMember::dispatch($id, null, $roles->toArray())->onQueue('high');
+                }
             });
     }
 }

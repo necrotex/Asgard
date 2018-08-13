@@ -13,7 +13,6 @@ class DebugController extends Controller
 {
     public function index()
     {
-        //(dispatch_now(new SyncUsers());
-        dispatch_now(new UpdateUserRolesJob(User::find(1)));
+        dispatch_now(new SyncUsers());
     }
 }

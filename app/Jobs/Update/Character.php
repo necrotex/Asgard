@@ -3,6 +3,7 @@
 namespace Asgard\Jobs\Update;
 
 use Asgard\Jobs\Discord\Rename;
+use Asgard\Jobs\Discord\UpdateUser;
 use Asgard\Jobs\Discord\UpdateUserRolesJob;
 use Conduit\Authentication;
 use Conduit\Conduit;
@@ -59,8 +60,7 @@ class Character implements ShouldQueue
         );
 
         if(count($character->getDirty()) > 0) {
-            dispatch(new UpdateUserRolesJob($character->user));
-            dispatch(new Rename($character->user));
+            dispatch(new UpdateUser($character->user));
         }
     }
 }
