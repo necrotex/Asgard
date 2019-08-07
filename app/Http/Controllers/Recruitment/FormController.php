@@ -18,7 +18,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $forms = ApplicationForm::with('corporation')->get();
+        $forms = ApplicationForm::all();
 
         return view('dashboard.forms.index', compact('forms'));
     }
@@ -30,7 +30,7 @@ class FormController extends Controller
      */
     public function create()
     {
-        $corporations = Corporation::with('corporation')->get();
+        $corporations = Corporation::all();
 
         return view('dashboard.forms.create', compact('corporations'));
     }

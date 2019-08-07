@@ -31,7 +31,7 @@ class EveSSOController extends Controller
 
     public function login(Request $request)
     {
-        $scopes = explode(',', config('services.eveonline.scopes'));
+        $scopes = explode(' ', config('services.eveonline.scopes'));
 
         $request->session()->put('login_type', 'add_character');
 
