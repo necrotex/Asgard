@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ae2808e0b40e2d8057cc694465d1c53",
+    "content-hash": "21356c8997f0b9b9b9115ffe85af257a",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -105,7 +105,7 @@
                 {
                     "name": "Tobias Nyholm",
                     "email": "tobias.nyholm@gmail.com",
-                    "homepage": "https://github.com/nyholm"
+                    "homepage": "https://github.com/Nyholm"
                 }
             ],
             "description": "Common classes for PSR-6 adapters",
@@ -172,7 +172,7 @@
                 {
                     "name": "Tobias Nyholm",
                     "email": "tobias.nyholm@gmail.com",
-                    "homepage": "https://github.com/nyholm"
+                    "homepage": "https://github.com/Nyholm"
                 }
             ],
             "description": "A PSR-6 cache implementation using a php array. This implementation supports tags",
@@ -234,7 +234,7 @@
                 {
                     "name": "Tobias Nyholm",
                     "email": "tobias.nyholm@gmail.com",
-                    "homepage": "https://github.com/nyholm"
+                    "homepage": "https://github.com/Nyholm"
                 }
             ],
             "description": "A helper trait and interface to your PSR-6 cache to support hierarchical keys.",
@@ -808,16 +808,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.10",
+            "version": "2.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec"
+                "reference": "92dd169c32f6f55ba570c309d83f5209cefb5e23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec",
-                "reference": "a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/92dd169c32f6f55ba570c309d83f5209cefb5e23",
+                "reference": "92dd169c32f6f55ba570c309d83f5209cefb5e23",
                 "shasum": ""
             },
             "require": {
@@ -836,7 +836,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -862,7 +862,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2019-07-19T20:52:08+00:00"
+            "time": "2019-08-13T17:33:27+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -1705,8 +1705,8 @@
             "authors": [
                 {
                     "name": "Cody Scott",
-                    "email": "cs475x@icloud.com",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "cs475x@icloud.com"
                 }
             ],
             "description": "Laravel notification driver for Discord.",
@@ -1992,16 +1992,16 @@
         },
         {
             "name": "laravel/tinker",
-            "version": "v1.0.9",
+            "version": "v1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "eb0075527fdeeb1cc1d68bd4ca7d50256b30a827"
+                "reference": "ad571aacbac1539c30d480908f9d0c9614eaf1a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/eb0075527fdeeb1cc1d68bd4ca7d50256b30a827",
-                "reference": "eb0075527fdeeb1cc1d68bd4ca7d50256b30a827",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/ad571aacbac1539c30d480908f9d0c9614eaf1a7",
+                "reference": "ad571aacbac1539c30d480908f9d0c9614eaf1a7",
                 "shasum": ""
             },
             "require": {
@@ -2051,7 +2051,7 @@
                 "laravel",
                 "psysh"
             ],
-            "time": "2019-07-29T18:09:25+00:00"
+            "time": "2019-08-07T15:10:45+00:00"
         },
         {
             "name": "league/flysystem",
@@ -2178,9 +2178,9 @@
             "authors": [
                 {
                     "name": "Ben Corlett",
+                    "role": "Developer",
                     "email": "bencorlett@me.com",
-                    "homepage": "http://www.webcomm.com.au",
-                    "role": "Developer"
+                    "homepage": "http://www.webcomm.com.au"
                 }
             ],
             "description": "OAuth 1.0 Client Library",
@@ -2493,16 +2493,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.2",
+            "version": "v4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420"
+                "reference": "e612609022e935f3d0337c1295176505b41188c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
-                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e612609022e935f3d0337c1295176505b41188c8",
+                "reference": "e612609022e935f3d0337c1295176505b41188c8",
                 "shasum": ""
             },
             "require": {
@@ -2510,7 +2510,7 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.5 || ^7.0"
+                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
             },
             "bin": [
                 "bin/php-parse"
@@ -2540,7 +2540,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-05-25T20:07:01+00:00"
+            "time": "2019-08-12T20:17:41+00:00"
         },
         {
             "name": "nullx27/conduit",
@@ -2548,12 +2548,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nullx27/conduit.git",
-                "reference": "316232d80237957f6f968ea14d5cc0fd51c4a7de"
+                "reference": "7dfb724a8f97ba58bb58ae89c761ba04bd289c13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nullx27/conduit/zipball/316232d80237957f6f968ea14d5cc0fd51c4a7de",
-                "reference": "316232d80237957f6f968ea14d5cc0fd51c4a7de",
+                "url": "https://api.github.com/repos/nullx27/conduit/zipball/7dfb724a8f97ba58bb58ae89c761ba04bd289c13",
+                "reference": "7dfb724a8f97ba58bb58ae89c761ba04bd289c13",
                 "shasum": ""
             },
             "require": {
@@ -2575,7 +2575,6 @@
                     "Conduit\\Tests\\": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2593,7 +2592,11 @@
                 "lib",
                 "php"
             ],
-            "time": "2018-03-19T12:55:15+00:00"
+            "support": {
+                "source": "https://github.com/nullx27/conduit/tree/master",
+                "issues": "https://github.com/nullx27/conduit/issues"
+            },
+            "time": "2019-08-14T07:39:23+00:00"
         },
         {
             "name": "nullx27/eveonline-socialite",
@@ -3236,12 +3239,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/restcord/restcord.git",
-                "reference": "2e38279b8995bbc2e5c7e6a3d7336e3cae84d4f5"
+                "reference": "2e332138428a91fbcc70630c324aa5a449c11b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/restcord/restcord/zipball/2e38279b8995bbc2e5c7e6a3d7336e3cae84d4f5",
-                "reference": "2e38279b8995bbc2e5c7e6a3d7336e3cae84d4f5",
+                "url": "https://api.github.com/repos/restcord/restcord/zipball/2e332138428a91fbcc70630c324aa5a449c11b01",
+                "reference": "2e332138428a91fbcc70630c324aa5a449c11b01",
                 "shasum": ""
             },
             "require": {
@@ -3278,7 +3281,7 @@
                 }
             ],
             "description": "REST Library for the Discord API",
-            "time": "2019-05-29T15:20:43+00:00"
+            "time": "2019-08-08T23:33:12+00:00"
         },
         {
             "name": "rtheunissen/oauth2-reddit",
@@ -3521,16 +3524,16 @@
         },
         {
             "name": "softonic/guzzle-oauth2-middleware",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/softonic/guzzle-oauth2-middleware.git",
-                "reference": "1b831865e0574105e31586f6dca655b8daf7a4cf"
+                "reference": "4051b3cfe5fe20581b207b05d903e49b1ccd72f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/softonic/guzzle-oauth2-middleware/zipball/1b831865e0574105e31586f6dca655b8daf7a4cf",
-                "reference": "1b831865e0574105e31586f6dca655b8daf7a4cf",
+                "url": "https://api.github.com/repos/softonic/guzzle-oauth2-middleware/zipball/4051b3cfe5fe20581b207b05d903e49b1ccd72f1",
+                "reference": "4051b3cfe5fe20581b207b05d903e49b1ccd72f1",
                 "shasum": ""
             },
             "require": {
@@ -3559,7 +3562,7 @@
                 "middleware",
                 "oauth2"
             ],
-            "time": "2019-07-09T08:33:25+00:00"
+            "time": "2019-08-07T08:34:15+00:00"
         },
         {
             "name": "spatie/db-dumper",
@@ -3792,9 +3795,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
+                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://murze.be",
-                    "role": "Developer"
+                    "homepage": "https://murze.be"
                 }
             ],
             "description": "String handling evolved",
@@ -5357,8 +5360,8 @@
             "authors": [
                 {
                     "name": "Tijs Verkoyen",
-                    "email": "css_to_inline_styles@verkoyen.eu",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "css_to_inline_styles@verkoyen.eu"
                 }
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
@@ -5749,16 +5752,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "6fb502c23885701a991b0bba974b1a8eb6673577"
+                "reference": "cde50e6720a39fdacb240159d3eea6865d51fd96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/6fb502c23885701a991b0bba974b1a8eb6673577",
-                "reference": "6fb502c23885701a991b0bba974b1a8eb6673577",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/cde50e6720a39fdacb240159d3eea6865d51fd96",
+                "reference": "cde50e6720a39fdacb240159d3eea6865d51fd96",
                 "shasum": ""
             },
             "require": {
@@ -5806,7 +5809,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2019-07-04T09:00:00+00:00"
+            "time": "2019-08-07T09:00:00+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -5969,16 +5972,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
+                "reference": "4eff936d83eb809bde2c57a3cea0ee9643769031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
-                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/4eff936d83eb809bde2c57a3cea0ee9643769031",
+                "reference": "4eff936d83eb809bde2c57a3cea0ee9643769031",
                 "shasum": ""
             },
             "require": {
@@ -6030,20 +6033,20 @@
                 "test double",
                 "testing"
             ],
-            "time": "2019-02-13T09:37:52+00:00"
+            "time": "2019-08-07T15:01:07+00:00"
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.9.1",
+            "version": "1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "e6828efaba2c9b79f4499dae1d66ef8bfa7b2b72"
+                "reference": "007c053ae6f31bba39dfa19a7726f56e9763bbea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/e6828efaba2c9b79f4499dae1d66ef8bfa7b2b72",
-                "reference": "e6828efaba2c9b79f4499dae1d66ef8bfa7b2b72",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/007c053ae6f31bba39dfa19a7726f56e9763bbea",
+                "reference": "007c053ae6f31bba39dfa19a7726f56e9763bbea",
                 "shasum": ""
             },
             "require": {
@@ -6078,7 +6081,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2019-04-07T13:18:21+00:00"
+            "time": "2019-08-09T12:45:53+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -6118,18 +6121,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -6165,18 +6168,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -6540,8 +6543,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Simple template engine.",
@@ -6953,16 +6956,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "234199f4528de6d12aaa58b612e98f7d36adb937"
+                "reference": "06a9a5947f47b3029d76118eb5c22802e5869687"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/234199f4528de6d12aaa58b612e98f7d36adb937",
-                "reference": "234199f4528de6d12aaa58b612e98f7d36adb937",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/06a9a5947f47b3029d76118eb5c22802e5869687",
+                "reference": "06a9a5947f47b3029d76118eb5c22802e5869687",
                 "shasum": ""
             },
             "require": {
@@ -6990,6 +6993,10 @@
             ],
             "authors": [
                 {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
+                },
+                {
                     "name": "Jeff Welch",
                     "email": "whatthejeff@gmail.com"
                 },
@@ -6998,16 +7005,12 @@
                     "email": "github@wallbash.com"
                 },
                 {
-                    "name": "Bernhard Schussek",
-                    "email": "bschussek@2bepublished.at"
-                },
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                },
-                {
                     "name": "Adam Harvey",
                     "email": "aharvey@php.net"
+                },
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
                 }
             ],
             "description": "Provides the functionality to export PHP variables for visualization",
@@ -7016,7 +7019,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2017-04-03T13:19:02+00:00"
+            "time": "2019-08-11T12:43:14+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -7291,8 +7294,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -7400,7 +7403,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1.0"
+        "php": ">=7.3.0"
     },
     "platform-dev": []
 }
