@@ -40,11 +40,8 @@ class Journal extends CharacterUpdateJob
             return is_null($id);
         })->values()->push(500001);
 
-        $partyIds->filter(function ($id, $key) use ($partyIds) {
-            if ($id >= 500000 && $id < 1000000) {
-                $partyIds->forget($key);
-                return true;
-            }
+        $partyIds = $partyIds->reject(function ($id, $key) {
+            return ($id >= 500000 && $id < 1000000);
         });
 
         $resoledIdsRaw = $api->universe()->names()->data($partyIds->toArray())->post();

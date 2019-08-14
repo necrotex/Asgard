@@ -9,7 +9,7 @@ RUN apt-get update && \
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php7.3.list
 
-RUN apt-get install -y -q --no-install-recommends libmcrypt-dev libmagickwand-dev git libzip-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev supervisor
+RUN apt-get install -y -q --no-install-recommends libmcrypt-dev libmagickwand-dev git libzip-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev supervisor cron
 
 RUN pecl install imagick && \
     docker-php-ext-enable imagick && \

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21356c8997f0b9b9b9115ffe85af257a",
+    "content-hash": "145e593e0ac599f75329d66c79b943eb",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -3238,13 +3238,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/restcord/restcord.git",
-                "reference": "2e332138428a91fbcc70630c324aa5a449c11b01"
+                "url": "https://github.com/nullx27/restcord.git",
+                "reference": "1f661791aa8d06099a87d48c2a482569a3377cd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/restcord/restcord/zipball/2e332138428a91fbcc70630c324aa5a449c11b01",
-                "reference": "2e332138428a91fbcc70630c324aa5a449c11b01",
+                "url": "https://api.github.com/repos/nullx27/restcord/zipball/1f661791aa8d06099a87d48c2a482569a3377cd3",
+                "reference": "1f661791aa8d06099a87d48c2a482569a3377cd3",
                 "shasum": ""
             },
             "require": {
@@ -3270,7 +3270,11 @@
                     "RestCord\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "RestCord\\Test\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -3281,7 +3285,10 @@
                 }
             ],
             "description": "REST Library for the Discord API",
-            "time": "2019-08-08T23:33:12+00:00"
+            "support": {
+                "source": "https://github.com/nullx27/restcord/tree/master"
+            },
+            "time": "2019-08-14T12:35:29+00:00"
         },
         {
             "name": "rtheunissen/oauth2-reddit",

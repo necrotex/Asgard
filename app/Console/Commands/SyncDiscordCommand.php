@@ -2,6 +2,7 @@
 
 namespace Asgard\Console\Commands;
 
+use Asgard\Jobs\Discord\Channels;
 use Asgard\Jobs\Discord\SyncUsers;
 use Illuminate\Console\Command;
 
@@ -39,5 +40,6 @@ class SyncDiscordCommand extends Command
     public function handle()
     {
         dispatch_now(new SyncUsers());
+        dispatch_now(new Channels());
     }
 }

@@ -44,6 +44,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/nullx27/conduit"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/nullx27/restcord"
         }
     ],
     "autoload": {

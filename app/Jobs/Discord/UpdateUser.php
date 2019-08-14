@@ -3,6 +3,7 @@
 namespace Asgard\Jobs\Discord;
 
 use Asgard\Models\DiscordRoles;
+use Asgard\Models\User;
 use Conduit\Conduit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
