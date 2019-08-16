@@ -14,7 +14,7 @@
             @include('dashboard.partials.profile.select-main-chracter')
             @include('dashboard.partials.profile.total-isk')
             @include('dashboard.partials.profile.discord-account')
-            @include('dashboard.partials.profile.reddit-account')
+
         </div>
 
         <div class="col-4">

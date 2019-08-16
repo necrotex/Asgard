@@ -7,6 +7,7 @@ Route::group(['prefix' => 'services', 'namespace' => 'Service', 'middleware' => 
 
     Route::get('/discord/{user}/unlink', 'DiscordController@destroy')->name('services.discord.unlink');
 
+    /*
     Route::get('/reddit', 'RedditController@index')->name('services.reddit.index');
     Route::get('/reddit/{user}/destroy', 'RedditController@destroy')->name('services.reddit.destroy');
     Route::get('/reddit/redirect', 'RedditController@create')->name('services.reddit.redirect');
@@ -14,6 +15,7 @@ Route::group(['prefix' => 'services', 'namespace' => 'Service', 'middleware' => 
 
     Route::get('/reddit/debug', 'RedditController@runner')->name('services.reddit.runner');
     Route::get('/reddit/redirect/modaccount', 'RedditController@moderatorAccountRedirect')->name('services.reddit.redirect_modaccount');
+    */
 
     Route::get('/feedback', 'FeedbackController@create')
         ->name('feedback.create')

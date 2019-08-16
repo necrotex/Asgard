@@ -59,7 +59,7 @@ class RedditController extends Controller
 
         Auth::user()->redditAccount()->save($redditUser);
 
-        $this->dispatch(new AddApprovedSubmitterJob($redditUser));
+        //$this->dispatch(new AddApprovedSubmitterJob($redditUser));
 
 
         return redirect()->route('profile.show', auth()->user()->id);

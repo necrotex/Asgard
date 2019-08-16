@@ -133,19 +133,10 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="https://discord.gg/rJmM22D">
+                <a class="nav-link" href="https://discord.gg/3DRfpr7">
                     <i class="fab fa-discord" aria-hidden="true"></i> Discord
                 </a>
             </li>
-
-            @can('access-subreddit')
-                <li class="nav-item">
-                    <a class="nav-link {{active('services.reddit.index')}}"
-                       href="{{route('services.reddit.index')}}">
-                        <i class="fab fa-reddit-alien" aria-hidden="true"></i> Reddit
-                    </a>
-                </li>
-            @endcan
 
         </ul>
 

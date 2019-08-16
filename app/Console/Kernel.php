@@ -56,7 +56,7 @@ class Kernel extends ConsoleKernel
         //horizon metrics
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
-        //$schedule->command('asgard:clean:reddit')->hourly(); //@todo
+        //$schedule->command('asgard:clean:reddit')->hourly();
         $schedule->command('asgard:clean:timerboard')->everyMinute();
         $schedule->command('asgard:discord:fetch-roles')->daily();
 
@@ -65,7 +65,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run --only-db --disable-notifications')->daily()->at('02:00');
 
-        $schedule->job(new Haikus())->daily();
+        //$schedule->job(new Haikus())->daily();
         $schedule->job(new Channels())->daily();
 
     }

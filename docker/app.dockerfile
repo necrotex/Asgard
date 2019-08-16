@@ -4,7 +4,7 @@ ARG WITH_XDEBUG=false
 FROM php:${PHP_VERSION}-fpm
 
 RUN apt-get update && \
-    apt -y install lsb-release apt-transport-https ca-certificates wget apt-utils mysql-client
+    apt -y install lsb-release apt-transport-https ca-certificates wget apt-utils mysql-client sudo
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php7.3.list
@@ -38,15 +38,15 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 COPY ./config/laravel.crontab /etc/cron.d
 COPY ./config/supervisor.conf /etc/supervisor/conf.d
 
-USER root
-RUN service supervisor start
-
 # Clean up
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     rm /var/log/lastlog /var/log/faillog
 
+WORKDIR /var/www
+
 RUN usermod -u 1000 www-data
 
 USER www-data
-WORKDIR /var/www
+
+EXPOSE 9000

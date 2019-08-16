@@ -3,9 +3,7 @@
 @section('content')
 
     <div class="logo-container">
-        <img id="profile-img" class="profile-img-card" src="/img/logo.png"/>
-
-        <h1 class="text-center hero">Friendly Probes
+        <h1 class="text-center hero">Hostile Probes
             <small class="auth">Auth</small>
         </h1>
     </div>

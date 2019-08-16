@@ -2,31 +2,6 @@
 
 namespace Asgard\Http\Controllers\Admin;
 
-{
-    $discord = new DiscordClient(['token' => config('services.discord.bot_token')]);
-    $response = $discord->guild->getGuildChannels(['guild.id' => (int)config('services.discord.guild_id')]);
-
-    $channels = collect($response)->recursive()->keyBy('id');
-    $channels = $channels->reject(function ($channel) {
-        return $channel->get('type') !== 0;
-    });
-
-    $oldChannels = DiscordChannel::all()->keyBy('id');
-
-    $channels = $channels->diffKeys($oldChannels);
-
-    if ($channels->isEmpty()) {
-        return;
-    }
-
-    $channels = $channels->values()->map(function ($item) {
-        return $item->only(['id', 'name', 'guild_id']);
-    });
-
-    DiscordChannel::insert($channels->toArray());
-
-}
-
 use Asgard\Http\Controllers\Controller;
 use Asgard\Models\DiscordChannel;
 use Asgard\Models\DiscordRoles;

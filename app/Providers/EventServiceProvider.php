@@ -14,13 +14,13 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'Asgard\Events\CharacterUpdateEvent' => [
-            'Asgard\Listeners\RedditAccessCheck',
+//            'Asgard\Listeners\RedditAccessCheck',
             'Asgard\Listeners\DiscordAccessCheck',
         ],
 
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             'SocialiteProviders\Discord\DiscordExtendSocialite@handle',
-            'SocialiteProviders\Reddit\RedditExtendSocialite@handle',
+//            'SocialiteProviders\Reddit\RedditExtendSocialite@handle',
         ],
     ];
 
